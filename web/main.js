@@ -156,8 +156,8 @@ async function renderHomePage(contentArea) {
             
             //created a data-biome attribute to alter background image***
             html += `
-                    <div class="stat-card ${defenseClass}" data-biome="${planet.biome_id}">
-                        <h3 class="${factionClass}">${planet.name}</h3>
+                    <div class="stat-card ${defenseClass}" data-biome="${planet.biome_name}">
+                        <h3 class="${factionClass}">${planet.name} ${planet.biome_name}}</h3>
                         <p>
                             <span class="player-count-highlight">${planet.players.toLocaleString()}</span> Helldivers <br>
                         </p>
