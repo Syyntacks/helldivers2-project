@@ -122,7 +122,9 @@ def get_major_orders():
 @app.get("/api/galaxy_stats")
 def get_galaxy_stats():
     print("Request received for galaxy stats...")
+    print(f"Available keys in settings: {list(settings.urls.keys())}")
     galaxy_stats_url = settings.urls.get("war")
+    print(f"Trying to fetch URL: '{galaxy_stats_url}'")
     raw_data = fetch_data_from_url(galaxy_stats_url)
     if raw_data:
         galaxy_stats = parse_galaxy_stats(raw_data) # returns a list
