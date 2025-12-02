@@ -1,0 +1,402 @@
+/*
+========================================
+TABLE OF CONTENTS
+========================================
+1. GLOBAL STYLES
+   - body, header, h1, p, footer
+2. LAYOUT STYLES
+   - .main-display, .sidebar-nav, .content-area
+3. HOMEPAGE STYLES
+   - .homepage-card, .mo-card
+4. COMPONENT STYLES
+   - .stat-card, .stats-layout
+   - .planetProgress, .planetHealth
+   - .stats-summary-grid
+5. UTILITY CLASSES
+   - Faction Colors (.terminid-color, etc.)
+========================================
+*/
+
+
+
+
+/*  
+    ========================
+    1. GLOBAL STYLES
+    ======================== 
+*/
+body {
+    background-image: url("../resources/images/bg-stars.jpg");
+    background-color: rgb(34, 34, 34);
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: cover;
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+}
+header {
+    color: #ffe710;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.7);
+
+}
+h1 {
+    color: #ffe710;
+    text-align: center;
+    margin: 0;
+}
+p {
+    color: #ffe710;
+    line-height: 1.8;
+    text-align: center;
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    color: #aaa;
+    background-color: rgba(0,0,0,0.7);
+}
+
+
+/*  
+    ========================
+    2. LAYOUT STYLES
+    ======================== 
+*/
+.main-display {
+    display: flex;
+    margin: 20px auto;
+    background-color: rgba(34,34,34,0.7);
+    justify-content: space-around;
+    border: #ffe710 1px solid;
+    overflow: hidden;
+}
+.content-area {
+    flex-grow: 1;
+    padding: 20px;
+}
+.content-area h2 {
+    color: #ffe710;
+    font-size: 2em;
+    margin-top: 6px;
+    text-align: center;
+}
+.sidebar-nav {
+    flex-basis: 200px;
+    flex-shrink: 0;
+    padding: 20px;
+    border-right: #ffe710 2px solid;
+    text-align: center;
+}
+.sidebar-nav h2 {
+    color: #ffe710;
+    margin-top: 0;
+}
+.sidebar-nav ul {
+    list-style: none; /* Takes bullet points out */
+    padding: 0;
+}
+.sidebar-nav li {
+    color: #ffe710;
+    margin-bottom: 10px;
+}
+.sidebar-nav a {
+    color: whitesmoke;
+    text-decoration: none; /* No line for hyperlinks */
+    font-size: 1.1em;
+    display: block; /* Makes box clickable */
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.4s ease, color 0.4s ease; /* Hover transition */
+}
+.sidebar-nav a:hover { /* Hover effect over text */
+    background-color: #ffe710;
+    color: #000;
+}
+
+
+/*  
+    ========================
+    3. HOMEPAGE STYLES
+    ======================== 
+*/
+.homepage-card {
+    background-color: rgba(33,34,34,0.7);
+    color: whitesmoke;
+    border: #ffe710 1px solid;
+    padding: 20px;
+    padding-top: 0;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+.homepage-card h3 {
+    color:#ffe710;
+    font-size: 2em;
+    text-align: center;
+}
+
+.mo-card {
+    background-color: rgba(33,34,34,0.7);
+    border: #ffe710 1px solid;
+    padding: 20px;
+    text-align: center;
+}
+.mo-card h3 {
+    color: #ffe710;
+    font-weight: bold;
+    margin-top: 0;
+}
+.mo-card h2 {
+    color:#ffe710;
+    font-weight: bold;
+    margin-top: 0;
+}
+.mo-card p {
+    color: whitesmoke;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 0;
+}
+
+/*  
+    ========================
+    4. COMPONENT STYLES
+    ======================== 
+*/
+.stats-summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    text-align: center;
+    background-color: rgba(33,34,34,0.7);
+    border:#ffe710 1px solid;
+    border-radius: 4px;
+}
+.stats-summary-grid p {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 10px; 
+}
+
+.stats-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Creates responsive columns*/
+    gap: 20px;
+}
+.stats-layout h3 {
+    font-size: 2em;
+}
+.stats-layout p {
+    font-size: 1.3em;
+}
+
+@keyframes pulse-danger {
+    0% {
+        box-shadow: 0 0 5px #fe6a67, 0 0 10px #fe6a67;
+    }
+    50% {
+        box-shadow: 0 0 20px #fe6a67, 0 0 30px #fe6a67;
+    }
+    100% {
+        box-shadow: 0 0 5px #fe6a67, 0 0 10px #fe6a67;
+    }
+}
+
+.stat-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 4px;
+    z-index: 0;
+}
+.stat-card > * {
+    position: relative;
+    z-index: 1;
+}
+.stat-card {
+    background-color: rgba(33,34,34,0.7);
+    border: #ffe710 1px solid;
+    padding: 20px;
+    text-align: center;
+    border-radius: 4px;
+    /* Image styling */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.stat-card.warEffort {
+    width: 1.2em;
+}
+.stat-card.is-defending {
+    /*border-color: #fe6a67 !important;*/
+
+    animation-name: pulse-danger;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+.stat-card h3 {
+    color: #ffe710;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.stat-card p {
+    color: whitesmoke;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+
+
+.planetProgress {
+    width: 100%;
+    background-color: rgba(68,68,68,0.6);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.planetHealth {
+    /* default params */
+    height: 1.5em;
+    background-color: #ffe710;
+
+    /* text params */
+    color:#000;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    white-space: nowrap;
+
+    /* transitions for any noticeable changes */ 
+    transition: width 0.5s ease;
+}
+
+
+/*  
+    ========================
+    5. UTILITY CLASSES
+    ======================== 
+*/
+.planetHealth.terminid-color {
+    background-color: #FF9f00 !important; /* Need important to override default yellow */
+}
+.planetHealth.automaton-color {
+    background-color: #fe6a67 !important;
+}
+.planetHealth.illuminate-color {
+    background-color: #db58fb !important;
+}
+.planetHealth.seaf-color {
+    background-color: #41639C !important;
+    color: #fff !important;
+}
+
+/* FACTION COLOUR CLASSES*/
+.helldiver-color {
+    color: #ffe710 !important;
+}
+.terminid-color {
+    color: #FF9f00 !important;
+}
+.automaton-color {
+    color: #fe6a67 !important;
+}
+.illuminate-color {
+    color: #db58fb !important;
+}
+.seaf-color {
+    color: #41639C !important;
+}
+
+
+/*  
+    ========================
+    BIOME BACKGROUND IMAGES
+    ======================== 
+*/
+.stat-card[data-biome="arctic_glacier_base"] {
+    background-image: url('../resources/images/landscapes/Arctic_glacier_base_Landscape.png');
+}
+.stat-card[data-biome="arctic_glacier_coldrocky"] {
+    background-image: url('../resources/images/landscapes/Arctic_glacier_coldrocky_Landscape.png');
+}
+.stat-card[data-biome="arctic_glacier_tien_kwan"] {
+    background-image: url('../resources/images/landscapes/Tien_Kwan_landscape.png');
+}
+.stat-card[data-biome="blackhole"] {
+    background-image: url('../resources/images/landscapes/Meridia_Black_Hole_Orb_Old.png');
+}
+.stat-card[data-biome="bug_hiveworld"] {
+    background-image: url('../resources/images/landscapes/Supercolony_Landscape.png');
+}
+.stat-card[data-biome="moor_arid"] {
+    background-image: url('../resources/images/landscapes/Moor_arid_Landscape.png');
+}
+.stat-card[data-biome="moor_baseplanet"] {
+    background-image: url('../resources/images/landscapes/Moor_baseplanet_Landscape.png');
+}
+.stat-card[data-biome="moor_red"] {
+    background-image: url('../resources/images/landscapes/Moor_red_Landscape.png');
+}
+.stat-card[data-biome="moor_tundra"] {
+    background-image: url('../resources/images/landscapes/Moor_tundra_Landscape.png');
+}
+.stat-card[data-biome="primordial_base"] {
+    background-image: url('../resources/images/landscapes/Primordial_base_Landscape.png');
+}
+.stat-card[data-biome="primordial_blue"] {
+    background-image: url('../resources/images/landscapes/Primordial_blue_Landscape.png');
+}
+.stat-card[data-biome="primordial_bug"] {
+    background-image: url('../resources/images/landscapes/Primordial_bug_Landscape.png');
+}
+.stat-card[data-biome="primordial_dead"] {
+    background-image: url('../resources/images/landscapes/Primordial_dead_Landscape.png');
+}
+.stat-card[data-biome="primordial_purple"] {
+    background-image: url('../resources/images/landscapes/Primordial_purple_Landscape.png');
+}
+.stat-card[data-biome="sandy_acid"] {
+    background-image: url('../resources/images/landscapes/Sandy_acid_Landscape.png');
+}
+.stat-card[data-biome="sandy_base"] {
+    background-image: url('../resources/images/landscapes/Sandy_base_Landscape.png');
+}
+.stat-card[data-biome="sandy_mineral"] {
+    background-image: url('../resources/images/landscapes/Sandy_mineral_Landscape.png');
+}
+.stat-card[data-biome="sandy_moon"] {
+    background-image: url('../resources/images/landscapes/Sandy_moon_Landscape.png');
+}
+.stat-card[data-biome="sandy_spike"] {
+    background-image: url('../resources/images/landscapes/Sandy_spiky_Landscape.png');
+}
+.stat-card[data-biome="super_eart"] {
+    background-image: url('../resources/images/landscapes/Super_Earth_landscape.png');
+}
+.stat-card[data-biome="swamp_base"] {
+    background-image: url('../resources/images/landscapes/Swamp_base_Landscape.png');
+}
+.stat-card[data-biome="swamp_haunted"] {
+    background-image: url('../resources/images/landscapes/Swamp_haunted_Landscape.png');
+}
+.stat-card[data-biome="sandy_mineral"] {
+    background-image: url('../resources/images/landscapes/Sandy_mineral_Landscape.png');
+}
+.stat-card[data-biome="unknown"] {
+    background-image: url('../resources/images/landscapes/Morale_Augmentation_Module_Background.png');
+}
