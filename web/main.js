@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', main)
 
 function main() {
     console.log('The page is loaded. Running main.js...')
+
+    window.activeTimers = {};
+    
     siteNavigation();
     
     //loads homepage as default
@@ -44,7 +47,7 @@ function loadPageContent(route) {
             renderPlanetsPage(contentArea);
             break;
         case '#major_orders':
-            renderMajorOrders(contentArea);
+            renderMajorOrderData(contentArea);
             break;
         case '#galaxy_stats':
             renderGalaxyStats(contentArea);
@@ -84,8 +87,8 @@ async function renderHomePage(contentArea) {
         const planetsArray = Object.values(planetData);
 
         planetsArray.sort((a,b) => b.players - a.players); //sort by most players to least
-        const mostPopulatedPlanets = planetsArray.slice(0, 5);
-        console.log(`Length of collected planet list: ${mostPopulatedPlanets}`);
+        const mostPopulatedPlanets = planetsArray.slice(0, 6);
+        //console.log(`Length of collected planet list: ${mostPopulatedPlanets}`);
        
 
         //check if anything is in the list BEFORE accessing the first MO
@@ -93,7 +96,7 @@ async function renderHomePage(contentArea) {
 
         //process collected >>GALAXY<< stats
         //variable declaration
-        const bugKills = statsData.bugKills || 0; 
+        const bugKills = statsData.terminidKills || 0; 
         const botKills = statsData.automatonKills || 0;
         const squidKills = statsData.illuminateKills || 0;
         const totalKills = bugKills + botKills + squidKills;
@@ -107,14 +110,48 @@ async function renderHomePage(contentArea) {
         //================BUILD HTML================//
         let html = '<h2>Homepage Overview</h2>';
 
-        //MO SUMMARY--
+        //TOP ROW CONTAINER
+        html += `<div class="top-row-container">`;
+
+        //MO SUMMARY-- in top-row-container
         if (currentMO) {
             html += `
                 <div class="homepage-card mo-card">
-                    <h3>${currentMO.order_title}</h3>
-                    <p>${currentMO.order_briefing}</p>
-                    <p><strong>Expires:</strong> ${currentMO.order_expires}</p>
-                    <p><strong>Reward:</strong> ${currentMO.rewards_amount}</p>
+                    <h3>${currentMO.orderTitle}</h3>
+                    <p>${currentMO.orderBriefing}</p>
+                    <div class="mo-tasks>
+                        <h3 style="color: #ffe710; border-bottom: 1px solid #ffe710;">Objectives</h3>
+            `;
+
+            if (currentMO.tasks && currentMO.tasks.length > 0) {
+                currentMO.tasks.forEach(task => {
+                    let progressPercent = 0;
+                    if (task.goal > 0) {
+                        progressPercent = ((task.progress / task.goal) * 100).toFixed(2);
+                    }
+
+                    const formattedType = formatTaskType(task.typeName || "Unknown Type")
+
+                    html += `
+                        <div style="margin-bottom: 15px;">
+                            <p style="margin: 5px 0;"><strong>${formattedType}:</strong> ${task.targetName}</p>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: ${progressPercent}%; background-color: #ffe710; color: black !important; text-align: center;">
+                                    <style="text-align: center;">${progressPercent}%</style>
+                                </div>
+                            </div>
+                            <p style="margin: 5px 0; font-size: 0.9em; color: #ccc;">Progress: ${task.progress.toLocaleString()} / ${task.goal.toLocaleString()}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                html += `<p>No specific tasks data available.</p>`;
+            }
+            //debug: 
+            html += `
+                    </div>
+                    <p><strong>Expires:</strong> <span id="homepage-mo-timer">${currentMO.orderExpires}</span></p>
+                    <p><strong>Reward:</strong> ${currentMO.rewardsAmount} Medals</p>
                 </div>
             `;
         } else {
@@ -128,56 +165,112 @@ async function renderHomePage(contentArea) {
 
         // MOST ACTIVE PLANETS SUMMARY--
         html += `
-            <div class="homepage-card">
+            <div class="homepage-card top-mo-card">
                 <h3>Most Active Planets</h3>
-                <div class="stats-layout">` // <-- USE GRID LAYOUT
+                <div class="stats-layout">`; // <-- USE GRID LAYOUT
+
+        const defenseTimersToStart = [];
 
         mostPopulatedPlanets.forEach(planet => {
             let factionClass = '';
             const ownerId = planet.owner;
 
-            if (ownerId === 2) {
-                factionClass = 'terminid-color';
-            } else if (ownerId === 3) {
-                factionClass = 'automaton-color';
-            } else if (ownerId === 4) {
-                factionClass = 'illuminate-color';
+            if (ownerId === 'Terminids') {
+                factionClass = '#ff9f00';
+            } else if (ownerId === 'Automaton') {
+                factionClass = '#fe6a67';
+            } else if (ownerId === 'Illuminate') {
+                factionClass = '#db58fb';
             } else {
-                factionClass = 'seaf-color';
+                factionClass = '#41639c';
             }
-
-            const healthPercent = ((planet.currentHealth / planet.maxHealth) * 100).toFixed(2);
 
             //checks for planet campaigns
             let defenseClass = '';
+            let healthBarHtml = '';
+            let defenseTimerHtml = '';
+
             if (planet.isUnderAttack) {
                 defenseClass = 'is-defending';
-            }
-            
-            //created a data-biome attribute to alter background image***
-            html += `
-                    <div class="stat-card ${defenseClass}" data-biome="${planet.biome_name}">
-                        <h3 class="${factionClass}">${planet.name} ${planet.biome_name}}</h3>
-                        <p>
-                            <span class="player-count-highlight">${planet.players.toLocaleString()}</span> Helldivers <br>
-                        </p>
-                        <div>
-                            
-                        </div>
 
-                        <div class="planetProgress">
-                            <div class="planetHealth ${factionClass}" style="width: ${healthPercent}%;">
-                                <span style="color: #fff; font-weight: bolder;">${healthPercent.toLocaleString()}%</span>
-                            </div>
+                const timerId = `defense-timer-${planet.index}`
+                defenseTimerHtml = `<p class="defense-timer" style="color: #fe6a67; font-weight: bold;">Time Left: <span id="${timerId}">Loading...</span></p>`;
+
+                defenseTimersToStart.push({
+                    id: timerId,
+                    time: planet.eventEndTime
+                });
+
+                // High hp = good for SE
+                const now = Math.floor(Date.now() / 1000); // divide by 1000 for seconds as lowest value
+                const eventStartTimeUnix = new Date(planet.eventStartTime).getTime() / 1000;
+                const eventEndTimeUnix = new Date(planet.eventEndTime).getTime() / 1000;
+
+                const defenderProgress = (1 - (planet.currentHealth / planet.maxHealth)) * 100;
+                const attackerProgress = ((now - eventStartTimeUnix) / (eventEndTimeUnix - eventStartTimeUnix)) * 100;
+
+                const helldiverPercentStr = defenderProgress.toFixed(3);
+                const attackingPercentStr = attackerProgress.toFixed(3);
+
+                factionColor = '';
+                const attackingFaction = planet.attackingFaction
+                console.log(attackingFaction)
+                if (attackingFaction === 'Terminids') {factionColor = '#ff9f00';} 
+                else if (attackingFaction === 'Automaton') {factionColor = '#fe6a67';} 
+                else if (attackingFaction === 'Illuminate') {factionColor = '#db58fb';}
+
+
+                // HANDLES PROGRESSION BARS
+                healthBarHtml += `
+                    <div class="progress-bar-container" style="position: relative;">
+                        <div class="progress-bar-text" style="position: absolute; width: 100%; text-align: center; z-index: 10; color: white; text-shadow: 1px 1px 2px black; line-height: 1.5em;">
+                            ${helldiverPercentStr}%
                         </div>
+                    
+                        <div class="progress-bar defender-bar" style="width: ${defenderProgress}%;"></div>
                     </div>
-        `;
-        })
-        html += `
-            </div>
-        </div>
-        `; //Closes the Planets Grid followed by Planets homepage card
-        
+                    <div class="progress-bar-container" style="position: relative;">
+                        <div class="progress-bar-text" style="position: absolute; width: 100%; text-align: center; z-index: 10; color: white; text-shadow: 1px 1px 2px black; line-height: 1.5em;">
+                            ${attackingPercentStr}%
+                        </div>
+                    
+                        <div class="progress-bar attacker-bar" style="width: ${attackerProgress}%; background-color: ${factionColor} !important;"></div>
+                    </div>
+                `;
+            } else {
+                let liberationProgress = (planet.currentHealth / planet.maxHealth) * 100;
+                if (ownerId !== 1) {
+                    liberationProgress = 100 - liberationProgress;
+                }
+
+                liberationProgress = Math.max(0, Math.min(100, liberationProgress))
+
+                healthBarHtml += `
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-text" style="position: absolute; width: 100%; text-align: center; z-index: 10; color: white; text-shadow: 1px 1px 2px black; line-height: 1.5em;">
+                            ${liberationProgress.toFixed(3)}%
+                        </div>
+                        <div class="progress-bar liberation-bar" style="width: ${liberationProgress}%; background-color: ${factionClass} !important;"></div>
+                    </div>
+                `;
+            }
+
+            const playerPercent = ((planet.players / statsData.totalPlayers) * 100).toFixed(2);
+
+            html += `
+                <div class="stat-card ${defenseClass}" data-biome="${planet.biomeName}">
+                    <h3 style="color: ${factionClass};">${planet.name}</h3>
+                    <p>
+                        <span class="player-count-highlight">${planet.players.toLocaleString()}</span> Helldivers (${playerPercent}%)<br>
+                    </p>
+
+                    ${healthBarHtml}
+                </div>`;
+        });
+
+        html += `</div>`; // closes stats-layout grid
+        html += `</div>`; // closes planet homepage card
+
         
         //KILL STATS SUMMARY
         html += `
@@ -190,7 +283,13 @@ async function renderHomePage(contentArea) {
                             <span class="terminid-color">${bugKills.toLocaleString()} (${bugPercent.toLocaleString()}%)</span><br>
                             <span class="automaton-color">${botKills.toLocaleString()} (${botPercent.toLocaleString()}%)</span><br>
                             <span class="illuminate-color">${squidKills.toLocaleString()} (${squidPercent.toLocaleString()}%)</span><br>
-                            <span class="helldiver-color">______________</span><br><span style="color: whitesmoke;">${totalKills.toLocaleString()} total</span>
+                            <span class="helldiver-color">______________</span><br>
+                            <span style="color: whitesmoke;">${totalKills.toLocaleString()} total</span>
+                        </p>
+                    </div>
+                    <div class="stat-card">
+                        <p>
+                            Helldivers Online: <span class="helldiver-color">${statsData.totalPlayers.toLocaleString()}</span>
                         </p>
                     </div>
                 </div>
@@ -199,8 +298,16 @@ async function renderHomePage(contentArea) {
                 </div>
             </div>
         `;
-        console.log(`Length of top planets list: ${mostPopulatedPlanets.length}`)
+
         contentArea.innerHTML = html;
+
+        //MO timer
+        if (currentMO && currentMO.orderExpires) {
+            expirationTimeCountdown(currentMO.orderExpires, "homepage-mo-timer")
+        }
+        defenseTimersToStart.forEach(timer => {
+            expirationTimeCountdown(timer.time, timer.id);
+        })
 
     } catch (error) {
         console.error('Failed to load homepage:', error);
@@ -300,7 +407,7 @@ async function renderMajorOrderData(contentArea) {
             //adds expression to original value
             //build an MO card based on # of MOs
             ordersHtml += `
-                <div class="mo-card">
+                <div class="top-card">
                 <h3>${order.order_title}</h3>
                 <p>${order.order_briefing}</p>
                 <p><strong>Expires:</strong> ${order.order_expires}</p>
@@ -312,9 +419,12 @@ async function renderMajorOrderData(contentArea) {
             //need to loop through # of tasks
             for (const task of order.tasks) {
                 const percentage = ((task.progress / task.goal) * 100).toFixed(2); //2 decimal places toFixed(2)
+                
+                const formattedType = formatTaskType(task.typeName || "Unknown Type")
+                
                 ordersHtml += `
                     <div class="task">
-                        <p>${task.target_name}</p>
+                        <p><strong>${formattedType}:</strong> ${task.targetName}</p>
                         <p>${task.progress.toLocaleString()} / ${task.goal.toLocaleString()}</p>
                         <p><strong>Completion: ${percentage}%</strong></p>
                     </div>
@@ -337,7 +447,7 @@ async function renderMajorOrderData(contentArea) {
 //renders planet data page
 async function renderPlanetsPage(contentArea) {
     try{
-        const response = await fetch('http::127.0.0.1:8000/api/planets');
+        const response = await fetch('http://127.0.0.1:8000/api/planets');
         if (!response.ok) throw new Error('Network error');
 
         const allPlanets = await response.json();
@@ -355,11 +465,11 @@ async function renderPlanetsPage(contentArea) {
             const y = Math.floor(index / planetsPerRow) * 120 + 80;
 
             let factionClass = '';
-            if (planet.owner === 'Terminids') {
+            if (planet.owner === 2) {
                 factionClass = 'terminid-color';
-            } else if (planet.owner === 'Automatons') {
+            } else if (planet.owner === 3) {
                 factionClass = 'automaton-color';
-            } else if (planet.owner === 'Illuminate') {
+            } else if (planet.owner === 4) {
                 factionClass = 'illuminate-color';
             } else {
                 factionClass = 'seaf-color';
@@ -388,14 +498,94 @@ async function renderPlanetsPage(contentArea) {
             node.addEventListener('click', () => {
                 //grab planet ID we stored
                 const planetID = node.dataset.planetID;
-                const planetData = planetsArray[planetID];
+                const planetData = planetsArray.find(p => p.index == planetID);
 
-                alert(`${planetData.name}!\nSector: ${planetData.sector}\nBiome: ${planetData.biome}`);
+                if (planetData) {
+                    // Replaced alert with a non-blocking modal
+                    showCustomAlert(`${planetData.name}!\nSector: ${planetData.sector}\nBiome: ${planetData.biome}`);
+                }           
             });
+        });
+
+        html += `<div id="custom-alert-overlay" style="display: none;">
+                    <div id="custom-alert-box">
+                        <pre id="custom-alert-message"></pre>
+                        <button id="custom-alert-ok">OK</button>
+                    </div>
+                 </div>`;
+        contentArea.innerHTML += html;
+
+        document.getElementById('custom-alert-ok').addEventListener('click', () => {
+            document.getElementById('custom-alert-overlay').style.display = 'none';
         });
 
     } catch (error) {
         console.error('Failed to fetch planets:', error);
         contentArea.innerHTML = '<p style="color:red;">Error loading planet data.</p>';
     }
+}
+
+/*  
+    ============================================
+    UTILITY FUNCTIONS
+    ============================================
+*/
+
+function formatTaskType(typeString) {
+    if (!typeString) return "Unknown Type";
+
+    return typeString.replace(/([a-z])([A-Z])/g, '$1 $2');
+}
+
+function expirationTimeCountdown(expirationTime, elementId) {
+    const displayElement = document.getElementById(elementId);
+    if (!displayElement || !expirationTime) return;
+
+    let safeTimeString = String(expirationTime).trim().replace(" ", "T");
+    if (!safeTimeString.endsWith("Z") && !safeTimeString.includes("+")) {
+        safeTimeString += "Z";
+    }
+
+    const targetDate = new Date(safeTimeString).getTime();
+
+    if (isNaN(targetDate)) {
+        console.error("Invalid Date String received:", expirationTime, "Parsed as:", safeTimeString);
+        displayElement.innerText = "Invalid Date";
+        return;
+    }
+
+    if (window.activeTimers[elementId]) {
+        clearInterval(window.activeTimers[elementId]);
+    }
+
+    const updateTimer = () => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        //Expired
+        if (distance < 0) {
+            if (window.activeTimers[elementId]) {
+                clearInterval(window.moTimer);
+                delete window.activeTimers[elementId];
+            }
+            displayElement.innerHTML = "<span style='color: red;'>EXPIRED</span>";
+            return;
+        }
+
+        // how to pad numbers with 0's
+        const pad = (num) => String(num).padStart(2, "0");
+
+        //Handles time calculations (days, hours, etc.)
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        //updates screen with new time
+        displayElement.innerText = `${days}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+    };
+
+    updateTimer();
+
+    window.activeTimers[elementId] = setInterval(updateTimer, 1000);
 }

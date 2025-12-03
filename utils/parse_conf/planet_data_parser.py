@@ -30,9 +30,9 @@ class PlanetParser():
 
     def _fetch_and_combine(self):
         # Creates one dictionary from API endpoints
-        planets_list = fetch_data_from_url(PLANET_URL) #
-        planet_events_list = fetch_data_from_url(PLANET_EVENTS_URL)
-        campaigns_list = fetch_data_from_url(CAMPAIGNS_URL)
+        planets_list = fetch_data_from_url(PLANET_URL) # All planets
+        planet_events_list = fetch_data_from_url(PLANET_EVENTS_URL) # Defense campaigns
+        campaigns_list = fetch_data_from_url(CAMPAIGNS_URL) # Liberation Campaigns
 
         try:
             #############
@@ -84,6 +84,7 @@ class PlanetParser():
             #######################
             # Planet Data Parsing #
             #######################
+            
             for index, planet in planets_dict.items():
                 try:
                 
