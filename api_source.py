@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from utils.parse_conf.planet_data_parser import PlanetParser
-from utils.parse_conf.major_order_parser import parse_major_order_data
+from utils.parse_conf.major_order_parser import MajorOrderParser
 from utils.parse_conf.galaxy_stats_parser import parse_galaxy_stats
 from utils.parse_conf.data_fetcher import fetch_data_from_url
 from conf import settings
@@ -44,6 +44,7 @@ static_json_factions = load_static_json_data("factions.json")
 static_json_task_type = load_static_json_data("assignments/tasks/task/type.json") # Major Order mission types
 static_json_task_valueTypes = load_static_json_data("assignments/tasks/task/valueTypes.json") # Same as above
 static_json_reward_types = load_static_json_data("assignments/reward/type.json")
+static_json_items = load_static_json_data("items/item_names.json")
 #WARBOND DATA (for later use)
 print("Static data loaded.")
 
@@ -78,6 +79,16 @@ planet_handler = PlanetParser(
     static_json_campaign_types=static_json_campaign_types
 )
 
+mo_handler = MajorOrderParser(
+    planet_parser=planet_handler,
+    user_timezone="UTC",
+    task_types_map=static_json_task_type,
+    reward_types_map=static_json_reward_types,
+    value_types_map=static_json_task_valueTypes,
+    item_names_map=static_json_items,
+    factions_map=static_json_factions
+)
+
 """
     We define endpoints below for users to access. Subject to change.
 """
@@ -108,13 +119,7 @@ def get_major_orders():
     major_order_url = settings.urls.get("major_order")
     raw_data = fetch_data_from_url(major_order_url)
     if raw_data:
-        parsed_orders = parse_major_order_data(
-            raw_data, 
-            planet_handler,
-            "UTC",
-            static_json_task_type,
-            static_json_reward_types
-        )
+        parsed_orders = mo_handler.parse_major_order_data(raw_data)
         return parsed_orders
     return {"error": "Failed to fetch major order data"}
 
