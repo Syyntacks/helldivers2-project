@@ -124,60 +124,21 @@ def expiration_with_time_left(iso_string, timezone_str="UTC"):
 
 def get_expiration_from_seconds(seconds_value, timezone_str="UTC"):
     if not isinstance(seconds_value, int):
-        return "N/A"
-    
+        return None 
     try:
-        # Get the current time and calculate the future expiration date
-        now_utc = datetime.datetime.now(pytz.utc)
-        expiration_dt_utc = now_utc + datetime.timedelta(seconds=seconds_value)
-        time_left = expiration_dt_utc - now_utc
-
-        # --- This logic is copied from your original expiration_with_time_left function ---
-        try:
-            local_timezone = pytz.timezone(timezone_str)
-            expiration_dt_local = expiration_dt_utc.astimezone(local_timezone)
-        except pytz.UnknownTimeZoneError:
-            print(f"Warning: Unknown timezone '{timezone_str}'. Displaying in UTC.")
-            expiration_dt_local = expiration_dt_utc
-
-        formatted_expiration_date = expiration_dt_local.strftime("%Y-%m-%d %H:%M:%S %Z")
-
-
-        total_seconds = int(time_left.total_seconds())
-        if time_left.total_seconds() <= 0:
-            return f"{formatted_expiration_date} (Expired)"
+        # Get the current time in UTC
+        now_utc = datetime.datetime.now(datetime.timezone.utc)
         
-        # Calculate weeks, days, hours, etc. for the 'Time Remaining' string
-        seconds = total_seconds % 60
-        total_minutes = total_seconds // 60
-        minutes = total_minutes % 60
-        total_hours = total_minutes // 60
-        hours = total_hours % 24
-        total_days = total_hours // 24
-        days = total_days % 7
-        weeks = total_days // 7
+        # Calculate the absolute expiration date
+        expiration_dt_utc = now_utc + datetime.timedelta(seconds=seconds_value)
 
-        # Put together the final string
-        time_parts = []
-        if weeks > 0:
-            time_parts.append(f"{weeks} week{'s' if weeks != 1 else ''}")
-        if days > 0:
-            time_parts.append(f"{days} day{'s' if days != 1 else ''}")
-        if hours > 0:
-            time_parts.append(f"{hours} hour{'s' if hours != 1 else ''}")
-        if minutes > 0:
-            time_parts.append(f"{minutes} minute{'s' if minutes != 1 else ''}")
-        if seconds > 0:
-            time_parts.append(f"{seconds} second{'s' if seconds != 1 else ''}")
-
-        time_left_str = ", ".join(time_parts)
-        if not time_left_str:
-            time_left_str = "Less than a second."
-
-        return f"{formatted_expiration_date} (Time Remaining: {time_left_str})"
+        # Return strictly as ISO format (e.g. "2024-05-12T10:00:00+00:00")
+        # This is the safest format for new Date() in JavaScript
+        return expiration_dt_utc.isoformat()
     
     except (ValueError, TypeError) as e:
-        return f"Invalid timestamp format: {e}"
+        print(f"Invalid timestamp format: {e}")
+        return None
     
 
 # Used in galaxy_stats_parser for total time played

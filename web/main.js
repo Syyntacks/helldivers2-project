@@ -126,12 +126,28 @@ async function renderHomePage(contentArea) {
             if (currentMO.tasks && currentMO.tasks.length > 0) {
                 currentMO.tasks.forEach(task => {
                     let progressPercent = 0;
+                    const formattedType = formatTaskType(task.typeName || "Unknown Type")
+
                     if (task.goal > 0) {
                         progressPercent = ((task.progress / task.goal) * 100).toFixed(2);
                     }
 
-                    const formattedType = formatTaskType(task.typeName || "Unknown Type")
+                    if (formattedType === "Liberate" && task.targetPlanetId) {
+                        const targetPlanet = planetData[task.targetPlanetId];
 
+                        if (targetPlanet) {
+                            let libCalc = (targetPlanet.currentHealth / targetPlanet.maxHealth) * 100;
+                            if (targetPlanet.owner !== 1) {
+                                libCalc = 100 - libCalc;
+                            }
+
+                            libCalc = Math.max(0, Math.min(100, libCalc));
+
+                            progressPercent = libCalc.toFixed(3);
+                        }
+                    }
+
+                    /* HANDLES ALL MO DATA VISUALS ON HOMEPAGE */
                     html += `
                         <div style="margin-bottom: 15px;">
                             <p style="margin: 5px 0;"><strong>${formattedType}:</strong> ${task.targetName}</p>
@@ -140,14 +156,13 @@ async function renderHomePage(contentArea) {
                                     <style="text-align: center;">${progressPercent}%</style>
                                 </div>
                             </div>
-                            <p style="margin: 5px 0; font-size: 0.9em; color: #ccc;">Progress: ${task.progress.toLocaleString()} / ${task.goal.toLocaleString()}</p>
                         </div>
                     `;
                 });
             } else {
                 html += `<p>No specific tasks data available.</p>`;
             }
-            //debug: 
+            console.log(currentMO.orderExpires)
             html += `
                     </div>
                     <p><strong>Expires:</strong> <span id="homepage-mo-timer">${currentMO.orderExpires}</span></p>
@@ -565,7 +580,7 @@ function expirationTimeCountdown(expirationTime, elementId) {
         //Expired
         if (distance < 0) {
             if (window.activeTimers[elementId]) {
-                clearInterval(window.moTimer);
+                clearInterval(window.activeTimers[elementId]);
                 delete window.activeTimers[elementId];
             }
             displayElement.innerHTML = "<span style='color: red;'>EXPIRED</span>";
