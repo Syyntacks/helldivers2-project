@@ -333,7 +333,7 @@ async function renderGalaxyStats(contentArea) {
         console.log('Sucessfully fetched galaxyStats:', data);
         
         //KILLS DATA
-        const bugKills = data.bugKills || 0; // || defaults to 0 if no stats can be found.
+        const bugKills = data.terminidKills || 0; // || defaults to 0 if no stats can be found.
         const botKills = data.automatonKills || 0;
         const squidKills = data.illuminateKills || 0;
         const overallKills = bugKills + botKills + squidKills;

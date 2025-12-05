@@ -158,7 +158,9 @@ class MajorOrderParser():
         if faction_id is not None:
             faction_name = self.factions_map.get(faction_id)
 
-        ## Extract Samples ------------------------------------
+        ## ------------------------------------
+        ## Extract Samples --------------------
+        ## ------------------------------------
         if task_type_name == "ExtractSamples":
             found_item = False
             for val in raw_values:
@@ -172,7 +174,9 @@ class MajorOrderParser():
                 result["name"] = "Any Samples"
             result
 
-        ## Kill Enemies ---------------------------------------
+        ## ---------------------------------
+        ## Kill Enemies --------------------
+        ## ---------------------------------
         if task_type_name == "KillEnemies":
             ### If specific enemy type
             if target_id:
@@ -193,7 +197,9 @@ class MajorOrderParser():
                     result["name"] = item_name
                     return result
                 
-        ## Operations-Oriented --------------------------------
+        ## ------------------------------------
+        ## Operations-Related -----------------
+        ## ------------------------------------
         if task_type_name in ["CompleteObjs", "CompleteOperations", "Extract"]:
             if planet_name and "Unknown" not in planet_name:
                 result["name"] = planet_name
@@ -201,8 +207,10 @@ class MajorOrderParser():
                 return result
 
 
-        ## Territory ------------------------------------------
-        if task_type_name in ['Liberate', 'Defense', 'Hold', 'Contest']:
+        ## ------------------------------------
+        ## Territory-Related ------------------
+        ## ------------------------------------
+        if task_type_name in ['Liberate', 'Defense', 'Hold']:
             if loc_type_id == 1 and planet_name and "Unknown" not in planet_name:
                 result["name"] = planet_name
                 result["planet_id"] = planet_id
@@ -217,6 +225,10 @@ class MajorOrderParser():
                 result["name"] = planet_name
                 result["planet_id"] = planet_id
                 return result
+        
+        ## ------------------------------------
+        ## Tug-Of-War (Contest) ---------------
+        ## ------------------------------------
         
         ## FALLBACK
         if planet_name and "Unknown" not in planet_name:
