@@ -7,26 +7,6 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
-- /
-
-## [0.3.0] - 2025-11-04
-
-### Added
-
-- f
-
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
-
-- fixes
-
 ## [0.2.0] - 2025-11-04
 
 ### Added
@@ -35,17 +15,42 @@ and this project adheres to [Semantic Versioning].
 
 ### Changed
 
+- A
+
+### Deprecated
+
+- A
+
+### Removed
+
+- A
+
+### Fixed
+
+- A
+
+### Security
+
+## [0.6.0] - 2025-08-04
+
+### Added
+
+- Initial GitHub release
+- Updated after rebase debacle...
+
+### Changed
+
+- Reverted to older version of project to debug rebase issue
+
 ### Deprecated
 
 ### Removed
 
 ### Fixed
 
+- Fixed issue causing 'Error: No URL Provided' to appear in the console
+
 ### Security
-
-## [0.1.0] - 2025-08-04
-
-- Initial GitHub release
 
 <!-- Links -->
 [keep a changelog]: https://keepachangelog.com/en/1.0.0/
