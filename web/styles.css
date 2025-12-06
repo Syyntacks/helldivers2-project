@@ -217,8 +217,6 @@ footer {
     font-size: 1.3em;
 }
 
-
-
 @keyframes pulse-danger {
     0% {
         box-shadow: 0 0 5px #fe6a67, 0 0 10px #fe6a67;
@@ -287,7 +285,6 @@ footer {
     text-align: center;
 }
 
-
 .progress-bar-container {
     display: flex;
     width: 100%;
@@ -325,6 +322,21 @@ footer {
     text-align: left;
     margin: 20px auto;
     max-width: 80%;
+}
+
+/* Tug-of-war MO progress bar */
+.bidirectional-progress-container {
+    position: relative;
+    width: 100%;
+    height: 1.5em;
+
+    /* This creates the red/green 50/50 split */
+    background: linear-gradient(90deg, #fe6a67 50%, #25c225 50%);
+    border: 1px solid #000;
+    border-radius: 4px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5); /* Adds depth */
 }
 
 #custom-alert-overlay {
@@ -382,7 +394,7 @@ footer {
     ======================== 
 */
 .planetHealth.terminid-color {
-    background-color: #FF9f00 !important; /* Need important to override default yellow */
+    background-color: #FF9f00 !important;
 }
 .planetHealth.automaton-color {
     background-color: #fe6a67 !important;
