@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
-## [0.2.0] - 2025-11-04
+## [0.6.1] - 2025-12-xx
 
 ### Added
 
@@ -27,11 +27,11 @@ and this project adheres to [Semantic Versioning].
 
 ### Fixed
 
-- A
+- Redownloaded library dependencies to ensure minimal errors during runtime.
 
 ### Security
 
-## [0.6.0] - 2025-08-04
+## [0.6.0] - 2025-12-05
 
 ### Added
 
