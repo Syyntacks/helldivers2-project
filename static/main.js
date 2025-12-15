@@ -65,13 +65,13 @@ function loadPageContent(route) {
     ============================================
 */
 
-//renders homepage; we need to fetch multiple sources of data to create structure
+//renders homepage
 async function renderHomePage(contentArea) {
     try {
         const [planetsResponse, moResponse, statsResponse] = await Promise.all([
-            fetch('http://127.0.0.1:8000/api/planets'),
-            fetch('http://127.0.0.1:8000/api/major_orders'),
-            fetch('http://127.0.0.1:8000/api/galaxy_stats')
+            fetch('/api/planets'),
+            fetch('/api/major_orders'),
+            fetch('/api/galaxy_stats')
         ]);
 
         if (!planetsResponse.ok) throw new Error('Failed to fetch planets');
