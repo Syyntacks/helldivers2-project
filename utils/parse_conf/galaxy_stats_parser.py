@@ -1,5 +1,4 @@
 import json
-import time
 from utils.parse_conf import datetime_converter
 
 # Stats parser

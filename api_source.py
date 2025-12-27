@@ -3,6 +3,8 @@ load_dotenv()
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from utils.parse_conf.planet_data_parser import PlanetParser
 from utils.parse_conf.major_order_parser import MajorOrderParser
@@ -59,7 +61,7 @@ origins = [
     "http://localhost:5500",
     "http://127.0.0.1:8000",
     "http://localhost:8000",
-    "*" # Allows everything for testing
+    "*"
 ]
 
 app.add_middleware(
@@ -94,10 +96,10 @@ mo_handler = MajorOrderParser(
 """
 
 @app.get("/")
-def get_root():
-    print("If you are reading this message, the Helldivers 2 API is running." \
-    "\nGo to /api/planets, /api/major_orders, or /api/galaxy_stats to access data.") 
+async def read_index():
+    return FileResponse('static/index.html')
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # All planet data combined
 @app.get("/api/planets") 

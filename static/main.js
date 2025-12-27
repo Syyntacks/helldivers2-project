@@ -29,13 +29,48 @@ function siteNavigation() {
     });
 }
 
+function toggleNav() {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("menuOverlay");
+
+    if (sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+        overlay.style.display = "none";
+    } else {
+        sidebar.classList.add('active');
+        overlay.style.display = "block";
+    }
+}
+
+function updatePageTitle(route) {
+    const display = document.getElementById('current-page-title');
+    const currentRoute = route || window.location.hash || '#home';
+
+    const titles = {
+        '': 'Home',
+        '#home': 'Home',
+        '#planets': 'All Planets',
+        '#major_orders': 'Major Orders',
+        '#galaxy_stats': 'Galaxy Stats',
+        '#galactic_map': 'Galactic Map',
+    };
+
+    if (titles[currentRoute] !== undefined) {
+        display.textContent = titles[currentRoute];
+    } else {
+        display.textContent = currentRoute.replace('#', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    }
+}
+
+
+
 //routes user's link interactions
 function loadPageContent(route) {
     console.log(`Loading content for: ${route}`);
 
-    //find the main content area
+    updatePageTitle(route);
     const contentArea = document.querySelector('.content-area');
-    if (!contentArea) return; //safety check
+    if (!contentArea) return;
 
     contentArea.innerHTML = '<h2>Loading...</h2>';
 
@@ -53,7 +88,11 @@ function loadPageContent(route) {
             renderGalaxyStats(contentArea);
             break;
         default:
-            contentArea.innerHTML = '<h2>404 - Page Not Found</h2>';
+            if (route === '' || route === undefined) {
+                renderHomePage(contentArea);
+            } else {
+                contentArea.innerHTML = '<h2>404 - Page Not Found</h2>';
+            }
     }
 }
 
@@ -65,13 +104,13 @@ function loadPageContent(route) {
     ============================================
 */
 
-//renders homepage; we need to fetch multiple sources of data to create structure
+//renders homepage
 async function renderHomePage(contentArea) {
     try {
         const [planetsResponse, moResponse, statsResponse] = await Promise.all([
-            fetch('http://127.0.0.1:8000/api/planets'),
-            fetch('http://127.0.0.1:8000/api/major_orders'),
-            fetch('http://127.0.0.1:8000/api/galaxy_stats')
+            fetch('/api/planets'),
+            fetch('/api/major_orders'),
+            fetch('/api/galaxy_stats')
         ]);
 
         if (!planetsResponse.ok) throw new Error('Failed to fetch planets');
@@ -108,7 +147,7 @@ async function renderHomePage(contentArea) {
 
 
         //================BUILD HTML================//
-        let html = '<h2>Homepage Overview</h2>';
+        let html = '<h2>Home</h2>';
 
         //TOP ROW CONTAINER
         html += `<div class="top-row-container">`;
@@ -126,12 +165,28 @@ async function renderHomePage(contentArea) {
             if (currentMO.tasks && currentMO.tasks.length > 0) {
                 currentMO.tasks.forEach(task => {
                     let progressPercent = 0;
+                    const formattedType = formatTaskType(task.typeName || "Unknown Type")
+
                     if (task.goal > 0) {
                         progressPercent = ((task.progress / task.goal) * 100).toFixed(2);
                     }
 
-                    const formattedType = formatTaskType(task.typeName || "Unknown Type")
+                    if (formattedType === "Liberate" && task.targetPlanetId) {
+                        const targetPlanet = planetData[task.targetPlanetId];
 
+                        if (targetPlanet) {
+                            let libCalc = (targetPlanet.currentHealth / targetPlanet.maxHealth) * 100;
+                            if (targetPlanet.owner !== 1) {
+                                libCalc = 100 - libCalc;
+                            }
+
+                            libCalc = Math.max(0, Math.min(100, libCalc));
+
+                            progressPercent = libCalc.toFixed(3);
+                        }
+                    }
+
+                    /* HANDLES ALL MO DATA VISUALS ON HOMEPAGE */
                     html += `
                         <div style="margin-bottom: 15px;">
                             <p style="margin: 5px 0;"><strong>${formattedType}:</strong> ${task.targetName}</p>
@@ -140,14 +195,13 @@ async function renderHomePage(contentArea) {
                                     <style="text-align: center;">${progressPercent}%</style>
                                 </div>
                             </div>
-                            <p style="margin: 5px 0; font-size: 0.9em; color: #ccc;">Progress: ${task.progress.toLocaleString()} / ${task.goal.toLocaleString()}</p>
                         </div>
                     `;
                 });
             } else {
                 html += `<p>No specific tasks data available.</p>`;
             }
-            //debug: 
+            console.log(currentMO.orderExpires)
             html += `
                     </div>
                     <p><strong>Expires:</strong> <span id="homepage-mo-timer">${currentMO.orderExpires}</span></p>
@@ -182,7 +236,7 @@ async function renderHomePage(contentArea) {
             } else if (ownerId === 'Illuminate') {
                 factionClass = '#db58fb';
             } else {
-                factionClass = '#41639c';
+                factionClass = '#6bb7ea';
             }
 
             //checks for planet campaigns
@@ -333,7 +387,7 @@ async function renderGalaxyStats(contentArea) {
         console.log('Sucessfully fetched galaxyStats:', data);
         
         //KILLS DATA
-        const bugKills = data.bugKills || 0; // || defaults to 0 if no stats can be found.
+        const bugKills = data.terminidKills || 0; // || defaults to 0 if no stats can be found.
         const botKills = data.automatonKills || 0;
         const squidKills = data.illuminateKills || 0;
         const overallKills = bugKills + botKills + squidKills;
@@ -565,7 +619,7 @@ function expirationTimeCountdown(expirationTime, elementId) {
         //Expired
         if (distance < 0) {
             if (window.activeTimers[elementId]) {
-                clearInterval(window.moTimer);
+                clearInterval(window.activeTimers[elementId]);
                 delete window.activeTimers[elementId];
             }
             displayElement.innerHTML = "<span style='color: red;'>EXPIRED</span>";

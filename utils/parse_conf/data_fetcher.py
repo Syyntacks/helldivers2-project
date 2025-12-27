@@ -13,9 +13,9 @@ def fetch_data_from_url(full_url):
 
     try:
         headers = {
-            "User-Agent": f"{os.environ.get("USER_AGENT")}",
-            "X-Super-Client": f"{os.environ.get("SUPER_CLIENT")}",
-            "X-Super-Contact": f"{os.environ.get("SUPER_CONTACT")}",
+            "User-Agent": f"{os.environ.get('USER_AGENT')}",
+            "X-Super-Client": f"{os.environ.get('SUPER_CLIENT')}",
+            "X-Super-Contact": f"{os.environ.get('SUPER_CONTACT')}",
             "Accept": "application/json"
         }
         response = requests.get(full_url, headers=headers)

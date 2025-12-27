@@ -5,7 +5,7 @@ TABLE OF CONTENTS
 1. GLOBAL STYLES
    - body, header, h1, p, footer
 2. LAYOUT STYLES
-   - .main-display, .sidebar-nav, .content-area
+   - .main-display, .sidebar-nav, .content-area, .overlay, .top-bar
 3. HOMEPAGE STYLES
    - .homepage-card, .top-card
 4. COMPONENT STYLES
@@ -26,21 +26,22 @@ TABLE OF CONTENTS
     ======================== 
 */
 body {
-    background-image: url("../resources/images/bg-stars.jpg");
+    background-image: url("/static/images/bg-stars.jpg");
     background-color: rgb(34, 34, 34);
     background-repeat: no-repeat;
     background-attachment: fixed; 
     background-size: cover;
     font-family: monospace;
     margin: 0;
-    padding: 0;
+    padding-top: 60px;
 }
 header {
     color: #ffe710;
     text-align: center;
     padding: 20px;
     background-color: rgba(0,0,0,0.7);
-
+    font-family: monospace;
+    text-transform: uppercase;
 }
 h1 {
     color: #ffe710;
@@ -57,7 +58,7 @@ footer {
     padding: 20px;
     margin-top: 20px;
     color: #aaa;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.5);
 }
 
 
@@ -68,11 +69,12 @@ footer {
 */
 .main-display {
     display: flex;
-    margin: 20px auto;
+    padding: 20px;
+    margin: 0 auto;
     max-width: 1800px;
     background-color: rgba(34,34,34,0.7);
     justify-content: space-around;
-    border: #ffe710 1px solid;
+    border: none;
     overflow: hidden;
 }
 .content-area {
@@ -87,11 +89,25 @@ footer {
     text-align: center;
 }
 .sidebar-nav {
-    flex-basis: 132px;
-    flex-shrink: 0;
+    height: 100%;
+    width: 240px;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
     padding: 20px;
+    padding-top: 60px;
+    font-family: monospace;
     border-right: #ffe710 2px solid;
+    background-color: rgba(33,34,34,0.4);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    transition: 0.3s;
+    transform: translateX(-100%);
     text-align: center;
+    overflow-x: hidden;
+}
+.sidebar-nav.active{
+    transform: translateX(0);
 }
 .sidebar-nav h2 {
     color: #ffe710;
@@ -106,11 +122,12 @@ footer {
     margin-bottom: 10px;
 }
 .sidebar-nav a {
-    color: whitesmoke;
+    color: #ffe710;
+    text-transform: uppercase;
     text-decoration: none; /* No line for hyperlinks */
-    font-size: 1.1em;
+    font-size: 1.5em;
     display: block; /* Makes box clickable */
-    padding: 10px;
+    padding: 10px 10px 10px 24px;
     border-radius: 4px;
     transition: background-color 0.4s ease, color 0.4s ease; /* Hover transition */
 }
@@ -118,13 +135,98 @@ footer {
     background-color: #ffe710;
     color: #000;
 }
+.sidebar-nav a:focus {
+    transition: 0.2s;
+    background-color: #fef070;
+    color: #000;
+}
 
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(33,34,34,0.4);
+    z-index: 5;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+}
+
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #ffe710;
+    color: black;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    z-index: 11;
+  }
 
 /*  
     ========================
     3. HOMEPAGE STYLES
     ======================== 
 */
+.menu-btn {
+    font-size: 28px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: black;
+    font-weight: bold;
+    margin-right: 15px;
+}
+.open-btn {
+    font-size: 32px;
+    cursor: pointer;
+    border: none;
+    background-color: rgba(33,34,34,0.7);
+}
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 36px;
+    margin-left: 50px;
+    background: none;
+    border: none;
+    color: #ffe710;
+    cursor: pointer;
+}
+.app-title {
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+#current-page-title {
+    color: #333;
+    font-size: x-large;
+    font-weight: 700;
+}
+@media (max-width: 480px) {
+    .app-text {
+        display: none;
+    }
+    .separator {
+        display: none;
+    }
+    .top-row-container{
+        flex-direction: column;
+    }
+}
+
 .top-row-container {
     display: grid;
     grid-template-columns: repeat(2, minmax(320px, 1fr)); /* Creates responsive columns*/
@@ -134,12 +236,6 @@ footer {
 .top-row-container.homepage-card {
     flex: 1;
     margin-bottom: 0; /* Handled within parent container*/
-}
-/* Adjust for phone screens (stack in columns) */
-@media (max-width: 1000px) {
-    .top-row-container{
-        flex-direction: column;
-    }
 }
 
 .homepage-card {
@@ -217,8 +313,6 @@ footer {
     font-size: 1.3em;
 }
 
-
-
 @keyframes pulse-danger {
     0% {
         box-shadow: 0 0 5px #fe6a67, 0 0 10px #fe6a67;
@@ -287,7 +381,6 @@ footer {
     text-align: center;
 }
 
-
 .progress-bar-container {
     display: flex;
     width: 100%;
@@ -325,6 +418,21 @@ footer {
     text-align: left;
     margin: 20px auto;
     max-width: 80%;
+}
+
+/* Tug-of-war MO progress bar */
+.bidirectional-progress-container {
+    position: relative;
+    width: 100%;
+    height: 1.5em;
+
+    /* This creates the red/green 50/50 split */
+    background: linear-gradient(90deg, #fe6a67 50%, #25c225 50%);
+    border: 1px solid #000;
+    border-radius: 4px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5); /* Adds depth */
 }
 
 #custom-alert-overlay {
@@ -382,7 +490,7 @@ footer {
     ======================== 
 */
 .planetHealth.terminid-color {
-    background-color: #FF9f00 !important; /* Need important to override default yellow */
+    background-color: #FF9f00 !important;
 }
 .planetHealth.automaton-color {
     background-color: #fe6a67 !important;
@@ -415,6 +523,9 @@ footer {
 .seaf-color {
     color: #6bb7ea !important;
 }
+.success-color {
+    color: #25c225 !important;
+}
 
 
 /*  
@@ -423,65 +534,71 @@ footer {
     ======================== 
 */
 .stat-card[data-biome="Acidic Badlands"] {
-    background-image: url('../resources/images/landscapes/Acidic_Badlands.png');
+    background-image: url('/static/images/landscapes/Acidic_Badlands.png');
 }
 .stat-card[data-biome="Basic Swamp"] {
-    background-image: url('../resources/images/landscapes/Basic_Swamp.png');
+    background-image: url('/static/images/landscapes/Basic_Swamp.png');
 }
 .stat-card[data-biome="Black Hole"] {
-    background-image: url('../resources/images/landscapes/Black_Hole.png');
+    background-image: url('/static/images/landscapes/Black_Hole.png');
 }
 .stat-card[data-biome="Boneyard"] {
-    background-image: url('../resources/images/landscapes/Boneyard.png');
+    background-image: url('/static/images/landscapes/Boneyard.png');
 }
 .stat-card[data-biome="Deadlands"] {
-    background-image: url('../resources/images/landscapes/Deadlands.png');
+    background-image: url('/static/images/landscapes/Deadlands.png');
 }
 .stat-card[data-biome="Desert Cliffs"] {
-    background-image: url('../resources/images/landscapes/Desert_Cliffs.png');
+    background-image: url('/static/images/landscapes/Desert_Cliffs.png');
 }
 .stat-card[data-biome="Desert Dunes"] {
-    background-image: url('../resources/images/landscapes/Desert_Dunes.png');
+    background-image: url('/static/images/landscapes/Desert_Dunes.png');
 }
 .stat-card[data-biome="Ethereal Jungle"] {
-    background-image: url('../resources/images/landscapes/Ethereal_Jungle.png');
+    background-image: url('/static/images/landscapes/Ethereal_Jungle.png');
 }
 .stat-card[data-biome="Haunted Swamp"] {
-    background-image: url('../resources/images/landscapes/Haunted_Swamp.png');
+    background-image: url('/static/images/landscapes/Haunted_Swamp.png');
+}
+.stat-card[data-biome="Hive World"] {
+    background-image: url('/static/images/landscapes/Hive_World.png');
 }
 .stat-card[data-biome="Icy Glaciers"] {
-    background-image: url('../resources/images/landscapes/Icy_Glaciers.png');
+    background-image: url('/static/images/landscapes/Icy_Glaciers.png');
 }
 .stat-card[data-biome="Ionic Crimson"] {
-    background-image: url('../resources/images/landscapes/Ionic_Crimson.png');
+    background-image: url('/static/images/landscapes/Ionic_Crimson.png');
 }
 .stat-card[data-biome="Ionic Jungle"] {
-    background-image: url('../resources/images/landscapes/Ionic_Jungle.png');
+    background-image: url('/static/images/landscapes/Ionic_Jungle.png');
+}
+.stat-card[data-biome="Magma"] {
+    background-image: url('/static/images/landscapes/Magma.jpg');
 }
 .stat-card[data-biome="Moon"] {
-    background-image: url('../resources/images/landscapes/Moon.png');
+    background-image: url('/static/images/landscapes/Moon.png');
 }
 .stat-card[data-biome="Plains"] {
-    background-image: url('../resources/images/landscapes/Plains.png');
+    background-image: url('/static/images/landscapes/Plains.png');
 }
 .stat-card[data-biome="Rocky Canyons"] {
-    background-image: url('../resources/images/landscapes/Rocky_Canyons.png');
+    background-image: url('/static/images/landscapes/Rocky_Canyons.png');
 }
 .stat-card[data-biome="Scorched Moor"] {
-    background-image: url('../resources/images/landscapes/Scorched_Moor.png');
+    background-image: url('/static/images/landscapes/Scorched_Moor.png');
 }
 .stat-card[data-biome="Super Earth"] {
-    background-image: url('../resources/images/landscapes/Super_Earth.png');
+    background-image: url('/static/images/landscapes/Super_Earth.png');
 }
 .stat-card[data-biome="Supercolony"] {
-    background-image: url('../resources/images/landscapes/Supercolony.png');
+    background-image: url('/static/images/landscapes/Supercolony.png');
 }
 .stat-card[data-biome="Tien Kwan"] {
-    background-image: url('../resources/images/landscapes/Tien_Kwan.png');
+    background-image: url('/static/images/landscapes/Tien_Kwan.png');
 }
 .stat-card[data-biome="Tundra"] {
-    background-image: url('../resources/images/landscapes/Tundra.png');
+    background-image: url('/static/images/landscapes/Tundra.png');
 }
 .stat-card[data-biome="Volcanic Jungle"] {
-    background-image: url('../resources/images/landscapes/Volcanic_Jungle.png');
+    background-image: url('/static/images/landscapes/Volcanic_Jungle.png');
 }
