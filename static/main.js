@@ -29,13 +29,48 @@ function siteNavigation() {
     });
 }
 
+function toggleNav() {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("menuOverlay");
+
+    if (sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+        overlay.style.display = "none";
+    } else {
+        sidebar.classList.add('active');
+        overlay.style.display = "block";
+    }
+}
+
+function updatePageTitle(route) {
+    const display = document.getElementById('current-page-title');
+    const currentRoute = route || window.location.hash || '#home';
+
+    const titles = {
+        '': 'Home',
+        '#home': 'Home',
+        '#planets': 'All Planets',
+        '#major_orders': 'Major Orders',
+        '#galaxy_stats': 'Galaxy Stats',
+        '#galactic_map': 'Galactic Map',
+    };
+
+    if (titles[currentRoute] !== undefined) {
+        display.textContent = titles[currentRoute];
+    } else {
+        display.textContent = currentRoute.replace('#', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    }
+}
+
+
+
 //routes user's link interactions
 function loadPageContent(route) {
     console.log(`Loading content for: ${route}`);
 
-    //find the main content area
+    updatePageTitle(route);
     const contentArea = document.querySelector('.content-area');
-    if (!contentArea) return; //safety check
+    if (!contentArea) return;
 
     contentArea.innerHTML = '<h2>Loading...</h2>';
 
@@ -53,7 +88,11 @@ function loadPageContent(route) {
             renderGalaxyStats(contentArea);
             break;
         default:
-            contentArea.innerHTML = '<h2>404 - Page Not Found</h2>';
+            if (route === '' || route === undefined) {
+                renderHomePage(contentArea);
+            } else {
+                contentArea.innerHTML = '<h2>404 - Page Not Found</h2>';
+            }
     }
 }
 
@@ -108,7 +147,7 @@ async function renderHomePage(contentArea) {
 
 
         //================BUILD HTML================//
-        let html = '<h2>Homepage Overview</h2>';
+        let html = '<h2>Home</h2>';
 
         //TOP ROW CONTAINER
         html += `<div class="top-row-container">`;
@@ -197,7 +236,7 @@ async function renderHomePage(contentArea) {
             } else if (ownerId === 'Illuminate') {
                 factionClass = '#db58fb';
             } else {
-                factionClass = '#41639c';
+                factionClass = '#6bb7ea';
             }
 
             //checks for planet campaigns
