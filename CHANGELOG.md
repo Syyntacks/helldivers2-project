@@ -34,10 +34,6 @@ to include more dynamic elements:
 - `styles.css`:
   - Changed parameters for .sidebar-nav style for more dynamic sidebar.
 
-### Deprecated
-
-### Removed
-
 ### Fixed
 
 - `main.js`:
