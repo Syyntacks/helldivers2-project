@@ -13,26 +13,26 @@ and this project adheres to [Semantic Versioning].
 
 - Able to handle Markdown back-end errors correctly with config file.
 - `main.js`:
-        - Created two new functions to handle sidebar toggling and to
-        update the current page's name (keep user informed on current page).
+  - Created two new functions to handle sidebar toggling and to
+  update the current page's name (keep user informed on current page).
 - Added a '*Known Issues*' section to the Changelog for future referencing.
 
 ### Changed
 
 - Reworked sidebar navigation; improved UI & reorganized back-end code
 to include more dynamic elements:
-        - Dynamic slide-in sidebar included.
-        - Page content is slightly blurred to focus users to sidebar.
-        - Created new styles to handle:
-                - Dynamic page heading.
-                - Create icons for user interaction (menu button, close button).
-                - User's link-clicking interaction is shown.
-        - Changed overall design to match desired aesthetic.
-        - Sidebar navigation is not in an unlisted list.
+  - Dynamic slide-in sidebar included.
+  - Page content is slightly blurred to focus users to sidebar.
+  - Created new styles to handle:
+    - Dynamic page heading.
+    - Create icons for user interaction (menu button, close button).
+    - User's link-clicking interaction is shown.
+      - Changed overall design to match desired aesthetic.
+      - Sidebar navigation is not in an unlisted list.
 - `main.js`:
-        - Changed the page title's default route if no pages are defined.
+  - Changed the page title's default route if no pages are defined.
 - `styles.css`:
-        - Changed parameters for .sidebar-nav style for more dynamic sidebar.
+  - Changed parameters for .sidebar-nav style for more dynamic sidebar.
 
 ### Deprecated
 
@@ -41,15 +41,15 @@ to include more dynamic elements:
 ### Fixed
 
 - `main.js`:
-        - Reordered page section's z-index so the top bar is always shown & the
-        sidebar nav with overlay covers the content.
+  - Reordered page section's z-index so the top bar is always shown & the
+  sidebar nav with overlay covers the content.
 
 ### Security
 
 - Back- and front-end are now officially running online for
 public access (user must know link for now).
-        - Running through third-party software to ensure consistent
-        runtime and access.
+  - Running through third-party software to ensure consistent
+  runtime and access.
 
 ### Known Issues
 
