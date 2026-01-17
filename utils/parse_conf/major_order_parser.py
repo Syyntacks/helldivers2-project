@@ -210,7 +210,14 @@ class MajorOrderParser():
         ## ------------------------------------
         ## Territory-Related ------------------
         ## ------------------------------------
-        if task_type_name in ['Liberate', 'Defense', 'Hold']:
+
+        if task_type_name == 'Hold':
+            if loc_type_id == 1 and planet_name and "Unknown" not in planet_name:
+                result["name"] = planet_name
+                result["planet_id"] = planet_id
+
+
+        if task_type_name in ['Liberate', 'Defense']:
             if loc_type_id == 1 and planet_name and "Unknown" not in planet_name:
                 result["name"] = planet_name
                 result["planet_id"] = planet_id

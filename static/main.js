@@ -82,7 +82,7 @@ function loadPageContent(route) {
             renderPlanetsPage(contentArea);
             break;
         case '#major_orders':
-            renderMajorOrderData(contentArea);
+            renderMajorOrderPage(contentArea);
             break;
         case '#galaxy_stats':
             renderGalaxyStats(contentArea);
@@ -164,42 +164,10 @@ async function renderHomePage(contentArea) {
 
             if (currentMO.tasks && currentMO.tasks.length > 0) {
                 currentMO.tasks.forEach(task => {
-                    let progressPercent = 0;
-                    const formattedType = formatTaskType(task.typeName || "Unknown Type")
-
-                    if (task.goal > 0) {
-                        progressPercent = ((task.progress / task.goal) * 100).toFixed(2);
-                    }
-
-                    if (formattedType === "Liberate" && task.targetPlanetId) {
-                        const targetPlanet = planetData[task.targetPlanetId];
-
-                        if (targetPlanet) {
-                            let libCalc = (targetPlanet.currentHealth / targetPlanet.maxHealth) * 100;
-                            if (targetPlanet.owner !== 1) {
-                                libCalc = 100 - libCalc;
-                            }
-
-                            libCalc = Math.max(0, Math.min(100, libCalc));
-
-                            progressPercent = libCalc.toFixed(3);
-                        }
-                    }
-
-                    /* HANDLES ALL MO DATA VISUALS ON HOMEPAGE */
-                    html += `
-                        <div style="margin-bottom: 15px;">
-                            <p style="margin: 5px 0;"><strong>${formattedType}:</strong> ${task.targetName}</p>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar" style="width: ${progressPercent}%; background-color: #ffe710; color: black !important; text-align: center;">
-                                    <style="text-align: center;">${progressPercent}%</style>
-                                </div>
-                            </div>
-                        </div>
-                    `;
+                    html += checkTaskProgressHTML(task, planetData);
                 });
             } else {
-                html += `<p>No specific tasks data available.</p>`;
+                html += "<p>No specific tasks data available.</p>";
             }
             console.log(currentMO.orderExpires)
             html += `
@@ -432,24 +400,29 @@ async function renderGalaxyStats(contentArea) {
 }
 
 //renders major order page
-async function renderMajorOrderData(contentArea) {
-    contentArea = document.querySelector('.content-area');
+async function renderMajorOrderPage(contentArea) {
+    contentArea = contentArea || document.querySelector('.content-area');
 
     contentArea.innerHTML = '<h2>Loading Major Orders...</h2>'
+
     try {
-        console.log('Fetching stats from /api/major_orders...');
-        const response = await fetch('http://127.0.0.1:8000/api/major_orders');
+        console.log('Fetching data from /api/major_orders...');
+        
+        const [moResponse, planetsResponse] = await Promise.all([
+            fetch('/api/major_orders'),
+            fetch('/api/planets'),
+        ]);
+            
 
         //check if network request was successful
-        if (!response.ok) {
-            throw new Error(`Network error: ${response.status}`);
-            //sends error to catch block
-        }
+        if (!moResponse.ok) throw new Error(`Network error: ${moResponse.status}`);
+        if (!planetsResponse.ok) throw new Error(`Network error: ${moResponse}`);
 
         //mo list
-        const data = await response.json();
+        const moData = await moResponse.json();
+        const planetData = await planetsResponse.json();
 
-        if (data.length === 0) {
+        if (moData.length === 0) {
             contentArea.innerHTML = '<h2>No Active Major Orders</h2>';
             return;
         }
@@ -457,34 +430,36 @@ async function renderMajorOrderData(contentArea) {
         let ordersHtml = '<h2>Active Major Orders</h2>';
 
         //mo list loop
-        for (const order of data) {
+        for (const order of moData) {
             //adds expression to original value
             //build an MO card based on # of MOs
             ordersHtml += `
                 <div class="top-card">
-                <h3>${order.order_title}</h3>
-                <p>${order.order_briefing}</p>
-                <p><strong>Expires:</strong> ${order.order_expires}</p>
-                <p><strong>Reward:</strong> ${order.rewards_amount} Medals</p>
+                <h3>${order.overrideTitle}</h3>
+                <p>${order.overrideBrief}</p>
+                <p><strong>Expires:</strong> ${order.orderExpires}</p>
+                <p><strong>Reward:</strong> ${order.rewardsAmount} Medals</p>
 
                 <h4>Objectives</h4>
             `;
 
             //need to loop through # of tasks
-            for (const task of order.tasks) {
-                const percentage = ((task.progress / task.goal) * 100).toFixed(2); //2 decimal places toFixed(2)
-                
-                const formattedType = formatTaskType(task.typeName || "Unknown Type")
-                
-                ordersHtml += `
-                    <div class="task">
-                        <p><strong>${formattedType}:</strong> ${task.targetName}</p>
-                        <p>${task.progress.toLocaleString()} / ${task.goal.toLocaleString()}</p>
-                        <p><strong>Completion: ${percentage}%</strong></p>
-                    </div>
-                `;
+            if (order.tasks && order.tasks.length > 0) {
+                order.tasks.forEach(task => {
+                    let progressPercent = 0;
+                    
+                    const formattedType = formatTaskType(task.typeName || "Unknown Type")
+                    
+                    ordersHtml += `
+                        <div class="task">
+                            <p><strong>${formattedType}:</strong> ${task.targetName}</p>
+                            <p>${task.progress.toLocaleString()} / ${task.goal.toLocaleString()}</p>
+                            <p><strong>Completion: ${percentage}%</strong></p>
+                        </div>
+                    `;
+                });
             }
- 
+
             ordersHtml += '</div>'; // close mo card
         }
 
@@ -642,4 +617,30 @@ function expirationTimeCountdown(expirationTime, elementId) {
     updateTimer();
 
     window.activeTimers[elementId] = setInterval(updateTimer, 1000);
+}
+
+function checkTaskProgressHTML(task, planetData) {
+    const formattedType = formatTaskType(task.typeName || "Unknown Type");
+
+    /* BINARY CHECKBOXES */
+    if (task.goal === 1) {
+        const isComplete = task.progress >= task.goal;
+        const statusColor = isComplete ? '#25c225' : '#777';
+        const statusText = isComplete ? 'COMPLETED' : 'PENDING';
+        const icon = isComplete ? '&#10004;' : '&#9634;';
+
+        return `
+            <div class="progress-bar-container-binary" style="border: 1px solid ${statusColor};">
+                <div class="type-name">
+                    <strong>${formattedType}</strong><br>
+                </div>
+                <div>
+                    <span style="font-size: 0.9em: color: #ffe710;">${task.targetName}</span>
+                </div>
+                <div style="text-align: right; color: ${statusColor}; font-weight: bold;">
+                    <span style="font-size: 1.5em; vertical-align: middle;"${icon}</span> ${statusText}
+                </div>
+            </div>
+        `;
+    }
 }
