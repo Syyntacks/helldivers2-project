@@ -47,7 +47,7 @@ def save_json_to_file(data, filename):
         print(f"Error saving data to file: {e}")
 
 
-HISTORY_INTERVAL = 6
+HISTORY_INTERVAL = 21600
 last_history_save = 0
 
 

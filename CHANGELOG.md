@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-02-03
+
+### Added
+
+### Changed
+
+- **History Save Timeframe:** Increased the timeframe from 6 seconds (for testing) to 21,600 (= 6 hrs).
+
+### Deprecated
+
+### Removed
+
+- **Removed conflicting workflow files:** Removed extra Azure workflorws that were creating build and deploy conflicts.
+
+### Fixed
+
+### Security
+
+### Known Issues
+
 ## [0.7.0] - 2026-02-03
 
 ### Added
@@ -40,7 +60,7 @@ and this project adheres to [Semantic Versioning].
 ### Known Issues
 
 - **Cloud Persistence:** Data history snapshots saved on Azure Static Web Apps (or similar serverless environments) are temporary and will be wiped when the instance idles. A local or external storage solution is required for permanent data retention.
-- Persisting formatting issues on pages: **All Planets, Major Order(s), Galaxy Stats, Galactic Map**
+- **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map*
 - Mobile formatting inconsistencies
 
 ## [0.6.1] - 2025-12-27
