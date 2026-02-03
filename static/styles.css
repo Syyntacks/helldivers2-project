@@ -251,6 +251,7 @@ footer {
 .homepage-card h3 {
     color:#ffe710;
     font-size: 2em;
+    text-transform: uppercase;
     text-align: center;
 }
 
@@ -348,18 +349,28 @@ footer {
     padding: 20px;
     text-align: center;
     border-radius: 4px;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+
     /* Image styling */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
 }
+.stat-card .health-bar:first-of-type {
+    margin-top: auto;
+}
+.stat-card .defense-timer {
+    margin-top: 8px;
+}
 .stat-card.war-effort {
     width: auto;
 }
 .stat-card.is-defending {
     /*border-color: #fe6a67 !important;*/
-
     animation-name: pulse-danger;
     animation-duration: 1.3s;
     animation-iteration-count: infinite;
@@ -380,10 +391,12 @@ footer {
     font-weight: bold;
     margin: 0;
     text-align: center;
+    text-shadow: 2px 2px 2px #000;
 }
 
 .progress-bar-container {
     display: flex;
+    position: relative;
     width: 100%;
     height: 1.5em;
     background-color: rgba(34,34,34,0.6);
@@ -392,6 +405,28 @@ footer {
     overflow: hidden;
     margin-top: 10px;
     margin-bottom: 0;
+}
+.progress-bar-container .progress-bar-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    z-index: 10; 
+    color: white; 
+    text-shadow: 1px 1px 2px black;
+    line-height: 1.5em;
+}
+.progress-bar-container .task-progress-bar-text {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    z-index: 10;
 }
 .progress-bar {
     color: #fff !important;
@@ -424,7 +459,7 @@ footer {
 /* Tug-of-war MO progress bar */
 .bidirectional-progress-container {
     position: relative;
-    width: 100%;
+    width: 80%;
     height: 1.5em;
 
     /* This creates the red/green 50/50 split */
@@ -438,16 +473,41 @@ footer {
 
 .progress-bar-container-binary {
     margin-bottom: 15px;
+    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
     border-radius: 8px;
 }
-.progress-bar-container-binary.type-name {
-    justify-items: center;
+.progress-bar-container-binary .task-container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%;
 }
 
+.progress-bar-container-binary .type-name {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    text-align: left;
+    flex: 1;
+    color: #ffe710;
+}
+.progress-bar-container-binary .target-name {
+    text-align: center;
+    font-size: 1.65rem;
+    font-weight: bold;
+    flex: 2;
+    word-wrap: break-word;
+    text-shadow: 2px 2px 2px #000;
+}
+.progress-bar-container-binary .status {
+    text-align: right; 
+    font-weight: bold;
+    flex: 1;
+}
 
 #custom-alert-overlay {
     position: fixed; /* Cover the whole screen */
@@ -536,6 +596,9 @@ footer {
 }
 .seaf-color {
     color: #6bb7ea !important;
+}
+.seaf-color-2 {
+    color: #41639C !important;
 }
 .success-color {
     color: #25c225 !important;

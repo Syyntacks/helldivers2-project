@@ -119,7 +119,8 @@ def get_single_planet(planet_name: str):
 def get_major_orders():
     print("Request received for major orders...")
     major_order_url = settings.urls.get("major_order")
-    raw_data = fetch_data_from_url(major_order_url)
+
+    raw_data = fetch_data_from_url(major_order_url, cache_key="major_orders", ttl=60)
     if raw_data:
         parsed_orders = mo_handler.parse_major_order_data(raw_data)
         return parsed_orders
@@ -131,8 +132,9 @@ def get_galaxy_stats():
     print("Request received for galaxy stats...")
     print(f"Available keys in settings: {list(settings.urls.keys())}")
     galaxy_stats_url = settings.urls.get("war")
+
     print(f"Trying to fetch URL: '{galaxy_stats_url}'")
-    raw_data = fetch_data_from_url(galaxy_stats_url)
+    raw_data = fetch_data_from_url(galaxy_stats_url, cache_key="galaxy_stats", ttl=60)
     if raw_data:
         galaxy_stats = parse_galaxy_stats(raw_data) # returns a list
         return galaxy_stats

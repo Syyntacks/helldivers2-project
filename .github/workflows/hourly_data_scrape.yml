@@ -1,0 +1,41 @@
+name: Hourly Data Snapshot
+
+on:
+  schedule:
+    # Runs at minute 0 of every hour (e.g., 1:00, 2:00, 3:00...)
+    - cron: '0 * * * *'
+  # Allows you to run it manually from the Actions tab for testing
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-save:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        pip install requests python-dotenv
+
+    - name: Run Snapshot Script
+      run: python snapshot.py
+
+    - name: Commit and Push Data
+      run: |
+        git config user.name "HelldiversDataBot"
+        git config user.email "bot@users.noreply.github.com"
+        git add data_history/
+        # Only commit if there are changes (avoids errors if API is down)
+        timestamp=$(date -u)
+        git commit -m "Data Snapshot: ${timestamp} [skip ci]" || exit 0
+        git push

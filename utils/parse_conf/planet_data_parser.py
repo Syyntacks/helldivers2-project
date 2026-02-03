@@ -14,7 +14,7 @@ class PlanetParser():
     """
     
     # 
-    def __init__(self, static_json_planets, static_json_planet_effects, static_json_biomes, static_json_environmentals, static_json_factions, static_json_campaign_types):
+    def __init__(self, static_json_planets, static_json_planet_effects, static_json_biomes, static_json_environmentals, static_json_factions, static_json_campaign_types, save_history=False):
         self.combined_data: Dict[int, Dict[str, Any]] = {} # Return for better understanding
 
         # static data stored
@@ -25,14 +25,29 @@ class PlanetParser():
         self.static_json_factions = static_json_factions
         self.static_json_campaign_types = static_json_campaign_types
 
-        self._fetch_and_combine()
+        self._fetch_and_combine(save_history=save_history)
     
 
-    def _fetch_and_combine(self):
+    def _fetch_and_combine(self, save_history=False):
         # Creates one dictionary from API endpoints
-        planets_list = fetch_data_from_url(PLANET_URL) # All planets
-        planet_events_list = fetch_data_from_url(PLANET_EVENTS_URL) # Defense campaigns
-        campaigns_list = fetch_data_from_url(CAMPAIGNS_URL) # Liberation Campaigns
+        planets_list = fetch_data_from_url(
+            PLANET_URL,
+            cache_key="planets_snapshot",
+            ttl=60,
+            save_history=save_history
+        ) # All planets
+        planet_events_list = fetch_data_from_url(
+            PLANET_EVENTS_URL,
+            cache_key="planet_events_snapshot",
+            ttl=60,
+            save_history=save_history
+        ) # Defense campaigns
+        campaigns_list = fetch_data_from_url(
+            CAMPAIGNS_URL,
+            cache_key="planet_campaigns_snapshot",
+            ttl=60,
+            save_history=save_history
+        ) # Liberation Campaigns
 
         try:
             #############

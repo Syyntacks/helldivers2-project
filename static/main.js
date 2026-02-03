@@ -156,7 +156,7 @@ async function renderHomePage(contentArea) {
         if (currentMO) {
             html += `
                 <div class="homepage-card mo-card">
-                    <h3>${currentMO.orderTitle}</h3>
+                    <h3 style="text-shadow: 2px 2px 2px #000;">${currentMO.orderTitle}</h3>
                     <p>${currentMO.orderBriefing}</p>
                     <div class="mo-tasks>
                         <h3 style="color: #ffe710; border-bottom: 1px solid #ffe710;">Objectives</h3>
@@ -164,7 +164,8 @@ async function renderHomePage(contentArea) {
 
             if (currentMO.tasks && currentMO.tasks.length > 0) {
                 currentMO.tasks.forEach(task => {
-                    html += checkTaskProgressHTML(task, planetData);
+                    const taskPlanet = planetData[task.targetPlanetId] || {};
+                    html += checkTaskProgressHTML(task, taskPlanet);
                 });
             } else {
                 html += "<p>No specific tasks data available.</p>";
@@ -188,7 +189,7 @@ async function renderHomePage(contentArea) {
         // MOST ACTIVE PLANETS SUMMARY--
         html += `
             <div class="homepage-card top-mo-card">
-                <h3>Most Active Planets</h3>
+                <h3 style="font-weight: bold; margin-top: 16px; margin-bottom: 10px; text-shadow: 2px 2px 2px #000;">MOST ACTIVE PLANETS</h3>
                 <div class="stats-layout">`; // <-- USE GRID LAYOUT
 
         const defenseTimersToStart = [];
@@ -216,7 +217,7 @@ async function renderHomePage(contentArea) {
                 defenseClass = 'is-defending';
 
                 const timerId = `defense-timer-${planet.index}`
-                defenseTimerHtml = `<p class="defense-timer" style="color: #fe6a67; font-weight: bold;">Time Left: <span id="${timerId}">Loading...</span></p>`;
+                defenseTimerHtml = `<p class="defense-timer" style="color: ${factionClass}; font-weight: bold;"><span id="${timerId}">Loading...</span></p>`;
 
                 defenseTimersToStart.push({
                     id: timerId,
@@ -269,7 +270,7 @@ async function renderHomePage(contentArea) {
 
                 healthBarHtml += `
                     <div class="progress-bar-container">
-                        <div class="progress-bar-text" style="position: absolute; width: 100%; text-align: center; z-index: 10; color: white; text-shadow: 1px 1px 2px black; line-height: 1.5em;">
+                        <div class="progress-bar-text">
                             ${liberationProgress.toFixed(3)}%
                         </div>
                         <div class="progress-bar liberation-bar" style="width: ${liberationProgress}%; background-color: ${factionClass} !important;"></div>
@@ -286,7 +287,12 @@ async function renderHomePage(contentArea) {
                         <span class="player-count-highlight">${planet.players.toLocaleString()}</span> Helldivers (${playerPercent}%)<br>
                     </p>
 
-                    ${healthBarHtml}
+                    <div class="health-bar">
+                        ${healthBarHtml}
+                    </div>
+                    <div class="defense-timer">
+                        ${defenseTimerHtml}
+                    </div>
                 </div>`;
         });
 
@@ -297,7 +303,7 @@ async function renderHomePage(contentArea) {
         //KILL STATS SUMMARY
         html += `
             <div class="homepage-card">
-                <h3>War Effort Summary</h3>
+                <h3 style="font-weight: bold; margin-top: 16px; margin-bottom: 10px; text-shadow: 2px 2px 2px #000;">WAR EFFORT SUMMARY</h3>
                 <div class="stats-summary-grid">
                     <div class="stat-card war-effort">
                         <p>
@@ -312,6 +318,7 @@ async function renderHomePage(contentArea) {
                     <div class="stat-card">
                         <p>
                             Helldivers Online: <span class="helldiver-color">${statsData.totalPlayers.toLocaleString()}</span>
+                            Average KD: <span class="helldiver-color">${avgKillsPerLife.toLocaleString()} : <span class="automaton-color">1</span></span>
                         </p>
                     </div>
                 </div>
@@ -406,17 +413,15 @@ async function renderMajorOrderPage(contentArea) {
     contentArea.innerHTML = '<h2>Loading Major Orders...</h2>'
 
     try {
-        console.log('Fetching data from /api/major_orders...');
-        
         const [moResponse, planetsResponse] = await Promise.all([
             fetch('/api/major_orders'),
-            fetch('/api/planets'),
+            fetch('/api/planets')
         ]);
             
 
         //check if network request was successful
         if (!moResponse.ok) throw new Error(`Network error: ${moResponse.status}`);
-        if (!planetsResponse.ok) throw new Error(`Network error: ${moResponse}`);
+        if (!planetsResponse.ok) throw new Error(`Network error: ${planetsResponse.status}`);
 
         //mo list
         const moData = await moResponse.json();
@@ -435,27 +440,66 @@ async function renderMajorOrderPage(contentArea) {
             //build an MO card based on # of MOs
             ordersHtml += `
                 <div class="top-card">
-                <h3>${order.overrideTitle}</h3>
-                <p>${order.overrideBrief}</p>
-                <p><strong>Expires:</strong> ${order.orderExpires}</p>
-                <p><strong>Reward:</strong> ${order.rewardsAmount} Medals</p>
+                    <h3>${order.orderTitle}</h3>
+                    <p>${order.orderBriefing}</p>
+                    <p><strong>Expires:</strong> ${order.orderExpires}</p>
+                    <p><strong>Reward:</strong> ${order.rewardsAmount} Medals</p>
 
-                <h4>Objectives</h4>
-            `;
+                    <h4>Objectives</h4>
+                `;
 
-            //need to loop through # of tasks
-            if (order.tasks && order.tasks.length > 0) {
-                order.tasks.forEach(task => {
-                    let progressPercent = 0;
-                    
-                    const formattedType = formatTaskType(task.typeName || "Unknown Type")
-                    
-                    ordersHtml += `
-                        <div class="task">
-                            <p><strong>${formattedType}:</strong> ${task.targetName}</p>
-                            <p>${task.progress.toLocaleString()} / ${task.goal.toLocaleString()}</p>
-                            <p><strong>Completion: ${percentage}%</strong></p>
-                        </div>
+                //need to loop through # of tasks
+                if (order.tasks && order.tasks.length > 0) {
+                    order.tasks.forEach(task => {
+                        let progressPercent = 0;
+
+                        const formattedType = formatTaskType(task.typeName || "Unknown Type")
+                        let completionLine = '';
+
+                        /* DEFAULT FALLBACK */
+                        if (task.goal > 0) {
+                            progressPercent = ((task.progress / task.goal) * 100).toFixed(3);
+                        }
+
+                        if (task.targetPlanetId) {
+                            const targetPlanet = planetData[task.targetPlanetId];
+
+                            if (targetPlanet) {
+                                /***
+                                LIBERATION
+                                ***/
+                                if (formattedType === "Liberate") {
+                                    let libCalc = (targetPlanet.currentHealth / targetPlanet.maxHealth) * 100;
+                                    
+                                    if (targetPlanet.owner !== "Humans") {
+                                        libCalc = 100 - libCalc;
+                                    }
+                                    libCalc = Math.max (0, Math.min(100, libCalc));
+                                    progressPercent = libCalc.toFixed(3);
+                                }
+                                /***
+                                DEFENSE
+                                ***/
+                                else if (formattedType === "Defense") {
+                                    if (targetPlanet.isUnderAttack) {
+                                        let defCalc = (1 - (targetPlanet.currentHealth / targetPlanet.maxHealth) * 100);
+                                        progressPercent = defCalc.toFixed(3);
+                                    } else {
+                                        progressPercent = (targetPlanet.owner === "Humans") ? "100.00" : "0.00";
+                                    }
+                                }
+                            }
+
+                        }
+                        ordersHtml += `
+                            <div class="task">
+                                <p><strong>${formattedType}:</strong> ${task.targetName}</p>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" style="width: ${progressPercent}%; background-color: #ffe710;"></div>
+                                </div>
+                                <p>${task.progress.toLocaleString()} / ${task.goal.toLocaleString()}</p>
+                                <p><strong>Completion: ${progressPercent}%</strong></p>
+                            </div>
                     `;
                 });
             }
@@ -619,7 +663,12 @@ function expirationTimeCountdown(expirationTime, elementId) {
     window.activeTimers[elementId] = setInterval(updateTimer, 1000);
 }
 
-function checkTaskProgressHTML(task, planetData) {
+function checkTaskProgressHTML(taskInput, planetData) {
+    if (Array.isArray(taskInput)) {
+        return taskInput.map(t => checkTaskProgressHTML(t, planetData)).join('');
+    }
+
+    const task = taskInput;
     const formattedType = formatTaskType(task.typeName || "Unknown Type");
 
     /* BINARY CHECKBOXES */
@@ -629,18 +678,50 @@ function checkTaskProgressHTML(task, planetData) {
         const statusText = isComplete ? 'COMPLETED' : 'PENDING';
         const icon = isComplete ? '&#10004;' : '&#9634;';
 
+        //DEBUG
+        //console.log("Current Owner:", planetData.owner);
+        
+        const ownerId = String(planetData.owner).trim().toLowerCase();
+
+        if (ownerId === 'terminids' || ownerId === '2') {
+            factionClass = '#ff9f00';
+        } else if (ownerId === 'automaton' || ownerId === '3') {
+            factionClass = '#fe6a67';
+        } else if (ownerId === 'illuminate' || ownerId === '4') {
+            factionClass = '#db58fb';
+        } else {factionClass = '#6bb7ea';}
+
+        let libProgress = (planetData.currentHealth / planetData.maxHealth) * 100;
+        
+        if (planetData.owner !== 1) {
+            libProgress = 100 - libProgress;
+        }
+
+        if (isComplete) {
+            libProgress = 100;
+        }
+        
+
         return `
             <div class="progress-bar-container-binary" style="border: 1px solid ${statusColor};">
-                <div class="type-name">
-                    <strong>${formattedType}</strong><br>
+                <div class="task-container">
+                    <div class="type-name">
+                        <strong>${formattedType}:</strong><br>
+                    </div>
+                    <div class="target-name">
+                        <span style="color: ${factionClass};">${task.targetName}</span>
+                    </div>
+                    <div class="status" style="color: ${statusColor};">
+                        <span style="font-size: 1.7em; vertical-align: middle;">${icon}</span> ${statusText}
+                    </div>
                 </div>
-                <div>
-                    <span style="font-size: 0.9em: color: #ffe710;">${task.targetName}</span>
-                </div>
-                <div style="text-align: right; color: ${statusColor}; font-weight: bold;">
-                    <span style="font-size: 1.5em; vertical-align: middle;"${icon}</span> ${statusText}
+                <div class="progress-bar-container">
+                    <div class="task-progress-bar-text">${libProgress.toFixed(3)}%</div>
+                    <div class="progress-bar liberation-bar" style="width: ${libProgress}%; background-color: ${factionClass} !important"></div>
                 </div>
             </div>
         `;
     }
+
+    return ('');
 }
