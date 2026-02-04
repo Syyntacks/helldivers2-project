@@ -2,8 +2,9 @@ name: Hourly Data Snapshot
 
 on:
   schedule:
-    # Runs at minute 0 of every hour (e.g., 1:00, 2:00, 3:00...)
-    - cron: '0 * * * *'
+    - cron: '0 */3 * * *' # Runs at *:00 every 3hrs
+    - cron: '0 5 * * *' # Runs at 5:00am UTC
+
   # Allows you to run it manually from the Actions tab for testing
   workflow_dispatch:
 
@@ -28,6 +29,14 @@ jobs:
         pip install requests python-dotenv
 
     - name: Run Snapshot Script
+      env:
+        SECURITY_TOKEN: ${{ secrets.SECURITY_TOKEN }}
+        SESSION_TOKEN: ${{ secrets.SESSION_TOKEN }}
+        SUPER_CLIENT: ${{ secrets.SUPER_CLIENT }}
+        SUPER_CONTACT: ${{ secrets.SUPER_CONTACT }}
+        USER_AGENT: ${{ secrets.USER_AGENT }}
+
+
       run: python snapshot.py
 
     - name: Commit and Push Data

@@ -5,7 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
-## [Unreleased]
+## [0.7.2] - 2026-02-03
+
+### Added
+
+### Changed
+
+- **History Save Timeframe:**
+  - Previous change was to `main_exe.py`.
+  - Present change changed data bot interval from *every hour* to *every 3 hours & once at 5am (UTC 0:00)*
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+- **Data Bot Error Code 01:** Made repo changes to ensure the data bot can correctly read `.env` variables.
+
+### Security
+
+### Known Issues
+
+- **Cloud Persistence:** Data history snapshots saved on Azure Static Web Apps (or similar serverless environments) are temporary and will be wiped when the instance idles. A local or external storage solution is required for permanent data retention.
+- **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map*
+- Mobile formatting inconsistencies
 
 ## [0.7.1] - 2026-02-03
 
@@ -26,6 +50,10 @@ and this project adheres to [Semantic Versioning].
 ### Security
 
 ### Known Issues
+
+- **Cloud Persistence:** Data history snapshots saved on Azure Static Web Apps (or similar serverless environments) are temporary and will be wiped when the instance idles. A local or external storage solution is required for permanent data retention.
+- **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map*
+- Mobile formatting inconsistencies
 
 ## [0.7.0] - 2026-02-03
 
