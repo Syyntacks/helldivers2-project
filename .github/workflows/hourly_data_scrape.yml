@@ -30,12 +30,25 @@ jobs:
 
     - name: Run Snapshot Script
       env:
-        SECURITY_TOKEN: ${{ secrets.SECURITY_TOKEN }}
-        SESSION_TOKEN: ${{ secrets.SESSION_TOKEN }}
+        BASE_URL: ${{ secrets.BASE_URL }}
+        TIME_DELAY: ${{ secrets.TIME_DELAY }}
+        TIMEOUT: ${{ secrets.TIMEOUT }}
+
+        WAR: ${{ secrets.WAR }}
+        MAJOR_ORDER: ${{ secrets.MAJOR_ORDER }}
+        CAMPAIGNS: ${{ secrets.CAMPAIGNS }}
+        NEWS_FEED: ${{ secrets.NEWS_FEED }}
+        PLANETS: ${{ secrets.PLANETS }}
+        PLANET_EVENTS: ${{ secrets.PLANET_EVENTS }}
+        STEAM_NEWS: ${{ secrets.STEAM_NEWS }}
+        SPACE_STATIONS: ${{ secrets.SPACE_STATIONS }}
+        
+        USER_AGENT: ${{ secrets.USER_AGENT }}
         SUPER_CLIENT: ${{ secrets.SUPER_CLIENT }}
         SUPER_CONTACT: ${{ secrets.SUPER_CONTACT }}
-        USER_AGENT: ${{ secrets.USER_AGENT }}
 
+        SECURITY_TOKEN: ${{ secrets.SECURITY_TOKEN }}
+        SESSION_TOKEN: ${{ secrets.SESSION_TOKEN }}
 
       run: python snapshot.py
 
