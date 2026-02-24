@@ -85,7 +85,9 @@ def fetch_data_from_url(full_url, cache_key=None, ttl=60, save_history=False):
             headers = {
                 "User-Agent": f"{os.environ.get('USER_AGENT', 'Helldivers2Project')}",
                 "X-Super-Client": f"{os.environ.get('SUPER_CLIENT', 'ProjectClient')}",
-                "Accept": "application/json"
+                "Accept": "application/json",
+                "Accept-Language": "en-US",
+                "Cache-Control": "no-cache"
             }
             
             response = requests.get(full_url, headers=headers, timeout=10)
