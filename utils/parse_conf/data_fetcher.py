@@ -85,6 +85,7 @@ def fetch_data_from_url(full_url, cache_key=None, ttl=60, save_history=False):
             headers = {
                 "User-Agent": f"{os.environ.get('USER_AGENT', 'Helldivers2Project')}",
                 "X-Super-Client": f"{os.environ.get('SUPER_CLIENT', 'ProjectClient')}",
+                "X-Super-Contact": f"{os.environ.get('SUPER_CONTACT', 'syyntacks')}",
                 "Accept": "application/json",
                 "Accept-Language": "en-US",
                 "Cache-Control": "no-cache"
@@ -94,6 +95,7 @@ def fetch_data_from_url(full_url, cache_key=None, ttl=60, save_history=False):
             
             if response.status_code != 200:
                 print(f"❌ API Request Failed! Status: {response.status_code}")
+                print(f"Server Reason: {response.text}")
                 # Try to use stale cache if available
                 if os.path.exists(cache_filepath):
                     print("    ⚠️  Serving stale cache due to API error.")
