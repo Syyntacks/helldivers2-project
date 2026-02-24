@@ -1,0 +1,158 @@
+[
+    {
+        "index": 78,
+        "name": "CRIMSICA",
+        "sector": "Draco",
+        "biome": {
+            "name": "Ionic Crimson",
+            "description": "A crimson algae has propagated wildly across this entire planet, coating its rocky hills with a constant red that masks the spilt blood of the heroes who defend it from tyranny."
+        },
+        "hazards": [
+            {
+                "name": "Ion Storms",
+                "description": "Ion storms intermittently disable Stratagems."
+            }
+        ],
+        "hash": 1886266372,
+        "position": {
+            "x": 0.6113544,
+            "y": 0.22880854
+        },
+        "waypoints": [
+            129,
+            169,
+            170
+        ],
+        "maxHealth": 1500000,
+        "health": 1500000,
+        "disabled": false,
+        "initialOwner": "Terminids",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5503,
+            "eventType": 1,
+            "faction": "Terminids",
+            "health": 896466,
+            "maxHealth": 1050000,
+            "startTime": "2026-02-24T12:11:47Z",
+            "endTime": "2026-02-26T12:11:47Z",
+            "campaignId": 51494,
+            "jointOperationIds": [
+                5503
+            ]
+        },
+        "statistics": {
+            "missionsWon": 31943515,
+            "missionsLost": 2508991,
+            "missionTime": 91353371420,
+            "terminidKills": 13018630812,
+            "automatonKills": 6485,
+            "illuminateKills": 2554,
+            "bulletsFired": 64662473168,
+            "bulletsHit": 74184614514,
+            "timePlayed": 91353371420,
+            "deaths": 192546763,
+            "revives": 0,
+            "friendlies": 31845790,
+            "missionSuccessRate": 92,
+            "accuracy": 100,
+            "playerCount": 47967
+        },
+        "attacking": [
+            170
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 1032709433,
+                "name": "LIL'OME",
+                "description": "null",
+                "health": 100000,
+                "maxHealth": 100000,
+                "size": "Settlement",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 0.6230908,
+                "isAvailable": false,
+                "players": 3
+            },
+            {
+                "id": 1,
+                "hash": 1161134727,
+                "name": "LLANFAIRPWLLGWYNGYLLGOGERYCHWYRNDROBWLLLLANTYSILIOGOGOGOCH II",
+                "description": "null",
+                "health": 311350,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 23870
+            }
+        ]
+    },
+    {
+        "index": 262,
+        "name": "K",
+        "sector": "Trigon",
+        "biome": {
+            "name": "Magma",
+            "description": "Constant eruptions keep this planet covered in lava flows and utterly inhospitable to Democratic life. It also makes it a treasure trove of rare minerals."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 1143730827,
+        "position": {
+            "x": -0.657,
+            "y": 0.33
+        },
+        "waypoints": [
+            158,
+            244
+        ],
+        "maxHealth": 2000000,
+        "health": 2000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5501,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 708111,
+            "maxHealth": 1500000,
+            "startTime": "2026-02-22T19:03:27Z",
+            "endTime": "2026-02-24T19:03:27Z",
+            "campaignId": 51492,
+            "jointOperationIds": [
+                5501
+            ]
+        },
+        "statistics": {
+            "missionsWon": 3136179,
+            "missionsLost": 582071,
+            "missionTime": 12531396947,
+            "terminidKills": 42705,
+            "automatonKills": 1157157440,
+            "illuminateKills": 2087,
+            "bulletsFired": 8397151205,
+            "bulletsHit": 8518932960,
+            "timePlayed": 12531396947,
+            "deaths": 32563566,
+            "revives": 0,
+            "friendlies": 3441488,
+            "missionSuccessRate": 84,
+            "accuracy": 100,
+            "playerCount": 8889
+        },
+        "attacking": [
+            158
+        ],
+        "regions": []
+    }
+]
