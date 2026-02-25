@@ -34,12 +34,15 @@ def parse_galaxy_stats(data):
         missions_lost = overall_stats_dict.get("missionsLost", 0)
         missions_total = missions_won + missions_lost
         missions_won_percent = (missions_won / missions_total) * 100
+        
+
 
         mission_time = overall_stats_dict.get("missionTime")
         total_mission_time = datetime_converter.format_duration_from_seconds(mission_time)
-        overall_stats_dict['timePlayedFormatted'] = missions_total
+        overall_stats_dict['timePlayedFormatted'] = total_mission_time
 
         total_players = overall_stats_dict.get("playerCount", 0)
+        accidentals = overall_stats_dict.get("friendlies", 0)
         overall_stats_dict['totalPlayers'] = total_players
 
 
@@ -66,6 +69,10 @@ def parse_galaxy_stats(data):
         overall_stats_dict['totalKills'] = total_kills
         overall_stats_dict['accuracy'] = accuracy_percent
         overall_stats_dict['kdRatio'] = kd_ratio
+        overall_stats_dict['accidentals'] = accidentals
+        overall_stats_dict['missionsWon'] = missions_won
+        overall_stats_dict['missionsLost'] = missions_lost
+        overall_stats_dict['missionsTotal'] = missions_total
         overall_stats_dict['missionsWonPercent'] = missions_won_percent
         overall_stats_dict['totalMissionTime'] = total_mission_time
 

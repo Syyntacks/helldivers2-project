@@ -140,7 +140,7 @@ class MajorOrderParser():
 
         
     def _resolve_task_details_by_type(self, task_type_name, value_map, raw_values):
-        result = {"name": "Unknown Target", "planet_id": None}
+        result = {"name": "", "planet_id": None}
 
         planet_key_id = self.get_value_key("locationIndex")
         faction_key_id = self.get_value_key("faction")

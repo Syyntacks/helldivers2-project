@@ -5,7 +5,47 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
-## [0.7.2] - 2026-02-03
+## [0.7.3] - 2026-02-25
+
+### Added
+
+- **Bidirectional Progress Bar:** Added a proper 'Contest' MOs progress bar.
+- **Binary Progress Bar:** Created a dedicated MO progress bar to handle majority cases.
+- Filled the **War Effort Summary** with full Galactic statistics.
+
+**galaxy_stats_parser.py**
+
+- Added missing statistics to stats dictionary (`missions_won`, `missions_lost`, `missions_total`, `accidentals`).
+
+### Changed
+
+**main.js**
+- Decreased size of liberation percentage bar in **Planet Cards** on Homepage.
+- Text formatting for `<p>` in Homepage cards has been decreased, making room for future additions.
+- Moved defense timer above progression bars.
+- **War Effort Summary** stats written in `<div>` instead of `<p>`.
+
+### Deprecated
+
+- Previous **War Effort Summary** layout.
+
+### Removed
+
+- Removed `planet_node` in preparation for dedicated Planets page.
+
+### Fixed
+
+- Implemented safety measures to prevent app from crashing due to unforeseen raw data.
+
+### Security
+
+### Known Issues
+
+- **Cloud Persistence:** Data history snapshots saved on Azure Static Web Apps (or similar serverless environments) are temporary and will be wiped when the instance idles. A local or external storage solution is required for permanent data retention.
+- **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map*
+- Mobile formatting inconsistencies
+
+## [0.7.2] - 2026-02-22
 
 ### Added
 
@@ -31,7 +71,7 @@ and this project adheres to [Semantic Versioning].
 - **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map*
 - Mobile formatting inconsistencies
 
-## [0.7.1] - 2026-02-03
+## [0.7.1] - 2026-02-05
 
 ### Added
 

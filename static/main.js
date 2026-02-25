@@ -158,7 +158,7 @@ async function renderHomePage(contentArea) {
                 <div class="homepage-card mo-card">
                     <h3 style="text-shadow: 2px 2px 2px #000;">${currentMO.orderTitle}</h3>
                     <p>${currentMO.orderBriefing}</p>
-                    <div class="mo-tasks>
+                    <div class="mo-tasks">
                         <h3 style="color: #ffe710; border-bottom: 1px solid #ffe710;">Objectives</h3>
             `;
 
@@ -188,7 +188,7 @@ async function renderHomePage(contentArea) {
 
         // MOST ACTIVE PLANETS SUMMARY--
         html += `
-            <div class="homepage-card top-mo-card">
+            <div class="homepage-card top-container">
                 <h3 style="font-weight: bold; margin-top: 16px; margin-bottom: 10px; text-shadow: 2px 2px 2px #000;">MOST ACTIVE PLANETS</h3>
                 <div class="stats-layout">`; // <-- USE GRID LAYOUT
 
@@ -213,6 +213,8 @@ async function renderHomePage(contentArea) {
             let healthBarHtml = '';
             let defenseTimerHtml = '';
 
+
+            // DEFENSE CAMPAIGNS ===========
             if (planet.isUnderAttack) {
                 defenseClass = 'is-defending';
 
@@ -253,7 +255,7 @@ async function renderHomePage(contentArea) {
                         <div class="progress-bar defender-bar" style="width: ${defenderProgress}%;"></div>
                     </div>
                     <div class="progress-bar-container" style="position: relative;">
-                        <div class="progress-bar-text" style="position: absolute; width: 100%; text-align: center; z-index: 10; color: white; text-shadow: 1px 1px 2px black; line-height: 1.5em;">
+                        <div class="progress-bar-text" style="position: absolute; width: 100%; font-size: 0.9rem; text-align: center; z-index: 10; color: white; text-shadow: 1px 1px 2px black; line-height: 1.5em;">
                             ${attackingPercentStr}%
                         </div>
                     
@@ -286,13 +288,13 @@ async function renderHomePage(contentArea) {
                     <p>
                         <span class="player-count-highlight">${planet.players.toLocaleString()}</span> Helldivers (${playerPercent}%)<br>
                     </p>
-
-                    <div class="health-bar">
-                        ${healthBarHtml}
-                    </div>
                     <div class="defense-timer">
                         ${defenseTimerHtml}
                     </div>
+                    <div class="health-bar">
+                        ${healthBarHtml}
+                    </div>
+                    
                 </div>`;
         });
 
@@ -306,20 +308,28 @@ async function renderHomePage(contentArea) {
                 <h3 style="font-weight: bold; margin-top: 16px; margin-bottom: 10px; text-shadow: 2px 2px 2px #000;">WAR EFFORT SUMMARY</h3>
                 <div class="stats-summary-grid">
                     <div class="stat-card war-effort">
-                        <p>
-                            <span style="font-size: 1.2em; font-weight: bolder; color: whitesmoke">Total Kills Summary</span><br>
+                        <div style="text-align: center; font-size: 1rem; font-weight: bold; color: whitesmoke;">
+                            <span style="font-weight: bolder; color: whitesmoke">Total Kills Summary</span><br>
                             <span class="terminid-color">${bugKills.toLocaleString()} (${bugPercent.toLocaleString()}%)</span><br>
                             <span class="automaton-color">${botKills.toLocaleString()} (${botPercent.toLocaleString()}%)</span><br>
                             <span class="illuminate-color">${squidKills.toLocaleString()} (${squidPercent.toLocaleString()}%)</span><br>
-                            <span class="helldiver-color">______________</span><br>
-                            <span style="color: whitesmoke;">${totalKills.toLocaleString()} total</span>
-                        </p>
+                            <span class="helldiver-color">${totalKills.toLocaleString()}</span> total<br>
+                            <hr>
+                            Average KD: <span class="helldiver-color">${avgKillsPerLife.toLocaleString()}</span> : <span class="automaton-color">1</span><br>
+                            Total Deaths: <span class="automaton-color">${statsData.deaths.toLocaleString()}</span><br>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <p>
-                            Helldivers Online: <span class="helldiver-color">${statsData.totalPlayers.toLocaleString()}</span>
-                            Average KD: <span class="helldiver-color">${avgKillsPerLife.toLocaleString()} : <span class="automaton-color">1</span></span>
-                        </p>
+                    <div class="stat-card war-effort">
+                        <div style="text-align: left; font-size: 1rem; font-weight: bold; color: whitesmoke;">
+                            Helldivers Online: <span class="helldiver-color">${statsData.totalPlayers.toLocaleString()}</span><br>
+                            Bullets Fired: <span class="helldiver-color">${statsData.bulletsFired.toLocaleString()}</span><br>
+                            Projectile Hits: <span class="helldiver-color">${statsData.bulletsHit.toLocaleString()}</span><br>
+                            Helldiver Accuracy: <span class="helldiver-color">${statsData.accuracy.toLocaleString()}%</span><br>
+                            Missions Won: <span class="success-color">${statsData.missionsWon.toLocaleString()} (${statsData.missionsWonPercent.toLocaleString()}%)</span><br>
+                            Missions Lost: <span class="automaton-color">${statsData.missionsLost.toLocaleString()}</span><br>
+                            Missions Total: <span class="helldiver-color">${statsData.missionsTotal.toLocaleString()}</span><br>
+                            Friendly Kills: <span class="automaton-color">${statsData.accidentals.toLocaleString()}<span>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -526,8 +536,7 @@ async function renderPlanetsPage(contentArea) {
         const allPlanets = await response.json();
 
         let html = `
-            <h2>All Planets (SVG View)</h2>
-            <svg width="100%" viewBox="0 0 800 600" class="planet-svg-map">
+            <h2>All Planets</h2>
         `;
 
         const planetsArray = Object.values(allPlanets);
@@ -549,22 +558,8 @@ async function renderPlanetsPage(contentArea) {
             }
 
             html += `
-                <g class="planet-node" data-planet-id="${planet.index}">
-                    <circle cx="${x}" cy="${y}" r="30" stroke="white" stroke-width="1" class="planet-circle" />
-                    <text x="${x}" y="${y + 45}" class="planet-label">
-                        ${planet.name}
-                    </text>
-
-                    <text x="${x}" y="${y + 65}" class="planet-players">
-                        ${planet.players.toLocaleString()} players
-                    </text>
-                </g>
             `;
         });
-
-        html += '</svg>';
-
-        contentArea.innerHTML = html;
 
         //for each planet node add event listeners
         contentArea.querySelectorAll('.planet-node').forEach(node => {
@@ -669,10 +664,12 @@ function checkTaskProgressHTML(taskInput, planetData) {
     }
 
     const task = taskInput;
-    const formattedType = formatTaskType(task.typeName || "Unknown Type");
+    const formattedType = formatTaskType(task.typeName || "");
+
+    const isContest = formattedType.toLowerCase().includes("contest");
 
     /* BINARY CHECKBOXES */
-    if (task.goal === 1) {
+    if (task.goal === 1 && !isContest) {
         const isComplete = task.progress >= task.goal;
         const statusColor = isComplete ? '#25c225' : '#777';
         const statusText = isComplete ? 'COMPLETED' : 'PENDING';
@@ -681,7 +678,8 @@ function checkTaskProgressHTML(taskInput, planetData) {
         //DEBUG
         //console.log("Current Owner:", planetData.owner);
         
-        const ownerId = String(planetData.owner).trim().toLowerCase();
+        let factionClass = '#6bb7ea'
+        const ownerId = planetData && planetData.owner ? String(planetData.owner).trim().toLowerCase() : '';
 
         if (ownerId === 'terminids' || ownerId === '2') {
             factionClass = '#ff9f00';
@@ -691,10 +689,13 @@ function checkTaskProgressHTML(taskInput, planetData) {
             factionClass = '#db58fb';
         } else {factionClass = '#6bb7ea';}
 
-        let libProgress = (planetData.currentHealth / planetData.maxHealth) * 100;
+        let libProgress = 0
         
-        if (planetData.owner !== 1) {
-            libProgress = 100 - libProgress;
+        if (planetData && planetData.maxHealth) {
+            libProgress = (planetData.currentHealth / planetData.maxHealth) * 100;
+            if (planetData.owner !== 1) {
+                libProgress = 100 - libProgress;
+            }
         }
 
         if (isComplete) {
@@ -723,5 +724,63 @@ function checkTaskProgressHTML(taskInput, planetData) {
         `;
     }
 
-    return ('');
+    else if (isContest) {
+
+        const maxScale = task.goal > 1 ? task.goal : 8;
+
+        const clampedProgress = Math.max(-maxScale, Math.min(maxScale, task.progress));
+
+        const positionPercentage = 50 + (clampedProgress * (50 / maxScale));
+
+        const displayProgress = task.progress > 0 ? '+' + task.progress : '' + task.progress;
+
+        return `
+            <div class="progress-bar-container-binary" style="border: 1px solid #777;">
+                <div class="task-container">
+                    <div class="type-name">
+                        <strong>${formattedType}:</strong><br>
+                    </div>
+                    <div class="target-name">
+                        <span style="color: #ffe710;">${task.targetName || 'Galactic Contest Progress'}</span>
+                    </div>
+                    <div class="status" style="color: #fff;"></div>
+                </div>
+
+                <div class="bidirectional-progress-container">
+                    <div class="mo-arrow" style="left: ${positionPercentage}%;">
+                        <div>▼</div>
+                        <div class="mo-arrow-text">${displayProgress}</div>
+                    </div>
+                </div>
+            </div>
+        `
+    }
+
+    else {
+        let progressPercent = 0;
+        if (task.goal > 0) {
+            progressPercent = ((Math.max(0, task.progress) / task.goal) * 100);
+            progressPercent = Math.min(100, progressPercent).toFixed(3);
+        }
+
+        return `
+            <div class="progress-bar-container-binary" style="border: 1px solid #777;">
+                <div class="task-container">
+                    <div class="type-name">
+                        <strong>${formattedType}:</strong><br>
+                    </div>
+                    <div class="target-name">
+                        <span style="color: #ffe710;">${task.targetName || 'Global Objective'}</span>
+                    </div>
+                    <div class="status" style="color: #fff;">
+                        ${task.progress.toLocaleString()} / ${task.goal.toLocaleString()}
+                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="task-progress-bar-text">${progressPercent}%</div>
+                    <div class="progress-bar liberation-bar" style="width: ${progressPercent}%; background-color: #ffe710 !important;"></div>
+                </div>
+            </div>
+        `;
+    }
 }
