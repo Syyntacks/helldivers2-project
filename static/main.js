@@ -42,6 +42,24 @@ function toggleNav() {
     }
 }
 
+function openPlanetOverlay(planet) {
+    const overlay = document.getElementById("planet-overlay")
+
+    document.getElementById("")
+
+    if (overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        overlay.style.display = 'none';
+    } else {
+        overlay.classList.add('active');
+        overlay.style.display = 'block';
+    }
+}
+
+function closePlanetOverlay() {
+
+}
+
 function updatePageTitle(route) {
     const display = document.getElementById('current-page-title');
     const currentRoute = route || window.location.hash || '#home';
@@ -53,6 +71,7 @@ function updatePageTitle(route) {
         '#major_orders': 'Major Orders',
         '#galaxy_stats': 'Galaxy Stats',
         '#galactic_map': 'Galactic Map',
+        '#changelog': 'CHANGELOG',
     };
 
     if (titles[currentRoute] !== undefined) {
@@ -72,7 +91,7 @@ function loadPageContent(route) {
     const contentArea = document.querySelector('.content-area');
     if (!contentArea) return;
 
-    contentArea.innerHTML = '<h2>Loading...</h2>';
+    contentArea.innerHTML = '';
 
     switch (route) {
         case '#home':
@@ -86,6 +105,9 @@ function loadPageContent(route) {
             break;
         case '#galaxy_stats':
             renderGalaxyStats(contentArea);
+            break;
+        case '#changelog':
+            renderChangelog(contentArea);
             break;
         default:
             if (route === '' || route === undefined) {
@@ -537,29 +559,94 @@ async function renderPlanetsPage(contentArea) {
 
         let html = `
             <h2>All Planets</h2>
+
+            <div class="planet-controls" style="margin-bottom: 20px; display: flex; gap: 15px;">
+                <input type="text" id="planet-search" placeholder="Search for a planet or sector..."
+                    style="padding: 10px; flex-grow: 1; background: #222; color: #fff; border: 1px solid #ffe710; border-radius: 4px;">
+                
+                    <select id="faction-filter" style="padding: 10px; flex-grow: 1; background: #222; color: #fff; border: 1px solid #ffe710; border-radius: 4px;">
+                        <option value="all">All Factions</option>
+                        <option value="humans">- Super Earth</option>
+                        <option value="terminids">- Terminids</option>
+                        <option value="automaton">- Automatons</option>
+                        <option value="illuminate">- Illuminate</option>
+                    </select>
+            </div>
+
+            <div id="planet-grid-container">
         `;
 
         const planetsArray = Object.values(allPlanets);
 
+        const sectorStatuses = analyzeSectors(planetsArray)
+
         planetsArray.forEach((planet, index) => {
-            const planetsPerRow = 5;
-            const x = (index % planetsPerRow) * 150 + 100;
-            const y = Math.floor(index / planetsPerRow) * 120 + 80;
 
             let factionClass = '';
-            if (planet.owner === 2) {
+            const ownerFaction = planet.owner.toLowerCase();
+            if (ownerFaction === 'terminids') {
                 factionClass = 'terminid-color';
-            } else if (planet.owner === 3) {
+            } else if (ownerFaction === 'automaton') {
                 factionClass = 'automaton-color';
-            } else if (planet.owner === 4) {
+            } else if (ownerFaction === 'illuminate') {
                 factionClass = 'illuminate-color';
             } else {
                 factionClass = 'seaf-color';
             }
 
+            const thisSector = sectorStatuses[planet.sector];
+
+            let sectorCssClass = '';
+            let avatarGlowClass = '';
+
+            const owner = planet.owner.toLowerCase();
+
+            if (thisSector.state === "contested") {
+                sectorCssClass = "contested-text-pulse";
+
+            } else {
+                if (owner.includes("earth") || owner === "humans") sectorCssClass = "text-super-earth";
+                else if (owner.includes("terminids") || owner === "bugs") sectorCssClass = "text-terminids";
+                else if (owner.includes("automaton") || owner === "bots") sectorCssClass = "text-automaton";
+                else if (owner.includes("illuminate") || owner === "squid") sectorCssClass = "text-illuminate";
+            }
+
+            if (owner.includes("earth") || owner === "humans") avatarGlowClass = "avatar-glow-seaf";
+            else if (owner.includes("terminids") || owner === "bugs") avatarGlowClass = "avatar-glow-terminids";
+            else if (owner.includes("automaton") || owner === "bots") avatarGlowClass = "avatar-glow-automaton";
+            else if (owner.includes("illuminate") || owner === "squid") avatarGlowClass = "avatar-glow-illuminate";
+
+
+            const biomeName = planet.biomeName || "Unknown";
+            let formattedBiome = biomeName.toLowerCase().replace(/\s+/g, '_');
+
             html += `
+                <div class="planet-list-card" onclick="togglePlanetOverlay()"
+                    data-planet-id="${planet.index}"
+                    data-name="${planet.name.toLowerCase()}"
+                    data-sector="${planet.sector.toLowerCase()}"
+                    data-owner="${planet.owner.toLowerCase()}">
+
+                    <div class="planet-avatar-container ${avatarGlowClass}">
+                        <img src="/static/src/images/planets/${formattedBiome}.webp" alt="${biomeName}" class="planet-avatar" onerror="this.src='/static/src/images/planets/moon.webp'">
+
+                        <img src="/static/src/images/planets/planet_grid.gif" class="planet-grid-overlay" alt="">
+                    </div>
+                    <div class="planet-list-info">
+                        <div class="planet-card-stat">
+                            <h3 class="planet-list-title ${factionClass}">${planet.name}</h3>
+                            <span class="icon-label">
+                                <img src=""
+                            </span>
+                        </div>
+                        <p><strong>Sector:</strong> <span class="${sectorCssClass}">${planet.sector}</span></p>
+                        <p><strong>Biome:</strong> ${planet.biomeName}</p>
+                    </div>
+                </div>
             `;
         });
+
+        html += `</div>`;
 
         //for each planet node add event listeners
         contentArea.querySelectorAll('.planet-node').forEach(node => {
@@ -587,11 +674,69 @@ async function renderPlanetsPage(contentArea) {
             document.getElementById('custom-alert-overlay').style.display = 'none';
         });
 
+        // Search functions
+        const searchInput = document.getElementById('planet-search');
+        const factionFilter = document.getElementById('faction-filter');
+        const allCards = contentArea.querySelectorAll('.planet-list-card');
+
+        function runFilters() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedFaction = factionFilter.value.toLowerCase();
+
+            allCards.forEach(card => {
+                const cardName = card.dataset.name || "";
+                const cardSector = card.dataset.sector || "";
+                const cardOwner = card.dataset.owner || "";
+
+                const matchesSearch = cardName.includes(searchTerm) || cardSector.includes(searchTerm);
+
+                let matchesFaction = false;
+                if (selectedFaction === 'all') {
+                    matchesFaction = true;
+                } else if (selectedFaction === 'humans' && (cardOwner.includes('earth') || cardOwner.includes('humans'))) {
+                    matchesFaction = true;
+                } else if (cardOwner.includes(selectedFaction)) {
+                    matchesFaction = true;
+                }
+
+                if (matchesSearch && matchesFaction) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', runFilters);
+        factionFilter.addEventListener('change', runFilters);
+
     } catch (error) {
         console.error('Failed to fetch planets:', error);
         contentArea.innerHTML = '<p style="color:red;">Error loading planet data.</p>';
     }
 }
+
+async function renderChangelog(contentArea) {
+    try {
+        const response = await fetch('/api/changelog');
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        };
+
+        const html_snippet = await response.text();
+
+        contentArea.innerHTML = `
+            <div id="changelog-container" style="padding: 20px;">
+                ${html_snippet}
+            </div>
+        `;
+    } catch (error) {
+        console.error("Failed to intercept CHANGELOG:", error);
+        contentArea.innerHTML = '<h2 style="color: red;">Error: Transmission Lost.</h2>';
+    }
+};
+
 
 /*  
     ============================================
@@ -784,3 +929,42 @@ function checkTaskProgressHTML(taskInput, planetData) {
         `;
     }
 }
+
+function analyzeSectors(planetData) {
+    const sectors = {};
+
+    planetData.forEach(planet => {
+        const sectorName = planet.sector;
+
+        if (!sectors[sectorName]) {
+            sectors[sectorName] = [];
+        }
+
+        sectors[sectorName].push(planet);
+    });
+    
+    return evaluateSectorControl(sectors);
+};
+
+function evaluateSectorControl(groupedSectors) {
+    const sectorStatuses = {};
+
+    for (const [sectorName, planetsInSector] of Object.entries(groupedSectors)) {
+        const firstPlanetOwner = planetsInSector[0].owner;
+
+        const isFullyControlled = planetsInSector.every(p => p.owner === firstPlanetOwner);
+
+        if (isFullyControlled) {
+            sectorStatuses[sectorName] = {
+                state: "static",
+                owner: firstPlanetOwner
+            };
+        } else {
+            sectorStatuses[sectorName] = {
+                state: "contested",
+                owner: "Mixed"
+            }
+        }
+    }
+    return sectorStatuses;
+};

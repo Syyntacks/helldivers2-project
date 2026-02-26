@@ -2,32 +2,44 @@
 ========================================
 TABLE OF CONTENTS
 ========================================
-1. GLOBAL STYLES
-   - body, header, h1, p, footer
-2. LAYOUT STYLES
-   - .main-display, .sidebar-nav, .content-area, .overlay, .top-bar
-3. HOMEPAGE STYLES
-   - .homepage-card, .top-card
-4. COMPONENT STYLES
-   - .stat-card, .stats-layout
-   - .planetProgress, .planetHealth
-   - .stats-summary-grid
-5. UTILITY CLASSES
-   - Faction Colors (.terminid-color, etc.)
+1. VARIABLES & GLOBAL STYLES
+   - :root, body, typography elements, footer
+2. LAYOUT & NAVIGATION
+   - .main-display, .content-area, .sidebar-nav, .top-bar, menu buttons
+3. CORE COMPONENTS (CARDS & GRIDS)
+   - .homepage-card, .mo-card, .stat-card, .planet-list-card, layouts
+4. PROGRESS BARS & TASKS
+   - .progress-bar-container, .bidirectional-progress-container, .mo-tasks
+5. SPECIALIZED VIEWS
+   - #changelog-container, #custom-alert-overlay
+6. UTILITIES, ANIMATIONS & MODIFIERS
+   - @keyframes, faction colors, text shadows, avatar glows
+7. BIOME BACKGROUND IMAGES
+   - .stat-card[data-biome]
+8. MOBILE / RESPONSIVE OVERRIDES
+   - @media queries
 ========================================
 */
 
-
-
-
-/*  
-    ========================
-    1. GLOBAL STYLES
-    ======================== 
+/* ========================================
+    1. VARIABLES & GLOBAL STYLES
+    ======================================== 
 */
+:root {
+    --terminal-green: #4caf50;
+    --helldiver-color: #ffe710;
+    --terminid-color: #FF9f00;
+    --automaton-color: #fe6a67;
+    --illuminate-color: #db58fb;
+    --seaf-color: #6bb7ea;
+    --seaf-2-color: #41639c;
+    --success-color: #25c225;
+    --light-grey: #777;
+    --light-grey-text: #d1d5db;
+}
 
 body {
-    background-image: url("/static/images/bg-stars.jpg");
+    background-image: url("/static/src/images/bg-stars.jpg");
     background-color: rgb(34, 34, 34);
     background-repeat: no-repeat;
     background-attachment: fixed; 
@@ -37,7 +49,7 @@ body {
     padding-top: 60px;
 }
 header {
-    color: #ffe710;
+    color: var(--helldiver-color);
     text-align: center;
     padding: 20px;
     background-color: rgba(0,0,0,0.7);
@@ -45,12 +57,12 @@ header {
     text-transform: uppercase;
 }
 h1 {
-    color: #ffe710;
+    color: var(--helldiver-color);
     text-align: center;
     margin: 0;
 }
 p {
-    color: #ffe710;
+    color: var(--helldiver-color);
     line-height: 1.8;
     text-align: center;
 }
@@ -62,11 +74,9 @@ footer {
     background-color: rgba(0,0,0,0.5);
 }
 
-
-/*  
-    ========================
-    2. LAYOUT STYLES
-    ======================== 
+/* ========================================
+    2. LAYOUT & NAVIGATION
+    ======================================== 
 */
 .main-display {
     display: flex;
@@ -84,7 +94,7 @@ footer {
     overflow-y: auto;
 }
 .content-area h2 {
-    color: #ffe710;
+    color: var(--helldiver-color);
     font-size: 2em;
     margin-top: 6px;
     text-align: center;
@@ -93,13 +103,13 @@ footer {
     height: 100%;
     width: 240px;
     position: fixed;
-    z-index: 10;
+    z-index: 1000;
     top: 0;
     left: 0;
     padding: 20px;
     padding-top: 60px;
     font-family: monospace;
-    border-right: #ffe710 2px solid;
+    border-right: var(--helldiver-color) 2px solid;
     background-color: rgba(33,34,34,0.4);
     box-shadow: 2px 0 5px rgba(0,0,0,0.5);
     transition: 0.3s;
@@ -111,7 +121,7 @@ footer {
     transform: translateX(0);
 }
 .sidebar-nav h2 {
-    color: #ffe710;
+    color: var(--helldiver-color);
     margin-top: 0;
 }
 .sidebar-nav ul {
@@ -119,11 +129,11 @@ footer {
     padding: 0;
 }
 .sidebar-nav li {
-    color: #ffe710;
+    color: var(--helldiver-color);
     margin-bottom: 10px;
 }
 .sidebar-nav a {
-    color: #ffe710;
+    color: var(--helldiver-color);
     text-transform: uppercase;
     text-decoration: none; /* No line for hyperlinks */
     font-size: 1.5em;
@@ -133,7 +143,7 @@ footer {
     transition: background-color 0.4s ease, color 0.4s ease; /* Hover transition */
 }
 .sidebar-nav a:hover { /* Hover effect over text */
-    background-color: #ffe710;
+    background-color: var(--helldiver-color);
     color: #000;
 }
 .sidebar-nav a:focus {
@@ -141,39 +151,31 @@ footer {
     background-color: #fef070;
     color: #000;
 }
-
 .overlay {
     display: none;
     position: fixed;
     width: 100%;
     height: 100%;
     background-color: rgba(33,34,34,0.4);
-    z-index: 5;
+    z-index: 100;
     cursor: pointer;
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
 }
-
 .top-bar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 60px;
-    background-color: #ffe710;
+    background-color: var(--helldiver-color);
     color: black;
     display: flex;
     align-items: center;
     padding: 0 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    z-index: 11;
-  }
-
-/*  
-    ========================
-    3. HOMEPAGE STYLES
-    ======================== 
-*/
+    z-index: 105;
+}
 .menu-btn {
     font-size: 28px;
     cursor: pointer;
@@ -197,7 +199,7 @@ footer {
     margin-left: 50px;
     background: none;
     border: none;
-    color: #ffe710;
+    color: var(--helldiver-color);
     cursor: pointer;
 }
 .app-title {
@@ -216,18 +218,6 @@ footer {
     font-size: x-large;
     font-weight: 700;
 }
-@media (max-width: 480px) {
-    .app-text {
-        display: none;
-    }
-    .separator {
-        display: none;
-    }
-    .top-row-container{
-        flex-direction: column;
-    }
-}
-
 .top-row-container {
     display: grid;
     grid-template-columns: repeat(2, minmax(320px, 1fr)); /* Creates responsive columns*/
@@ -239,22 +229,25 @@ footer {
     margin-bottom: 0; /* Handled within parent container*/
 }
 
+/* ========================================
+    3. CORE COMPONENTS (CARDS & GRIDS)
+    ======================================== 
+*/
 .homepage-card {
     background-color: rgba(33,34,34,0.7);
     color: whitesmoke;
-    border: #ffe710 1px solid;
+    border: var(--helldiver-color) 1px solid;
     padding: 20px;
     padding-top: 0;
     margin-bottom: 20px;
     border-radius: 4px;
 }
 .homepage-card h3 {
-    color:#ffe710;
+    color:var(--helldiver-color);
     font-size: 2em;
     text-transform: uppercase;
     text-align: center;
 }
-
 .homepage-card .active-planets-container {
     display: flex;
     flex-wrap: nowrap;
@@ -263,21 +256,20 @@ footer {
     width: 100%;
     padding-bottom: 8px;
 }
-
 .mo-card {
     max-width: 800px;
     background-color: rgba(33,34,34,0.7);
-    border: #ffe710 1px solid;
+    border: var(--helldiver-color) 1px solid;
     padding: 20px;
     text-align: center;
 }
 .mo-card h3 {
-    color: #ffe710;
+    color: var(--helldiver-color);
     font-weight: bold;
     margin-top: 0;
 }
 .mo-card h2 {
-    color:#ffe710;
+    color:var(--helldiver-color);
     font-weight: bold;
     margin-top: 0;
 }
@@ -287,19 +279,13 @@ footer {
     text-align: center;
     margin-top: 0;
 }
-
-/*  
-    ========================
-    4. COMPONENT STYLES
-    ======================== 
-*/
 .stats-summary-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 10px;
     text-align: center;
     background-color: rgba(33,34,34,0.7);
-    border:#ffe710 1px solid;
+    border:var(--helldiver-color) 1px solid;
     border-radius: 4px;
     padding: 10px;
 }
@@ -308,10 +294,6 @@ footer {
     font-weight: bold;
     margin: 10px; 
 }
-.war-effort {
-    width: auto; /* Let the grid handle the width */
-}
-
 .stats-layout {
     display: flex;
     flex-wrap: wrap;
@@ -324,19 +306,6 @@ footer {
 .stats-layout p {
     font-size: 1.3em;
 }
-
-@keyframes pulse-danger {
-    0% {
-        box-shadow: 0 0 5px #fe6a67, 0 0 10px #fe6a67;
-    }
-    50% {
-        box-shadow: 0 0 16px #fe6a67, 0 0 30px #fe6a67;
-    }
-    100% {
-        box-shadow: 0 0 5px #fe6a67, 0 0 10px #fe6a67;
-    }
-}
-
 .stat-card::before {
     content: "";
     position: absolute;
@@ -344,7 +313,6 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-
     background-color: rgba(0,0,0,0.5);
     border-radius: 4px;
     z-index: 0;
@@ -355,19 +323,16 @@ footer {
 }
 .stat-card {
     background-color: rgba(33,34,34,0.4);
-    border: #ffe710 1px solid;
+    border: var(--helldiver-color) 1px solid;
     padding: 15px;
     text-align: center;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-
     min-width: 320px;
     flex: 1 1 320px;
     max-width: 400px;
     min-height: 200px;
-
-    /* Image styling */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -385,14 +350,13 @@ footer {
     font-variant: small-caps;
 }
 .stat-card.is-defending {
-    /*border-color: #fe6a67 !important;*/
     animation-name: pulse-danger;
     animation-duration: 1.3s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
 }
 .stat-card h3 {
-    color: #ffe710;
+    color: var(--helldiver-color);
     font-size: 1.5em;
     font-weight: bold;
     margin-top: 0;
@@ -408,7 +372,91 @@ footer {
     margin-bottom: 10px;
     text-shadow: 2px 2px 2px #000;
 }
+#planet-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+.planet-list-card {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: rgba(33, 34, 34, 0.6);
+    border: 1px solid #777;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.planet-list-card:hover {
+    transform: translateX(5px);
+    border-color: var(--helldiver-color);
+}
+.planet-avatar-container {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: rgba(33, 34, 34, 0.6);
+    border: 2px solid var(--helldiver-color);
+    box-shadow: 0 0 10px rgba(255, 231, 16, 0.4);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.planet-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.planet-grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.3;
+}
+.planet-list-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.planet-list-info strong {
+    font-variant: small-caps;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.planet-list-info p {
+    margin: 2px 0;
+    color: whitesmoke;
+    font-size: 0.9rem;
+    text-align: left;
+    padding: 0;
+}
+.planet-card-stat {
+    font-size: 1rem;
+}
+.planet-list-title {
+    margin: 0 0 5px 0;
+    color: var(--helldiver-color);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px #000;
+}
 
+/* ========================================
+    4. PROGRESS BARS & TASKS
+    ======================================== 
+*/
+.war-effort {
+    width: auto; /* Let the grid handle the width */
+}
 .progress-bar-container {
     display: flex;
     position: relative;
@@ -439,7 +487,6 @@ footer {
 }
 .progress-bar {
     color: #fff !important;
-    /* font-weight: bold; */
     font-size: 0.7em;
     text-align: center;
     line-height: 1.25em;
@@ -447,20 +494,17 @@ footer {
     height: 100%;
     transition: width 0.5s ease-in-out;
 }
-
 .progress-bar-container:has(+ .progress-bar-container) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     margin-bottom: 0;
 }
-
 .progress-bar-container + .progress-bar-container {
     margin-top: 0; 
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-top: none; 
 }
-
 .defender-bar {
     background-color: #41639C;
     text-shadow: 1px 1px 2px #000;
@@ -469,16 +513,14 @@ footer {
     text-shadow: 1px 1px 2px #000;
 }
 .liberation-bar {
-    background-color: #ffe710;
+    background-color: var(--helldiver-color);
     text-shadow: 1px 1px 2px #000;
 }
-
 .mo-tasks {
     text-align: left;
     margin: 20px auto;
     max-width: 80%;
 }
-
 .mo-arrow {
     position: absolute;
     top: -1.1em;
@@ -488,33 +530,27 @@ footer {
     flex-direction: column;
     align-items: center;
     font-size: 1.4rem;
-    color: #ffe710;
+    color: var(--helldiver-color);
     text-shadow: 1px 1px 2px #000;
     transition: left 0.4s ease-out;
     z-index: 10;
     line-height: 1;
 }
-
 .mo-arrow-text {
     font-weight: bold;
-    color: #ffe710;
+    color: var(--helldiver-color);
 }
-
-/* Tug-of-war MO progress bar */
 .bidirectional-progress-container {
     position: relative;
     width: 80%;
     height: 1.5em;
-
-    /* This creates the red/green 50/50 split */
-    background: linear-gradient(90deg, #fe6a67 50%, #25c225 50%);
+    background: linear-gradient(90deg, var(--automaton-color) 50%, var(--success-color) 50%);
     border: 1px solid #000;
     border-radius: 4px;
     margin-top: 15px;
     margin-bottom: 5px;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.5); /* Adds depth */
 }
-
 .progress-bar-container-binary {
     margin-bottom: 15px;
     width: 100%;
@@ -531,13 +567,12 @@ footer {
     align-items: center; 
     width: 100%;
 }
-
 .progress-bar-container-binary .type-name {
     font-size: 1.4rem;
     text-transform: uppercase;
     text-align: left;
     flex: 1;
-    color: #ffe710;
+    color: var(--helldiver-color);
 }
 .progress-bar-container-binary .target-name {
     text-align: center;
@@ -553,11 +588,91 @@ footer {
     flex: 1;
 }
 
-
-.planet-node .planet-label {
-    color: #ffe710;
+/* ========================================
+    5. SPECIALIZED VIEWS
+    ======================================== 
+*/
+#changelog-container {
+    background-color: rgba(20, 20, 20, 0.75);
+    border: 1px solid #444;
+    padding: 30px;
+    border-radius: 8px;
+    color: #d1d5db;
+    line-height: 1.6;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
 }
-
+#changelog-container h1 {
+    font-variant: small-caps;
+    color: var(--light-grey-text);
+    border-bottom: 2px solid var(--light-grey-text);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(255, 231, 16, 0.4);
+}
+#changelog-container h2 {
+    border-bottom: 2px solid var(--helldiver-color);
+    border-bottom-style: double;
+    color: var(--helldiver-color);
+    padding-bottom: 5px;
+    margin-top: 30px;
+    text-align: left;
+}
+#changelog-container h3 {
+    font-variant: small-caps;
+    color: var(--automaton-color);
+    padding-bottom: 0;
+    padding-top: 10px;
+}
+#changelog-container h4 {
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0 0 3px rgba(76, 175, 80, 0.5);
+    color: var(--terminal-green);
+    padding-left: 32px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.6;
+    text-align: left;
+}
+#changelog-container p {
+    font-size: 1rem;
+    color: var(--light-grey-text);
+    line-height: 1.6;
+}
+#changelog-container strong {
+    font-size: 1.1rem;
+    color: var(--seaf-color);
+}
+#changelog-container em {
+    color: #999;
+    font-style: italic;
+}
+#changelog-container code {
+    font-family: monospace;
+    color: var(--terminal-green);
+    text-shadow: 0 0 3px rgba(76, 175, 80, 0.5);
+}
+#changelog-container ul {
+    list-style-type: square;
+    padding-left: 32px;
+}
+#changelog-container li {
+    margin-bottom: 4px;
+    font-size: 1rem;
+}
+#changelog-container li strong {
+    color: var(--helldiver-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-shadow: 0 0 3px rgba(255, 231, 16, 0.5);
+}
+#changelog-container li code {
+    text-shadow: 0 0 3px rgba(76, 175, 80, 0.5);
+    color: var(--terminal-green);
+    font-family: monospace;
+    font-size: 1rem;
+}
 #custom-alert-overlay {
     position: fixed; /* Cover the whole screen */
     top: 0;
@@ -570,17 +685,15 @@ footer {
     align-items: center;
     justify-content: center;
 }
-
 #custom-alert-box {
     background-color: rgb(34, 34, 34);
-    border: 2px solid #ffe710;
+    border: 2px solid var(--helldiver-color);
     border-radius: 8px;
     padding: 24px;
     text-align: center;
     min-width: 300px;
     max-width: 80%;
 }
-
 #custom-alert-message {
     font-family: monospace;
     color: whitesmoke;
@@ -589,9 +702,8 @@ footer {
     margin: 0 0 20px 0;
     text-align: left;
 }
-
 #custom-alert-ok {
-    background-color: #ffe710;
+    background-color: var(--helldiver-color);
     color: #000;
     border: none;
     border-radius: 4px;
@@ -602,129 +714,131 @@ footer {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 #custom-alert-ok:hover {
     background-color: #fff;
 }
 
-/*  
-    ========================
-    5. UTILITY CLASSES
-    ======================== 
+/* ========================================
+    6. UTILITIES, ANIMATIONS & MODIFIERS
+    ======================================== 
 */
-.planetHealth.terminid-color {
-    background-color: #FF9f00 !important;
+@keyframes pulse-danger {
+    0% { box-shadow: 0 0 5px var(--automaton-color), 0 0 10px var(--automaton-color); }
+    50% { box-shadow: 0 0 16px var(--automaton-color), 0 0 30px var(--automaton-color); }
+    100% { box-shadow: 0 0 5px var(--automaton-color), 0 0 10px var(--automaton-color); }
 }
-.planetHealth.automaton-color {
-    background-color: #fe6a67 !important;
+@keyframes warPulse {
+    0% { background-color: rgba(255, 0, 0, 0.2); box-shadow: 0 0 5px rgba(255, 0, 0, 0.2); }
+    50% { background-color: rgba(255, 0, 0, 0.6); box-shadow: 0 0 15px rgba(255, 0, 0, 0.8); }
+    100% { background-color: rgba(255, 0, 0, 0.2); box-shadow: 0 0 5px rgba(255, 0, 0, 0.2); }
 }
-.planetHealth.illuminate-color {
-    background-color: #db58fb !important;
-}
-.planetHealth.seaf-color {
-    background-color: #6bb7ea !important;
-    color: #fff !important;
-}
-.planetHealth.seaf-color-2 {
-    background-color: #41639C !important;
-    color: #fff !important;
-}
+.planetHealth.terminid-color { background-color: var(--terminid-color) !important; }
+.planetHealth.automaton-color { background-color: var(--automaton-color) !important; }
+.planetHealth.illuminate-color { background-color: var(--illuminate-color) !important; }
+.planetHealth.seaf-color { background-color: var(--seaf-color) !important; color: #fff !important; }
+.planetHealth.seaf-color-2 { background-color: var(--seaf-2-color) !important; color: #fff !important; }
+.avatar-glow-seaf { box-shadow: 0 0 24px color-mix(in srgb, #3498db, transparent 60%); border: 2px solid #3498db; }
+.avatar-glow-terminids { box-shadow: 0 0 24px color-mix(in srgb, #f39c12, transparent 60%); border: 2px solid #f39c12; }
+.avatar-glow-automaton { box-shadow: 0 0 24px color-mix(in srgb, #e74c3c, transparent 60%); border: 2px solid #e74c3c; }
+.avatar-glow-illuminate { box-shadow: 0 0 24px color-mix(in srgb, #9b59b6, transparent 60%); border: 2px solid #9b59b6; }
+.helldiver-color { color: var(--helldiver-color) !important; }
+.terminid-color { color: var(--terminid-color) !important; }
+.automaton-color { color: var(--automaton-color) !important; }
+.illuminate-color { color: var(--illuminate-color) !important; }
+.seaf-color { color: var(--seaf-color) !important; }
+.seaf-color-2 { color: var(--seaf-2-color) !important; }
+.success-color { color: var(--success-color) !important; }
+.text-super-earth { font-size: 1.1rem; font-weight: bold; text-shadow: 0 0 2px rgba(44, 130, 201, 0.4); color: #2c82c9; }
+.text-terminids { font-size: 1.1rem; font-weight: bold; text-shadow: 0 0 2px rgba(230, 126, 34, 0.4); color: #e67e22; }
+.text-automatons { font-size: 1.1rem; font-weight: bold; text-shadow: 0 0 2px rgba(207, 0, 15, 0.4); color: #cf000f; }
+.text-illuminate { font-size: 1.1rem; font-weight: bold; text-shadow: 0 0 2px rgba(155, 89, 182, 0.4); color: #9b59b6; }
+.contested-text-pulse { font-size: 1.1rem; font-weight: bold; border-radius: 8px; animation: warPulse 2s infinite ease-in-out; }
 
-/* FACTION COLOUR CLASSES*/
-.helldiver-color {
-    color: #ffe710 !important;
-}
-.terminid-color {
-    color: #FF9f00 !important;
-}
-.automaton-color {
-    color: #fe6a67 !important;
-}
-.illuminate-color {
-    color: #db58fb !important;
-}
-.seaf-color {
-    color: #6bb7ea !important;
-}
-.seaf-color-2 {
-    color: #41639C !important;
-}
-.success-color {
-    color: #25c225 !important;
-}
-
-
-/*  
-    ========================
-    BIOME BACKGROUND IMAGES
-    ======================== 
+/* ========================================
+    7. BIOME BACKGROUND IMAGES
+    ======================================== 
 */
-.stat-card[data-biome="Acidic Badlands"] {
-    background-image: url('/static/images/landscapes/Acidic_Badlands.png');
+.stat-card[data-biome="Acidic Badlands"] { background-image: url('/static/src/images/landscapes/Acidic_Badlands.png'); }
+.stat-card[data-biome="Basic Swamp"] { background-image: url('/static/src/images/landscapes/Basic_Swamp.png'); }
+.stat-card[data-biome="Black Hole"] { background-image: url('/static/src/images/landscapes/Black_Hole.png'); }
+.stat-card[data-biome="Boneyard"] { background-image: url('/static/src/images/landscapes/Boneyard.png'); }
+.stat-card[data-biome="Deadlands"] { background-image: url('/static/src/images/landscapes/Deadlands.png'); }
+.stat-card[data-biome="Desert Cliffs"] { background-image: url('/static/src/images/landscapes/Desert_Cliffs.png'); }
+.stat-card[data-biome="Desert Dunes"] { background-image: url('/static/src/images/landscapes/Desert_Dunes.png'); }
+.stat-card[data-biome="Ethereal Jungle"] { background-image: url('/static/src/images/landscapes/Ethereal_Jungle.png'); }
+.stat-card[data-biome="Haunted Swamp"] { background-image: url('/static/src/images/landscapes/Haunted_Swamp.png'); }
+.stat-card[data-biome="Hive World"] { background-image: url('/static/src/images/landscapes/Hive_World.png'); }
+.stat-card[data-biome="Icy Glaciers"] { background-image: url('/static/src/images/landscapes/Icy_Glaciers.png'); }
+.stat-card[data-biome="Ionic Crimson"] { background-image: url('/static/src/images/landscapes/Ionic_Crimson.png'); }
+.stat-card[data-biome="Ionic Jungle"] { background-image: url('/static/src/images/landscapes/Ionic_Jungle.png'); }
+.stat-card[data-biome="Magma"] { background-image: url('/static/src/images/landscapes/Magma.jpg'); }
+.stat-card[data-biome="Moon"] { background-image: url('/static/src/images/landscapes/Moon.png'); }
+.stat-card[data-biome="Plains"] { background-image: url('/static/src/images/landscapes/Plains.png'); }
+.stat-card[data-biome="Rocky Canyons"] { background-image: url('/static/src/images/landscapes/Rocky_Canyons.png'); }
+.stat-card[data-biome="Scorched Moor"] { background-image: url('/static/src/images/landscapes/Scorched_Moor.png'); }
+.stat-card[data-biome="Super Earth"] { background-image: url('/static/src/images/landscapes/Super_Earth.png'); }
+.stat-card[data-biome="Supercolony"] { background-image: url('/static/src/images/landscapes/Supercolony.png'); }
+.stat-card[data-biome="Tien Kwan"] { background-image: url('/static/src/images/landscapes/Tien_Kwan.png'); }
+.stat-card[data-biome="Tundra"] { background-image: url('/static/src/images/landscapes/Tundra.png'); }
+.stat-card[data-biome="Volcanic Jungle"] { background-image: url('/static/src/images/landscapes/Volcanic_Jungle.png'); }
+
+/* ========================================
+    8. MOBILE / RESPONSIVE OVERRIDES
+    ======================================== 
+*/
+
+
+
+
+/* --- TABLETS & LARGE PHONES --- */
+@media (max-width: 768px) {
+    body {
+        padding-top: 50px;
+    }
+    .main-display {
+        padding: 10px;
+    }
+    .content-area {
+        padding: 10px;
+    }
+    .mo-card p {
+        font-size: 1.2em;
+    }
+    .stats-layout h3 {
+        font-size: 1.2em;
+    }
+    .stat-card {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    #planet-grid-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
 }
-.stat-card[data-biome="Basic Swamp"] {
-    background-image: url('/static/images/landscapes/Basic_Swamp.png');
-}
-.stat-card[data-biome="Black Hole"] {
-    background-image: url('/static/images/landscapes/Black_Hole.png');
-}
-.stat-card[data-biome="Boneyard"] {
-    background-image: url('/static/images/landscapes/Boneyard.png');
-}
-.stat-card[data-biome="Deadlands"] {
-    background-image: url('/static/images/landscapes/Deadlands.png');
-}
-.stat-card[data-biome="Desert Cliffs"] {
-    background-image: url('/static/images/landscapes/Desert_Cliffs.png');
-}
-.stat-card[data-biome="Desert Dunes"] {
-    background-image: url('/static/images/landscapes/Desert_Dunes.png');
-}
-.stat-card[data-biome="Ethereal Jungle"] {
-    background-image: url('/static/images/landscapes/Ethereal_Jungle.png');
-}
-.stat-card[data-biome="Haunted Swamp"] {
-    background-image: url('/static/images/landscapes/Haunted_Swamp.png');
-}
-.stat-card[data-biome="Hive World"] {
-    background-image: url('/static/images/landscapes/Hive_World.png');
-}
-.stat-card[data-biome="Icy Glaciers"] {
-    background-image: url('/static/images/landscapes/Icy_Glaciers.png');
-}
-.stat-card[data-biome="Ionic Crimson"] {
-    background-image: url('/static/images/landscapes/Ionic_Crimson.png');
-}
-.stat-card[data-biome="Ionic Jungle"] {
-    background-image: url('/static/images/landscapes/Ionic_Jungle.png');
-}
-.stat-card[data-biome="Magma"] {
-    background-image: url('/static/images/landscapes/Magma.jpg');
-}
-.stat-card[data-biome="Moon"] {
-    background-image: url('/static/images/landscapes/Moon.png');
-}
-.stat-card[data-biome="Plains"] {
-    background-image: url('/static/images/landscapes/Plains.png');
-}
-.stat-card[data-biome="Rocky Canyons"] {
-    background-image: url('/static/images/landscapes/Rocky_Canyons.png');
-}
-.stat-card[data-biome="Scorched Moor"] {
-    background-image: url('/static/images/landscapes/Scorched_Moor.png');
-}
-.stat-card[data-biome="Super Earth"] {
-    background-image: url('/static/images/landscapes/Super_Earth.png');
-}
-.stat-card[data-biome="Supercolony"] {
-    background-image: url('/static/images/landscapes/Supercolony.png');
-}
-.stat-card[data-biome="Tien Kwan"] {
-    background-image: url('/static/images/landscapes/Tien_Kwan.png');
-}
-.stat-card[data-biome="Tundra"] {
-    background-image: url('/static/images/landscapes/Tundra.png');
-}
-.stat-card[data-biome="Volcanic Jungle"] {
-    background-image: url('/static/images/landscapes/Volcanic_Jungle.png');
+
+
+@media (max-width: 480px) {
+    .app-text {
+        display: none;
+    }
+    .separator {
+        display: none;
+    }
+    .top-row-container{
+        grid-template-columns: 1fr;
+    }
+    .stats-layout {
+        grid-template-columns: 1fr;
+    }
+    .planet-list-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .planet-list-info p {
+        text-align: center;
+    }
 }

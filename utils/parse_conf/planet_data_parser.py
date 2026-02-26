@@ -239,6 +239,24 @@ class PlanetParser():
 
                         hazard_names.append(name)
                         hazard_descr.append(description)
+
+                    regions_list = []
+                    fetched_regions = planet.get("regions", [])
+                    for region in fetched_regions:
+                        region_id = region.get("id", "0")
+                        region_hash = region.get("hash", "N/A")
+                        region_name = region.get("name", "Unknown region")
+                        region_desc = region.get("description", "N/A")
+                        region_health = region.get("health", "N/A") # CAN BE NULL
+                        region_max_health = region.get("maxHealth", "N/A")
+                        region_size = region.get("size", "Unknown")
+                        region_regen_per_sec = region.get("regenPerSecond", "0")
+                        region_availability = region.get("availabilityFactor", "Unknown")
+                        region_is_available = region.get("isAvailable", "false")
+                        region_players = region.get("players", 0)
+
+
+
                     
 
                     # Parameters
@@ -300,6 +318,19 @@ class PlanetParser():
                         'position': planet_position,
                         'waypoints': waypoint_ids,
                         'waypointNames': waypoint_names,
+
+                        # Regions data
+                        'regionId': region_id,
+                        'regionHash': region_hash,
+                        'regionName': region_name,
+                        'regionDesc': region_desc,
+                        'regionHealth': region_health,
+                        'regionMaxHealth': region_max_health,
+                        'regionSize': region_size,
+                        'regionRegen': region_regen_per_sec,
+                        'regionAvailability': region_availability,
+                        'regionIsAvailable': region_is_available,
+                        'regionPlayers': region_players,
                     }
                 except Exception as inner_e:
                     print(f"Skipping planet {index} due to error: {inner_e}")

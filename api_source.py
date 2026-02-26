@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from utils.parse_conf.planet_data_parser import PlanetParser
 from utils.parse_conf.major_order_parser import MajorOrderParser
@@ -12,6 +13,7 @@ from utils.parse_conf.galaxy_stats_parser import parse_galaxy_stats
 from utils.parse_conf.data_fetcher import fetch_data_from_url
 from conf import settings
 import json
+import markdown
 import os
 
 def load_static_json_data(file_path):
@@ -139,3 +141,12 @@ def get_galaxy_stats():
         galaxy_stats = parse_galaxy_stats(raw_data) # returns a list
         return galaxy_stats
     return {"error": "Failed to fetch galaxy stats"}
+
+@app.get("/api/changelog", response_class=HTMLResponse)
+async def changelog_page():
+
+    with open("CHANGELOG.md", "r", encoding="utf-8") as file:
+        text = file.read()
+    
+    html_snippet = markdown.markdown(text)  
+    return html_snippet

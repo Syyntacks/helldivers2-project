@@ -5,7 +5,76 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
-## [0.7.3] - 2026-02-25
+## [0.8.0] - 2026-02-26
+
+### Added
+
+- Planet image resources gathered using `download_assets.py` from `helldiverscompanion.com` public resources.
+
+#### api_source.py
+
+- Imported `HTMLResonse` from `FastAPI.responses`.
+- Added `import markdown` to import list.
+- Created `changelog_page()` to view full `CHANGELOG.md`.
+
+#### download_assets.py
+
+- Created a script to access and save public image resources from `helldiverscompanion.com`.
+- *Can be altered based on URL or desired directory.*
+
+#### requirements.txt
+
+- Updated required third-party libraries list.
+
+#### index.html
+
+- Created reference pages for `CHANGELOG.md` display.
+- Inserted planet-overlay element for upcoming planet card overlay.
+
+#### main.js
+
+- Created `openPlanetOverlay()` function to handle upcoming planet card overlay activation.
+  - `closePlanetOverlay()` is created however currently unpopulated.
+- **Changelog** page title and routing added.
+- **renderPlanetsPage()**
+  - Officially implemented a search bar and dropdown filter menu to offer users organized planet or faction-specific data.
+    - *You can search by planet name or by Sector name. More search parameters will be added soon.*
+  - Created two new functions- `analyzeSectors()` and `evaluateSectorControl()`- to check **Planet's** current sector and its owner, and to provide dynamic styling respectively.
+  - Created a proper **Planet Card** that provides a more dynamic experience for the user.
+    - *More information to be added over time. May result in some unexpected formatting issues.*
+- `renderChangelog()` function created to render `CHANGELOG.md` notes.
+
+### Changed
+
+- Changed the `json` directory from a submodule to hosting local files to avoid inconsistencies and to allow self-configuration.
+
+#### main.js
+
+- **renderPlanetsPage()**
+  - Changed planet.owner value results to faction string instead of an integer ('2' => 'terminids', etc.)
+
+#### styles.css
+
+- With AI assistance the document has been reformatted for a more cohesive and organized coding experience.
+  
+
+### Deprecated
+
+### Removed
+
+#### main.js
+
+- Removed prior loading message (inconsistent message appearing).
+
+### Fixed
+
+- Fixed formatting issues across application.
+
+### Security
+
+### Known Issues
+
+## [0.7.3] - Wednesday, 2026-02-25
 
 ### Added
 
@@ -13,13 +82,14 @@ and this project adheres to [Semantic Versioning].
 - **Binary Progress Bar:** Created a dedicated MO progress bar to handle majority cases.
 - Filled the **War Effort Summary** with full Galactic statistics.
 
-**galaxy_stats_parser.py**
+#### galaxy_stats_parser.py
 
 - Added missing statistics to stats dictionary (`missions_won`, `missions_lost`, `missions_total`, `accidentals`).
 
 ### Changed
 
-**main.js**
+#### main.js
+
 - Decreased size of liberation percentage bar in **Planet Cards** on Homepage.
 - Text formatting for `<p>` in Homepage cards has been decreased, making room for future additions.
 - Moved defense timer above progression bars.
@@ -31,7 +101,7 @@ and this project adheres to [Semantic Versioning].
 
 ### Removed
 
-- Removed `planet_node` in preparation for dedicated Planets page.
+- Removed `planet_node` in preparation for dedicated *Planets* page.
 
 ### Fixed
 
@@ -41,11 +111,10 @@ and this project adheres to [Semantic Versioning].
 
 ### Known Issues
 
-- **Cloud Persistence:** Data history snapshots saved on Azure Static Web Apps (or similar serverless environments) are temporary and will be wiped when the instance idles. A local or external storage solution is required for permanent data retention.
-- **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map*
-- Mobile formatting inconsistencies
+- **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map.*
+- Mobile formatting inconsistencies.
 
-## [0.7.2] - 2026-02-22
+## [0.7.2] - Sunday, 2026-02-22
 
 ### Added
 
@@ -53,7 +122,7 @@ and this project adheres to [Semantic Versioning].
 
 - **History Save Timeframe:**
   - Previous change was to `main_exe.py`.
-  - Present change changed data bot interval from *every hour* to *every 3 hours & once at 5am (UTC 0:00)*
+  - Present change changed data bot interval from *every hour* to *every 3 hours & once at 5am (UTC 0:00).*
 
 ### Deprecated
 
@@ -71,7 +140,7 @@ and this project adheres to [Semantic Versioning].
 - **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map*
 - Mobile formatting inconsistencies
 
-## [0.7.1] - 2026-02-05
+## [0.7.1] - Saturday, 2026-02-07
 
 ### Added
 
@@ -95,7 +164,7 @@ and this project adheres to [Semantic Versioning].
 - **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map*
 - Mobile formatting inconsistencies
 
-## [0.7.0] - 2026-02-03
+## [0.7.0] - Tuesday, 2026-02-03
 
 ### Added
 
@@ -131,7 +200,7 @@ and this project adheres to [Semantic Versioning].
 - **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map*
 - Mobile formatting inconsistencies
 
-## [0.6.1] - 2025-12-27
+## [0.6.1] - Saturday, 2025-12-27
 
 ### Added
 
@@ -176,7 +245,7 @@ public access (user must know link for now).
 - Contest MO-type is displaying improper information.
 - Most additional webpages are either broken or do not display correct/full information.
 
-## [0.6.0] - 2025-12-05
+## [0.6.0] - Friday, 2025-12-05
 
 ### Added
 
