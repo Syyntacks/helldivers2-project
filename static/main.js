@@ -381,7 +381,7 @@ async function renderGalaxyStats(contentArea) {
     //'try' and 'catch' are similar to 'try' and 'except'
     try {
         console.log('Fetching stats from /api/galaxy_stats...');
-        const response = await fetch('http://127.0.0.1:8000/api/galaxy_stats');
+        const response = await fetch('/api/galaxy_stats');
 
         //check if network request was successful
         if (!response.ok) {
@@ -552,7 +552,7 @@ async function renderMajorOrderPage(contentArea) {
 //renders planet data page
 async function renderPlanetsPage(contentArea) {
     try{
-        const response = await fetch('http://127.0.0.1:8000/api/planets');
+        const response = await fetch('/api/planets');
         if (!response.ok) throw new Error('Network error');
 
         const allPlanets = await response.json();

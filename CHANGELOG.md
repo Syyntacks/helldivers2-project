@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
+## [0.8.1] - 2026-02-26 HOTFIX
+
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+- Fixed error on loading **All Planets** and **Galaxy Stats** pages.
+  - Changed sources from local testing to proper domain.
+
+### Security
+
+### Known Issues
+
 ## [0.8.0] - 2026-02-26
 
 ### Added
@@ -56,7 +75,6 @@ and this project adheres to [Semantic Versioning].
 #### styles.css
 
 - With AI assistance the document has been reformatted for a more cohesive and organized coding experience.
-  
 
 ### Deprecated
 
@@ -68,11 +86,14 @@ and this project adheres to [Semantic Versioning].
 
 ### Fixed
 
-- Fixed formatting issues across application.
+- Fixed some formatting issues across application.
 
 ### Security
 
 ### Known Issues
+
+- **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map*
+- Mobile formatting inconsistencies
 
 ## [0.7.3] - Wednesday, 2026-02-25
 
