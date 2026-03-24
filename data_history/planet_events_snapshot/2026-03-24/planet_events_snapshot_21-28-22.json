@@ -1,0 +1,143 @@
+[
+    {
+        "index": 183,
+        "name": "HORT",
+        "sector": "Rigel",
+        "biome": {
+            "name": "Plains",
+            "description": "Rocky outcroppings punctuate fields of tall grass in a planet dominated by misty highland terrain."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 2078192573,
+        "position": {
+            "x": 0.2510076,
+            "y": -0.69129366
+        },
+        "waypoints": [
+            181,
+            224
+        ],
+        "maxHealth": 2200000,
+        "health": 2200000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 2.7777777,
+        "event": {
+            "id": 5522,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 5028196,
+            "maxHealth": 5150000,
+            "startTime": "2026-03-24T14:49:41Z",
+            "endTime": "2026-03-31T14:49:41Z",
+            "campaignId": 51510,
+            "jointOperationIds": [
+                5522
+            ]
+        },
+        "statistics": {
+            "missionsWon": 1992599,
+            "missionsLost": 189669,
+            "missionTime": 7440854921,
+            "terminidKills": 3484,
+            "automatonKills": 187,
+            "illuminateKills": 1198980729,
+            "bulletsFired": 8444223856,
+            "bulletsHit": 7448956558,
+            "timePlayed": 7440854921,
+            "deaths": 14896720,
+            "revives": 0,
+            "friendlies": 2421578,
+            "missionSuccessRate": 91,
+            "accuracy": 88,
+            "playerCount": 21431
+        },
+        "attacking": [],
+        "regions": []
+    },
+    {
+        "index": 226,
+        "name": "RIRGA BAY",
+        "sector": "Rigel",
+        "biome": {
+            "name": "Acidic Badlands",
+            "description": "Dense, toxic fumes from deep within the planet's crust seep out of cracks in the earth and coat the ground in a sickly haze."
+        },
+        "hazards": [
+            {
+                "name": "Acid Storms",
+                "description": "Corrosive acid storms temporarily reduce armor effectiveness for both enemy and friendly units."
+            }
+        ],
+        "hash": 1377257553,
+        "position": {
+            "x": 0.09694725,
+            "y": -0.7277918
+        },
+        "waypoints": [
+            183,
+            227
+        ],
+        "maxHealth": 1200000,
+        "health": 1200000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5523,
+            "eventType": 1,
+            "faction": "Illuminate",
+            "health": 1173325,
+            "maxHealth": 1400000,
+            "startTime": "2026-03-24T14:54:21Z",
+            "endTime": "2026-03-26T14:54:21Z",
+            "campaignId": 51512,
+            "jointOperationIds": [
+                5523
+            ]
+        },
+        "statistics": {
+            "missionsWon": 1841357,
+            "missionsLost": 130943,
+            "missionTime": 6839764553,
+            "terminidKills": 56,
+            "automatonKills": 1212,
+            "illuminateKills": 1967490242,
+            "bulletsFired": 4492664080,
+            "bulletsHit": 4624700734,
+            "timePlayed": 6839764553,
+            "deaths": 1012268962,
+            "revives": 0,
+            "friendlies": 2122447,
+            "missionSuccessRate": 93,
+            "accuracy": 100,
+            "playerCount": 40205
+        },
+        "attacking": [
+            183,
+            227
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 452138560,
+                "name": "BLIGHTSMURK",
+                "description": "null",
+                "health": 69317,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 19820
+            }
+        ]
+    }
+]
