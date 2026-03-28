@@ -1,0 +1,2813 @@
+[
+    {
+        "id": 50790,
+        "planet": {
+            "index": 175,
+            "name": "GRAND ERRANT",
+            "sector": "Farsight",
+            "biome": {
+                "name": "Scorched Moor",
+                "description": "Scorching temperatures, high winds, and low precipitation cause a near-constant cycle of fires to sweep this planet, punctuated by short bursts of lush rebirth between infernos."
+            },
+            "hazards": [
+                {
+                    "name": "Fire Tornadoes",
+                    "description": "Planet is ravaged by deadly fire tornadoes."
+                }
+            ],
+            "hash": 3461540330,
+            "position": {
+                "x": 0.6873349,
+                "y": -0.2439588
+            },
+            "waypoints": [
+                218,
+                219
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Terminids",
+            "regenPerSecond": 2.7777777,
+            "event": null,
+            "statistics": {
+                "missionsWon": 5179648,
+                "missionsLost": 340736,
+                "missionTime": 16106218591,
+                "terminidKills": 1661371937,
+                "automatonKills": 265,
+                "illuminateKills": 57,
+                "bulletsFired": 7274979840,
+                "bulletsHit": 7887180540,
+                "timePlayed": 16106218591,
+                "deaths": 29550720,
+                "revives": 0,
+                "friendlies": 4894464,
+                "missionSuccessRate": 93,
+                "accuracy": 100,
+                "playerCount": 1427
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 3,
+        "faction": "Humans"
+    },
+    {
+        "id": 51114,
+        "planet": {
+            "index": 128,
+            "name": "DARIUS II",
+            "sector": "Borgus",
+            "biome": {
+                "name": "Acidic Badlands",
+                "description": "Dense, toxic fumes from deep within the planet's crust seep out of cracks in the earth and coat the ground in a sickly haze."
+            },
+            "hazards": [
+                {
+                    "name": "Acid Storms",
+                    "description": "Corrosive acid storms temporarily reduce armor effectiveness for both enemy and friendly units."
+                }
+            ],
+            "hash": 2658926073,
+            "position": {
+                "x": 0.6416474,
+                "y": -0.034105327
+            },
+            "waypoints": [
+                129
+            ],
+            "maxHealth": 1400000,
+            "health": 1400000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Terminids",
+            "regenPerSecond": 1.3888888,
+            "event": null,
+            "statistics": {
+                "missionsWon": 5053695,
+                "missionsLost": 458681,
+                "missionTime": 16320642444,
+                "terminidKills": 2304945943,
+                "automatonKills": 69,
+                "illuminateKills": 8,
+                "bulletsFired": 9269756978,
+                "bulletsHit": 10800981670,
+                "timePlayed": 16320642444,
+                "deaths": 37847479,
+                "revives": 0,
+                "friendlies": 5884826,
+                "missionSuccessRate": 91,
+                "accuracy": 100,
+                "playerCount": 1409
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 1050611219,
+                    "name": "BUJU",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 354
+                }
+            ]
+        },
+        "type": 0,
+        "count": 8,
+        "faction": "Humans"
+    },
+    {
+        "id": 51262,
+        "planet": {
+            "index": 88,
+            "name": "REGNUS",
+            "sector": "Morgon",
+            "biome": {
+                "name": "Volcanic Jungle",
+                "description": "Abundant with life, this wet planet is covered in deep oceans, thick forests, and tall grasses."
+            },
+            "hazards": [
+                {
+                    "name": "Volcanic Activity",
+                    "description": "Volcanoes throw burning rocks around this planet."
+                }
+            ],
+            "hash": 2299441253,
+            "position": {
+                "x": 0.24639264,
+                "y": -0.3159259
+            },
+            "waypoints": [
+                89
+            ],
+            "maxHealth": 1800000,
+            "health": 1800000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 2.7777777,
+            "event": null,
+            "statistics": {
+                "missionsWon": 977188,
+                "missionsLost": 161195,
+                "missionTime": 2912133562,
+                "terminidKills": 196,
+                "automatonKills": 713,
+                "illuminateKills": 384009396,
+                "bulletsFired": 2395320673,
+                "bulletsHit": 2205326968,
+                "timePlayed": 2912133562,
+                "deaths": 8000507,
+                "revives": 0,
+                "friendlies": 953248,
+                "missionSuccessRate": 85,
+                "accuracy": 92,
+                "playerCount": 47
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 706797536,
+                    "name": "PEOPLE'S HAND",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 0.46048,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 1,
+                    "hash": 2184145680,
+                    "name": "TOPSOIL",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 0.75863,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 2,
+                    "hash": 2126832849,
+                    "name": "HUMAN WILL",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 11
+                }
+            ]
+        },
+        "type": 0,
+        "count": 5,
+        "faction": "Humans"
+    },
+    {
+        "id": 51286,
+        "planet": {
+            "index": 124,
+            "name": "BORE ROCK",
+            "sector": "Falstaff",
+            "biome": {
+                "name": "Basic Swamp",
+                "description": "Tall, gnarled trees flourish across the surface of this forested world. Sunlight filters past dangling vines, to the saturated undergrowth below."
+            },
+            "hazards": [
+                {
+                    "name": "None",
+                    "description": "This planet's environment is not yet known, or has no environmental modifiers."
+                }
+            ],
+            "hash": 2435651414,
+            "position": {
+                "x": 0.3259798,
+                "y": 0.4174094
+            },
+            "waypoints": [],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Terminids",
+            "regenPerSecond": 4.1666665,
+            "event": null,
+            "statistics": {
+                "missionsWon": 12363332,
+                "missionsLost": 1339132,
+                "missionTime": 41742575039,
+                "terminidKills": 5784640766,
+                "automatonKills": 8570,
+                "illuminateKills": 1809,
+                "bulletsFired": 27884470406,
+                "bulletsHit": 31458789588,
+                "timePlayed": 41742575039,
+                "deaths": 103198043,
+                "revives": 0,
+                "friendlies": 14830432,
+                "missionSuccessRate": 90,
+                "accuracy": 100,
+                "playerCount": 527
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 18,
+        "faction": "Humans"
+    },
+    {
+        "id": 51291,
+        "planet": {
+            "index": 70,
+            "name": "BLISTICA",
+            "sector": "Gellert",
+            "biome": {
+                "name": "Scorched Moor",
+                "description": "Scorching temperatures, high winds, and low precipitation cause a near-constant cycle of fires to sweep this planet, punctuated by short bursts of lush rebirth between infernos."
+            },
+            "hazards": [
+                {
+                    "name": "Fire Tornadoes",
+                    "description": "Planet is ravaged by deadly fire tornadoes."
+                }
+            ],
+            "hash": 4206815834,
+            "position": {
+                "x": -0.1716316,
+                "y": 0.8050751
+            },
+            "waypoints": [
+                207,
+                253
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Automaton",
+            "regenPerSecond": 1.3888888,
+            "event": null,
+            "statistics": {
+                "missionsWon": 1043436,
+                "missionsLost": 89294,
+                "missionTime": 3188165121,
+                "terminidKills": 0,
+                "automatonKills": 234215371,
+                "illuminateKills": 19,
+                "bulletsFired": 1124519992,
+                "bulletsHit": 1145605660,
+                "timePlayed": 3188165121,
+                "deaths": 6667270,
+                "revives": 0,
+                "friendlies": 720562,
+                "missionSuccessRate": 92,
+                "accuracy": 100,
+                "playerCount": 111
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 6,
+        "faction": "Humans"
+    },
+    {
+        "id": 51301,
+        "planet": {
+            "index": 94,
+            "name": "OASIS",
+            "sector": "Rictus",
+            "biome": {
+                "name": "Volcanic Jungle",
+                "description": "Abundant with life, this wet planet is covered in deep oceans, thick forests, and tall grasses."
+            },
+            "hazards": [
+                {
+                    "name": "Volcanic Activity",
+                    "description": "Volcanoes throw burning rocks around this planet."
+                }
+            ],
+            "hash": 997855239,
+            "position": {
+                "x": 0.00063157,
+                "y": -0.4440751
+            },
+            "waypoints": [
+                92,
+                139,
+                140
+            ],
+            "maxHealth": 1400000,
+            "health": 1400000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 2.7777777,
+            "event": null,
+            "statistics": {
+                "missionsWon": 1384623,
+                "missionsLost": 234916,
+                "missionTime": 4775300700,
+                "terminidKills": 2078,
+                "automatonKills": 5234,
+                "illuminateKills": 723266268,
+                "bulletsFired": 3628661565,
+                "bulletsHit": 3551745984,
+                "timePlayed": 4775300700,
+                "deaths": 12508192,
+                "revives": 0,
+                "friendlies": 1603947,
+                "missionSuccessRate": 85,
+                "accuracy": 97,
+                "playerCount": 32
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 3263317504,
+                    "name": "RESPITE",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 12
+                }
+            ]
+        },
+        "type": 0,
+        "count": 9,
+        "faction": "Humans"
+    },
+    {
+        "id": 51303,
+        "planet": {
+            "index": 95,
+            "name": "GENESIS PRIME",
+            "sector": "Rictus",
+            "biome": {
+                "name": "Ionic Jungle",
+                "description": "The strange subversion of photosynthesis that sustains the oddly-hued flora that flourishes on this planet remains an intriguing mystery to Super Earth's greatest exo-biologists."
+            },
+            "hazards": [
+                {
+                    "name": "Ion Storms",
+                    "description": "Ion storms intermittently disable Stratagems."
+                }
+            ],
+            "hash": 910436923,
+            "position": {
+                "x": -0.07607324,
+                "y": -0.44355652
+            },
+            "waypoints": [
+                94,
+                96,
+                140
+            ],
+            "maxHealth": 1600000,
+            "health": 1600000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 2.7777777,
+            "event": null,
+            "statistics": {
+                "missionsWon": 1223878,
+                "missionsLost": 230816,
+                "missionTime": 4390201567,
+                "terminidKills": 4326,
+                "automatonKills": 1605,
+                "illuminateKills": 670485948,
+                "bulletsFired": 3355299060,
+                "bulletsHit": 3276378494,
+                "timePlayed": 4390201567,
+                "deaths": 10729971,
+                "revives": 0,
+                "friendlies": 1511662,
+                "missionSuccessRate": 84,
+                "accuracy": 97,
+                "playerCount": 20
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 2507971325,
+                    "name": "MALLSTRIP NODES",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 11
+                },
+                {
+                    "id": 1,
+                    "hash": 2591044773,
+                    "name": "BIRTH",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 0.23287,
+                    "isAvailable": false,
+                    "players": 0
+                }
+            ]
+        },
+        "type": 0,
+        "count": 6,
+        "faction": "Humans"
+    },
+    {
+        "id": 51327,
+        "planet": {
+            "index": 57,
+            "name": "KERTH SECUNDUS",
+            "sector": "Rictus",
+            "biome": {
+                "name": "Tundra",
+                "description": "A perennially chilly climate has allowed short, colorful shrubs to flourish across this planet's surface."
+            },
+            "hazards": [
+                {
+                    "name": "None",
+                    "description": "This planet's environment is not yet known, or has no environmental modifiers."
+                }
+            ],
+            "hash": 3674393208,
+            "position": {
+                "x": 0.04284205,
+                "y": -0.33550286
+            },
+            "waypoints": [
+                33,
+                56,
+                92
+            ],
+            "maxHealth": 2000000,
+            "health": 1974814,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 0.6944444,
+            "event": null,
+            "statistics": {
+                "missionsWon": 3022998,
+                "missionsLost": 314866,
+                "missionTime": 9958420976,
+                "terminidKills": 6478,
+                "automatonKills": 1313,
+                "illuminateKills": 1333678299,
+                "bulletsFired": 10423249465,
+                "bulletsHit": 9596385076,
+                "timePlayed": 9958420976,
+                "deaths": 22858801,
+                "revives": 0,
+                "friendlies": 2956167,
+                "missionSuccessRate": 90,
+                "accuracy": 92,
+                "playerCount": 175
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 4221006651,
+                    "name": "SCHOLAR'S MOOR",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 1,
+                    "isAvailable": false,
+                    "players": 1
+                },
+                {
+                    "id": 1,
+                    "hash": 484247622,
+                    "name": "BLESTRAIL",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 0.62659,
+                    "isAvailable": true,
+                    "players": 42
+                },
+                {
+                    "id": 2,
+                    "hash": 3066706899,
+                    "name": "HILDOARA CENTRAL",
+                    "description": "null",
+                    "health": 600000,
+                    "maxHealth": 600000,
+                    "size": "MegaCity",
+                    "regenPerSecond": 1.6666666,
+                    "availabilityFactor": 0.45469,
+                    "isAvailable": false,
+                    "players": 0
+                }
+            ]
+        },
+        "type": 0,
+        "count": 6,
+        "faction": "Humans"
+    },
+    {
+        "id": 51335,
+        "planet": {
+            "index": 113,
+            "name": "AESIR PASS",
+            "sector": "Hydra",
+            "biome": {
+                "name": "Deadlands",
+                "description": "The lifeless grey of this planet is interrupted only by the violet flowers that grow from strange, parasitic outcroppings."
+            },
+            "hazards": [
+                {
+                    "name": "Thick Fog",
+                    "description": "Dense fog lightly reduce visibility for both enemy and friendly units."
+                }
+            ],
+            "hash": 3407029244,
+            "position": {
+                "x": -0.34874794,
+                "y": 0.28628126
+            },
+            "waypoints": [],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Automaton",
+            "regenPerSecond": 8.333333,
+            "event": null,
+            "statistics": {
+                "missionsWon": 7333140,
+                "missionsLost": 689981,
+                "missionTime": 24106176576,
+                "terminidKills": 1958,
+                "automatonKills": 1838964883,
+                "illuminateKills": 152,
+                "bulletsFired": 9858999069,
+                "bulletsHit": 10376026524,
+                "timePlayed": 24106176576,
+                "deaths": 55010430,
+                "revives": 0,
+                "friendlies": 6077283,
+                "missionSuccessRate": 91,
+                "accuracy": 100,
+                "playerCount": 389
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 11,
+        "faction": "Humans"
+    },
+    {
+        "id": 51354,
+        "planet": {
+            "index": 171,
+            "name": "GACRUX",
+            "sector": "Jin Xi",
+            "biome": {
+                "name": "Basic Swamp",
+                "description": "Tall, gnarled trees flourish across the surface of this forested world. Sunlight filters past dangling vines, to the saturated undergrowth below."
+            },
+            "hazards": [
+                {
+                    "name": "None",
+                    "description": "This planet's environment is not yet known, or has no environmental modifiers."
+                }
+            ],
+            "hash": 2036924050,
+            "position": {
+                "x": 0.7302936,
+                "y": 0.14800768
+            },
+            "waypoints": [
+                214
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Terminids",
+            "regenPerSecond": 2.7777777,
+            "event": null,
+            "statistics": {
+                "missionsWon": 13203249,
+                "missionsLost": 1071785,
+                "missionTime": 47252952573,
+                "terminidKills": 6620079536,
+                "automatonKills": 323,
+                "illuminateKills": 107,
+                "bulletsFired": 28677634133,
+                "bulletsHit": 33403198484,
+                "timePlayed": 47252952573,
+                "deaths": 107221757,
+                "revives": 0,
+                "friendlies": 17151630,
+                "missionSuccessRate": 92,
+                "accuracy": 100,
+                "playerCount": 306
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 20,
+        "faction": "Humans"
+    },
+    {
+        "id": 51362,
+        "planet": {
+            "index": 184,
+            "name": "HYDROBIUS",
+            "sector": "Omega",
+            "biome": {
+                "name": "Desert Cliffs",
+                "description": "A desert planet prone to unpredictable and dangerous sand twisters."
+            },
+            "hazards": [
+                {
+                    "name": "Tremors",
+                    "description": "Frequent earthquakes stun players and enemies alike."
+                }
+            ],
+            "hash": 1722929190,
+            "position": {
+                "x": -0.04842106,
+                "y": -0.70721954
+            },
+            "waypoints": [
+                140,
+                182,
+                185
+            ],
+            "maxHealth": 1400000,
+            "health": 1400000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 4.1666665,
+            "event": null,
+            "statistics": {
+                "missionsWon": 2510596,
+                "missionsLost": 356573,
+                "missionTime": 9885524231,
+                "terminidKills": 31,
+                "automatonKills": 1602,
+                "illuminateKills": 1505438720,
+                "bulletsFired": 7803115117,
+                "bulletsHit": 7901769802,
+                "timePlayed": 9885524231,
+                "deaths": 23993986,
+                "revives": 0,
+                "friendlies": 3100394,
+                "missionSuccessRate": 87,
+                "accuracy": 100,
+                "playerCount": 1920
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 3184875338,
+                    "name": "GENERATORSVILLE",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 556
+                }
+            ]
+        },
+        "type": 0,
+        "count": 8,
+        "faction": "Humans"
+    },
+    {
+        "id": 51370,
+        "planet": {
+            "index": 214,
+            "name": "PANDION-XXIV",
+            "sector": "Jin Xi",
+            "biome": {
+                "name": "Deadlands",
+                "description": "The lifeless grey of this planet is interrupted only by the violet flowers that grow from strange, parasitic outcroppings."
+            },
+            "hazards": [
+                {
+                    "name": "Thick Fog",
+                    "description": "Dense fog lightly reduce visibility for both enemy and friendly units."
+                }
+            ],
+            "hash": 2529588949,
+            "position": {
+                "x": 0.7147919,
+                "y": 0.06394728
+            },
+            "waypoints": [
+                217
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Terminids",
+            "regenPerSecond": 5.5555553,
+            "event": null,
+            "statistics": {
+                "missionsWon": 17095038,
+                "missionsLost": 1264721,
+                "missionTime": 57788669228,
+                "terminidKills": 7913988328,
+                "automatonKills": 1274,
+                "illuminateKills": 512,
+                "bulletsFired": 31947481351,
+                "bulletsHit": 38088891914,
+                "timePlayed": 57788669228,
+                "deaths": 130988832,
+                "revives": 0,
+                "friendlies": 22330249,
+                "missionSuccessRate": 93,
+                "accuracy": 100,
+                "playerCount": 590
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 23,
+        "faction": "Humans"
+    },
+    {
+        "id": 51375,
+        "planet": {
+            "index": 58,
+            "name": "PARSH",
+            "sector": "Rictus",
+            "biome": {
+                "name": "Basic Swamp",
+                "description": "Tall, gnarled trees flourish across the surface of this forested world. Sunlight filters past dangling vines, to the saturated undergrowth below."
+            },
+            "hazards": [
+                {
+                    "name": "None",
+                    "description": "This planet's environment is not yet known, or has no environmental modifiers."
+                }
+            ],
+            "hash": 430094434,
+            "position": {
+                "x": -0.038842108,
+                "y": -0.32750285
+            },
+            "waypoints": [
+                57,
+                95
+            ],
+            "maxHealth": 2000000,
+            "health": 2000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 0.6944444,
+            "event": null,
+            "statistics": {
+                "missionsWon": 850070,
+                "missionsLost": 120916,
+                "missionTime": 2837856923,
+                "terminidKills": 0,
+                "automatonKills": 0,
+                "illuminateKills": 422807451,
+                "bulletsFired": 2333377600,
+                "bulletsHit": 2182970096,
+                "timePlayed": 2837856923,
+                "deaths": 6416813,
+                "revives": 0,
+                "friendlies": 895603,
+                "missionSuccessRate": 87,
+                "accuracy": 93,
+                "playerCount": 29
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 511490869,
+                    "name": "PORUGU",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 7
+                },
+                {
+                    "id": 1,
+                    "hash": 2491531357,
+                    "name": "PADOSAN",
+                    "description": "null",
+                    "health": 600000,
+                    "maxHealth": 600000,
+                    "size": "MegaCity",
+                    "regenPerSecond": 1.6666666,
+                    "availabilityFactor": 0.478,
+                    "isAvailable": false,
+                    "players": 0
+                }
+            ]
+        },
+        "type": 0,
+        "count": 9,
+        "faction": "Humans"
+    },
+    {
+        "id": 51385,
+        "planet": {
+            "index": 59,
+            "name": "REAF",
+            "sector": "Saleria",
+            "biome": {
+                "name": "Plains",
+                "description": "Rocky outcroppings punctuate fields of tall grass in a planet dominated by misty highland terrain."
+            },
+            "hazards": [
+                {
+                    "name": "None",
+                    "description": "This planet's environment is not yet known, or has no environmental modifiers."
+                }
+            ],
+            "hash": 1018677806,
+            "position": {
+                "x": -0.11379249,
+                "y": -0.3215678
+            },
+            "waypoints": [
+                58,
+                60,
+                96
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 2.7777777,
+            "event": null,
+            "statistics": {
+                "missionsWon": 398890,
+                "missionsLost": 65306,
+                "missionTime": 1146614154,
+                "terminidKills": 135,
+                "automatonKills": 1138,
+                "illuminateKills": 149044833,
+                "bulletsFired": 1214772906,
+                "bulletsHit": 1076228334,
+                "timePlayed": 1146614154,
+                "deaths": 2937872,
+                "revives": 0,
+                "friendlies": 343360,
+                "missionSuccessRate": 85,
+                "accuracy": 88,
+                "playerCount": 45
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 3,
+        "faction": "Humans"
+    },
+    {
+        "id": 51392,
+        "planet": {
+            "index": 198,
+            "name": "MARFARK",
+            "sector": "Andromeda",
+            "biome": {
+                "name": "Icy Glaciers",
+                "description": "Submerged in eternal winter, this world's frosty peaks glimmer in the light of its too-distant star."
+            },
+            "hazards": [
+                {
+                    "name": "Blizzards",
+                    "description": "Intense blizzard reduce mobility and moderately reduce visibility for both enemy and friendly units."
+                }
+            ],
+            "hash": 2831860380,
+            "position": {
+                "x": -0.43697178,
+                "y": 0.3259796
+            },
+            "waypoints": [
+                110,
+                113,
+                199,
+                200
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Automaton",
+            "regenPerSecond": 2.7777777,
+            "event": null,
+            "statistics": {
+                "missionsWon": 12068309,
+                "missionsLost": 1047912,
+                "missionTime": 43326829680,
+                "terminidKills": 5014,
+                "automatonKills": 3384164881,
+                "illuminateKills": 2039,
+                "bulletsFired": 19364181283,
+                "bulletsHit": 20518714712,
+                "timePlayed": 43326829680,
+                "deaths": 95837755,
+                "revives": 0,
+                "friendlies": 10305100,
+                "missionSuccessRate": 92,
+                "accuracy": 100,
+                "playerCount": 2904
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 18,
+        "faction": "Humans"
+    },
+    {
+        "id": 51393,
+        "planet": {
+            "index": 60,
+            "name": "IRULTA",
+            "sector": "Saleria",
+            "biome": {
+                "name": "Volcanic Jungle",
+                "description": "Abundant with life, this wet planet is covered in deep oceans, thick forests, and tall grasses."
+            },
+            "hazards": [
+                {
+                    "name": "Volcanic Activity",
+                    "description": "Volcanoes throw burning rocks around this planet."
+                }
+            ],
+            "hash": 2414771368,
+            "position": {
+                "x": -0.19953328,
+                "y": -0.2830419
+            },
+            "waypoints": [
+                37,
+                98
+            ],
+            "maxHealth": 1700000,
+            "health": 1700000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 2.7777777,
+            "event": null,
+            "statistics": {
+                "missionsWon": 938688,
+                "missionsLost": 121587,
+                "missionTime": 3243625251,
+                "terminidKills": 7,
+                "automatonKills": 13455,
+                "illuminateKills": 525005354,
+                "bulletsFired": 2951992381,
+                "bulletsHit": 2669481222,
+                "timePlayed": 3243625251,
+                "deaths": 7020944,
+                "revives": 0,
+                "friendlies": 1167649,
+                "missionSuccessRate": 88,
+                "accuracy": 90,
+                "playerCount": 32
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 119875523,
+                    "name": "RECON HEIGHTS",
+                    "description": "null",
+                    "health": 100000,
+                    "maxHealth": 100000,
+                    "size": "Settlement",
+                    "regenPerSecond": 0.2777778,
+                    "availabilityFactor": 0.70334,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 1,
+                    "hash": 586167831,
+                    "name": "SILO A",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 0.25807,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 2,
+                    "hash": 3054618608,
+                    "name": "VOTER'S FALLOW",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 12
+                }
+            ]
+        },
+        "type": 0,
+        "count": 7,
+        "faction": "Humans"
+    },
+    {
+        "id": 51403,
+        "planet": {
+            "index": 180,
+            "name": "HERTHON SECUNDUS",
+            "sector": "Ferris",
+            "biome": {
+                "name": "Scorched Moor",
+                "description": "Scorching temperatures, high winds, and low precipitation cause a near-constant cycle of fires to sweep this planet, punctuated by short bursts of lush rebirth between infernos."
+            },
+            "hazards": [
+                {
+                    "name": "Fire Tornadoes",
+                    "description": "Planet is ravaged by deadly fire tornadoes."
+                }
+            ],
+            "hash": 2517847560,
+            "position": {
+                "x": 0.27001774,
+                "y": -0.5880387
+            },
+            "waypoints": [
+                7,
+                183
+            ],
+            "maxHealth": 1800000,
+            "health": 1800000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 13.888889,
+            "event": null,
+            "statistics": {
+                "missionsWon": 3442366,
+                "missionsLost": 391948,
+                "missionTime": 12826752574,
+                "terminidKills": 3575,
+                "automatonKills": 2284,
+                "illuminateKills": 1565145439,
+                "bulletsFired": 8931686748,
+                "bulletsHit": 9211722616,
+                "timePlayed": 12826752574,
+                "deaths": 29250648,
+                "revives": 0,
+                "friendlies": 3535711,
+                "missionSuccessRate": 89,
+                "accuracy": 100,
+                "playerCount": 134
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 314025568,
+                    "name": "PENSCEWT",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 0.56651,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 1,
+                    "hash": 2391484056,
+                    "name": "EAGLE'S LIKENESS",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 0.40511,
+                    "isAvailable": false,
+                    "players": 1
+                },
+                {
+                    "id": 2,
+                    "hash": 3185820932,
+                    "name": "CONSENSUS",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 27
+                }
+            ]
+        },
+        "type": 0,
+        "count": 7,
+        "faction": "Humans"
+    },
+    {
+        "id": 51409,
+        "planet": {
+            "index": 98,
+            "name": "ELYSIAN MEADOWS",
+            "sector": "Guang",
+            "biome": {
+                "name": "Ionic Crimson",
+                "description": "A crimson algae has propagated wildly across this entire planet, coating its rocky hills with a constant red that masks the spilt blood of the heroes who defend it from tyranny."
+            },
+            "hazards": [
+                {
+                    "name": "Ion Storms",
+                    "description": "Ion storms intermittently disable Stratagems."
+                }
+            ],
+            "hash": 3533355425,
+            "position": {
+                "x": -0.25539273,
+                "y": -0.3439258
+            },
+            "waypoints": [],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 2.7777777,
+            "event": null,
+            "statistics": {
+                "missionsWon": 721414,
+                "missionsLost": 108665,
+                "missionTime": 2811110606,
+                "terminidKills": 2136,
+                "automatonKills": 10,
+                "illuminateKills": 438183437,
+                "bulletsFired": 2494461892,
+                "bulletsHit": 2324237026,
+                "timePlayed": 2811110606,
+                "deaths": 5612238,
+                "revives": 0,
+                "friendlies": 935638,
+                "missionSuccessRate": 86,
+                "accuracy": 93,
+                "playerCount": 45
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 8,
+        "faction": "Humans"
+    },
+    {
+        "id": 51413,
+        "planet": {
+            "index": 7,
+            "name": "ZEA RUGOSIA",
+            "sector": "Ferris",
+            "biome": {
+                "name": "Desert Cliffs",
+                "description": "A desert planet prone to unpredictable and dangerous sand twisters."
+            },
+            "hazards": [
+                {
+                    "name": "Tremors",
+                    "description": "Frequent earthquakes stun players and enemies alike."
+                }
+            ],
+            "hash": 1138804949,
+            "position": {
+                "x": 0.36159223,
+                "y": -0.52270126
+            },
+            "waypoints": [
+                178
+            ],
+            "maxHealth": 1700000,
+            "health": 1700000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 13.888889,
+            "event": null,
+            "statistics": {
+                "missionsWon": 2999857,
+                "missionsLost": 328411,
+                "missionTime": 11129695375,
+                "terminidKills": 1299,
+                "automatonKills": 2274,
+                "illuminateKills": 1437537387,
+                "bulletsFired": 8119300668,
+                "bulletsHit": 8238692752,
+                "timePlayed": 11129695375,
+                "deaths": 25019795,
+                "revives": 0,
+                "friendlies": 3243549,
+                "missionSuccessRate": 90,
+                "accuracy": 100,
+                "playerCount": 98
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 3455315905,
+                    "name": "NEW COB",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 0.62089,
+                    "isAvailable": false,
+                    "players": 1
+                },
+                {
+                    "id": 1,
+                    "hash": 518148662,
+                    "name": "GENE",
+                    "description": "null",
+                    "health": 100000,
+                    "maxHealth": 100000,
+                    "size": "Settlement",
+                    "regenPerSecond": 0.2777778,
+                    "availabilityFactor": 0.31683,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 2,
+                    "hash": 2775422932,
+                    "name": "STARPASS",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 1,
+                    "isAvailable": false,
+                    "players": 5
+                }
+            ]
+        },
+        "type": 0,
+        "count": 10,
+        "faction": "Humans"
+    },
+    {
+        "id": 51416,
+        "planet": {
+            "index": 230,
+            "name": "SHETE",
+            "sector": "Xi Tauri",
+            "biome": {
+                "name": "Acidic Badlands",
+                "description": "Dense, toxic fumes from deep within the planet's crust seep out of cracks in the earth and coat the ground in a sickly haze."
+            },
+            "hazards": [
+                {
+                    "name": "Acid Storms",
+                    "description": "Corrosive acid storms temporarily reduce armor effectiveness for both enemy and friendly units."
+                }
+            ],
+            "hash": 1531805760,
+            "position": {
+                "x": -0.31250626,
+                "y": -0.83086497
+            },
+            "waypoints": [],
+            "maxHealth": 1400000,
+            "health": 1400000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 2.7777777,
+            "event": null,
+            "statistics": {
+                "missionsWon": 826062,
+                "missionsLost": 71788,
+                "missionTime": 2909734720,
+                "terminidKills": 1124,
+                "automatonKills": 1284,
+                "illuminateKills": 462530707,
+                "bulletsFired": 3690610393,
+                "bulletsHit": 3138848028,
+                "timePlayed": 2909734720,
+                "deaths": 6071110,
+                "revives": 0,
+                "friendlies": 883795,
+                "missionSuccessRate": 92,
+                "accuracy": 85,
+                "playerCount": 32
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 2472296828,
+                    "name": "HOLL",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 9
+                }
+            ]
+        },
+        "type": 0,
+        "count": 6,
+        "faction": "Humans"
+    },
+    {
+        "id": 51422,
+        "planet": {
+            "index": 247,
+            "name": "WEZEN",
+            "sector": "Ymir",
+            "biome": {
+                "name": "Scorched Moor",
+                "description": "Scorching temperatures, high winds, and low precipitation cause a near-constant cycle of fires to sweep this planet, punctuated by short bursts of lush rebirth between infernos."
+            },
+            "hazards": [
+                {
+                    "name": "Fire Tornadoes",
+                    "description": "Planet is ravaged by deadly fire tornadoes."
+                }
+            ],
+            "hash": 1554138344,
+            "position": {
+                "x": -0.8741281,
+                "y": 0.3473503
+            },
+            "waypoints": [],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Automaton",
+            "regenPerSecond": 4.1666665,
+            "event": null,
+            "statistics": {
+                "missionsWon": 1950586,
+                "missionsLost": 151245,
+                "missionTime": 7315649683,
+                "terminidKills": 0,
+                "automatonKills": 556009854,
+                "illuminateKills": 137,
+                "bulletsFired": 2977748798,
+                "bulletsHit": 3101451000,
+                "timePlayed": 7315649683,
+                "deaths": 17209294,
+                "revives": 0,
+                "friendlies": 1674943,
+                "missionSuccessRate": 92,
+                "accuracy": 100,
+                "playerCount": 89
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 11,
+        "faction": "Humans"
+    },
+    {
+        "id": 51427,
+        "planet": {
+            "index": 93,
+            "name": "NEW STOCKHOLM",
+            "sector": "Hanzo",
+            "biome": {
+                "name": "Icy Glaciers",
+                "description": "Submerged in eternal winter, this world's frosty peaks glimmer in the light of its too-distant star."
+            },
+            "hazards": [
+                {
+                    "name": "Blizzards",
+                    "description": "Intense blizzard reduce mobility and moderately reduce visibility for both enemy and friendly units."
+                }
+            ],
+            "hash": 3515684391,
+            "position": {
+                "x": 0.1470731,
+                "y": -0.5095566
+            },
+            "waypoints": [],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 2.7777777,
+            "event": null,
+            "statistics": {
+                "missionsWon": 2324770,
+                "missionsLost": 260971,
+                "missionTime": 8561041822,
+                "terminidKills": 15271,
+                "automatonKills": 5724,
+                "illuminateKills": 1401249996,
+                "bulletsFired": 9600326328,
+                "bulletsHit": 9065637226,
+                "timePlayed": 8561041822,
+                "deaths": 18368802,
+                "revives": 0,
+                "friendlies": 2839854,
+                "missionSuccessRate": 89,
+                "accuracy": 94,
+                "playerCount": 181
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 7,
+        "faction": "Humans"
+    },
+    {
+        "id": 51428,
+        "planet": {
+            "index": 259,
+            "name": "OMICRON",
+            "sector": "L'estrade",
+            "biome": {
+                "name": "Hive World",
+                "description": "This planet has been completely infested by the Terminids, transformed inside and out into a hive of Tyranny."
+            },
+            "hazards": [
+                {
+                    "name": "None",
+                    "description": "This planet's environment is not yet known, or has no environmental modifiers."
+                }
+            ],
+            "hash": 3966660905,
+            "position": {
+                "x": 0.6838866,
+                "y": 0.48672357
+            },
+            "waypoints": [
+                212,
+                258
+            ],
+            "maxHealth": 3000000,
+            "health": 3000000,
+            "disabled": false,
+            "initialOwner": "Terminids",
+            "currentOwner": "Terminids",
+            "regenPerSecond": 27.777779,
+            "event": null,
+            "statistics": {
+                "missionsWon": 6903371,
+                "missionsLost": 830166,
+                "missionTime": 27284727531,
+                "terminidKills": 3500416960,
+                "automatonKills": 9864,
+                "illuminateKills": 14207,
+                "bulletsFired": 21779605311,
+                "bulletsHit": 24675413632,
+                "timePlayed": 27284727531,
+                "deaths": 66375008,
+                "revives": 0,
+                "friendlies": 8258334,
+                "missionSuccessRate": 89,
+                "accuracy": 100,
+                "playerCount": 675
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 5,
+        "faction": "Humans"
+    },
+    {
+        "id": 51445,
+        "planet": {
+            "index": 139,
+            "name": "ALAMAK VII",
+            "sector": "Hanzo",
+            "biome": {
+                "name": "Ethereal Jungle",
+                "description": "This world teems with ethereal, boundless, and peculiar plant life that spreads silent and uninterrupted across its entire surface."
+            },
+            "hazards": [
+                {
+                    "name": "None",
+                    "description": "This planet's environment is not yet known, or has no environmental modifiers."
+                }
+            ],
+            "hash": 3213455987,
+            "position": {
+                "x": 0.06359941,
+                "y": -0.5271288
+            },
+            "waypoints": [
+                93
+            ],
+            "maxHealth": 2300000,
+            "health": 2300000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 1.3888888,
+            "event": null,
+            "statistics": {
+                "missionsWon": 4763567,
+                "missionsLost": 588049,
+                "missionTime": 17614051290,
+                "terminidKills": 697,
+                "automatonKills": 92,
+                "illuminateKills": 2813956154,
+                "bulletsFired": 14285983219,
+                "bulletsHit": 14219539348,
+                "timePlayed": 17614051290,
+                "deaths": 41667590,
+                "revives": 0,
+                "friendlies": 5808006,
+                "missionSuccessRate": 89,
+                "accuracy": 99,
+                "playerCount": 63
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 1023474728,
+                    "name": "KESUMA",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 21
+                },
+                {
+                    "id": 1,
+                    "hash": 2696938432,
+                    "name": "UNGU",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 0.6667,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 2,
+                    "hash": 1344426011,
+                    "name": "NO COMPOUND",
+                    "description": "null",
+                    "health": 100000,
+                    "maxHealth": 100000,
+                    "size": "Settlement",
+                    "regenPerSecond": 0.2777778,
+                    "availabilityFactor": 0.23789,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 3,
+                    "hash": 4127238767,
+                    "name": "FILIBUSTER",
+                    "description": "null",
+                    "health": 600000,
+                    "maxHealth": 600000,
+                    "size": "MegaCity",
+                    "regenPerSecond": 1.6666666,
+                    "availabilityFactor": 0.47864,
+                    "isAvailable": false,
+                    "players": 0
+                }
+            ]
+        },
+        "type": 0,
+        "count": 13,
+        "faction": "Humans"
+    },
+    {
+        "id": 51448,
+        "planet": {
+            "index": 112,
+            "name": "VERNEN WELLS",
+            "sector": "Hydra",
+            "biome": {
+                "name": "Rocky Canyons",
+                "description": "This arid, rocky biome covering this world has driven the evolution of exceptionally efficient water usage in its various organisms."
+            },
+            "hazards": [
+                {
+                    "name": "Tremors",
+                    "description": "Frequent earthquakes stun players and enemies alike."
+                }
+            ],
+            "hash": 2442155408,
+            "position": {
+                "x": -0.26997122,
+                "y": 0.3760109
+            },
+            "waypoints": [
+                67,
+                113,
+                194
+            ],
+            "maxHealth": 1500000,
+            "health": 1500000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Automaton",
+            "regenPerSecond": 2.7777777,
+            "event": null,
+            "statistics": {
+                "missionsWon": 18025308,
+                "missionsLost": 1907580,
+                "missionTime": 64254879492,
+                "terminidKills": 2793,
+                "automatonKills": 5289509582,
+                "illuminateKills": 1232,
+                "bulletsFired": 28601190513,
+                "bulletsHit": 30259595490,
+                "timePlayed": 64254879492,
+                "deaths": 140661178,
+                "revives": 0,
+                "friendlies": 15291240,
+                "missionSuccessRate": 90,
+                "accuracy": 100,
+                "playerCount": 1518
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 873382628,
+                    "name": "BLACKVEIN MINES",
+                    "description": "null",
+                    "health": 100000,
+                    "maxHealth": 100000,
+                    "size": "Settlement",
+                    "regenPerSecond": 0.2777778,
+                    "availabilityFactor": 0.655,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 1,
+                    "hash": 1365889454,
+                    "name": "BENEVOLENCE",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 0.15187,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 2,
+                    "hash": 763067932,
+                    "name": "ANNE'S VIGIL",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 262
+                }
+            ]
+        },
+        "type": 0,
+        "count": 23,
+        "faction": "Humans"
+    },
+    {
+        "id": 51456,
+        "planet": {
+            "index": 157,
+            "name": "CHARON PRIME",
+            "sector": "Andromeda",
+            "biome": {
+                "name": "Ionic Crimson",
+                "description": "A crimson algae has propagated wildly across this entire planet, coating its rocky hills with a constant red that masks the spilt blood of the heroes who defend it from tyranny."
+            },
+            "hazards": [
+                {
+                    "name": "Ion Storms",
+                    "description": "Ion storms intermittently disable Stratagems."
+                }
+            ],
+            "hash": 2007360508,
+            "position": {
+                "x": -0.575186,
+                "y": 0.26594892
+            },
+            "waypoints": [
+                110,
+                156,
+                158,
+                199
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Automaton",
+            "regenPerSecond": 5.5555553,
+            "event": null,
+            "statistics": {
+                "missionsWon": 5745975,
+                "missionsLost": 471207,
+                "missionTime": 18780075215,
+                "terminidKills": 10,
+                "automatonKills": 1638196784,
+                "illuminateKills": 58,
+                "bulletsFired": 8534230251,
+                "bulletsHit": 9057408806,
+                "timePlayed": 18780075215,
+                "deaths": 38003039,
+                "revives": 0,
+                "friendlies": 4060427,
+                "missionSuccessRate": 92,
+                "accuracy": 100,
+                "playerCount": 2025
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 15,
+        "faction": "Humans"
+    },
+    {
+        "id": 51476,
+        "planet": {
+            "index": 211,
+            "name": "NIVEL 43",
+            "sector": "Mirin",
+            "biome": {
+                "name": "Deadlands",
+                "description": "The lifeless grey of this planet is interrupted only by the violet flowers that grow from strange, parasitic outcroppings."
+            },
+            "hazards": [
+                {
+                    "name": "Thick Fog",
+                    "description": "Dense fog lightly reduce visibility for both enemy and friendly units."
+                }
+            ],
+            "hash": 301092871,
+            "position": {
+                "x": 0.4889177,
+                "y": 0.43328553
+            },
+            "waypoints": [
+                75,
+                122
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Terminids",
+            "currentOwner": "Terminids",
+            "regenPerSecond": 4.1666665,
+            "event": null,
+            "statistics": {
+                "missionsWon": 11056711,
+                "missionsLost": 991968,
+                "missionTime": 32876840814,
+                "terminidKills": 4647285012,
+                "automatonKills": 5752,
+                "illuminateKills": 2378,
+                "bulletsFired": 22942037082,
+                "bulletsHit": 25484287834,
+                "timePlayed": 32876840814,
+                "deaths": 80003448,
+                "revives": 0,
+                "friendlies": 11806698,
+                "missionSuccessRate": 91,
+                "accuracy": 100,
+                "playerCount": 260
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 14,
+        "faction": "Humans"
+    },
+    {
+        "id": 51477,
+        "planet": {
+            "index": 90,
+            "name": "VALMOX",
+            "sector": "Rictus",
+            "biome": {
+                "name": "Ionic Crimson",
+                "description": "A crimson algae has propagated wildly across this entire planet, coating its rocky hills with a constant red that masks the spilt blood of the heroes who defend it from tyranny."
+            },
+            "hazards": [
+                {
+                    "name": "Ion Storms",
+                    "description": "Ion storms intermittently disable Stratagems."
+                }
+            ],
+            "hash": 1922612740,
+            "position": {
+                "x": 0.18610376,
+                "y": -0.381078
+            },
+            "waypoints": [
+                89
+            ],
+            "maxHealth": 1900000,
+            "health": 1900000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 2.7777777,
+            "event": null,
+            "statistics": {
+                "missionsWon": 2885359,
+                "missionsLost": 307924,
+                "missionTime": 9457954428,
+                "terminidKills": 3428,
+                "automatonKills": 2666,
+                "illuminateKills": 1206884864,
+                "bulletsFired": 11160531922,
+                "bulletsHit": 9768551296,
+                "timePlayed": 9457954428,
+                "deaths": 20757185,
+                "revives": 0,
+                "friendlies": 2671894,
+                "missionSuccessRate": 90,
+                "accuracy": 87,
+                "playerCount": 56
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 1713282699,
+                    "name": "REBELSGRAVE",
+                    "description": "null",
+                    "health": 100000,
+                    "maxHealth": 100000,
+                    "size": "Settlement",
+                    "regenPerSecond": 0.2777778,
+                    "availabilityFactor": 0.75115,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 1,
+                    "hash": 438247765,
+                    "name": "REFORMED-BY-TRUTH",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 9
+                },
+                {
+                    "id": 2,
+                    "hash": 3363260441,
+                    "name": "OBEDIENCE",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 0.15228,
+                    "isAvailable": false,
+                    "players": 0
+                }
+            ]
+        },
+        "type": 0,
+        "count": 12,
+        "faction": "Humans"
+    },
+    {
+        "id": 51480,
+        "planet": {
+            "index": 89,
+            "name": "MOG",
+            "sector": "Morgon",
+            "biome": {
+                "name": "Icy Glaciers",
+                "description": "Submerged in eternal winter, this world's frosty peaks glimmer in the light of its too-distant star."
+            },
+            "hazards": [
+                {
+                    "name": "Blizzards",
+                    "description": "Intense blizzard reduce mobility and moderately reduce visibility for both enemy and friendly units."
+                }
+            ],
+            "hash": 2695815635,
+            "position": {
+                "x": 0.29074797,
+                "y": -0.35328123
+            },
+            "waypoints": [
+                90
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 5.5555553,
+            "event": null,
+            "statistics": {
+                "missionsWon": 2623515,
+                "missionsLost": 281922,
+                "missionTime": 10939320468,
+                "terminidKills": 796,
+                "automatonKills": 795,
+                "illuminateKills": 1661511736,
+                "bulletsFired": 8762586090,
+                "bulletsHit": 8839730906,
+                "timePlayed": 10939320468,
+                "deaths": 23637448,
+                "revives": 0,
+                "friendlies": 3665192,
+                "missionSuccessRate": 90,
+                "accuracy": 100,
+                "playerCount": 69
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 10,
+        "faction": "Humans"
+    },
+    {
+        "id": 51481,
+        "planet": {
+            "index": 178,
+            "name": "HALDUS",
+            "sector": "Ferris",
+            "biome": {
+                "name": "Basic Swamp",
+                "description": "Tall, gnarled trees flourish across the surface of this forested world. Sunlight filters past dangling vines, to the saturated undergrowth below."
+            },
+            "hazards": [
+                {
+                    "name": "None",
+                    "description": "This planet's environment is not yet known, or has no environmental modifiers."
+                }
+            ],
+            "hash": 3856827013,
+            "position": {
+                "x": 0.45897943,
+                "y": -0.45897192
+            },
+            "waypoints": [
+                135
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 4.1666665,
+            "event": null,
+            "statistics": {
+                "missionsWon": 936206,
+                "missionsLost": 143438,
+                "missionTime": 3849504073,
+                "terminidKills": 513,
+                "automatonKills": 10,
+                "illuminateKills": 613809654,
+                "bulletsFired": 2882660366,
+                "bulletsHit": 2826287362,
+                "timePlayed": 3849504073,
+                "deaths": 8008645,
+                "revives": 0,
+                "friendlies": 1244378,
+                "missionSuccessRate": 86,
+                "accuracy": 98,
+                "playerCount": 32
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 9,
+        "faction": "Humans"
+    },
+    {
+        "id": 51483,
+        "planet": {
+            "index": 203,
+            "name": "MENKENT",
+            "sector": "Hydra",
+            "biome": {
+                "name": "Scorched Moor",
+                "description": "Scorching temperatures, high winds, and low precipitation cause a near-constant cycle of fires to sweep this planet, punctuated by short bursts of lush rebirth between infernos."
+            },
+            "hazards": [
+                {
+                    "name": "Fire Tornadoes",
+                    "description": "Planet is ravaged by deadly fire tornadoes."
+                }
+            ],
+            "hash": 3161413384,
+            "position": {
+                "x": -0.31501773,
+                "y": 0.4560387
+            },
+            "waypoints": [
+                112,
+                160,
+                194
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Automaton",
+            "regenPerSecond": 5.5555553,
+            "event": null,
+            "statistics": {
+                "missionsWon": 12499235,
+                "missionsLost": 1706325,
+                "missionTime": 43510498166,
+                "terminidKills": 2914,
+                "automatonKills": 3026651852,
+                "illuminateKills": 103,
+                "bulletsFired": 18612834812,
+                "bulletsHit": 19231234526,
+                "timePlayed": 43510498166,
+                "deaths": 118909865,
+                "revives": 0,
+                "friendlies": 10644161,
+                "missionSuccessRate": 87,
+                "accuracy": 100,
+                "playerCount": 264
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 16,
+        "faction": "Humans"
+    },
+    {
+        "id": 51484,
+        "planet": {
+            "index": 159,
+            "name": "CHOOHE",
+            "sector": "Lacaille",
+            "biome": {
+                "name": "Desert Dunes",
+                "description": "A blazing-hot desert planet, its rocky mesas are the sole interruptions to the endless sea of dunes."
+            },
+            "hazards": [
+                {
+                    "name": "Sandstorms",
+                    "description": "Dense sandstorms reduce mobility and greatly reduce visibility for both enemy and friendly units."
+                }
+            ],
+            "hash": 1159313659,
+            "position": {
+                "x": -0.3992379,
+                "y": 0.5128745
+            },
+            "waypoints": [
+                160,
+                203
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Automaton",
+            "regenPerSecond": 6.9444447,
+            "event": null,
+            "statistics": {
+                "missionsWon": 3462379,
+                "missionsLost": 434575,
+                "missionTime": 11928009021,
+                "terminidKills": 0,
+                "automatonKills": 889631680,
+                "illuminateKills": 31,
+                "bulletsFired": 4415385101,
+                "bulletsHit": 4692825486,
+                "timePlayed": 11928009021,
+                "deaths": 26986120,
+                "revives": 0,
+                "friendlies": 2746892,
+                "missionSuccessRate": 88,
+                "accuracy": 100,
+                "playerCount": 644
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 11,
+        "faction": "Humans"
+    },
+    {
+        "id": 51485,
+        "planet": {
+            "index": 114,
+            "name": "AURORA BAY",
+            "sector": "Valdis",
+            "biome": {
+                "name": "Tundra",
+                "description": "A perennially chilly climate has allowed short, colorful shrubs to flourish across this planet's surface."
+            },
+            "hazards": [
+                {
+                    "name": "None",
+                    "description": "This planet's environment is not yet known, or has no environmental modifiers."
+                }
+            ],
+            "hash": 975759959,
+            "position": {
+                "x": -0.44310373,
+                "y": 0.599078
+            },
+            "waypoints": [
+                159
+            ],
+            "maxHealth": 1600000,
+            "health": 1600000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Automaton",
+            "regenPerSecond": 13.888889,
+            "event": null,
+            "statistics": {
+                "missionsWon": 3928522,
+                "missionsLost": 654459,
+                "missionTime": 14991497603,
+                "terminidKills": 4405,
+                "automatonKills": 941245244,
+                "illuminateKills": 2028,
+                "bulletsFired": 5137953160,
+                "bulletsHit": 5729067450,
+                "timePlayed": 14991497603,
+                "deaths": 38571237,
+                "revives": 0,
+                "friendlies": 2762796,
+                "missionSuccessRate": 85,
+                "accuracy": 100,
+                "playerCount": 559
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 2033316867,
+                    "name": "BATU BELIG",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 0.57685,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 1,
+                    "hash": 2903117961,
+                    "name": "EAGLEMOUNT",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 207
+                }
+            ]
+        },
+        "type": 0,
+        "count": 2,
+        "faction": "Humans"
+    },
+    {
+        "id": 51489,
+        "planet": {
+            "index": 205,
+            "name": "MERGA IV",
+            "sector": "Valdis",
+            "biome": {
+                "name": "Haunted Swamp",
+                "description": "Squelching mud, twisting roots; the odor of rot and anarchy. A teeming, endless morass."
+            },
+            "hazards": [
+                {
+                    "name": "Thick Fog",
+                    "description": "Dense fog lightly reduce visibility for both enemy and friendly units."
+                }
+            ],
+            "hash": 319528443,
+            "position": {
+                "x": -0.32600746,
+                "y": 0.7472937
+            },
+            "waypoints": [
+                204
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Automaton",
+            "regenPerSecond": 19.444445,
+            "event": null,
+            "statistics": {
+                "missionsWon": 657125,
+                "missionsLost": 92234,
+                "missionTime": 2167485396,
+                "terminidKills": 5133,
+                "automatonKills": 138012576,
+                "illuminateKills": 1286,
+                "bulletsFired": 784739939,
+                "bulletsHit": 862704444,
+                "timePlayed": 2167485396,
+                "deaths": 4286019,
+                "revives": 0,
+                "friendlies": 487029,
+                "missionSuccessRate": 87,
+                "accuracy": 100,
+                "playerCount": 394
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 1,
+        "faction": "Humans"
+    },
+    {
+        "id": 51502,
+        "planet": {
+            "index": 100,
+            "name": "TRANDOR",
+            "sector": "Sten",
+            "biome": {
+                "name": "Tundra",
+                "description": "A perennially chilly climate has allowed short, colorful shrubs to flourish across this planet's surface."
+            },
+            "hazards": [
+                {
+                    "name": "None",
+                    "description": "This planet's environment is not yet known, or has no environmental modifiers."
+                }
+            ],
+            "hash": 3515299681,
+            "position": {
+                "x": 0.9189892,
+                "y": -0.1249713
+            },
+            "waypoints": [
+                173,
+                216
+            ],
+            "maxHealth": 1900000,
+            "health": 1900000,
+            "disabled": false,
+            "initialOwner": "Terminids",
+            "currentOwner": "Terminids",
+            "regenPerSecond": 5.5555553,
+            "event": null,
+            "statistics": {
+                "missionsWon": 4822465,
+                "missionsLost": 278594,
+                "missionTime": 17191031360,
+                "terminidKills": 2596169118,
+                "automatonKills": 0,
+                "illuminateKills": 0,
+                "bulletsFired": 9097489815,
+                "bulletsHit": 10813940856,
+                "timePlayed": 17191031360,
+                "deaths": 33531995,
+                "revives": 0,
+                "friendlies": 5676872,
+                "missionSuccessRate": 94,
+                "accuracy": 100,
+                "playerCount": 887
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 4187567384,
+                    "name": "NYA SKELLEFTEA",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 0.24626,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 1,
+                    "hash": 687069999,
+                    "name": "\u00d6DESH\u00d6GRE",
+                    "description": "null",
+                    "health": 100000,
+                    "maxHealth": 100000,
+                    "size": "Settlement",
+                    "regenPerSecond": 0.2777778,
+                    "availabilityFactor": 0.71537,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 2,
+                    "hash": 1123715107,
+                    "name": "GOTHENBURG III",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 82
+                }
+            ]
+        },
+        "type": 0,
+        "count": 5,
+        "faction": "Humans"
+    },
+    {
+        "id": 51503,
+        "planet": {
+            "index": 172,
+            "name": "GAR HAREN",
+            "sector": "Jin Xi",
+            "biome": {
+                "name": "Haunted Swamp",
+                "description": "Squelching mud, twisting roots; the odor of rot and anarchy. A teeming, endless morass."
+            },
+            "hazards": [
+                {
+                    "name": "Thick Fog",
+                    "description": "Dense fog lightly reduce visibility for both enemy and friendly units."
+                }
+            ],
+            "hash": 2254239637,
+            "position": {
+                "x": 0.7312195,
+                "y": -0.12242107
+            },
+            "waypoints": [
+                130,
+                173,
+                175
+            ],
+            "maxHealth": 1000000,
+            "health": 1000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Terminids",
+            "regenPerSecond": 5.5555553,
+            "event": null,
+            "statistics": {
+                "missionsWon": 4271721,
+                "missionsLost": 352167,
+                "missionTime": 14242659500,
+                "terminidKills": 2085807443,
+                "automatonKills": 19,
+                "illuminateKills": 383,
+                "bulletsFired": 7498136874,
+                "bulletsHit": 8858360274,
+                "timePlayed": 14242659500,
+                "deaths": 32700108,
+                "revives": 0,
+                "friendlies": 5691123,
+                "missionSuccessRate": 92,
+                "accuracy": 100,
+                "playerCount": 212
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 9,
+        "faction": "Humans"
+    },
+    {
+        "id": 51504,
+        "planet": {
+            "index": 217,
+            "name": "PHACT BAY",
+            "sector": "Jin Xi",
+            "biome": {
+                "name": "Desert Dunes",
+                "description": "A blazing-hot desert planet, its rocky mesas are the sole interruptions to the endless sea of dunes."
+            },
+            "hazards": [
+                {
+                    "name": "Sandstorms",
+                    "description": "Dense sandstorms reduce mobility and greatly reduce visibility for both enemy and friendly units."
+                }
+            ],
+            "hash": 1050117740,
+            "position": {
+                "x": 0.7587918,
+                "y": -0.019947395
+            },
+            "waypoints": [
+                128,
+                172
+            ],
+            "maxHealth": 2200000,
+            "health": 2200000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Terminids",
+            "regenPerSecond": 6.9444447,
+            "event": null,
+            "statistics": {
+                "missionsWon": 17087179,
+                "missionsLost": 1214129,
+                "missionTime": 59302013487,
+                "terminidKills": 7825527203,
+                "automatonKills": 2824,
+                "illuminateKills": 382,
+                "bulletsFired": 30814486209,
+                "bulletsHit": 36522259818,
+                "timePlayed": 59302013487,
+                "deaths": 123636484,
+                "revives": 0,
+                "friendlies": 20576482,
+                "missionSuccessRate": 93,
+                "accuracy": 100,
+                "playerCount": 4022
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 2253802431,
+                    "name": "OLD DOVE",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 1,
+                    "isAvailable": false,
+                    "players": 4
+                },
+                {
+                    "id": 1,
+                    "hash": 481340922,
+                    "name": "BRNO",
+                    "description": "null",
+                    "health": 400000,
+                    "maxHealth": 400000,
+                    "size": "City",
+                    "regenPerSecond": 1.1111112,
+                    "availabilityFactor": 0.20923,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 2,
+                    "hash": 1121037205,
+                    "name": "NEW EAGLE",
+                    "description": "null",
+                    "health": 600000,
+                    "maxHealth": 600000,
+                    "size": "MegaCity",
+                    "regenPerSecond": 1.6666666,
+                    "availabilityFactor": 0.56364,
+                    "isAvailable": false,
+                    "players": 0
+                }
+            ]
+        },
+        "type": 0,
+        "count": 15,
+        "faction": "Humans"
+    },
+    {
+        "id": 51505,
+        "planet": {
+            "index": 207,
+            "name": "MINTORIA",
+            "sector": "Gellert",
+            "biome": {
+                "name": "Plains",
+                "description": "Rocky outcroppings punctuate fields of tall grass in a planet dominated by misty highland terrain."
+            },
+            "hazards": [
+                {
+                    "name": "None",
+                    "description": "This planet's environment is not yet known, or has no environmental modifiers."
+                }
+            ],
+            "hash": 2174989502,
+            "position": {
+                "x": -0.06005267,
+                "y": 0.84179187
+            },
+            "waypoints": [
+                251
+            ],
+            "maxHealth": 1300000,
+            "health": 1300000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Automaton",
+            "regenPerSecond": 4.1666665,
+            "event": null,
+            "statistics": {
+                "missionsWon": 4279083,
+                "missionsLost": 367395,
+                "missionTime": 15222853887,
+                "terminidKills": 4747,
+                "automatonKills": 1473302116,
+                "illuminateKills": 2774,
+                "bulletsFired": 6593484621,
+                "bulletsHit": 7111698122,
+                "timePlayed": 15222853887,
+                "deaths": 33056222,
+                "revives": 0,
+                "friendlies": 3623889,
+                "missionSuccessRate": 92,
+                "accuracy": 100,
+                "playerCount": 588
+            },
+            "attacking": [],
+            "regions": [
+                {
+                    "id": 0,
+                    "hash": 3513777986,
+                    "name": "SEORAKSAN",
+                    "description": "null",
+                    "health": 100000,
+                    "maxHealth": 100000,
+                    "size": "Settlement",
+                    "regenPerSecond": 0.2777778,
+                    "availabilityFactor": 0.71145,
+                    "isAvailable": false,
+                    "players": 0
+                },
+                {
+                    "id": 1,
+                    "hash": 3910908375,
+                    "name": "GYEONGSEONG",
+                    "description": "null",
+                    "health": 200000,
+                    "maxHealth": 200000,
+                    "size": "Town",
+                    "regenPerSecond": 0.5555556,
+                    "availabilityFactor": 1,
+                    "isAvailable": true,
+                    "players": 73
+                }
+            ]
+        },
+        "type": 0,
+        "count": 12,
+        "faction": "Humans"
+    },
+    {
+        "id": 51506,
+        "planet": {
+            "index": 266,
+            "name": "Mox",
+            "sector": "Trigon",
+            "biome": {
+                "name": "Magma",
+                "description": "Constant eruptions keep this planet covered in lava flows and utterly inhospitable to Democratic life. It also makes it a treasure trove of rare minerals."
+            },
+            "hazards": [
+                {
+                    "name": "None",
+                    "description": "This planet's environment is not yet known, or has no environmental modifiers."
+                }
+            ],
+            "hash": 1316898847,
+            "position": {
+                "x": -0.766,
+                "y": 0.41
+            },
+            "waypoints": [
+                244,
+                246
+            ],
+            "maxHealth": 2000000,
+            "health": 2000000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Automaton",
+            "regenPerSecond": 8.333333,
+            "event": null,
+            "statistics": {
+                "missionsWon": 2960792,
+                "missionsLost": 503032,
+                "missionTime": 11677206895,
+                "terminidKills": 39549,
+                "automatonKills": 1057426485,
+                "illuminateKills": 6954,
+                "bulletsFired": 7648779206,
+                "bulletsHit": 7730216442,
+                "timePlayed": 11677206895,
+                "deaths": 29291185,
+                "revives": 0,
+                "friendlies": 3427896,
+                "missionSuccessRate": 85,
+                "accuracy": 100,
+                "playerCount": 208
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 0,
+        "count": 5,
+        "faction": "Humans"
+    },
+    {
+        "id": 51510,
+        "planet": {
+            "index": 183,
+            "name": "HORT",
+            "sector": "Rigel",
+            "biome": {
+                "name": "Plains",
+                "description": "Rocky outcroppings punctuate fields of tall grass in a planet dominated by misty highland terrain."
+            },
+            "hazards": [
+                {
+                    "name": "None",
+                    "description": "This planet's environment is not yet known, or has no environmental modifiers."
+                }
+            ],
+            "hash": 2078192573,
+            "position": {
+                "x": 0.2510076,
+                "y": -0.69129366
+            },
+            "waypoints": [
+                181,
+                224
+            ],
+            "maxHealth": 2200000,
+            "health": 2200000,
+            "disabled": false,
+            "initialOwner": "Humans",
+            "currentOwner": "Illuminate",
+            "regenPerSecond": 2.7777777,
+            "event": {
+                "id": 5522,
+                "eventType": 0,
+                "faction": "Humans",
+                "health": 1516124,
+                "maxHealth": 5150000,
+                "startTime": "2026-03-24T14:51:29Z",
+                "endTime": "2026-03-31T14:51:29Z",
+                "campaignId": 51510,
+                "jointOperationIds": [
+                    5522
+                ]
+            },
+            "statistics": {
+                "missionsWon": 3391574,
+                "missionsLost": 338489,
+                "missionTime": 12657226050,
+                "terminidKills": 5194,
+                "automatonKills": 1368,
+                "illuminateKills": 1676280375,
+                "bulletsFired": 12469822299,
+                "bulletsHit": 12444589464,
+                "timePlayed": 12657226050,
+                "deaths": 27291949,
+                "revives": 0,
+                "friendlies": 3941030,
+                "missionSuccessRate": 90,
+                "accuracy": 99,
+                "playerCount": 37885
+            },
+            "attacking": [],
+            "regions": []
+        },
+        "type": 4,
+        "count": 16,
+        "faction": "Humans"
+    }
+]
