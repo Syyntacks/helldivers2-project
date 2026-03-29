@@ -1,0 +1,183 @@
+[
+    {
+        "index": 183,
+        "name": "HORT",
+        "sector": "Rigel",
+        "biome": {
+            "name": "Plains",
+            "description": "Rocky outcroppings punctuate fields of tall grass in a planet dominated by misty highland terrain."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 2078192573,
+        "position": {
+            "x": 0.2510076,
+            "y": -0.69129366
+        },
+        "waypoints": [
+            181,
+            224
+        ],
+        "maxHealth": 2200000,
+        "health": 2200000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 2.7777777,
+        "event": {
+            "id": 5522,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 69134,
+            "maxHealth": 5150000,
+            "startTime": "2026-03-24T14:52:48Z",
+            "endTime": "2026-03-31T14:52:48Z",
+            "campaignId": 51510,
+            "jointOperationIds": [
+                5522
+            ]
+        },
+        "statistics": {
+            "missionsWon": 4087356,
+            "missionsLost": 415450,
+            "missionTime": 15349747643,
+            "terminidKills": 5194,
+            "automatonKills": 1601,
+            "illuminateKills": 1922375791,
+            "bulletsFired": 14601642893,
+            "bulletsHit": 15078185382,
+            "timePlayed": 15349747643,
+            "deaths": 33737410,
+            "revives": 0,
+            "friendlies": 4749827,
+            "missionSuccessRate": 90,
+            "accuracy": 100,
+            "playerCount": 31596
+        },
+        "attacking": [],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 3491570579,
+                "name": "ON-EARSAHOU",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.31688,
+                "isAvailable": false,
+                "players": 1
+            },
+            {
+                "id": 1,
+                "hash": 2519594311,
+                "name": "CLOCKSTOP",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 2
+            },
+            {
+                "id": 2,
+                "hash": 3212629027,
+                "name": "MAGNITUDE",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.60466,
+                "isAvailable": false,
+                "players": 1
+            }
+        ]
+    },
+    {
+        "index": 226,
+        "name": "RIRGA BAY",
+        "sector": "Rigel",
+        "biome": {
+            "name": "Acidic Badlands",
+            "description": "Dense, toxic fumes from deep within the planet's crust seep out of cracks in the earth and coat the ground in a sickly haze."
+        },
+        "hazards": [
+            {
+                "name": "Acid Storms",
+                "description": "Corrosive acid storms temporarily reduce armor effectiveness for both enemy and friendly units."
+            }
+        ],
+        "hash": 1377257553,
+        "position": {
+            "x": 0.09694725,
+            "y": -0.7277918
+        },
+        "waypoints": [
+            183,
+            227
+        ],
+        "maxHealth": 1200000,
+        "health": 1200000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5525,
+            "eventType": 1,
+            "faction": "Illuminate",
+            "health": 746342,
+            "maxHealth": 1600000,
+            "startTime": "2026-03-28T10:30:08Z",
+            "endTime": "2026-03-30T10:30:08Z",
+            "campaignId": 51513,
+            "jointOperationIds": [
+                5525
+            ]
+        },
+        "statistics": {
+            "missionsWon": 2452616,
+            "missionsLost": 166523,
+            "missionTime": 9024647245,
+            "terminidKills": 56,
+            "automatonKills": 1233,
+            "illuminateKills": 2268441993,
+            "bulletsFired": 5937219125,
+            "bulletsHit": 6157603576,
+            "timePlayed": 9024647245,
+            "deaths": 1016104090,
+            "revives": 0,
+            "friendlies": 2840421,
+            "missionSuccessRate": 93,
+            "accuracy": 100,
+            "playerCount": 18565
+        },
+        "attacking": [
+            183,
+            227
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 452138560,
+                "name": "BLIGHTSMURK",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 298
+            }
+        ]
+    }
+]
