@@ -1,0 +1,106 @@
+[
+    {
+        "index": 131,
+        "name": "ACHIRD III",
+        "sector": "Borgus",
+        "biome": {
+            "name": "Rocky Canyons",
+            "description": "This arid, rocky biome covering this world has driven the evolution of exceptionally efficient water usage in its various organisms."
+        },
+        "hazards": [
+            {
+                "name": "Tremors",
+                "description": "Frequent earthquakes stun players and enemies alike."
+            }
+        ],
+        "hash": 3921453955,
+        "position": {
+            "x": 0.5706473,
+            "y": -0.035894755
+        },
+        "waypoints": [
+            126,
+            128
+        ],
+        "maxHealth": 2000000,
+        "health": 2000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5527,
+            "eventType": 1,
+            "faction": "Terminids",
+            "health": 1790832,
+            "maxHealth": 2000000,
+            "startTime": "2026-03-31T15:45:05Z",
+            "endTime": "2026-04-02T15:45:05Z",
+            "campaignId": 51518,
+            "jointOperationIds": [
+                5527
+            ]
+        },
+        "statistics": {
+            "missionsWon": 14451114,
+            "missionsLost": 717369,
+            "missionTime": 47005542239,
+            "terminidKills": 7163815442,
+            "automatonKills": 4040,
+            "illuminateKills": 3827,
+            "bulletsFired": 29140960742,
+            "bulletsHit": 33157264680,
+            "timePlayed": 47005542239,
+            "deaths": 91943969,
+            "revives": 0,
+            "friendlies": 14657512,
+            "missionSuccessRate": 95,
+            "accuracy": 100,
+            "playerCount": 34817
+        },
+        "attacking": [
+            128
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 2634421583,
+                "name": "TIMELY",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 0.31459373,
+                "isAvailable": false,
+                "players": 15
+            },
+            {
+                "id": 1,
+                "hash": 1872830438,
+                "name": "APPROVAL CITY",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.59457237,
+                "isAvailable": false,
+                "players": 8
+            },
+            {
+                "id": 2,
+                "hash": 1978368732,
+                "name": "OLD BRANCH",
+                "description": "null",
+                "health": 307835,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 14140
+            }
+        ]
+    }
+]
