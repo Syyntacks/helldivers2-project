@@ -1,0 +1,119 @@
+[
+    {
+        "index": 158,
+        "name": "CHOEPESSA IV",
+        "sector": "Trigon",
+        "biome": {
+            "name": "Boneyard",
+            "description": "Ice and moss-covered rock can be found across most of the surface of this planet."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 2564387350,
+        "position": {
+            "x": -0.7044093,
+            "y": 0.25667855
+        },
+        "waypoints": [
+            242,
+            244
+        ],
+        "maxHealth": 3200000,
+        "health": 3200000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5536,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 937489,
+            "maxHealth": 1500000,
+            "startTime": "2026-04-07T14:22:35Z",
+            "endTime": "2026-04-09T14:22:35Z",
+            "campaignId": 51529,
+            "jointOperationIds": [
+                5536
+            ]
+        },
+        "statistics": {
+            "missionsWon": 9287372,
+            "missionsLost": 704431,
+            "missionTime": 30617272410,
+            "terminidKills": 5745,
+            "automatonKills": 2650976158,
+            "illuminateKills": 2367,
+            "bulletsFired": 13946233401,
+            "bulletsHit": 14534603252,
+            "timePlayed": 30617272410,
+            "deaths": 68556864,
+            "revives": 0,
+            "friendlies": 6604497,
+            "missionSuccessRate": 92,
+            "accuracy": 100,
+            "playerCount": 8448
+        },
+        "attacking": [
+            157
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 4121418923,
+                "name": "HILJAISUUS",
+                "description": "null",
+                "health": 54100,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 0.47002,
+                "isAvailable": true,
+                "players": 2969
+            },
+            {
+                "id": 1,
+                "hash": 400630653,
+                "name": "KALASATAMA",
+                "description": "null",
+                "health": 399960,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.64558,
+                "isAvailable": true,
+                "players": 486
+            },
+            {
+                "id": 2,
+                "hash": 1017291850,
+                "name": "YDINKESKUSTA",
+                "description": "null",
+                "health": 600000,
+                "maxHealth": 600000,
+                "size": "MegaCity",
+                "regenPerSecond": 1.6666666,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 264
+            },
+            {
+                "id": 3,
+                "hash": 3732722501,
+                "name": "EVOLUTION PLATS",
+                "description": "null",
+                "health": 1000000,
+                "maxHealth": 1000000,
+                "size": "Settlement",
+                "regenPerSecond": 0,
+                "availabilityFactor": 0,
+                "isAvailable": false,
+                "players": 1
+            }
+        ]
+    }
+]
