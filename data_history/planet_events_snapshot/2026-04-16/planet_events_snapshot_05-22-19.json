@@ -1,0 +1,171 @@
+[
+    {
+        "index": 182,
+        "name": "HEZE BAY",
+        "sector": "Hanzo",
+        "biome": {
+            "name": "Desert Dunes",
+            "description": "A blazing-hot desert planet, its rocky mesas are the sole interruptions to the endless sea of dunes."
+        },
+        "hazards": [
+            {
+                "name": "Sandstorms",
+                "description": "Dense sandstorms reduce mobility and greatly reduce visibility for both enemy and friendly units."
+            }
+        ],
+        "hash": 4182360890,
+        "position": {
+            "x": 0.04742095,
+            "y": -0.64221954
+        },
+        "waypoints": [
+            138,
+            226
+        ],
+        "maxHealth": 1800000,
+        "health": 1800000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5539,
+            "eventType": 1,
+            "faction": "Illuminate",
+            "health": 1376983,
+            "maxHealth": 1450000,
+            "startTime": "2026-04-15T21:30:46Z",
+            "endTime": "2026-04-17T21:30:46Z",
+            "campaignId": 51532,
+            "jointOperationIds": [
+                5539
+            ]
+        },
+        "statistics": {
+            "missionsWon": 1818443,
+            "missionsLost": 149604,
+            "missionTime": 6259385226,
+            "terminidKills": 14,
+            "automatonKills": 548,
+            "illuminateKills": 846291335,
+            "bulletsFired": 4659058580,
+            "bulletsHit": 4607490254,
+            "timePlayed": 6259385226,
+            "deaths": 12206565,
+            "revives": 0,
+            "friendlies": 1795442,
+            "missionSuccessRate": 92,
+            "accuracy": 98,
+            "playerCount": 6290
+        },
+        "attacking": [
+            184
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 472831334,
+                "name": "UNANIMITY",
+                "description": "null",
+                "health": 386749,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 2768
+            },
+            {
+                "id": 1,
+                "hash": 874781515,
+                "name": "UNISON",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.79957396,
+                "isAvailable": false,
+                "players": 1
+            }
+        ]
+    },
+    {
+        "index": 226,
+        "name": "RIRGA BAY",
+        "sector": "Rigel",
+        "biome": {
+            "name": "Acidic Badlands",
+            "description": "Dense, toxic fumes from deep within the planet's crust seep out of cracks in the earth and coat the ground in a sickly haze."
+        },
+        "hazards": [
+            {
+                "name": "Acid Storms",
+                "description": "Corrosive acid storms temporarily reduce armor effectiveness for both enemy and friendly units."
+            }
+        ],
+        "hash": 1377257553,
+        "position": {
+            "x": 0.09694725,
+            "y": -0.7277918
+        },
+        "waypoints": [
+            183,
+            227
+        ],
+        "maxHealth": 1200000,
+        "health": 1200000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5538,
+            "eventType": 1,
+            "faction": "Illuminate",
+            "health": 319281,
+            "maxHealth": 1650000,
+            "startTime": "2026-04-15T07:28:06Z",
+            "endTime": "2026-04-17T07:28:06Z",
+            "campaignId": 51531,
+            "jointOperationIds": [
+                5538
+            ]
+        },
+        "statistics": {
+            "missionsWon": 3613297,
+            "missionsLost": 224196,
+            "missionTime": 13300863465,
+            "terminidKills": 3825,
+            "automatonKills": 4222,
+            "illuminateKills": 2832905754,
+            "bulletsFired": 8774791490,
+            "bulletsHit": 9158072098,
+            "timePlayed": 13300863465,
+            "deaths": 1023158679,
+            "revives": 0,
+            "friendlies": 4166638,
+            "missionSuccessRate": 94,
+            "accuracy": 100,
+            "playerCount": 18899
+        },
+        "attacking": [
+            227
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 452138560,
+                "name": "BLIGHTSMURK",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 92
+            }
+        ]
+    }
+]
