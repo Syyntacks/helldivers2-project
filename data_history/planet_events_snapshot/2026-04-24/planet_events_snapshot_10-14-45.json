@@ -1,0 +1,105 @@
+[
+    {
+        "index": 162,
+        "name": "CLASA",
+        "sector": "Tanis",
+        "biome": {
+            "name": "Basic Swamp",
+            "description": "Tall, gnarled trees flourish across the surface of this forested world. Sunlight filters past dangling vines, to the saturated undergrowth below."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 4171074231,
+        "position": {
+            "x": -0.07354023,
+            "y": 0.6374251
+        },
+        "waypoints": [
+            163
+        ],
+        "maxHealth": 1700000,
+        "health": 1700000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5549,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 1704118,
+            "maxHealth": 1800000,
+            "startTime": "2026-04-23T20:51:22Z",
+            "endTime": "2026-04-24T20:51:22Z",
+            "campaignId": 51545,
+            "jointOperationIds": [
+                5549
+            ]
+        },
+        "statistics": {
+            "missionsWon": 5963400,
+            "missionsLost": 771552,
+            "missionTime": 20626611414,
+            "terminidKills": 4511,
+            "automatonKills": 1534600272,
+            "illuminateKills": 1285,
+            "bulletsFired": 9892275878,
+            "bulletsHit": 10215377200,
+            "timePlayed": 20626611414,
+            "deaths": 43243309,
+            "revives": 0,
+            "friendlies": 3991185,
+            "missionSuccessRate": 88,
+            "accuracy": 100,
+            "playerCount": 1667
+        },
+        "attacking": [
+            250
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 4051063223,
+                "name": "SYCAMORE GARDENS",
+                "description": "null",
+                "health": 87693,
+                "maxHealth": 100000,
+                "size": "Settlement",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 0.75664574,
+                "isAvailable": true,
+                "players": 487
+            },
+            {
+                "id": 1,
+                "hash": 2332413862,
+                "name": "KODIAK FALLS",
+                "description": "null",
+                "health": 187418,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 190
+            },
+            {
+                "id": 2,
+                "hash": 3568007842,
+                "name": "VOTING DISTRICT F-012357",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.26657742,
+                "isAvailable": false,
+                "players": 0
+            }
+        ]
+    }
+]
