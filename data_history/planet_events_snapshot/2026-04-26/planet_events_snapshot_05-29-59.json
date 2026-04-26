@@ -1,0 +1,80 @@
+[
+    {
+        "index": 117,
+        "name": "VOG-SOJOTH",
+        "sector": "Tanis",
+        "biome": {
+            "name": "Icy Glaciers",
+            "description": "Submerged in eternal winter, this world's frosty peaks glimmer in the light of its too-distant star."
+        },
+        "hazards": [
+            {
+                "name": "Blizzards",
+                "description": "Intense blizzard reduce mobility and moderately reduce visibility for both enemy and friendly units."
+            }
+        ],
+        "hash": 2580049274,
+        "position": {
+            "x": -0.122073,
+            "y": 0.5435566
+        },
+        "waypoints": [
+            161,
+            162
+        ],
+        "maxHealth": 1200000,
+        "health": 1200000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5551,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 181360,
+            "maxHealth": 1650000,
+            "startTime": "2026-04-25T07:31:07Z",
+            "endTime": "2026-04-26T07:31:07Z",
+            "campaignId": 51547,
+            "jointOperationIds": [
+                5551
+            ]
+        },
+        "statistics": {
+            "missionsWon": 9587404,
+            "missionsLost": 532978,
+            "missionTime": 33458983255,
+            "terminidKills": 4906,
+            "automatonKills": 3066235509,
+            "illuminateKills": 306,
+            "bulletsFired": 14145198457,
+            "bulletsHit": 15810748138,
+            "timePlayed": 33458983255,
+            "deaths": 65984903,
+            "revives": 0,
+            "friendlies": 7666652,
+            "missionSuccessRate": 94,
+            "accuracy": 100,
+            "playerCount": 38181
+        },
+        "attacking": [
+            162
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 4179557814,
+                "name": "HAERSTVIK",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 130
+            }
+        ]
+    }
+]
