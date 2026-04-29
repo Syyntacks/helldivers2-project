@@ -1,0 +1,162 @@
+[
+    {
+        "index": 76,
+        "name": "TERREK",
+        "sector": "Orion",
+        "biome": {
+            "name": "Moon",
+            "description": "A rocky, lonely moon with extremely valuable mineral deposits underneath the surface."
+        },
+        "hazards": [
+            {
+                "name": "Meteor Storms",
+                "description": "Meteors impact the surface causing massive damage."
+            }
+        ],
+        "hash": 910588397,
+        "position": {
+            "x": 0.26528117,
+            "y": 0.347748
+        },
+        "waypoints": [
+            77,
+            124,
+            269
+        ],
+        "maxHealth": 1000000,
+        "health": 1000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5553,
+            "eventType": 1,
+            "faction": "Terminids",
+            "health": 783267,
+            "maxHealth": 900000,
+            "startTime": "2026-04-28T14:19:42Z",
+            "endTime": "2026-04-29T14:19:42Z",
+            "campaignId": 51551,
+            "jointOperationIds": [
+                5553
+            ]
+        },
+        "statistics": {
+            "missionsWon": 11349157,
+            "missionsLost": 721870,
+            "missionTime": 38980633661,
+            "terminidKills": 5912985558,
+            "automatonKills": 16478,
+            "illuminateKills": 2146,
+            "bulletsFired": 26208369189,
+            "bulletsHit": 29276788988,
+            "timePlayed": 38980633661,
+            "deaths": 77476270,
+            "revives": 0,
+            "friendlies": 13001690,
+            "missionSuccessRate": 94,
+            "accuracy": 100,
+            "playerCount": 3732
+        },
+        "attacking": [
+            124,
+            269
+        ],
+        "regions": []
+    },
+    {
+        "index": 129,
+        "name": "ACAMAR IV",
+        "sector": "Jin Xi",
+        "biome": {
+            "name": "Plains",
+            "description": "Rocky outcroppings punctuate fields of tall grass in a planet dominated by misty highland terrain."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 1231076923,
+        "position": {
+            "x": 0.6244252,
+            "y": 0.10954041
+        },
+        "waypoints": [
+            126,
+            171,
+            214
+        ],
+        "maxHealth": 1500000,
+        "health": 1500000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5554,
+            "eventType": 1,
+            "faction": "Terminids",
+            "health": 1499950,
+            "maxHealth": 1500000,
+            "startTime": "2026-04-29T07:03:42Z",
+            "endTime": "2026-05-01T07:03:42Z",
+            "campaignId": 51552,
+            "jointOperationIds": [
+                5554
+            ]
+        },
+        "statistics": {
+            "missionsWon": 11055411,
+            "missionsLost": 774013,
+            "missionTime": 40153475727,
+            "terminidKills": 5859001447,
+            "automatonKills": 6566,
+            "illuminateKills": 1469,
+            "bulletsFired": 23779226043,
+            "bulletsHit": 28360188722,
+            "timePlayed": 40153475727,
+            "deaths": 84760938,
+            "revives": 0,
+            "friendlies": 14823842,
+            "missionSuccessRate": 93,
+            "accuracy": 100,
+            "playerCount": 688
+        },
+        "attacking": [
+            128,
+            171,
+            214
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 324613052,
+                "name": "DEMOCRACY ALWAYS",
+                "description": "null",
+                "health": 100000,
+                "maxHealth": 100000,
+                "size": "Settlement",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 0.84765387,
+                "isAvailable": false,
+                "players": 1
+            },
+            {
+                "id": 1,
+                "hash": 855833074,
+                "name": "ERIDANI",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 292
+            }
+        ]
+    }
+]
