@@ -2,13 +2,20 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
+# =============================================================
+# RETIRED — Deployment has moved to Cloudflare Pages.
+# This file is kept for reference. To re-enable, restore the
+# original "on:" trigger below and remove the disabled one.
+# =============================================================
+
 name: Build and deploy Python app to Azure Web App - hd2-war-data-tracker
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "deploy-azure" to re-enable Azure deployment'
+        required: true
 
 jobs:
   build:
@@ -31,7 +38,17 @@ jobs:
           python -m venv antenv
           source antenv/bin/activate
           pip install -r requirements.txt
-                
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Obfuscate frontend JS
+        run: |
+          npm ci
+          npm run obfuscate
+
       # By default, when you enable GitHub CI/CD integration through the Azure portal, the platform automatically sets the SCM_DO_BUILD_DURING_DEPLOYMENT application setting to true. This triggers the use of Oryx, a build engine that handles application compilation and dependency installation (e.g., pip install) directly on the platform during deployment. Hence, we exclude the antenv virtual environment directory from the deployment artifact to reduce the payload size. 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4

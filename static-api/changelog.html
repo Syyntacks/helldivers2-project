@@ -1,0 +1,403 @@
+<h1>Changelog</h1>
+<p>All notable changes to this project will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
+and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2>[0.9.0] - 2026-05-10</h2>
+<h3>Added</h3>
+<ul>
+<li><strong>Live Refresh System:</strong> Frontend now polls the live Helldivers 2 API every 60 seconds for fresh player counts, liberation percentages, and health values, updating visible DOM elements in-place without re-rendering the page.<ul>
+<li>Player count trend indicators (▲/▼ with rate-per-minute) shown on homepage planet cards.</li>
+<li>Regen trend indicators shown per planet card.</li>
+<li>Sub-second interpolation loop (every 50ms) smoothly animates player counts between ticks.</li>
+</ul>
+</li>
+<li><strong>Planet Modal:</strong> Fully implemented planet detail overlay, replacing the old stub.<ul>
+<li>Populated with planet name, owner, sector, biome, biome description, hazards, player count, and liberation/defense progress bars.</li>
+<li>Modal progress bars are kept in sync with the live refresh system.</li>
+<li>Planet list cards now have <code>cursor: pointer</code> to indicate interactivity.</li>
+</ul>
+</li>
+<li><strong>Galactic Map:</strong> Added <code>#galactic-map</code> section with <code>#map-container</code> div and supporting styles; Konva.js CDN script added to <code>index.html</code>.<ul>
+<li><em>(Note: the Galactic Map is in an alpha state. While it is interactable, it is still missing vital information soon to be implemented/added.)</em></li>
+</ul>
+</li>
+<li><strong>Static API Build Pipeline (Host migration):</strong><ul>
+<li>Created <code>build_static_api.py</code> — runs during the GitHub Action to fetch live data, parse it through existing parsers, and write static JSON files to <code>static-api/</code>.</li>
+<li>Migrated to new host for better performance, loading times, and more control.</li>
+</ul>
+</li>
+<li><strong>New API Endpoints</strong> (in <code>api_source.py</code>):<ul>
+<li><code>/api/enemies</code> — returns static enemy data from <code>enemies/hd2_enemies.json</code>.</li>
+<li><code>/api/sector_layout</code> — returns static sector layout from <code>sectors.json</code>.</li>
+<li><code>/api/planets/{planet_index}/player_history</code> — returns a time-series of player counts for a planet over the past N days, sourced from <code>data_history/planets_snapshot/</code>.</li>
+</ul>
+</li>
+<li><strong>New Parser:</strong> Created <code>utils/parse_conf/news_feed_parser.py</code> (<code>newsFeedParser</code>) to parse in-game dispatch/news feed messages.<ul>
+<li>Converts in-game markup (<code>&lt;i=3&gt;</code>, <code>&lt;i=1&gt;</code>) to styled HTML spans.</li>
+<li>Integrates with <code>format_dispatch_date()</code> for short and hover-full timestamps.</li>
+</ul>
+</li>
+<li><strong>Homepage Dispatch Display:</strong> Added styles for the news feed/dispatch summary grid (<code>.dispatch-summary-grid</code>, <code>.homepage-dispatch-data</code>, <code>.dispatch-header</code>, <code>.dispatch-highlight</code>, etc.).</li>
+<li><strong>Major Order Page Styles:</strong> Added <code>.mo-page-container</code>, <code>.mo-page-description</code>, <code>.mo-page-expiry</code>, and related rules for a dedicated MO detail page layout.</li>
+<li><strong>Galaxy Stats Page Layout:</strong> Added <code>.galaxy-stats-page-layout</code> grid layout and responsive sizing rules.</li>
+<li><strong>Player Percentage Mini-Bar:</strong> Added <code>.player-pct-bar-container</code> and <code>.player-pct-bar</code> to show each active planet's share of total Helldivers online, with a tooltip on hover.</li>
+<li><strong>Planet Card Header:</strong> Added <code>.planet-card-header</code>, <code>.planet-regen-stat</code>, <code>.planet-player-stat</code>, and <code>.regen-trend</code> styles for richer stat overlays on homepage planet cards.</li>
+<li><strong>Galactic Map Tooltip:</strong> Added <code>.galactic-map-tooltip</code> and <code>.galactic-map-wrapper</code> styles.</li>
+<li><strong>CSS Variables:</strong> Added shadow-color variants for all faction and status colors, plus <code>--dark-grey</code> and <code>--white-text</code> variables.</li>
+<li><strong>Static Files Mount:</strong> Added <code>/static-api</code> mount in <code>api_source.py</code> so the backend can serve the generated static JSON files locally during development.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li><strong>Data Snapshot Schedule:</strong> GitHub Action changed from "every 3 hours + once at 5am UTC" to a clean 8-hour cycle: 00:00, 08:00, 16:00 UTC.<ul>
+<li>This should hopefully reduce the no. of files being saved for future data parsing.</li>
+</ul>
+</li>
+<li><strong>GitHub Action now commits <code>static-api/</code></strong> in addition to <code>data_history/</code> on each snapshot run.</li>
+<li><strong>Azure Deployment Retired:</strong> <code>main_hd2-war-data-tracker.yml</code> trigger changed from auto-deploy on push to manual-only with a confirmation input; marked as retired with a comment header.</li>
+<li><strong>Sidebar Navigation Order:</strong> Reordered nav links — Galactic Map now appears before Galaxy Stats and Major Orders.</li>
+<li><strong>Cache TTL Reduced:</strong> Default fetch TTL across <code>data_fetcher.py</code>, <code>api_source.py</code>, <code>main_exe.py</code>, and <code>planet_data_parser.py</code> changed from 60s to 30s.</li>
+</ul>
+<h4>datetime_converter.py</h4>
+<ul>
+<li>Added <code>format_dispatch_date()</code> — returns <code>{"short": "MM-DD-YY", "full": "MM-DD-YY HH:MM UTC"}</code> for ISO timestamps, used by the news feed.</li>
+<li><code>format_duration_from_seconds()</code>: Input is now treated as milliseconds (divided by 1,000 before processing) to match the raw API value.</li>
+<li><code>format_duration_from_seconds()</code>: Output changed from (<code>"1 year, 2 months, 3 days"</code>) to compact (<code>"1Y 2M 3D"</code>).</li>
+</ul>
+<h4>galaxy_stats_parser.py</h4>
+<ul>
+<li>Refactored to build a separate <code>usable_stats_dict</code> instead of mutating the raw <code>overall_stats_dict</code>, preventing raw API fields from leaking into parsed output.</li>
+</ul>
+<h4>major_order_parser.py</h4>
+<ul>
+<li>Added <code>factionId</code> and <code>enemyId</code> fields to parsed task details (extracted from <code>value_map</code> using <code>faction</code> and <code>targetId</code> value keys).</li>
+<li>Removed unused imports (<code>fetch_data_from_url</code>, <code>settings</code>).</li>
+</ul>
+<h4>planet_data_parser.py</h4>
+<ul>
+<li>Fixed planet position parsing — was referencing undefined local variables <code>x</code> and <code>y</code>; now passes the correct default dict <code>{'x': 0, 'y': 0}</code>.</li>
+<li>Fixed hazards list source — was reading from <code>planets_dict</code> (wrong variable); now correctly reads from <code>planet</code>.</li>
+<li>Simplified regions data — previously extracted individual region fields into separate top-level keys; now passes the raw <code>planet.get("regions", [])</code> list as <code>'regions'</code> directly.</li>
+<li>Added import of <code>format_duration_from_seconds</code>; <code>mission_time</code> stat is now formatted on parse instead of left as raw seconds.</li>
+<li>Removed <code>event_type</code> field from defense event parsing.</li>
+<li>Removed unused imports (<code>Union</code>, <code>List</code>, <code>traceback</code>).</li>
+</ul>
+<h4>styles.css</h4>
+<ul>
+<li><strong>Changelog <code>h4</code> color:</strong> Changed from <code>--terminal-green</code> to <code>--illuminate-color</code> (purple) with matching shadow.</li>
+<li><strong>Changelog list bullets:</strong> Changed from <code>list-style-type: square</code> to a custom <code>"&gt; "</code> prefix via <code>::marker</code> for top-level items; nested lists use <code>disc</code> / <code>circle</code>.</li>
+<li><strong>Changelog nested list items:</strong> Reduced font size to <code>0.95rem</code> and colored with <code>--light-grey-text</code>.</li>
+<li><strong>Changelog <code>li strong</code> font size:</strong> Reduced from <code>1.1rem</code> to <code>1rem</code>.</li>
+<li><strong>Stat card padding:</strong> Changed top padding from <code>15px</code> to <code>8px 15px 15px 15px</code>.</li>
+<li><strong>Stat card hover:</strong> Added <code>translateY(-4px)</code> lift and yellow glow box-shadow.</li>
+<li><strong>Stat card progress bar:</strong> Now extends edge-to-edge (negative horizontal margins) with no left/right border.</li>
+<li><strong>MO card max-width:</strong> Increased from <code>800px</code> to <code>850px</code>.</li>
+<li><strong>Planet list card bg image opacity:</strong> Reduced from <code>0.3</code> to <code>0.2</code>.</li>
+<li><strong>Progress bar height:</strong> Changed from <code>1.25em</code> to <code>20px</code> (fixed px for consistent sizing).</li>
+<li><strong>Progress bar font size:</strong> Standardized to <code>0.75rem</code> with <code>!important</code> on the text overlay.</li>
+</ul>
+<h3>Deprecated</h3>
+<ul>
+<li><strong>Azure hosting</strong> — deployment has moved to Cloudflare Pages; Azure workflow is kept for reference only.</li>
+</ul>
+<h3>Removed</h3>
+<h4>planet_data_parser.py</h4>
+<ul>
+<li>Removed individual region field keys (<code>regionId</code>, <code>regionHash</code>, <code>regionName</code>, <code>regionDesc</code>, <code>regionHealth</code>, <code>regionMaxHealth</code>, <code>regionSize</code>, <code>regionRegen</code>, <code>regionAvailability</code>, <code>regionIsAvailable</code>, <code>regionPlayers</code>) from the planet output dict.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li><strong>Timestamp format typo</strong> (<code>datetime_converter.py</code>): <code>%H:%M:$S</code> corrected to <code>%H:%M:%S</code>.</li>
+<li><strong><code>bullets_fired</code> / <code>bullets_hit</code> swap</strong> (<code>planet_data_parser.py</code>): The two fields were assigned to each other's variable names.</li>
+<li><strong>Galaxy stats <code>missionTime</code> mutation</strong>: Parser no longer overwrites the raw value in <code>overall_stats_dict</code>; formatted version goes into the clean output dict only.</li>
+<li><strong>Changelog markdown rendering</strong>: Added <code>tab_length=2</code> to <code>markdown.markdown()</code> call in <code>api_source.py</code> to fix nested list indentation.</li>
+</ul>
+<h3>Security</h3>
+<ul>
+<li>Obfuscation measures have been implemented for security purposes.</li>
+</ul>
+<h3>Known Issues</h3>
+<ul>
+<li><strong>Persisting formatting issues on pages:</strong> <em>All Planets, Major Order(s), Galaxy Stats, Galactic Map</em>.</li>
+<li>Mobile formatting inconsistencies.</li>
+<li>Galactic Map can appear to visually lag.</li>
+<li>Some objectIDs have not been properly defined yet and may result in <code>Greatcloak of Rebar Resolve</code> in the output.</li>
+</ul>
+<h2>[0.8.1] - 2026-02-26 HOTFIX</h2>
+<h3>Added</h3>
+<h3>Changed</h3>
+<h3>Deprecated</h3>
+<h3>Removed</h3>
+<h3>Fixed</h3>
+<ul>
+<li>Fixed error on loading <strong>All Planets</strong> and <strong>Galaxy Stats</strong> pages.<ul>
+<li>Changed sources from local testing to proper domain.</li>
+</ul>
+</li>
+</ul>
+<h3>Security</h3>
+<h3>Known Issues</h3>
+<h2>[0.8.0] - 2026-02-26</h2>
+<h3>Added</h3>
+<ul>
+<li>Planet image resources gathered using <code>download_assets.py</code> from <code>helldiverscompanion.com</code> public resources.</li>
+</ul>
+<h4>api_source.py</h4>
+<ul>
+<li>Imported <code>HTMLResonse</code> from <code>FastAPI.responses</code>.</li>
+<li>Added <code>import markdown</code> to import list.</li>
+<li>Created <code>changelog_page()</code> to view full <code>CHANGELOG.md</code>.</li>
+</ul>
+<h4>download_assets.py</h4>
+<ul>
+<li>Created a script to access and save public image resources from <code>helldiverscompanion.com</code>.</li>
+<li><em>Can be altered based on URL or desired directory.</em></li>
+</ul>
+<h4>requirements.txt</h4>
+<ul>
+<li>Updated required third-party libraries list.</li>
+</ul>
+<h4>index.html</h4>
+<ul>
+<li>Created reference pages for <code>CHANGELOG.md</code> display.</li>
+<li>Inserted planet-overlay element for upcoming planet card overlay.</li>
+</ul>
+<h4>main.js</h4>
+<ul>
+<li>Created <code>openPlanetOverlay()</code> function to handle upcoming planet card overlay activation.<ul>
+<li><code>closePlanetOverlay()</code> is created however currently unpopulated.</li>
+</ul>
+</li>
+<li><strong>Changelog</strong> page title and routing added.</li>
+<li><code>renderPlanetsPage()</code> officially implemented; search bar and dropdown filter menu to offer users organized planet or faction-specific data.<ul>
+<li><em>You can search by planet name or by Sector name. More search parameters will be added soon.</em></li>
+</ul>
+</li>
+<li>Created two new functions- <code>analyzeSectors()</code> and <code>evaluateSectorControl()</code>- to check <strong>Planet's</strong> current sector and its owner, and to provide dynamic styling respectively.</li>
+<li>Created a proper <strong>Planet Card</strong> that provides a more dynamic experience for the user.<ul>
+<li><em>More information to be added over time. May result in some unexpected formatting issues.</em></li>
+</ul>
+</li>
+<li><code>renderChangelog()</code> function created to render <code>CHANGELOG.md</code> notes.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Changed the <code>json</code> directory from a submodule to hosting local files to avoid inconsistencies and to allow self-configuration.</li>
+</ul>
+<h4>main.js</h4>
+<ul>
+<li><code>renderPlanetsPage()</code> changed planet.owner value results to faction string instead of an integer ('2' =&gt; 'terminids', etc.)</li>
+</ul>
+<h4>styles.css</h4>
+<ul>
+<li>With AI assistance the document has been reformatted for a more cohesive and organized coding experience.</li>
+</ul>
+<h3>Deprecated</h3>
+<h3>Removed</h3>
+<h4>main.js</h4>
+<ul>
+<li>Removed prior loading message (inconsistent message appearing).</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Fixed some formatting issues across application.</li>
+</ul>
+<h3>Security</h3>
+<h3>Known Issues</h3>
+<ul>
+<li><strong>Persisting formatting issues on pages:</strong> <em>All Planets, Major Order(s), Galaxy Stats, Galactic Map</em></li>
+<li>Mobile formatting inconsistencies</li>
+</ul>
+<h2>[0.7.3] - Wednesday, 2026-02-25</h2>
+<h3>Added</h3>
+<ul>
+<li><strong>Bidirectional Progress Bar:</strong> Added a proper 'Contest' MOs progress bar.</li>
+<li><strong>Binary Progress Bar:</strong> Created a dedicated MO progress bar to handle majority cases.</li>
+<li>Filled the <strong>War Effort Summary</strong> with full Galactic statistics.</li>
+</ul>
+<h4>galaxy_stats_parser.py</h4>
+<ul>
+<li>Added missing statistics to stats dictionary (<code>missions_won</code>, <code>missions_lost</code>, <code>missions_total</code>, <code>accidentals</code>).</li>
+</ul>
+<h3>Changed</h3>
+<h4>main.js</h4>
+<ul>
+<li>Decreased size of liberation percentage bar in <strong>Planet Cards</strong> on Homepage.</li>
+<li>Text formatting for <code>&lt;p&gt;</code> in Homepage cards has been decreased, making room for future additions.</li>
+<li>Moved defense timer above progression bars.</li>
+<li><strong>War Effort Summary</strong> stats written in <code>&lt;div&gt;</code> instead of <code>&lt;p&gt;</code>.</li>
+</ul>
+<h3>Deprecated</h3>
+<ul>
+<li>Previous <strong>War Effort Summary</strong> layout.</li>
+</ul>
+<h3>Removed</h3>
+<ul>
+<li>Removed <code>planet_node</code> in preparation for dedicated <em>Planets</em> page.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Implemented safety measures to prevent app from crashing due to unforeseen raw data.</li>
+</ul>
+<h3>Security</h3>
+<h3>Known Issues</h3>
+<ul>
+<li><strong>Persisting formatting issues on pages:</strong> <em>All Planets, Major Order(s), Galaxy Stats, Galactic Map.</em></li>
+<li>Mobile formatting inconsistencies.</li>
+</ul>
+<h2>[0.7.2] - Sunday, 2026-02-22</h2>
+<h3>Added</h3>
+<h3>Changed</h3>
+<ul>
+<li><strong>History Save Timeframe:</strong><ul>
+<li>Previous change was to <code>main_exe.py</code>.</li>
+<li>Present change changed data bot interval from <em>every hour</em> to <em>every 3 hours &amp; once at 5am (UTC 0:00).</em></li>
+</ul>
+</li>
+</ul>
+<h3>Deprecated</h3>
+<h3>Removed</h3>
+<h3>Fixed</h3>
+<ul>
+<li><strong>Data Bot Error Code 01:</strong> Made repo changes to ensure the data bot can correctly read <code>.env</code> variables.</li>
+</ul>
+<h3>Security</h3>
+<h3>Known Issues</h3>
+<ul>
+<li><strong>Cloud Persistence:</strong> Data history snapshots saved on Azure Static Web Apps (or similar serverless environments) are temporary and will be wiped when the instance idles. A local or external storage solution is required for permanent data retention.</li>
+<li><strong>Persisting formatting issues on pages:</strong> <em>All Planets, Major Order(s), Galaxy Stats, Galactic Map</em></li>
+<li>Mobile formatting inconsistencies</li>
+</ul>
+<h2>[0.7.1] - Saturday, 2026-02-07</h2>
+<h3>Added</h3>
+<h3>Changed</h3>
+<ul>
+<li><strong>History Save Timeframe:</strong> Increased the timeframe from 6 seconds (for testing) to 21,600 (= 6 hrs).</li>
+</ul>
+<h3>Deprecated</h3>
+<h3>Removed</h3>
+<ul>
+<li><strong>Removed conflicting workflow files:</strong> Removed extra Azure workflorws that were creating build and deploy conflicts.</li>
+</ul>
+<h3>Fixed</h3>
+<h3>Security</h3>
+<h3>Known Issues</h3>
+<ul>
+<li><strong>Cloud Persistence:</strong> Data history snapshots saved on Azure Static Web Apps (or similar serverless environments) are temporary and will be wiped when the instance idles. A local or external storage solution is required for permanent data retention.</li>
+<li><strong>Persisting formatting issues on pages:</strong> <em>All Planets, Major Order(s), Galaxy Stats, Galactic Map</em></li>
+<li>Mobile formatting inconsistencies</li>
+</ul>
+<h2>[0.7.0] - Tuesday, 2026-02-03</h2>
+<h3>Added</h3>
+<ul>
+<li><strong>Caching System:</strong> Implemented a <em>"Cache-Aside"</em> architecture <code>data_fetcher.py</code> to store API responses locally with a configurable Time-To-Live (default 60s), <em>significantly</em> reducing API request volume.</li>
+<li><strong>Data Archival:</strong> Added a history snapshot feature that saves raw JSON data for Major Orders, Galaxy Stats, and Planets to a local <code>data_history</code> directory for future analysis.<ul>
+<li><strong>Structured History:</strong> Implemented a date-based folder hierarchy <code>/data_history/{category}/{date}/{time}.json</code> to automatically organize saved snapshots.</li>
+</ul>
+</li>
+<li><strong>Background Worker:</strong> Updated <code>main_exe.py</code> to function as a standalone background service that handles scheduled data scraping and history saving independently of the web API.</li>
+<li><strong>Static Resource Loading:</strong> <code>main_exe.py</code> now correctly pre-loads static JSON resources at startup, aligning it with the API's behavior.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li><strong>API Endpoints:</strong> Refactored <code>api_source.py</code> to use the new <code>fetch_data_from_url</code> utility, ensuring all web requests benefit from the caching layer.</li>
+<li><strong>Parser Logic:</strong> Updated <code>PlanetParser</code> and <code>MajorOrderParser</code> to accept and propagate <code>save_history</code> flags down to the data fetching layer.</li>
+<li><strong>Azure Compatibility:</strong> <code>data_fetcher.py</code> now detects read-only file systems and automatically falls back to the system's temporary directory for caching to prevent crashes.</li>
+</ul>
+<h3>Deprecated</h3>
+<h3>Removed</h3>
+<h3>Fixed</h3>
+<ul>
+<li><strong>Frontend Progress Bar:</strong> Resolved a visual bug where completed objectives were displaying as 0% progress; added logic to force the visual indicator to 100% when the isComplete flag is true, regardless of planet health data.</li>
+<li><strong>Major Order Crash:</strong> Fixed a TypeError in main_exe.py that occurred when parsing tasks with no numerical goal (e.g., "Hold Planet" territory tasks); added safe formatting checks to handle None values.</li>
+<li><strong>Parser Instantiation:</strong> Resolved critical crashes in main_exe.py where MajorOrderParser and PlanetParser were being initialized without required static data arguments.</li>
+</ul>
+<h3>Security</h3>
+<ul>
+<li>Instated <em>Locks</em> on resources to avoid a human-made error.</li>
+</ul>
+<h3>Known Issues</h3>
+<ul>
+<li><strong>Cloud Persistence:</strong> Data history snapshots saved on Azure Static Web Apps (or similar serverless environments) are temporary and will be wiped when the instance idles. A local or external storage solution is required for permanent data retention.</li>
+<li><strong>Persisting formatting issues on pages:</strong> <em>All Planets, Major Order(s), Galaxy Stats, Galactic Map</em></li>
+<li>Mobile formatting inconsistencies</li>
+</ul>
+<h2>[0.6.1] - Saturday, 2025-12-27</h2>
+<h3>Added</h3>
+<ul>
+<li>Able to handle Markdown back-end errors correctly with config file.</li>
+<li><code>main.js</code>:<ul>
+<li>Created two new functions to handle sidebar toggling and to
+update the current page's name (keep user informed on current page).</li>
+</ul>
+</li>
+<li>Added a '<em>Known Issues</em>' section to the Changelog for future referencing.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li><strong>Reworked sidebar navigation:</strong> improved UI &amp; reorganized back-end code
+to include more dynamic elements:<ul>
+<li>Dynamic slide-in sidebar included.</li>
+<li>Page content is slightly blurred to focus users to sidebar.</li>
+<li>Created new styles to handle:<ul>
+<li>Dynamic page heading.</li>
+<li>Create icons for user interaction (menu button, close button).</li>
+<li>User's link-clicking interaction is shown.<ul>
+<li>Changed overall design to match desired aesthetic.</li>
+<li>Sidebar navigation is not in an unlisted list.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>main.js</code>:<ul>
+<li>Changed the page title's default route if no pages are defined.</li>
+</ul>
+</li>
+<li><code>styles.css</code>:<ul>
+<li>Changed parameters for .sidebar-nav style for more dynamic sidebar.</li>
+</ul>
+</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li><code>main.js</code>:<ul>
+<li>Reordered page section's z-index so the top bar is always shown &amp; the
+sidebar nav with overlay covers the content.</li>
+</ul>
+</li>
+</ul>
+<h3>Security</h3>
+<ul>
+<li>Back- and front-end are now officially running online for
+public access (user must know link for now).<ul>
+<li>Running through third-party software to ensure consistent
+runtime and access.</li>
+</ul>
+</li>
+</ul>
+<h3>Known Issues</h3>
+<ul>
+<li>Contest MO-type is displaying improper information.</li>
+<li>Most additional webpages are either broken or do not display correct/full information.</li>
+</ul>
+<h2>[0.6.0] - Friday, 2025-12-05</h2>
+<h3>Added</h3>
+<ul>
+<li>Initial GitHub release</li>
+<li>Updated after rebase debacle...</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Reverted to older version of project to debug rebase issue</li>
+</ul>
+<h3>Deprecated</h3>
+<h3>Removed</h3>
+<h3>Fixed</h3>
+<ul>
+<li>Fixed issue causing 'Error: No URL Provided' to appear in the console</li>
+</ul>
+<h3>Security</h3>
+<h3>Known Issues</h3>
+<!-- Links -->
+<!-- Versions -->

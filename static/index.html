@@ -29,14 +29,19 @@
         <button class="close-btn" onclick="toggleNav()">&times;</button>
         <a href="#home">Home</a></li> <!--Creates a list item-->
         <a href="#planets">All Planets</a></li>
-        <a href="#major_orders">Major Order(s)</a></li>
-        <a href="#galaxy_stats">Galaxy Stats</a></li>
         <a href="#galactic_map">Galactic Map</a></li>
+        <a href="#galaxy_stats">Galaxy Stats</a></li>
+        <a href="#major_orders">Major Order(s)</a></li>
         <a href="#changelog">Changelog</a></li>
     </nav>
 
     <div id="menuOverlay" class="overlay" onclick="toggleNav()"></div>
-    <!--<div id="planet-overlay" class="overlay" onclick="togglePlanetOverlay()"></div>-->
+    <div id="planet-modal-overlay" class="planet-modal-overlay" onclick="closePlanetOverlay()">
+        <div class="planet-modal-content" onclick="event.stopPropagation()">
+            <button type="button" class="planet-modal-close" onclick="closePlanetOverlay()">&times;</button>
+            <div id="planet-modal-body"></div>
+        </div>
+    </div>
 
     <div class="main-display">  <!--Defines main section-->
         
@@ -48,8 +53,12 @@
         <p>For Super Earth! | Helldivers 2 Galactic Overview Project</p>
     </footer>
 
+    <section id="galactic-map">
+        <div id="map-container"></div>
+    </section>
+
     <script src="/static/coreui.bundle.min.js"></script>
-    
+    <script src="https://unpkg.com/konva@10/konva.min.js"></script>
     <script src="/static/main.js"></script>
     
 </body>

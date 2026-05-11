@@ -63,7 +63,7 @@ def parse_iso_timestamp(iso_string, timezone_str="UTC"):
 def parse_numeric_timestamp(numeric_timestamp, timezone_str="UTC"):
     if not isinstance(numeric_timestamp, (int, float)):
         return "N/A"
-    
+
     try:
         dt_object_utc = datetime.datetime.fromtimestamp(numeric_timestamp, datetime.timezone.utc)
 
@@ -78,9 +78,35 @@ def parse_numeric_timestamp(numeric_timestamp, timezone_str="UTC"):
                 print(f"Warning: Received unknown timezone '{timezone_str}'. Displaying in UTC instead.")
                 local_dt = dt_object_utc
 
-        return local_dt.strftime("%Y-%m-%d %H:%M:$S %Z%z")
+        return local_dt.strftime("%Y-%m-%d %H:%M:%S %Z%z")
     except (ValueError, TypeError) as e:
         return f"Invalid numeric timestamp value: {e}"
+
+
+# Returns short display date + full hover date for dispatch ISO timestamps.
+def format_dispatch_date(iso_string, timezone_str="UTC"):
+    if not iso_string:
+        return {"short": "N/A", "full": "N/A"}
+
+    try:
+        dt_object_utc = datetime.datetime.fromisoformat(iso_string.replace("Z", "+00:00"))
+
+        if timezone_str == "UTC":
+            local_dt = dt_object_utc
+        else:
+            try:
+                local_timezone = pytz.timezone(timezone_str)
+                local_dt = dt_object_utc.astimezone(local_timezone)
+            except pytz.UnknownTimeZoneError:
+                print(f"Warning: Received unknown timezone '{timezone_str}'. Displaying in UTC instead.")
+                local_dt = dt_object_utc
+
+        return {
+            "short": local_dt.strftime("%m-%d-%y"),
+            "full": local_dt.strftime("%m-%d-%y %H:%M UTC"),
+        }
+    except (ValueError, TypeError) as e:
+        return {"short": "N/A", "full": f"Invalid timestamp: {e}"}
     
 
 
@@ -143,11 +169,12 @@ def get_expiration_from_seconds(seconds_value, timezone_str="UTC"):
 
 # Used in galaxy_stats_parser for total time played
 def format_duration_from_seconds(total_seconds):
+    mill_total_seconds = total_seconds / 1000;
 
-    if not isinstance(total_seconds, (int, float)) or total_seconds < 0:
+    if not isinstance(mill_total_seconds, (int, float)) or mill_total_seconds < 0:
         return "N/A at this time."
     
-    if total_seconds == 0:
+    if mill_total_seconds == 0:
         return "0 seconds."
     
 
@@ -159,8 +186,8 @@ def format_duration_from_seconds(total_seconds):
     seconds_in_year = int(365.25 * seconds_in_day)
 
     # Calculations for each time unit
-    years = int(total_seconds // seconds_in_year)
-    remainder_seconds = total_seconds % seconds_in_year
+    years = int(mill_total_seconds // seconds_in_year)
+    remainder_seconds = mill_total_seconds % seconds_in_year
 
     months = int(remainder_seconds // seconds_in_month)
     remainder_seconds %= seconds_in_month
@@ -180,19 +207,19 @@ def format_duration_from_seconds(total_seconds):
     # Final time strings
     time_sections = []
     if years > 0:
-        time_sections.append(f"{years:,} year{'s' if years != 1 else ''}")
+        time_sections.append(f"{years:,}Y")
     if months > 0:
-        time_sections.append(f"{months:,} month{'s' if months != 1 else ''}")
+        time_sections.append(f"{months:,}M")
     if weeks > 0:
-        time_sections.append(f"{weeks:,} week{'s' if weeks != 1 else ''}")
+        time_sections.append(f"{weeks:,}W")
     if days > 0:
-        time_sections.append(f"{days:,} day{'s' if days != 1 else ''}")
+        time_sections.append(f"{days:,}D")
     if hours > 0:
-        time_sections.append(f"{hours:,} hour{'s' if hours != 1 else ''}")
+        time_sections.append(f"{hours:,}H")
     if minutes > 0:
-        time_sections.append(f"{minutes:,} minute{'s' if minutes != 1 else ''}")
+        time_sections.append(f"{minutes:,}m")
     if seconds >= 0:
-        time_sections.append(f"{seconds:,} second{'s' if seconds != 1 else ''}")
+        time_sections.append(f"{seconds:,}s")
 
-    return ", ".join(time_sections)
+    return " ".join(time_sections)
         

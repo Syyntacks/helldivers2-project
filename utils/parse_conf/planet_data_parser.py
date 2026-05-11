@@ -1,7 +1,7 @@
-from typing import Dict, Any, Union, List
+from typing import Dict, Any
 from utils.parse_conf.data_fetcher import fetch_data_from_url
+from utils.parse_conf.datetime_converter import format_duration_from_seconds
 from conf import settings
-import traceback
 
 PLANET_URL: str = settings.urls.get("planets")  # General planet data
 PLANET_EVENTS_URL: str = settings.urls.get("planet_events")  # Planets with defence campaigns
@@ -33,19 +33,19 @@ class PlanetParser():
         planets_list = fetch_data_from_url(
             PLANET_URL,
             cache_key="planets_snapshot",
-            ttl=60,
+            ttl=30,
             save_history=save_history
         ) # All planets
         planet_events_list = fetch_data_from_url(
             PLANET_EVENTS_URL,
             cache_key="planet_events_snapshot",
-            ttl=60,
+            ttl=30,
             save_history=save_history
         ) # Defense campaigns
         campaigns_list = fetch_data_from_url(
             CAMPAIGNS_URL,
             cache_key="planet_campaigns_snapshot",
-            ttl=60,
+            ttl=30,
             save_history=save_history
         ) # Liberation Campaigns
 
@@ -125,7 +125,6 @@ class PlanetParser():
                         # ID's
                         event_id = str(event_stats_dict.get("id"))
                         campaign_id = str(event_stats_dict.get("campaignId"))
-                        event_type = str(event_stats_dict.get("eventType", "Unknown"))
 
                         ## Attacker details
                         attacking_list = active_defense_event.get("attacking", [])
@@ -199,8 +198,7 @@ class PlanetParser():
                         biome_desc = "No description available."
 
                     # Checks current owner and compares to saved faction data
-                    x, y = 0, 0
-                    planet_position = str(planet.get("position", {x: 0, y: 0}))
+                    planet_position = planet.get("position", {'x': 0, 'y': 0})
                     first_owner = planet.get("initialOwner", "Unknown Origin Faction")
                     owner_id = planet.get("currentOwner", "Unknown Faction ID")
                     regen_per_sec = str(planet.get("regenPerSecond", 0))
@@ -208,12 +206,12 @@ class PlanetParser():
                     # Planet Statistics (follows dict order)
                     missions_won = stats_dict.get('missionsWon', 0)
                     missions_lost = stats_dict.get('missionsLost', 0)
-                    mission_time = stats_dict.get('missionTime', 0)
+                    mission_time = format_duration_from_seconds(stats_dict.get('missionTime', 0))
                     bug_kills = stats_dict.get("terminidKills", 0)
                     bot_kills = stats_dict.get("automatonKills", 0)
                     squid_kills = stats_dict.get("illuminateKills", 0)
-                    bullets_fired = stats_dict.get('bulletsFired', 0)
-                    bullets_hit = stats_dict.get('bulletsHit', 0)
+                    bullets_fired = stats_dict.get('bulletsHit', 0)
+                    bullets_hit = stats_dict.get('bulletsFired', 0)
                     time_played = stats_dict.get('timePlayed', 0)
                     deaths = stats_dict.get('deaths', 0)
                     friendlies = stats_dict.get('friendlies', 0)
@@ -232,7 +230,7 @@ class PlanetParser():
                     # Planet hazards
                     hazard_names = []
                     hazard_descr = []
-                    hazards_list = planets_dict.get("hazards", [])
+                    hazards_list = planet.get("hazards", [])
                     for hazard in hazards_list:
                         name = hazard.get("name", "Unknown Hazard")
                         description = hazard.get("description")
@@ -240,20 +238,8 @@ class PlanetParser():
                         hazard_names.append(name)
                         hazard_descr.append(description)
 
-                    regions_list = []
-                    fetched_regions = planet.get("regions", [])
-                    for region in fetched_regions:
-                        region_id = region.get("id", "0")
-                        region_hash = region.get("hash", "N/A")
-                        region_name = region.get("name", "Unknown region")
-                        region_desc = region.get("description", "N/A")
-                        region_health = region.get("health", "N/A") # CAN BE NULL
-                        region_max_health = region.get("maxHealth", "N/A")
-                        region_size = region.get("size", "Unknown")
-                        region_regen_per_sec = region.get("regenPerSecond", "0")
-                        region_availability = region.get("availabilityFactor", "Unknown")
-                        region_is_available = region.get("isAvailable", "false")
-                        region_players = region.get("players", 0)
+                    # Planet Regions (Cities, Towns, etc.)
+                    regions_list = planet.get("regions", [])
 
 
 
@@ -320,17 +306,7 @@ class PlanetParser():
                         'waypointNames': waypoint_names,
 
                         # Regions data
-                        'regionId': region_id,
-                        'regionHash': region_hash,
-                        'regionName': region_name,
-                        'regionDesc': region_desc,
-                        'regionHealth': region_health,
-                        'regionMaxHealth': region_max_health,
-                        'regionSize': region_size,
-                        'regionRegen': region_regen_per_sec,
-                        'regionAvailability': region_availability,
-                        'regionIsAvailable': region_is_available,
-                        'regionPlayers': region_players,
+                        'regions': regions_list,
                     }
                 except Exception as inner_e:
                     print(f"Skipping planet {index} due to error: {inner_e}")

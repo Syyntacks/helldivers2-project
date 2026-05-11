@@ -53,7 +53,7 @@ def save_to_history(data, prefix):
 
 
 # Fetch API data
-def fetch_data_from_url(full_url, cache_key=None, ttl=60, save_history=False):
+def fetch_data_from_url(full_url, cache_key=None, ttl=30, save_history=False):
     """
     Fetches data with caching logic.
     """

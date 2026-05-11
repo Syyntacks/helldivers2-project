@@ -20,14 +20,15 @@ def parse_galaxy_stats(data):
     try:
         
         overall_stats_dict = data.get("statistics", {})
+        usable_stats_dict = {}
 
         if not overall_stats_dict:
             return ["No overall stats available."]
         
         if 'missionTime' in overall_stats_dict:
-            raw_seconds = overall_stats_dict['missionTime']
+            raw_seconds = overall_stats_dict.get('missionTime')
             formatted_duration = datetime_converter.format_duration_from_seconds(raw_seconds)
-            overall_stats_dict['missionTime'] = formatted_duration
+            usable_stats_dict['missionTime'] = formatted_duration
 
 
         missions_won = overall_stats_dict.get("missionsWon", 0)
@@ -39,11 +40,11 @@ def parse_galaxy_stats(data):
 
         mission_time = overall_stats_dict.get("missionTime")
         total_mission_time = datetime_converter.format_duration_from_seconds(mission_time)
-        overall_stats_dict['timePlayedFormatted'] = total_mission_time
+        usable_stats_dict['timePlayedFormatted'] = total_mission_time
 
         total_players = overall_stats_dict.get("playerCount", 0)
         accidentals = overall_stats_dict.get("friendlies", 0)
-        overall_stats_dict['totalPlayers'] = total_players
+        usable_stats_dict['totalPlayers'] = total_players
 
 
         deaths = overall_stats_dict.get("deaths", 0)
@@ -60,23 +61,23 @@ def parse_galaxy_stats(data):
         if deaths > 0:
             kd_ratio = total_kills / deaths
 
-        overall_stats_dict['deaths'] = deaths
-        overall_stats_dict['terminidKills'] = bug_kills
-        overall_stats_dict['automatonKills'] = bot_kills
-        overall_stats_dict['illuminateKills'] = squid_kills
-        overall_stats_dict['bulletsFired'] = bullets_fired
-        overall_stats_dict['bulletsHit'] = bullets_hit
-        overall_stats_dict['totalKills'] = total_kills
-        overall_stats_dict['accuracy'] = accuracy_percent
-        overall_stats_dict['kdRatio'] = kd_ratio
-        overall_stats_dict['accidentals'] = accidentals
-        overall_stats_dict['missionsWon'] = missions_won
-        overall_stats_dict['missionsLost'] = missions_lost
-        overall_stats_dict['missionsTotal'] = missions_total
-        overall_stats_dict['missionsWonPercent'] = missions_won_percent
-        overall_stats_dict['totalMissionTime'] = total_mission_time
+        usable_stats_dict['deaths'] = deaths
+        usable_stats_dict['terminidKills'] = bug_kills
+        usable_stats_dict['automatonKills'] = bot_kills
+        usable_stats_dict['illuminateKills'] = squid_kills
+        usable_stats_dict['bulletsFired'] = bullets_fired
+        usable_stats_dict['bulletsHit'] = bullets_hit
+        usable_stats_dict['totalKills'] = total_kills
+        usable_stats_dict['accuracy'] = accuracy_percent
+        usable_stats_dict['kdRatio'] = kd_ratio
+        usable_stats_dict['accidentals'] = accidentals
+        usable_stats_dict['missionsWon'] = missions_won
+        usable_stats_dict['missionsLost'] = missions_lost
+        usable_stats_dict['missionsTotal'] = missions_total
+        usable_stats_dict['missionsWonPercent'] = missions_won_percent
+        usable_stats_dict['totalMissionTime'] = total_mission_time
 
-        return overall_stats_dict
+        return usable_stats_dict
 
     except Exception as e:
         print(f"An error occurred while parsing galaxy stats: {e}")

@@ -28,14 +28,23 @@ TABLE OF CONTENTS
 :root {
     --terminal-green: #4caf50;
     --helldiver-color: #ffe710;
+    --helldiver-shadow-color: #997800;
     --terminid-color: #FF9f00;
+    --terminid-shadow-color: #995f00;
     --automaton-color: #fe6a67;
+    --automaton-shadow-color: #971410;
     --illuminate-color: #db58fb;
+    --illuminate-shadow-color: #7d0099;
     --seaf-color: #6bb7ea;
+    --seaf-shadow-color: #1a6090;
     --seaf-2-color: #41639c;
+    --seaf-2-shadow-color: #1e304f;
     --success-color: #25c225;
+    --success-shadow-color: #146b14;
     --light-grey: #777;
     --light-grey-text: #d1d5db;
+    --dark-grey: #1a1a2e;
+    --white-text: #eee;
 }
 
 body {
@@ -233,6 +242,78 @@ footer {
     3. CORE COMPONENTS (CARDS & GRIDS)
     ======================================== 
 */
+.galaxy-stats-page-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates responsive columns*/
+    max-width: 80%;
+    margin: auto;
+    gap: 24px;
+}
+.galaxy-stats-page-layout h3 {
+    font-size: 2em;
+}
+.galaxy-stats-page-layout p {
+    font-size: 1.3em;
+}
+.galaxy-stats-page-layout span {
+    font-weight: bold;
+    font-size: 1.4em;
+}
+.galactic-map-wrapper {
+    position: relative;
+    margin: -40px -20px 0 -20px;
+}
+.content-area .galactic-map-title {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    margin: 0;
+    padding: 6px 0;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    text-align: center;
+}
+#map-container {
+    overflow: hidden;
+}
+.galactic-map-tooltip {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    width: 280px;
+    height: 140px;
+    background: var(--dark-grey);
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--seaf-color);
+    color: white;
+    padding: 0;
+    border-radius: 6px;
+    pointer-events: none;
+    font-size: 13px;
+    z-index: 999;
+    text-align: center;
+}
+.galactic-map-tooltip .planet-modal-progress-bar {
+    margin-top: auto;
+    margin-bottom: 0;
+    height: 1.1em;
+    border-bottom-left-radius: 6px;
+}
+.galactic-map-tooltip p {
+    margin: 0;
+    padding: 0;
+}
+.galactic-map-tooltip strong {
+    font-size: 1.4em;
+}
+.galactic-map-tooltip .icon-label {
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
+}
 .homepage-card {
     background-color: rgba(33,34,34,0.7);
     color: whitesmoke;
@@ -256,8 +337,19 @@ footer {
     width: 100%;
     padding-bottom: 8px;
 }
+.icon-label {
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1.6;
+}
+img.icon-label {
+    width: 1em;
+    height: auto;
+    vertical-align: middle;
+}
 .mo-card {
-    max-width: 800px;
+    max-width: 850px;
+    width: 1fr;
     background-color: rgba(33,34,34,0.7);
     border: var(--helldiver-color) 1px solid;
     padding: 20px;
@@ -306,6 +398,9 @@ footer {
 .stats-layout p {
     font-size: 1.3em;
 }
+.stats-layout span {
+    font-size: 1em;
+}
 .stat-card::before {
     content: "";
     position: absolute;
@@ -324,7 +419,7 @@ footer {
 .stat-card {
     background-color: rgba(33,34,34,0.4);
     border: var(--helldiver-color) 1px solid;
-    padding: 15px;
+    padding: 8px 15px 15px 15px;
     text-align: center;
     border-radius: 4px;
     display: flex;
@@ -338,11 +433,24 @@ footer {
     background-repeat: no-repeat;
     position: relative;
 }
-.stat-card .health-bar:first-of-type {
-    margin-top: auto;
+.stats-layout .stat-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.stats-layout .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(255, 231, 16, 0.25);
+}
+.stat-card .health-bar .progress-bar-container {
+    margin-top: 0;
+    margin-left: -15px;
+    margin-right: -15px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
 }
 .stat-card .defense-timer {
     margin-top: 8px;
+    margin-bottom: auto;
 }
 .stat-card .war-effort {
     text-align: center;
@@ -355,12 +463,77 @@ footer {
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
 }
+.planet-card-header {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 4px 4px 0 0;
+    padding: 8px 15px;
+    margin: -8px -15px 0 -15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.planet-regen-stat {
+    position: absolute;
+    right: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    color: whitesmoke;
+    text-align: right;
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px #000;
+}
+.planet-player-stat {
+    position: absolute;
+    left: 10px;
+    font-size: 0.72em;
+    font-weight: bold;
+    color: whitesmoke;
+    text-align: left;
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px #000;
+}
+.regen-trend {
+    display: block;
+    font-size: 0.9em;
+}
+.player-pct-bar-container {
+    width: 100px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+    margin-top: 3px;
+    position: relative;
+}
+.player-pct-bar-container::after {
+    content: attr(data-pct);
+    position: absolute;
+    bottom: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: var(--helldiver-color);
+    font-size: 0.75em;
+    padding: 2px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+.player-pct-bar-container:hover::after {
+    opacity: 1;
+}
+.player-pct-bar {
+    height: 100%;
+    background: var(--helldiver-color);
+    border-radius: 2px;
+    transition: width 0.6s ease;
+}
 .stat-card h3 {
     color: var(--helldiver-color);
     font-size: 1.5em;
     font-weight: bold;
-    margin-top: 0;
-    margin-bottom: 5px;
+    margin: 0;
     word-wrap: break-word;
     text-shadow: 2px 2px 2px #000;
 }
@@ -371,6 +544,12 @@ footer {
     margin: 0;
     margin-bottom: 10px;
     text-shadow: 2px 2px 2px #000;
+}
+.stat-card img.icon-label {
+    width: 1.4em;
+}
+.stat-card .progress-bar-container {
+    width: 108.25%;
 }
 #planet-grid-container {
     display: grid;
@@ -389,6 +568,7 @@ footer {
     border-radius: 8px;
     margin-bottom: 15px;
     transition: transform 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
 }
 .planet-list-card:hover {
     transform: translateX(5px);
@@ -420,7 +600,7 @@ footer {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    opacity: 0.3;
+    opacity: 0.2;
 }
 .planet-list-info {
     display: flex;
@@ -449,6 +629,64 @@ footer {
     text-transform: uppercase;
     text-shadow: 1px 1px 2px #000;
 }
+.mo-page-container {
+    font-size: 1.1em;
+}
+.mo-page-container h3 {
+    text-align: center;
+    color: var(--helldiver-color);
+    font-size: 2.4em;
+    font-weight: bold;
+}
+.mo-page-container p {
+    color: var(--white-text);
+}
+.mo-page-container strong {
+    color: var(--helldiver-color);
+    font-variant: small-caps;
+}
+.mo-page-description {
+    font-size: 1.1em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.mo-page-expiry {
+    font-size: 1.4em;
+}
+
+
+
+/* Homepage Dispatch Stylings */
+.dispatch-summary-grid {
+    display: grid;
+    grid-column: 1;
+    max-height: 300px;
+    overflow: scroll;
+    gap: 10px;
+}
+.homepage-dispatch-data {
+    border: 1px solid var(--light-grey);
+    border-radius: 4px;
+    padding: 6px;
+}
+.homepage-dispatch-pub-date {
+    color: var(--seaf-color);
+}
+.homepage-dispatch-msg-text {
+    text-align: left;
+}
+.dispatch-header {
+    font-weight: bold;
+    color: var(--light-grey-text);
+    font-size: 1.3em;
+    margin-bottom: 0;
+}
+.dispatch-highlight {
+    font-weight: bold;
+    color: var(--helldiver-color);
+}
+
+
 
 /* ========================================
     4. PROGRESS BARS & TASKS
@@ -457,11 +695,17 @@ footer {
 .war-effort {
     width: auto; /* Let the grid handle the width */
 }
+.planet-info-wrapper {
+    display: flex;
+    flex-direction: column; /* This stacks the header and the bar */
+    width: 100%;
+    gap: 4px;
+}
 .progress-bar-container {
     display: flex;
     position: relative;
     width: 100%;
-    height: 1.25em;
+    height: 20px;
     background-color: rgba(34,34,34,0.6);
     border: 1px solid #777;
     border-radius: 4px;
@@ -480,16 +724,16 @@ footer {
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 0.85rem;
+    font-size: 0.75rem !important;
     line-height: 1;
     text-shadow: 1px 1px 2px black;
     z-index: 10;
 }
 .progress-bar {
     color: #fff !important;
-    font-size: 0.7em;
+    font-size: 0.75rem;
     text-align: center;
-    line-height: 1.25em;
+    line-height: 22px;
     white-space: nowrap;
     height: 100%;
     transition: width 0.5s ease-in-out;
@@ -535,6 +779,10 @@ footer {
     transition: left 0.4s ease-out;
     z-index: 10;
     line-height: 1;
+}
+.planet-modal-hazards {
+    font-size: 0.85em; 
+    margin: 2px 0 8px 0;
 }
 .mo-arrow-text {
     font-weight: bold;
@@ -626,8 +874,8 @@ footer {
 #changelog-container h4 {
     font-size: 1rem;
     font-family: 'Courier New', Courier, monospace;
-    text-shadow: 0 0 3px rgba(76, 175, 80, 0.5);
-    color: var(--terminal-green);
+    text-shadow: 0 0 3px var(--illuminate-shadow-color);
+    color: var(--illuminate-color);
     padding-left: 32px;
     font-weight: bold;
     margin-top: 0;
@@ -654,17 +902,39 @@ footer {
     text-shadow: 0 0 3px rgba(76, 175, 80, 0.5);
 }
 #changelog-container ul {
-    list-style-type: square;
+    list-style-type: none;
     padding-left: 32px;
+}
+#changelog-container ul > li::marker {
+    content: "> ";
+    color: var(--seaf-color);
+}
+#changelog-container ul ul {
+    list-style-type: disc;
+    padding-left: 24px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+#changelog-container ul ul > li::marker {
+    content: unset;
+}
+#changelog-container ul ul ul {
+    list-style-type: circle;
+    padding-left: 20px;
 }
 #changelog-container li {
     margin-bottom: 4px;
     font-size: 1rem;
 }
+#changelog-container ul ul li {
+    font-size: 0.95rem;
+    color: var(--light-grey-text);
+    margin-bottom: 2px;
+}
 #changelog-container li strong {
     color: var(--helldiver-color);
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-shadow: 0 0 3px rgba(255, 231, 16, 0.5);
 }
 #changelog-container li code {
@@ -719,8 +989,169 @@ footer {
 }
 
 /* ========================================
-    6. UTILITIES, ANIMATIONS & MODIFIERS
-    ======================================== 
+    6. PLANET MODAL
+    ========================================
+*/
+.planet-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+.planet-modal-overlay.active {
+    display: flex;
+}
+.planet-modal-content {
+    background-color: rgb(34,34,34);
+    border: 2px solid var(--helldiver-color);
+    border-radius: 8px;
+    padding: 24px 0 0 0;
+    max-width: 1200px;
+    width: 90%;
+    height: 70%;
+    position: relative;
+    max-height: 95vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.planet-modal-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--helldiver-color);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+.planet-modal-close:hover {
+    color: #fff;
+}
+.planet-modal-content p {
+    color: whitesmoke;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 0 6px 0;
+    text-shadow: 1px 1px 3px #000;
+}
+.planet-modal-content strong {
+    font-size: 1rem;
+    color: var(--helldiver-color);
+}
+.planet-modal-content .icon-label {
+    width: 1.1em;
+    margin-bottom: 0.5vh;
+    margin-left: 24px;
+    filter: drop-shadow(0 0 6px var(--helldiver-shadow-color));
+}
+#planet-modal-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+.planet-modal-main-row {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    flex: 1;
+    min-height: 0;
+    padding: 0 24px;
+}
+.planet-modal-left {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    line-height: 1;
+    max-width: 320px;
+}
+.planet-modal-info-box {
+    background-color: rgba(33, 34, 34, 0.4);
+    border: 1px solid var(--helldiver-color);
+    border-radius: 4px;
+    padding: 10px 12px 8px 12px;
+    flex: 1;
+    min-width: 0;
+    min-height: 140px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-right: 6px;
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    overflow-y: auto;
+}
+.info-box-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-width: 0;
+    overflow-y: auto;
+}
+.info-box-stats p {
+    margin: 0;
+    line-height: 1em;
+}
+.info-box-stats hr {
+    color: var(--helldiver-color);
+}
+.player-graph-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    gap: 4px;
+    border-left: 1px solid rgba(255, 231, 16, 0.15);
+    padding-left: 10px;
+}
+.player-graph-title {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: var(--helldiver-color);
+    opacity: 0.7;
+    text-align: center;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.player-graph-canvas {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    display: block;
+}
+.planet-modal-progress-bar {
+    margin-top: auto;
+    margin-bottom: 0;
+    height: 2em;
+    border-radius: 0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    overflow: hidden;
+}
+.planet-modal-progress-bar .progress-bar {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.planet-modal-progress-bar:has(+ .planet-modal-progress-bar) .progress-bar {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* ========================================
+    7. UTILITIES, ANIMATIONS & MODIFIERS
+    ========================================
 */
 @keyframes pulse-danger {
     0% { box-shadow: 0 0 5px var(--automaton-color), 0 0 10px var(--automaton-color); }
@@ -753,6 +1184,7 @@ footer {
 .text-automatons { font-size: 1.1rem; font-weight: bold; text-shadow: 0 0 2px rgba(207, 0, 15, 0.4); color: #cf000f; }
 .text-illuminate { font-size: 1.1rem; font-weight: bold; text-shadow: 0 0 2px rgba(155, 89, 182, 0.4); color: #9b59b6; }
 .contested-text-pulse { font-size: 1.1rem; font-weight: bold; border-radius: 8px; animation: warPulse 2s infinite ease-in-out; }
+.filter-option-button { padding: 10px; flex-grow: 1; background: #222; color: #fff; border: 1px solid #ffe710; border-radius: 4px; }
 
 /* ========================================
     7. BIOME BACKGROUND IMAGES

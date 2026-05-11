@@ -1,0 +1,46 @@
+name: Deploy to Cloudflare Pages
+
+# =============================================================
+# HOW THIS WORKS
+# =============================================================
+# Cloudflare Pages is connected directly to this GitHub repo
+# via the Cloudflare dashboard (not a GitHub Action deploy step).
+# That means Cloudflare watches for pushes and runs build.sh
+# automatically — including bot commits that update static-api/.
+#
+# This workflow file exists only to document the deployment
+# config and to validate that the build script still works
+# on pull requests to main.
+#
+# Cloudflare dashboard settings to configure once:
+#   Framework preset:   None
+#   Build command:      bash build.sh
+#   Build output dir:   dist
+#   Root directory:     / (repo root)
+#   Node.js version:    20
+# =============================================================
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  validate-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate build script runs without errors
+        run: |
+          bash build.sh
+          echo "Build completed. dist/ contents:"
+          ls dist/

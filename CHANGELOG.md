@@ -5,6 +5,114 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
+## [0.9.0] - 2026-05-10
+
+### Added
+
+- **Live Refresh System:** Frontend now polls the live Helldivers 2 API every 60 seconds for fresh player counts, liberation percentages, and health values, updating visible DOM elements in-place without re-rendering the page.
+  - Player count trend indicators (▲/▼ with rate-per-minute) shown on homepage planet cards.
+  - Regen trend indicators shown per planet card.
+  - Sub-second interpolation loop (every 50ms) smoothly animates player counts between ticks.
+- **Planet Modal:** Fully implemented planet detail overlay, replacing the old stub.
+  - Populated with planet name, owner, sector, biome, biome description, hazards, player count, and liberation/defense progress bars.
+  - Modal progress bars are kept in sync with the live refresh system.
+  - Planet list cards now have `cursor: pointer` to indicate interactivity.
+- **Galactic Map:** Added `#galactic-map` section with `#map-container` div and supporting styles; Konva.js CDN script added to `index.html`.
+  - *(Note: the Galactic Map is in an alpha state. While it is functioning, it is still missing vital information soon to be implemented/added.)*
+- **Static API Build Pipeline (Host migration):**
+  - Created `build_static_api.py` — runs during the GitHub Action to fetch live data, parse it through existing parsers, and write static JSON files to `static-api/`.
+  - Migrated to new host for better performance, loading times, and more control.
+- **New API Endpoints** (in `api_source.py`):
+  - `/api/enemies` — returns static enemy data from `enemies/hd2_enemies.json`.
+  - `/api/sector_layout` — returns static sector layout from `sectors.json`.
+  - `/api/planets/{planet_index}/player_history` — returns a time-series of player counts for a planet over the past N days, sourced from `data_history/planets_snapshot/`.
+- **New Parser:** Created `utils/parse_conf/news_feed_parser.py` (`newsFeedParser`) to parse in-game dispatch/news feed messages.
+  - Converts in-game markup (`<i=3>`, `<i=1>`) to styled HTML spans.
+  - Integrates with `format_dispatch_date()` for short and hover-full timestamps.
+- **Homepage Dispatch Display:** Added styles for the news feed/dispatch summary grid (`.dispatch-summary-grid`, `.homepage-dispatch-data`, `.dispatch-header`, `.dispatch-highlight`, etc.).
+- **Major Order Page Styles:** Added `.mo-page-container`, `.mo-page-description`, `.mo-page-expiry`, and related rules for a dedicated MO detail page layout.
+- **Galaxy Stats Page Layout:** Added `.galaxy-stats-page-layout` grid layout and responsive sizing rules.
+- **Player Percentage Mini-Bar:** Added `.player-pct-bar-container` and `.player-pct-bar` to show each active planet's share of total Helldivers online, with a tooltip on hover.
+- **Planet Card Header:** Added `.planet-card-header`, `.planet-regen-stat`, `.planet-player-stat`, and `.regen-trend` styles for richer stat overlays on homepage planet cards.
+- **Galactic Map Tooltip:** Added `.galactic-map-tooltip` and `.galactic-map-wrapper` styles.
+- **CSS Variables:** Added shadow-color variants for all faction and status colors, plus `--dark-grey` and `--white-text` variables.
+- **Static Files Mount:** Added `/static-api` mount in `api_source.py` so the backend can serve the generated static JSON files locally during development.
+
+### Changed
+
+- **Data Snapshot Schedule:** GitHub Action changed from "every 3 hours + once at 5am UTC" to a clean 8-hour cycle: 00:00, 08:00, 16:00 UTC.
+  - This should hopefully reduce the no. of files being saved for future data parsing.
+- **GitHub Action now commits `static-api/`** in addition to `data_history/` on each snapshot run.
+- **Azure Deployment Retired:** `main_hd2-war-data-tracker.yml` trigger changed from auto-deploy on push to manual-only with a confirmation input; marked as retired with a comment header.
+- **Sidebar Navigation Order:** Reordered nav links — Galactic Map now appears before Galaxy Stats and Major Orders.
+- **Cache TTL Reduced:** Default fetch TTL across `data_fetcher.py`, `api_source.py`, `main_exe.py`, and `planet_data_parser.py` changed from 60s to 30s.
+
+#### datetime_converter.py
+
+- Added `format_dispatch_date()` — returns `{"short": "MM-DD-YY", "full": "MM-DD-YY HH:MM UTC"}` for ISO timestamps, used by the news feed.
+- `format_duration_from_seconds()`: Input is now treated as milliseconds (divided by 1,000 before processing) to match the raw API value.
+- `format_duration_from_seconds()`: Output changed from (`"1 year, 2 months, 3 days"`) to compact (`"1Y 2M 3D"`).
+
+#### galaxy_stats_parser.py
+
+- Refactored to build a separate `usable_stats_dict` instead of mutating the raw `overall_stats_dict`, preventing raw API fields from leaking into parsed output.
+
+#### major_order_parser.py
+
+- Added `factionId` and `enemyId` fields to parsed task details (extracted from `value_map` using `faction` and `targetId` value keys).
+- Removed unused imports (`fetch_data_from_url`, `settings`).
+
+#### planet_data_parser.py
+
+- Fixed planet position parsing — was referencing undefined local variables `x` and `y`; now passes the correct default dict `{'x': 0, 'y': 0}`.
+- Fixed hazards list source — was reading from `planets_dict` (wrong variable); now correctly reads from `planet`.
+- Simplified regions data — previously extracted individual region fields into separate top-level keys; now passes the raw `planet.get("regions", [])` list as `'regions'` directly.
+- Added import of `format_duration_from_seconds`; `mission_time` stat is now formatted on parse instead of left as raw seconds.
+- Removed `event_type` field from defense event parsing.
+- Removed unused imports (`Union`, `List`, `traceback`).
+
+#### styles.css
+
+- **Changelog `h4` color:** Changed from `--terminal-green` to `--illuminate-color` (purple) with matching shadow.
+- **Changelog list bullets:** Changed from `list-style-type: square` to a custom `"> "` prefix via `::marker` for top-level items; nested lists use `disc` / `circle`.
+- **Changelog nested list items:** Reduced font size to `0.95rem` and colored with `--light-grey-text`.
+- **Changelog `li strong` font size:** Reduced from `1.1rem` to `1rem`.
+- **Stat card padding:** Changed top padding from `15px` to `8px 15px 15px 15px`.
+- **Stat card hover:** Added `translateY(-4px)` lift and yellow glow box-shadow.
+- **Stat card progress bar:** Now extends edge-to-edge (negative horizontal margins) with no left/right border.
+- **MO card max-width:** Increased from `800px` to `850px`.
+- **Planet list card bg image opacity:** Reduced from `0.3` to `0.2`.
+- **Progress bar height:** Changed from `1.25em` to `20px` (fixed px for consistent sizing).
+- **Progress bar font size:** Standardized to `0.75rem` with `!important` on the text overlay.
+
+### Deprecated
+
+- **Azure hosting** — deployment has moved to Cloudflare Pages; Azure workflow is kept for reference only.
+
+### Removed
+
+#### planet_data_parser.py
+
+- Removed individual region field keys (`regionId`, `regionHash`, `regionName`, `regionDesc`, `regionHealth`, `regionMaxHealth`, `regionSize`, `regionRegen`, `regionAvailability`, `regionIsAvailable`, `regionPlayers`) from the planet output dict.
+
+### Fixed
+
+- **Timestamp format typo** (`datetime_converter.py`): `%H:%M:$S` corrected to `%H:%M:%S`.
+- **`bullets_fired` / `bullets_hit` swap** (`planet_data_parser.py`): The two fields were assigned to each other's variable names.
+- **Galaxy stats `missionTime` mutation**: Parser no longer overwrites the raw value in `overall_stats_dict`; formatted version goes into the clean output dict only.
+- **Changelog markdown rendering**: Added `tab_length=2` to `markdown.markdown()` call in `api_source.py` to fix nested list indentation.
+
+### Security
+
+- Obfuscation measures have been implemented for security purposes.
+
+### Known Issues
+
+- **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map*.
+- Mobile formatting inconsistencies.
+- Galactic Map can appear to visually lag.
+- Some objectIDs have not been properly defined yet and may result in `Greatcloak of Rebar Resolve` in the output.
+
 ## [0.8.1] - 2026-02-26 HOTFIX
 
 ### Added
@@ -55,12 +163,11 @@ and this project adheres to [Semantic Versioning].
 - Created `openPlanetOverlay()` function to handle upcoming planet card overlay activation.
   - `closePlanetOverlay()` is created however currently unpopulated.
 - **Changelog** page title and routing added.
-- **renderPlanetsPage()**
-  - Officially implemented a search bar and dropdown filter menu to offer users organized planet or faction-specific data.
-    - *You can search by planet name or by Sector name. More search parameters will be added soon.*
-  - Created two new functions- `analyzeSectors()` and `evaluateSectorControl()`- to check **Planet's** current sector and its owner, and to provide dynamic styling respectively.
-  - Created a proper **Planet Card** that provides a more dynamic experience for the user.
-    - *More information to be added over time. May result in some unexpected formatting issues.*
+- `renderPlanetsPage()` officially implemented; search bar and dropdown filter menu to offer users organized planet or faction-specific data.
+  - *You can search by planet name or by Sector name. More search parameters will be added soon.*
+- Created two new functions- `analyzeSectors()` and `evaluateSectorControl()`- to check **Planet's** current sector and its owner, and to provide dynamic styling respectively.
+- Created a proper **Planet Card** that provides a more dynamic experience for the user.
+  - *More information to be added over time. May result in some unexpected formatting issues.*
 - `renderChangelog()` function created to render `CHANGELOG.md` notes.
 
 ### Changed
@@ -69,8 +176,7 @@ and this project adheres to [Semantic Versioning].
 
 #### main.js
 
-- **renderPlanetsPage()**
-  - Changed planet.owner value results to faction string instead of an integer ('2' => 'terminids', etc.)
+- `renderPlanetsPage()` changed planet.owner value results to faction string instead of an integer ('2' => 'terminids', etc.)
 
 #### styles.css
 

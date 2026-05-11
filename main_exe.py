@@ -78,7 +78,7 @@ def main_program(save_history=False):
         major_orders_data = data_fetcher.fetch_data_from_url(
             major_order_url,
             cache_key="major_orders",
-            ttl=60,
+            ttl=30,
             save_history=save_history
         )
         if major_orders_data is not None:
@@ -125,7 +125,7 @@ def main_program(save_history=False):
         galaxy_stats_data = data_fetcher.fetch_data_from_url(
             galaxy_stats_url,
             cache_key="galaxy_stats",
-            ttl=60,
+            ttl=30,
             save_history=save_history
         )
         if galaxy_stats_data:

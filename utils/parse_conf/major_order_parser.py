@@ -1,7 +1,5 @@
 from . import datetime_converter
 from utils.parse_conf.planet_data_parser import PlanetParser
-from utils.parse_conf.data_fetcher import fetch_data_from_url
-from conf import settings
 from json import loads
 
 class MajorOrderParser():
@@ -85,6 +83,11 @@ class MajorOrderParser():
                     task_type_name = self.task_types_map.get(task_type_id, "Unknown Task Type")
                     task_details["type"] = task_type_id
                     task_details["typeName"] = task_type_name
+
+                    faction_key = self.get_value_key("faction")
+                    target_id_key = self.get_value_key("targetId")
+                    task_details["factionId"] = value_map.get(faction_key)
+                    task_details["enemyId"] = value_map.get(target_id_key)
 
                     goal_key = self.get_value_key("goal")
                     task_details["goal"] = value_map.get(goal_key)
