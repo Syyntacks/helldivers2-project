@@ -1,7 +1,7 @@
 [
   {
     "orderId": 1933262442,
-    "orderExpires": "2026-05-18T14:21:17.868075+00:00",
+    "orderExpires": "2026-05-18T14:21:45.551350+00:00",
     "orderType": "4",
     "orderTypeName": "CompleteObjs",
     "orderTitle": "MAJOR ORDER",
@@ -24,5 +24,52 @@
     ],
     "rewardType": "1",
     "rewardsAmount": "45"
+  },
+  {
+    "orderId": 601181116,
+    "orderExpires": "2026-05-18T12:51:04.551391+00:00",
+    "orderType": "4",
+    "orderTypeName": "CompleteObjs",
+    "orderTitle": "STRATEGIC OPPORTUNITY",
+    "orderBriefing": "Patriotically eliminate the designated number of Freedom's enemies using the One True Flag.",
+    "orderTaskDescr": "",
+    "orderProgress": [
+      635238,
+      464636,
+      204281
+    ],
+    "tasks": [
+      {
+        "type": "3",
+        "typeName": "KillEnemies",
+        "factionId": 2,
+        "enemyId": 0,
+        "goal": 5000000,
+        "targetName": "SR-24 Street Scout",
+        "targetPlanetId": null,
+        "progress": 635238
+      },
+      {
+        "type": "3",
+        "typeName": "KillEnemies",
+        "factionId": 3,
+        "enemyId": 0,
+        "goal": 3000000,
+        "targetName": "Greatcloak of Rebar Resolve",
+        "targetPlanetId": null,
+        "progress": 464636
+      },
+      {
+        "type": "3",
+        "typeName": "KillEnemies",
+        "factionId": 4,
+        "enemyId": 0,
+        "goal": 2000000,
+        "targetName": "Rebar Resolve",
+        "targetPlanetId": null,
+        "progress": 204281
+      }
+    ],
+    "rewardsAmount": null
   }
 ]
