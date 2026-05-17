@@ -1,0 +1,81 @@
+[
+    {
+        "index": 226,
+        "name": "RIRGA BAY",
+        "sector": "Rigel",
+        "biome": {
+            "name": "Acidic Badlands",
+            "description": "Dense, toxic fumes from deep within the planet's crust seep out of cracks in the earth and coat the ground in a sickly haze."
+        },
+        "hazards": [
+            {
+                "name": "Acid Storms",
+                "description": "Corrosive acid storms temporarily reduce armor effectiveness for both enemy and friendly units."
+            }
+        ],
+        "hash": 1377257553,
+        "position": {
+            "x": 0.09694725,
+            "y": -0.7277918
+        },
+        "waypoints": [
+            183,
+            227
+        ],
+        "maxHealth": 1200000,
+        "health": 1200000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5569,
+            "eventType": 1,
+            "faction": "Illuminate",
+            "health": 1436641,
+            "maxHealth": 1500000,
+            "startTime": "2026-05-16T12:29:27Z",
+            "endTime": "2026-05-18T12:29:27Z",
+            "campaignId": 51571,
+            "jointOperationIds": [
+                5569
+            ]
+        },
+        "statistics": {
+            "missionsWon": 3710918,
+            "missionsLost": 235146,
+            "missionTime": 13670022602,
+            "terminidKills": 7042,
+            "automatonKills": 4601,
+            "illuminateKills": 2877967792,
+            "bulletsFired": 9031118941,
+            "bulletsHit": 9440686562,
+            "timePlayed": 13670022602,
+            "deaths": 1023864979,
+            "revives": 0,
+            "friendlies": 4274451,
+            "missionSuccessRate": 94,
+            "accuracy": 100,
+            "playerCount": 1717
+        },
+        "attacking": [
+            227,
+            182
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 452138560,
+                "name": "BLIGHTSMURK",
+                "description": "null",
+                "health": 199993,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 758
+            }
+        ]
+    }
+]
