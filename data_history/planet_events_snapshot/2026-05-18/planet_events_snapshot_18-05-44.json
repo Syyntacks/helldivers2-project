@@ -1,0 +1,175 @@
+[
+    {
+        "index": 76,
+        "name": "TERREK",
+        "sector": "Orion",
+        "biome": {
+            "name": "Moon",
+            "description": "A rocky, lonely moon with extremely valuable mineral deposits underneath the surface."
+        },
+        "hazards": [
+            {
+                "name": "Meteor Storms",
+                "description": "Meteors impact the surface causing massive damage."
+            }
+        ],
+        "hash": 910588397,
+        "position": {
+            "x": 0.26528117,
+            "y": 0.347748
+        },
+        "waypoints": [
+            77,
+            124,
+            269
+        ],
+        "maxHealth": 1000000,
+        "health": 1000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5573,
+            "eventType": 1,
+            "faction": "Terminids",
+            "health": 140997,
+            "maxHealth": 350000,
+            "startTime": "2026-05-18T09:22:03Z",
+            "endTime": "2026-05-19T09:22:03Z",
+            "campaignId": 51575,
+            "jointOperationIds": [
+                5573
+            ]
+        },
+        "statistics": {
+            "missionsWon": 12591780,
+            "missionsLost": 777487,
+            "missionTime": 43511945361,
+            "terminidKills": 6436691207,
+            "automatonKills": 19264,
+            "illuminateKills": 2169,
+            "bulletsFired": 28673972480,
+            "bulletsHit": 32278784840,
+            "timePlayed": 43511945361,
+            "deaths": 85515294,
+            "revives": 0,
+            "friendlies": 14221599,
+            "missionSuccessRate": 94,
+            "accuracy": 100,
+            "playerCount": 14137
+        },
+        "attacking": [
+            49,
+            77,
+            124
+        ],
+        "regions": []
+    },
+    {
+        "index": 112,
+        "name": "VERNEN WELLS",
+        "sector": "Hydra",
+        "biome": {
+            "name": "Rocky Canyons",
+            "description": "This arid, rocky biome covering this world has driven the evolution of exceptionally efficient water usage in its various organisms."
+        },
+        "hazards": [
+            {
+                "name": "Tremors",
+                "description": "Frequent earthquakes stun players and enemies alike."
+            }
+        ],
+        "hash": 2442155408,
+        "position": {
+            "x": -0.26997122,
+            "y": 0.3760109
+        },
+        "waypoints": [
+            67,
+            113,
+            194
+        ],
+        "maxHealth": 1500000,
+        "health": 1500000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5572,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 1109036,
+            "maxHealth": 1500000,
+            "startTime": "2026-05-18T08:05:33Z",
+            "endTime": "2026-05-20T08:05:33Z",
+            "campaignId": 51574,
+            "jointOperationIds": [
+                5572
+            ]
+        },
+        "statistics": {
+            "missionsWon": 19714806,
+            "missionsLost": 2063039,
+            "missionTime": 70173877236,
+            "terminidKills": 5813,
+            "automatonKills": 5734701385,
+            "illuminateKills": 3364,
+            "bulletsFired": 30990533338,
+            "bulletsHit": 32955387888,
+            "timePlayed": 70173877236,
+            "deaths": 153042473,
+            "revives": 0,
+            "friendlies": 16377113,
+            "missionSuccessRate": 90,
+            "accuracy": 100,
+            "playerCount": 19876
+        },
+        "attacking": [
+            113,
+            203
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 873382628,
+                "name": "BLACKVEIN MINES",
+                "description": "null",
+                "health": 100000,
+                "maxHealth": 100000,
+                "size": "Settlement",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 1604
+            },
+            {
+                "id": 1,
+                "hash": 1365889454,
+                "name": "BENEVOLENCE",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 0.24609916,
+                "isAvailable": false,
+                "players": 4
+            },
+            {
+                "id": 2,
+                "hash": 763067932,
+                "name": "ANNE'S VIGIL",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 0.78579247,
+                "isAvailable": false,
+                "players": 4
+            }
+        ]
+    }
+]
