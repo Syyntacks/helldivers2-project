@@ -333,14 +333,18 @@ class PlanetParser():
     def get_planet_name_by_id(self, planet_id: int|str) -> str:
         if planet_id is None or planet_id == "":
             return "N/A"
-        
+
         try:
             planet_index = int(planet_id)
         except (ValueError, TypeError):
             return str([planet_id])
-            
+
+        # Index 0 is always Super Earth — not in the war planet list
+        if planet_index == 0:
+            return "Super Earth"
+
         planet_info = self.combined_data.get(planet_index)
         if planet_info:
             return planet_info.get('name', f'Planet {planet_index}')
-        
+
         return f"Unknown Planet ID {planet_index}"

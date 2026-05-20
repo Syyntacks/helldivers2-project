@@ -155,7 +155,8 @@ class MajorOrderParser():
         target_id = value_map.get(target_key_id)
         loc_type_id = value_map.get(loc_type_key_id)
 
-        planet_name = self.planet_parser.get_planet_name_by_id(planet_id) if planet_id else None # If planet_id exists, then collect its respective name
+        # planet_id=0 is Super Earth — use `is not None` so 0 is not treated as falsy
+        planet_name = self.planet_parser.get_planet_name_by_id(planet_id) if planet_id is not None else None
         
         faction_name = None
         if faction_id is not None:

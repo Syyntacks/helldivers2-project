@@ -1088,23 +1088,27 @@ async function renderHomePage(contentArea) {
         // DISPATCH NEWS
         let dispatchDataHtml = '';
 
-        recentDispatches.forEach(dispatch => {
-            const id = dispatch.id;
-            const pubShort = dispatch.published_short;
-            const pubFull = dispatch.published_full;
-            const msg = dispatch.message;
+        if (recentDispatches.length === 0) {
+            dispatchDataHtml = '<p style="color: #777; font-style: italic; padding: 8px 0;">No recent dispatches available.</p>';
+        } else {
+            recentDispatches.forEach(dispatch => {
+                const id = dispatch.id;
+                const pubShort = dispatch.published_short;
+                const pubFull = dispatch.published_full;
+                const msg = dispatch.message;
 
-            dispatchDataHtml += `
-                <div class="homepage-dispatch-data">
-                    <div class="homepage-dispatch-pub-date" title="${pubFull}">
-                        ${pubShort}
+                dispatchDataHtml += `
+                    <div class="homepage-dispatch-data">
+                        <div class="homepage-dispatch-pub-date" title="${pubFull}">
+                            ${pubShort}
+                        </div>
+                        <div class="homepage-dispatch-msg-text">
+                            ${msg}
+                        </div>
                     </div>
-                    <div class="homepage-dispatch-msg-text">
-                        ${msg}
-                    </div>
-                </div>
-            `;
-        });
+                `;
+            });
+        }
 
         html += `
             <div class="homepage-card">
