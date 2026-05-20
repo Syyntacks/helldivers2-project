@@ -46,7 +46,10 @@ async function fetchLiveSnapshot() {
         fetch(config.warUrl, { headers }),
     ]);
 
-    if (!planetsRes.ok || !warRes.ok) throw new Error('Live API request failed');
+    if (!planetsRes.ok || !warRes.ok) {
+        console.warn('[Live Refresh] API status — planets:', planetsRes.status, '| war:', warRes.status);
+        throw new Error('Live API request failed');
+    }
 
     return {
         planets: await planetsRes.json(),
@@ -321,8 +324,12 @@ async function fetchLiveMajorOrders() {
             loadMoLookups(),
             fetchPlanetData(),
         ]);
-        if (!res.ok) return null;
+        if (!res.ok) {
+            console.warn('[Live MO] Assignments fetch failed:', res.status, res.url);
+            return null;
+        }
         const raw = await res.json();
+        console.log('[Live MO] Raw assignments response:', raw);
         if (!Array.isArray(raw)) return null;
         const now = Date.now();
         return raw.map(order => {
