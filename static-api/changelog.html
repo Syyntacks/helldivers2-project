@@ -2,6 +2,34 @@
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2>[0.9.0.1] - 2026-05-20 HOTFIX</h2>
+<h3>Added</h3>
+<ul>
+<li><strong>Live Major Order Fetch:</strong> <code>main.js</code> now fetches active Major Orders directly from the Helldivers 2 API on every page load via a new <code>fetchLiveMajorOrders()</code> function.<ul>
+<li>If the live order matches one already in the static file, parsed task details are merged in automatically.</li>
+<li>If the live order is newer than the last scrape, it displays with title, briefing, expiry, and reward — task breakdown will appear after the next 8-hour data scrape.</li>
+</ul>
+</li>
+<li><strong>Live Dispatch Fetch:</strong> <code>fetchDispatchData()</code> now tries the live API first before falling back to the static <code>dispatches.json</code>, keeping Super Earth Dispatch current between scrapes.</li>
+<li><strong><code>api_config.json</code> expanded:</strong> Added <code>assignmentsUrl</code> and <code>newsFeedUrl</code> fields so the frontend knows where to fetch live Major Order and Dispatch data.</li>
+<li><strong><code>build_static_api.py</code> updated:</strong> Now writes <code>assignmentsUrl</code> and <code>newsFeedUrl</code> into <code>api_config.json</code> on each scrape run, keeping the URLs sourced from environment variables.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li><strong>Cloudflare Pages deployment failure:</strong> Build output directory was blank in the Cloudflare dashboard, causing a 404 on the live site. Set to <code>dist</code> to match <code>build.sh</code> output.</li>
+<li><strong>Major Orders showing empty between scrapes:</strong> Homepage and Major Orders page now use <code>getMajorOrderData()</code> which prefers live API data over the static snapshot, so a new Major Order is visible immediately after it goes live — not hours later.</li>
+<li><strong>Super Earth Dispatch showing empty between scrapes:</strong> Same live-first approach applied to dispatch/news feed data.</li>
+<li><strong>Live player counts never updating on homepage planet cards:</strong> Element IDs <code>planet-players-{index}</code> and <code>planet-trend-{index}</code> had a leading space in the rendered HTML, causing <code>getElementById</code> to silently fail on every live refresh tick.</li>
+<li><strong>Super Earth missing as Major Order target:</strong> Planet index 0 (Super Earth) is not included in the live war planet data so it was absent from <code>planetCache</code>, causing Hold-type MO tasks targeting it to render with a blank planet name. Added a hardcoded fallback for index 0.</li>
+</ul>
+<h3>Known Issues</h3>
+<ul>
+<li><strong>Task breakdown unavailable for brand-new Major Orders:</strong> If a Major Order begins after the last 8-hour scrape, objectives will show "No specific tasks data available" until the next scrape populates the static file.</li>
+<li><strong>Persisting formatting issues on pages:</strong> <em>All Planets, Major Order(s), Galaxy Stats, Galactic Map</em>.</li>
+<li>Mobile formatting inconsistencies.</li>
+<li>Galactic Map can appear to visually lag.</li>
+<li>Some objectIDs have not been properly defined yet and may result in <code>Greatcloak of Rebar Resolve</code> in the output.</li>
+</ul>
 <h2>[0.9.0] - 2026-05-10</h2>
 <h3>Added</h3>
 <ul>
