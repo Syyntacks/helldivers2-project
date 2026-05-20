@@ -240,11 +240,21 @@ metadata = {
 }
 write_json("metadata.json", metadata)
 
+# Lookup tables used by the frontend to parse live major order task data
+mo_lookups = {
+    "taskTypes": static_task_types,
+    "valueTypes": static_value_types,
+    "factions": static_factions,
+}
+write_json("mo_lookups.json", mo_lookups)
+
 # API config for the live 60-second refresh calls made directly from the browser.
 # Uses the same env vars the build itself uses — non-secret endpoint paths only.
 api_config = {
     "planetsUrl": settings.urls.get("planets", ""),
     "warUrl": settings.urls.get("war", ""),
+    "assignmentsUrl": settings.urls.get("major_order", ""),
+    "newsFeedUrl": settings.urls.get("news_feed", ""),
     "headers": {
         "X-Super-Client": os.environ.get("SUPER_CLIENT", "HD2GalacticProject"),
         "X-Super-Contact": os.environ.get("SUPER_CONTACT", ""),

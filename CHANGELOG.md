@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
+## [0.9.0.1] - 2026-05-20 HOTFIX
+
+### Added
+
+- **Live Major Order Fetch:** `main.js` now fetches active Major Orders directly from the Helldivers 2 API on every page load via a new `fetchLiveMajorOrders()` function.
+  - If the live order matches one already in the static file, parsed task details are merged in automatically.
+  - If the live order is newer than the last scrape, it displays with title, briefing, expiry, and reward — task breakdown will appear after the next 8-hour data scrape.
+- **Live Dispatch Fetch:** `fetchDispatchData()` now tries the live API first before falling back to the static `dispatches.json`, keeping Super Earth Dispatch current between scrapes.
+- **`api_config.json` expanded:** Added `assignmentsUrl` and `newsFeedUrl` fields so the frontend knows where to fetch live Major Order and Dispatch data.
+- **`build_static_api.py` updated:** Now writes `assignmentsUrl` and `newsFeedUrl` into `api_config.json` on each scrape run, keeping the URLs sourced from environment variables.
+
+### Fixed
+
+- **Cloudflare Pages deployment failure:** Build output directory was blank in the Cloudflare dashboard, causing a 404 on the live site. Set to `dist` to match `build.sh` output.
+- **Major Orders showing empty between scrapes:** Homepage and Major Orders page now use `getMajorOrderData()` which prefers live API data over the static snapshot, so a new Major Order is visible immediately after it goes live — not hours later.
+- **Super Earth Dispatch showing empty between scrapes:** Same live-first approach applied to dispatch/news feed data.
+- **Live player counts never updating on homepage planet cards:** Element IDs `planet-players-{index}` and `planet-trend-{index}` had a leading space in the rendered HTML, causing `getElementById` to silently fail on every live refresh tick.
+
+### Known Issues
+
+- **Task breakdown unavailable for brand-new Major Orders:** If a Major Order begins after the last 8-hour scrape, objectives will show "No specific tasks data available" until the next scrape populates the static file.
+- **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map*.
+- Mobile formatting inconsistencies.
+- Galactic Map can appear to visually lag.
+- Some objectIDs have not been properly defined yet and may result in `Greatcloak of Rebar Resolve` in the output.
+
 ## [0.9.0] - 2026-05-10
 
 ### Added

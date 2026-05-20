@@ -14,6 +14,7 @@ let dispatchData = null;
 */
 
 let liveApiConfig = null;  // loaded from /static-api/api_config.json on first tick
+let moLookups = null;      // loaded from /static-api/mo_lookups.json on first MO fetch
 let liveState = {
     previous: null, // snapshot from 60 seconds ago { planets:[], war:{}, timestamp: ms }
     current: null, // most recent snapshot
@@ -222,6 +223,138 @@ function startLiveRefresh() {
     liveRefreshTick(); // run immediately on load
     setInterval(liveRefreshTick, 60 * 1000); // full tick every 60 seconds
     setInterval(interpolateCounts, 50); // visual interpolation every 50ms
+}
+
+async function loadMoLookups() {
+    if (moLookups) return moLookups;
+    try {
+        const res = await fetch('/static-api/mo_lookups.json');
+        if (res.ok) moLookups = await res.json();
+    } catch (e) {}
+    return moLookups;
+}
+
+// Mirrors the logic in major_order_parser.py / _resolve_task_details_by_type.
+// Converts raw task objects from the live API into the same shape the
+// render functions expect (typeName, factionId, goal, targetName, etc.).
+function parseLiveMoTasks(rawTasks, progress, lookups, planetCache) {
+    if (!lookups || !rawTasks?.length) return [];
+    const { taskTypes, valueTypes, factions } = lookups;
+
+    // Build reverse map: field name → integer key (mirrors Python's get_value_key)
+    const reverseValueMap = {};
+    for (const [id, name] of Object.entries(valueTypes || {})) {
+        reverseValueMap[name] = parseInt(id);
+    }
+    const factionKey      = reverseValueMap['faction']       ?? null;
+    const goalKey         = reverseValueMap['goal']          ?? null;
+    const locationIdxKey  = reverseValueMap['locationIndex'] ?? null;
+    const locationTypeKey = reverseValueMap['locationType']  ?? null;
+    const targetIdKey     = reverseValueMap['targetId']      ?? null;
+
+    return rawTasks.map((task, i) => {
+        const values       = task.values     || [];
+        const valueTypeIds = task.valueTypes || [];
+
+        // Pair each valueType ID with its value (mirrors Python's dict(zip(...)))
+        const valueMap = {};
+        valueTypeIds.forEach((typeId, idx) => { valueMap[typeId] = values[idx]; });
+
+        const typeId   = String(task.type);
+        const typeName = taskTypes?.[typeId] || '';
+
+        const factionId     = factionKey      !== null ? (valueMap[factionKey]      ?? null) : null;
+        const goalRaw       = goalKey         !== null ? (valueMap[goalKey]         ?? null) : null;
+        const enemyId       = targetIdKey     !== null ? (valueMap[targetIdKey]     ?? null) : null;
+        const locationIndex = locationIdxKey  !== null ? (valueMap[locationIdxKey]  ?? null) : null;
+        const locationType  = locationTypeKey !== null ? (valueMap[locationTypeKey] ?? null) : null;
+
+        const planet      = locationIndex !== null ? (planetCache?.[locationIndex] || null) : null;
+        const planetName  = planet?.name  || null;
+        const factionName = factionId !== null ? (factions?.[String(factionId)] || null) : null;
+
+        let targetName    = '';
+        let targetPlanetId = null;
+
+        if (typeName === 'Liberate' || typeName === 'Defense') {
+            if (locationType === 1 && planetName) {
+                targetName = planetName; targetPlanetId = locationIndex;
+            } else if (locationType === 2) {
+                targetName = 'Designated Sector';
+            } else {
+                targetName = 'Across the Galaxy';
+            }
+        } else if (typeName === 'Hold') {
+            if (locationType === 1 && planetName) {
+                targetName = planetName; targetPlanetId = locationIndex;
+            }
+        } else if (typeName === 'KillEnemies') {
+            targetName = factionName || '';
+        } else if (['CompleteObjs', 'CompleteOps', 'Extract'].includes(typeName)) {
+            if (planetName) { targetName = planetName; targetPlanetId = locationIndex; }
+        }
+
+        // Fallback
+        if (!targetName && planetName)  { targetName = planetName; targetPlanetId = locationIndex; }
+        else if (!targetName && factionName) { targetName = `Target: ${factionName}`; }
+
+        return {
+            type: typeId, typeName, factionId, enemyId,
+            goal: goalRaw ?? 1,
+            progress: progress?.[i] ?? 0,
+            targetName, targetPlanetId,
+        };
+    });
+}
+
+// Fetches major orders directly from the live API, parses tasks using the
+// lookup tables in mo_lookups.json, and returns data in the same shape as
+// major_orders.json so the existing render functions need no changes.
+async function fetchLiveMajorOrders() {
+    const config = await loadApiConfig();
+    if (!config?.assignmentsUrl) return null;
+    try {
+        const [res, lookups, planetCache] = await Promise.all([
+            fetch(config.assignmentsUrl, { headers: config.headers || {} }),
+            loadMoLookups(),
+            fetchPlanetData(),
+        ]);
+        if (!res.ok) return null;
+        const raw = await res.json();
+        if (!Array.isArray(raw)) return null;
+        const now = Date.now();
+        return raw.map(order => {
+            const setting  = order.setting || {};
+            const expiresIn = order.expiresIn ?? 0;
+            const rewards  = Array.isArray(setting.rewards) ? setting.rewards
+                           : (setting.reward ? [setting.reward] : []);
+            const progress = order.progress || [];
+            return {
+                orderId:       order.id32 ?? order.id,
+                orderExpires:  new Date(now + expiresIn * 1000).toISOString(),
+                orderTitle:    setting.overrideTitle || 'Active Major Order',
+                orderBriefing: setting.overrideBrief || setting.taskDescription || '',
+                rewardsAmount: rewards[0]?.amount ?? null,
+                tasks:         parseLiveMoTasks(setting.tasks || [], progress, lookups, planetCache),
+            };
+        });
+    } catch (e) {
+        console.warn('[Live MO] Fetch failed:', e);
+        return null;
+    }
+}
+
+// Primary source for major order data. Tries the live API first (with full
+// task parsing), falls back to the static file if the live fetch fails.
+async function getMajorOrderData() {
+    const [liveResult, staticResult] = await Promise.allSettled([
+        fetchLiveMajorOrders(),
+        fetch('/static-api/major_orders.json').then(r => r.ok ? r.json() : [])
+    ]);
+    const live = liveResult.status === 'fulfilled' ? liveResult.value : null;
+    const staticData = staticResult.status === 'fulfilled' ? (staticResult.value || []) : [];
+    if (live && live.length > 0) return live;
+    return staticData;
 }
 
 function main() {
@@ -686,17 +819,15 @@ function loadPageContent(route) {
 //renders homepage
 async function renderHomePage(contentArea) {
     try {
-        const [planetData, moResponse, statsResponse, enemiesData, dispatchData] = await Promise.all([
+        const [planetData, moData, statsResponse, enemiesData, dispatchData] = await Promise.all([
             fetchPlanetData(),
-            fetch('/static-api/major_orders.json'),
+            getMajorOrderData(),
             fetch('/static-api/galaxy_stats.json'),
             fetchEnemiesData(),
             fetchDispatchData()
         ]);
 
-        if (!moResponse.ok) throw new Error("Failed to fetch major order(s)");
         if (!statsResponse.ok) throw new Error('Failed to fetch galaxy stats');
-        const moData = await moResponse.json();
         const statsData = await statsResponse.json();
         const dispatchList = dispatchData;
         const recentDispatches = [...dispatchList]
@@ -885,8 +1016,8 @@ async function renderHomePage(contentArea) {
                         <div class="planet-player-stat">
                             <div style="display:flex; align-items:center; justify-content:flex-start; gap:4px;">
                                 <img src="/static/src/images/hd2-skull.png" class="icon-label" alt="">
-                                <span id=" planet-players-${planet.index}" style="font-size: 1.15em;">${planet.players.toLocaleString()}</span>
-                                <span id=" planet-trend-${planet.index}" style="font-size: 0.85em;"></span>
+                                <span id="planet-players-${planet.index}" style="font-size: 1.15em;">${planet.players.toLocaleString()}</span>
+                                <span id="planet-trend-${planet.index}" style="font-size: 0.85em;"></span>
                             </div>
                             <div class="player-pct-bar-container" data-pct="${playerPercent}%">
                                 <div class="player-pct-bar" id="planet-pct-${planet.index}" style="width:${Math.min(playerPercent, 100)}%;"></div>
@@ -1100,17 +1231,13 @@ async function renderMajorOrderPage(contentArea) {
     contentArea.innerHTML = '<h2>Loading Major Orders...</h2>'
 
     try {
-        const [moResponse, planetData, enemiesData] = await Promise.all([
-            fetch('/static-api/major_orders.json'),
+        const [rawMoData, planetData, enemiesData] = await Promise.all([
+            getMajorOrderData(),
             fetchPlanetData(),
             fetchEnemiesData()
         ]);
 
-        //check if network request was successful
-        if (!moResponse.ok) throw new Error(`Network error: ${moResponse.status}`);
-
         //mo list — filter out expired orders
-        const rawMoData = await moResponse.json();
         const moNow = Date.now();
         const moData = (Array.isArray(rawMoData) ? rawMoData : []).filter(order => {
             if (!order.orderExpires) return true;
@@ -2069,8 +2196,45 @@ async function fetchPlanetData() {
 
 async function fetchDispatchData() {
     if (dispatchData) return dispatchData;
+
+    const config = await loadApiConfig();
+    if (config?.newsFeedUrl) {
+        try {
+            const res = await fetch(config.newsFeedUrl, { headers: config.headers || {} });
+            if (res.ok) {
+                const raw = await res.json();
+                if (Array.isArray(raw) && raw.length > 0) {
+                    dispatchData = raw.map(d => {
+                        const msg = d.message || '';
+                        if (!msg || msg.trim().toLowerCase() === 'void msg') return null;
+                        const formatted = msg
+                            .replace(/<i=3>(.*?)<\/[iI]>/gs, '<span class="dispatch-header">$1</span>')
+                            .replace(/<i=1>(.*?)<\/[iI]>/gs, '<span class="dispatch-highlight">$1</span>')
+                            .replace(/\n/g, '<br>');
+                        const pub = d.published ? new Date(d.published) : null;
+                        let pubShort = 'N/A', pubFull = 'N/A';
+                        if (pub) {
+                            const mm = String(pub.getUTCMonth() + 1).padStart(2, '0');
+                            const dd = String(pub.getUTCDate()).padStart(2, '0');
+                            const yy = String(pub.getUTCFullYear()).slice(-2);
+                            const hh = String(pub.getUTCHours()).padStart(2, '0');
+                            const min = String(pub.getUTCMinutes()).padStart(2, '0');
+                            pubShort = `${mm}-${dd}-${yy}`;
+                            pubFull = `${mm}-${dd}-${yy} ${hh}:${min} UTC`;
+                        }
+                        return { id: d.id, type: d.type, published_short: pubShort, published_full: pubFull, message: formatted };
+                    }).filter(Boolean);
+                    return dispatchData;
+                }
+            }
+        } catch (e) {
+            console.warn('[Live Dispatch] Fetch failed:', e);
+        }
+    }
+
+    // Fallback to static file
     const res = await fetch('/static-api/dispatches.json');
-    dispatchData = await res.json();
+    dispatchData = res.ok ? await res.json() : [];
     return dispatchData;
 }
 
