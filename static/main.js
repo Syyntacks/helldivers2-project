@@ -270,7 +270,9 @@ function parseLiveMoTasks(rawTasks, progress, lookups, planetCache) {
         const locationType  = locationTypeKey !== null ? (valueMap[locationTypeKey] ?? null) : null;
 
         const planet      = locationIndex !== null ? (planetCache?.[locationIndex] || null) : null;
-        const planetName  = planet?.name  || null;
+        // Planet index 0 is always Super Earth — it's not in the war planet list so
+        // it won't appear in planetCache, but it can still be a valid MO target.
+        const planetName  = planet?.name || (locationIndex === 0 ? 'Super Earth' : null);
         const factionName = factionId !== null ? (factions?.[String(factionId)] || null) : null;
 
         let targetName    = '';

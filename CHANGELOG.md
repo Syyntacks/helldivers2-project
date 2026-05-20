@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning].
 - **Major Orders showing empty between scrapes:** Homepage and Major Orders page now use `getMajorOrderData()` which prefers live API data over the static snapshot, so a new Major Order is visible immediately after it goes live — not hours later.
 - **Super Earth Dispatch showing empty between scrapes:** Same live-first approach applied to dispatch/news feed data.
 - **Live player counts never updating on homepage planet cards:** Element IDs `planet-players-{index}` and `planet-trend-{index}` had a leading space in the rendered HTML, causing `getElementById` to silently fail on every live refresh tick.
+- **Super Earth missing as Major Order target:** Planet index 0 (Super Earth) is not included in the live war planet data so it was absent from `planetCache`, causing Hold-type MO tasks targeting it to render with a blank planet name. Added a hardcoded fallback for index 0.
 
 ### Known Issues
 
