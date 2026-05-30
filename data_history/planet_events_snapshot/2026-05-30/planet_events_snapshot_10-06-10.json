@@ -1,0 +1,159 @@
+[
+    {
+        "index": 173,
+        "name": "GATRIA",
+        "sector": "Jin Xi",
+        "biome": {
+            "name": "Ionic Crimson",
+            "description": "A crimson algae has propagated wildly across this entire planet, coating its rocky hills with a constant red that masks the spilt blood of the heroes who defend it from tyranny."
+        },
+        "hazards": [
+            {
+                "name": "Ion Storms",
+                "description": "Ion storms intermittently disable Stratagems."
+            }
+        ],
+        "hash": 1039531899,
+        "position": {
+            "x": 0.8252936,
+            "y": -0.13200772
+        },
+        "waypoints": [
+            217,
+            218,
+            268
+        ],
+        "maxHealth": 1500000,
+        "health": 1500000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5587,
+            "eventType": 1,
+            "faction": "Terminids",
+            "health": 399171,
+            "maxHealth": 1500000,
+            "startTime": "2026-05-28T15:48:23Z",
+            "endTime": "2026-05-30T15:48:23Z",
+            "campaignId": 51582,
+            "jointOperationIds": [
+                5587
+            ]
+        },
+        "statistics": {
+            "missionsWon": 16335312,
+            "missionsLost": 837392,
+            "missionTime": 56250116217,
+            "terminidKills": 8074607649,
+            "automatonKills": 17896,
+            "illuminateKills": 4742,
+            "bulletsFired": 33939257001,
+            "bulletsHit": 39689783970,
+            "timePlayed": 56250116217,
+            "deaths": 104757246,
+            "revives": 0,
+            "friendlies": 17600736,
+            "missionSuccessRate": 95,
+            "accuracy": 100,
+            "playerCount": 11270
+        },
+        "attacking": [
+            100,
+            172,
+            217,
+            268
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 3964263469,
+                "name": "ALTONBURG",
+                "description": "null",
+                "health": 100000,
+                "maxHealth": 100000,
+                "size": "Settlement",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 12
+            },
+            {
+                "id": 1,
+                "hash": 3067104866,
+                "name": "ERSATZ",
+                "description": "null",
+                "health": 111934,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.68552,
+                "isAvailable": true,
+                "players": 4339
+            }
+        ]
+    },
+    {
+        "index": 226,
+        "name": "RIRGA BAY",
+        "sector": "Rigel",
+        "biome": {
+            "name": "Acidic Badlands",
+            "description": "Dense, toxic fumes from deep within the planet's crust seep out of cracks in the earth and coat the ground in a sickly haze."
+        },
+        "hazards": [
+            {
+                "name": "Acid Storms",
+                "description": "Corrosive acid storms temporarily reduce armor effectiveness for both enemy and friendly units."
+            }
+        ],
+        "hash": 1377257553,
+        "position": {
+            "x": 0.09694725,
+            "y": -0.7277918
+        },
+        "waypoints": [
+            183,
+            227
+        ],
+        "maxHealth": 1200000,
+        "health": 1200000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 1.3888888,
+        "event": {
+            "id": 5582,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 1700268,
+            "maxHealth": 3750000,
+            "startTime": "2026-05-25T11:45:53Z",
+            "endTime": "2026-06-01T11:45:53Z",
+            "campaignId": 51576,
+            "jointOperationIds": [
+                5582
+            ]
+        },
+        "statistics": {
+            "missionsWon": 4247525,
+            "missionsLost": 285191,
+            "missionTime": 15692357463,
+            "terminidKills": 11833,
+            "automatonKills": 5691,
+            "illuminateKills": 3059824525,
+            "bulletsFired": 10574580348,
+            "bulletsHit": 11321951556,
+            "timePlayed": 15692357463,
+            "deaths": 1028392047,
+            "revives": 0,
+            "friendlies": 4907909,
+            "missionSuccessRate": 93,
+            "accuracy": 100,
+            "playerCount": 8182
+        },
+        "attacking": [],
+        "regions": []
+    }
+]
