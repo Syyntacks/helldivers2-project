@@ -1,0 +1,144 @@
+[
+    {
+        "index": 156,
+        "name": "CHARBAL-VII",
+        "sector": "Andromeda",
+        "biome": {
+            "name": "Acidic Badlands",
+            "description": "Dense, toxic fumes from deep within the planet's crust seep out of cracks in the earth and coat the ground in a sickly haze."
+        },
+        "hazards": [
+            {
+                "name": "Acid Storms",
+                "description": "Corrosive acid storms temporarily reduce armor effectiveness for both enemy and friendly units."
+            }
+        ],
+        "hash": 3531149629,
+        "position": {
+            "x": -0.6009798,
+            "y": 0.2024094
+        },
+        "waypoints": [
+            72,
+            154,
+            158
+        ],
+        "maxHealth": 1000000,
+        "health": 1000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5594,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 512225,
+            "maxHealth": 1400000,
+            "startTime": "2026-06-03T08:12:10Z",
+            "endTime": "2026-06-05T08:12:10Z",
+            "campaignId": 51588,
+            "jointOperationIds": [
+                5594
+            ]
+        },
+        "statistics": {
+            "missionsWon": 5318102,
+            "missionsLost": 658515,
+            "missionTime": 19364773090,
+            "terminidKills": 11066,
+            "automatonKills": 1551310224,
+            "illuminateKills": 615,
+            "bulletsFired": 8065193391,
+            "bulletsHit": 8821149028,
+            "timePlayed": 19364773090,
+            "deaths": 49668948,
+            "revives": 0,
+            "friendlies": 4129427,
+            "missionSuccessRate": 88,
+            "accuracy": 100,
+            "playerCount": 21086
+        },
+        "attacking": [
+            157
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 1230494439,
+                "name": "UTOPIA VAREN",
+                "description": "null",
+                "health": 677758,
+                "maxHealth": 1000000,
+                "size": "Settlement",
+                "regenPerSecond": 2.7777777,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 10233
+            }
+        ]
+    },
+    {
+        "index": 184,
+        "name": "HYDROBIUS",
+        "sector": "Omega",
+        "biome": {
+            "name": "Desert Cliffs",
+            "description": "A desert planet prone to unpredictable and dangerous sand twisters."
+        },
+        "hazards": [
+            {
+                "name": "Tremors",
+                "description": "Frequent earthquakes stun players and enemies alike."
+            }
+        ],
+        "hash": 1722929190,
+        "position": {
+            "x": -0.04842106,
+            "y": -0.70721954
+        },
+        "waypoints": [
+            140,
+            182,
+            185
+        ],
+        "maxHealth": 1400000,
+        "health": 1400000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 4.1666665,
+        "event": {
+            "id": 5592,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 6395984,
+            "maxHealth": 6500000,
+            "startTime": "2026-06-02T07:34:30Z",
+            "endTime": "2026-06-09T07:34:30Z",
+            "campaignId": 51362,
+            "jointOperationIds": [
+                5592
+            ]
+        },
+        "statistics": {
+            "missionsWon": 3990394,
+            "missionsLost": 461467,
+            "missionTime": 15173547931,
+            "terminidKills": 32071,
+            "automatonKills": 2958,
+            "illuminateKills": 2222076847,
+            "bulletsFired": 11595842131,
+            "bulletsHit": 11876380370,
+            "timePlayed": 15173547931,
+            "deaths": 33476470,
+            "revives": 0,
+            "friendlies": 4769632,
+            "missionSuccessRate": 89,
+            "accuracy": 100,
+            "playerCount": 1168
+        },
+        "attacking": [],
+        "regions": []
+    }
+]
