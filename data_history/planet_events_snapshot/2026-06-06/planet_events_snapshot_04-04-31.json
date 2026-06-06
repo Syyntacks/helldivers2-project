@@ -1,0 +1,238 @@
+[
+    {
+        "index": 184,
+        "name": "HYDROBIUS",
+        "sector": "Omega",
+        "biome": {
+            "name": "Desert Cliffs",
+            "description": "A desert planet prone to unpredictable and dangerous sand twisters."
+        },
+        "hazards": [
+            {
+                "name": "Tremors",
+                "description": "Frequent earthquakes stun players and enemies alike."
+            }
+        ],
+        "hash": 1722929190,
+        "position": {
+            "x": -0.04842106,
+            "y": -0.70721954
+        },
+        "waypoints": [
+            140,
+            182,
+            185
+        ],
+        "maxHealth": 1400000,
+        "health": 1400000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 4.1666665,
+        "event": {
+            "id": 5592,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 6254641,
+            "maxHealth": 6500000,
+            "startTime": "2026-06-02T07:35:43Z",
+            "endTime": "2026-06-09T07:35:43Z",
+            "campaignId": 51362,
+            "jointOperationIds": [
+                5592
+            ]
+        },
+        "statistics": {
+            "missionsWon": 4028633,
+            "missionsLost": 468518,
+            "missionTime": 15313558207,
+            "terminidKills": 37475,
+            "automatonKills": 2958,
+            "illuminateKills": 2234308775,
+            "bulletsFired": 11702994465,
+            "bulletsHit": 12005902946,
+            "timePlayed": 15313558207,
+            "deaths": 33830361,
+            "revives": 0,
+            "friendlies": 4812558,
+            "missionSuccessRate": 89,
+            "accuracy": 100,
+            "playerCount": 1814
+        },
+        "attacking": [],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 3184875338,
+                "name": "GENERATORSVILLE",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 0
+            }
+        ]
+    },
+    {
+        "index": 200,
+        "name": "MATAR BAY",
+        "sector": "Andromeda",
+        "biome": {
+            "name": "Plains",
+            "description": "Rocky outcroppings punctuate fields of tall grass in a planet dominated by misty highland terrain."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 2071495162,
+        "position": {
+            "x": -0.4909794,
+            "y": 0.4139719
+        },
+        "waypoints": [
+            159,
+            199,
+            201
+        ],
+        "maxHealth": 1600000,
+        "health": 1600000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5597,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 2073971,
+            "maxHealth": 2500000,
+            "startTime": "2026-06-05T08:47:23Z",
+            "endTime": "2026-06-07T08:47:23Z",
+            "campaignId": 51592,
+            "jointOperationIds": [
+                5597
+            ]
+        },
+        "statistics": {
+            "missionsWon": 7109398,
+            "missionsLost": 599936,
+            "missionTime": 25935245276,
+            "terminidKills": 1983,
+            "automatonKills": 2226037994,
+            "illuminateKills": 0,
+            "bulletsFired": 10882958661,
+            "bulletsHit": 11955523148,
+            "timePlayed": 25935245276,
+            "deaths": 56306899,
+            "revives": 0,
+            "friendlies": 6021533,
+            "missionSuccessRate": 92,
+            "accuracy": 100,
+            "playerCount": 12840
+        },
+        "attacking": [
+            198,
+            199,
+            159
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 1199071894,
+                "name": "PARRHESIA",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.48526087,
+                "isAvailable": false,
+                "players": 275
+            },
+            {
+                "id": 1,
+                "hash": 2853318855,
+                "name": "ISEGORIA",
+                "description": "null",
+                "health": 13795,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 4736
+            }
+        ]
+    },
+    {
+        "index": 201,
+        "name": "MEISSA",
+        "sector": "Ymir",
+        "biome": {
+            "name": "Volcanic Jungle",
+            "description": "Abundant with life, this wet planet is covered in deep oceans, thick forests, and tall grasses."
+        },
+        "hazards": [
+            {
+                "name": "Volcanic Activity",
+                "description": "Volcanoes throw burning rocks around this planet."
+            }
+        ],
+        "hash": 996779072,
+        "position": {
+            "x": -0.5683347,
+            "y": 0.4903273
+        },
+        "waypoints": [
+            245,
+            249
+        ],
+        "maxHealth": 1000000,
+        "health": 1000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5596,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 1168,
+            "maxHealth": 650000,
+            "startTime": "2026-06-05T06:40:53Z",
+            "endTime": "2026-06-06T06:40:53Z",
+            "campaignId": 51591,
+            "jointOperationIds": [
+                5596
+            ]
+        },
+        "statistics": {
+            "missionsWon": 3039694,
+            "missionsLost": 328493,
+            "missionTime": 11647498415,
+            "terminidKills": 910,
+            "automatonKills": 926270397,
+            "illuminateKills": 33,
+            "bulletsFired": 4867427472,
+            "bulletsHit": 5273731610,
+            "timePlayed": 11647498415,
+            "deaths": 28116853,
+            "revives": 0,
+            "friendlies": 3084082,
+            "missionSuccessRate": 90,
+            "accuracy": 100,
+            "playerCount": 21611
+        },
+        "attacking": [
+            245,
+            249
+        ],
+        "regions": []
+    }
+]
