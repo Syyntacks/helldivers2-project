@@ -1,14 +1,14 @@
 [
   {
     "orderId": 2616794736,
-    "orderExpires": "2026-06-15T14:41:28.700324+00:00",
+    "orderExpires": "2026-06-15T14:41:23.821277+00:00",
     "orderType": "4",
     "orderTypeName": "CompleteObjs",
     "orderTitle": "MAJOR ORDER",
     "orderBriefing": "Complete the required number of Operations on Omicron in order to quell Terminid resistance and enable E-711 extraction, to enable synthesis of Dark Fluid.",
     "orderTaskDescr": "",
     "orderProgress": [
-      158992
+      216961
     ],
     "tasks": [
       {
@@ -19,10 +19,35 @@
         "goal": 1750000,
         "targetName": "OMICRON",
         "targetPlanetId": 259,
-        "progress": 158992
+        "progress": 216961
       }
     ],
     "rewardType": "1",
     "rewardsAmount": "50"
+  },
+  {
+    "orderId": 3257352995,
+    "orderExpires": "2026-06-13T14:02:23.821318+00:00",
+    "orderType": "4",
+    "orderTypeName": "CompleteObjs",
+    "orderTitle": "STRATEGIC THREAT",
+    "orderBriefing": "Hold Crimsica in order to restore the fuel lines of Managed Democracy, and end the temporary fleetwide rationing of E-710.",
+    "orderTaskDescr": "",
+    "orderProgress": [
+      1
+    ],
+    "tasks": [
+      {
+        "type": "13",
+        "typeName": "Hold",
+        "factionId": null,
+        "enemyId": null,
+        "goal": 1,
+        "targetName": "CRIMSICA",
+        "targetPlanetId": 78,
+        "progress": 1
+      }
+    ],
+    "rewardsAmount": null
   }
 ]
