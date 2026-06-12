@@ -1,0 +1,108 @@
+[
+    {
+        "index": 168,
+        "name": "ERATA PRIME",
+        "sector": "Umlaut",
+        "biome": {
+            "name": "Desert Cliffs",
+            "description": "A desert planet prone to unpredictable and dangerous sand twisters."
+        },
+        "hazards": [
+            {
+                "name": "Tremors",
+                "description": "Frequent earthquakes stun players and enemies alike."
+            }
+        ],
+        "hash": 3604506896,
+        "position": {
+            "x": 0.4243272,
+            "y": 0.34833485
+        },
+        "waypoints": [
+            34,
+            124,
+            211
+        ],
+        "maxHealth": 1500000,
+        "health": 1500000,
+        "disabled": false,
+        "initialOwner": "Terminids",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5602,
+            "eventType": 1,
+            "faction": "Terminids",
+            "health": 1210098,
+            "maxHealth": 1500000,
+            "startTime": "2026-06-12T09:35:02Z",
+            "endTime": "2026-06-14T09:35:02Z",
+            "campaignId": 51598,
+            "jointOperationIds": [
+                5602
+            ]
+        },
+        "statistics": {
+            "missionsWon": 27404733,
+            "missionsLost": 2177763,
+            "missionTime": 82116823855,
+            "terminidKills": 11947159822,
+            "automatonKills": 387,
+            "illuminateKills": 77872593,
+            "bulletsFired": 48736241470,
+            "bulletsHit": 57679300113,
+            "timePlayed": 82116823855,
+            "deaths": 196205619,
+            "revives": 0,
+            "friendlies": 30481536,
+            "missionSuccessRate": 92,
+            "accuracy": 100,
+            "playerCount": 17069
+        },
+        "attacking": [
+            211,
+            124
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 905823730,
+                "name": "NEW DA NANG",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 0.6971887,
+                "isAvailable": false,
+                "players": 0
+            },
+            {
+                "id": 1,
+                "hash": 1676064266,
+                "name": "PHAM'S SITE",
+                "description": "null",
+                "health": 100000,
+                "maxHealth": 100000,
+                "size": "Settlement",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 0.47428906,
+                "isAvailable": false,
+                "players": 3
+            },
+            {
+                "id": 2,
+                "hash": 523284406,
+                "name": "OLD CHEMLAND",
+                "description": "null",
+                "health": 76798,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 6478
+            }
+        ]
+    }
+]
