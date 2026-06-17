@@ -1,0 +1,171 @@
+[
+    {
+        "index": 140,
+        "name": "ALARAPH",
+        "sector": "Akira",
+        "biome": {
+            "name": "Deadlands",
+            "description": "The lifeless grey of this planet is interrupted only by the violet flowers that grow from strange, parasitic outcroppings."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 2830340410,
+        "position": {
+            "x": -0.03489475,
+            "y": -0.54864734
+        },
+        "waypoints": [],
+        "maxHealth": 1800000,
+        "health": 1800000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5605,
+            "eventType": 1,
+            "faction": "Illuminate",
+            "health": 1173322,
+            "maxHealth": 1200000,
+            "startTime": "2026-06-16T09:11:24Z",
+            "endTime": "2026-06-18T09:11:24Z",
+            "campaignId": 51603,
+            "jointOperationIds": [
+                5605
+            ]
+        },
+        "statistics": {
+            "missionsWon": 1505203,
+            "missionsLost": 181003,
+            "missionTime": 5696274758,
+            "terminidKills": 910,
+            "automatonKills": 1469,
+            "illuminateKills": 904648331,
+            "bulletsFired": 5728004445,
+            "bulletsHit": 5316617128,
+            "timePlayed": 5696274758,
+            "deaths": 12731553,
+            "revives": 0,
+            "friendlies": 1850391,
+            "missionSuccessRate": 89,
+            "accuracy": 92,
+            "playerCount": 273
+        },
+        "attacking": [
+            94,
+            95,
+            184
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 2876102528,
+                "name": "PERMACURIS",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 113
+            },
+            {
+                "id": 1,
+                "hash": 1143862620,
+                "name": "HANGAR 6",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.71426,
+                "isAvailable": true,
+                "players": 28
+            }
+        ]
+    },
+    {
+        "index": 185,
+        "name": "KARLIA",
+        "sector": "Omega",
+        "biome": {
+            "name": "Scorched Moor",
+            "description": "Scorching temperatures, high winds, and low precipitation cause a near-constant cycle of fires to sweep this planet, punctuated by short bursts of lush rebirth between infernos."
+        },
+        "hazards": [
+            {
+                "name": "Fire Tornadoes",
+                "description": "Planet is ravaged by deadly fire tornadoes."
+            }
+        ],
+        "hash": 101839064,
+        "position": {
+            "x": -0.1330078,
+            "y": -0.6602936
+        },
+        "waypoints": [
+            273
+        ],
+        "maxHealth": 1400000,
+        "health": 1400000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5604,
+            "eventType": 1,
+            "faction": "Illuminate",
+            "health": 874955,
+            "maxHealth": 900000,
+            "startTime": "2026-06-16T09:10:14Z",
+            "endTime": "2026-06-18T09:10:14Z",
+            "campaignId": 51602,
+            "jointOperationIds": [
+                5604
+            ]
+        },
+        "statistics": {
+            "missionsWon": 1180244,
+            "missionsLost": 132588,
+            "missionTime": 4300366791,
+            "terminidKills": 4190,
+            "automatonKills": 6003,
+            "illuminateKills": 774837523,
+            "bulletsFired": 3889068127,
+            "bulletsHit": 3673209570,
+            "timePlayed": 4300366791,
+            "deaths": 10020291,
+            "revives": 0,
+            "friendlies": 1684039,
+            "missionSuccessRate": 89,
+            "accuracy": 94,
+            "playerCount": 274
+        },
+        "attacking": [
+            184,
+            186,
+            273
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 786867005,
+                "name": "ADNAN",
+                "description": "null",
+                "health": 397359,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 0,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 128
+            }
+        ]
+    }
+]
