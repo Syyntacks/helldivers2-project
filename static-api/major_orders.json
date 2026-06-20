@@ -1,15 +1,15 @@
 [
   {
-    "orderId": 1703871073,
-    "orderExpires": "2026-06-20T09:03:07.109932+00:00",
+    "orderId": 3552244474,
+    "orderExpires": "2026-06-26T10:02:20.954140+00:00",
     "orderType": "4",
     "orderTypeName": "CompleteObjs",
     "orderTitle": "MAJOR ORDER",
-    "orderBriefing": "Liberate the designated planets from the hordes of Voteless swarming them. Liberal use of FRVs is encouraged.",
+    "orderBriefing": "Liberate the designated Automaton planet to secure enemy bio-processors. Secure Voteless samples.",
     "orderTaskDescr": "",
     "orderProgress": [
-      1,
-      0
+      0,
+      15100
     ],
     "tasks": [
       {
@@ -18,22 +18,22 @@
         "factionId": null,
         "enemyId": null,
         "goal": 1,
-        "targetName": "BASQUINE VIII",
-        "targetPlanetId": 272,
-        "progress": 1
+        "targetName": "BLISTICA",
+        "targetPlanetId": 70,
+        "progress": 0
       },
       {
-        "type": "11",
-        "typeName": "Liberate",
-        "factionId": null,
+        "type": "2",
+        "typeName": "ExtractSamples",
+        "factionId": 4,
         "enemyId": null,
-        "goal": 1,
-        "targetName": "SANGIS",
-        "targetPlanetId": 273,
-        "progress": 0
+        "goal": 15000000,
+        "targetName": "ALARAPH",
+        "targetPlanetId": 140,
+        "progress": 15100
       }
     ],
     "rewardType": "1",
-    "rewardsAmount": "30"
+    "rewardsAmount": "45"
   }
 ]
