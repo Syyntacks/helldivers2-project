@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
+## [0.9.0.2] - 2026-06-22 HOTFIX
+
+### Fixed
+
+- Resolved issue surrounding live application's inacurrate data streams.
+  - Removed `[skip ci]` from data_scrape workflow. This bit was preventing the live fetched data from being pushed to the application.
+
+### Known Issues
+
+- **Persisting formatting issues on pages:** *All Planets, Major Order(s), Galaxy Stats, Galactic Map*.
+- Mobile formatting inconsistencies.
+  - I aim to lock this down so all users can have proper accessibility in the application.
+- Galactic Map can appear to visually lag.
+- Some objectIDs have not been properly defined yet and may result in `Greatcloak of Rebar Resolve` in the output.
+
 ## [0.9.0.1] - 2026-05-20 HOTFIX
 
 ### Added
