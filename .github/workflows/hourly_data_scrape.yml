@@ -82,5 +82,8 @@ jobs:
         git add data_history/ static-api/
         # Only commit if there are changes (avoids errors if API is down)
         timestamp=$(date -u)
-        git commit -m "Data Snapshot: ${timestamp} [skip ci]" || exit 0
+        # NOTE: Do NOT add "[skip ci]" here. Cloudflare Pages' git integration
+        # honors that tag and will skip the deploy, leaving the live site stuck
+        # on stale data even though fresh JSON is committed to the repo.
+        git commit -m "Data Snapshot: ${timestamp}" || exit 0
         git push

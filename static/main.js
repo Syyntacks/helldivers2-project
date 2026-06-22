@@ -200,7 +200,32 @@ async function liveRefreshTick() {
 
         console.log('[Live Refresh] Updated at', new Date().toLocaleTimeString());
     } catch (e) {
-        console.warn('[Live Refresh] Tick failed:', e);
+        console.warn('[Live Refresh] Tick failed, trying static fallback:', e);
+        try {
+            const [planetsRes, statsRes] = await Promise.all([
+                fetch('/static-api/planets.json'),
+                fetch('/static-api/galaxy_stats.json'),
+            ]);
+            if (!planetsRes.ok || !statsRes.ok) return;
+            const staticPlanets = await planetsRes.json();
+            const staticStats = await statsRes.json();
+            const fallbackSnapshot = {
+                planets: Object.values(staticPlanets).map(p => ({
+                    index: p.index,
+                    health: p.currentHealth,
+                    maxHealth: p.maxHealth,
+                    statistics: { playerCount: p.players ?? 0 },
+                    regenPerSecond: parseFloat(p.regenPerSecond) || 0,
+                    event: null,
+                })),
+                war: { statistics: { playerCount: staticStats.totalPlayers ?? 0 } },
+                timestamp: Date.now(),
+            };
+            applyLiveSnapshot(fallbackSnapshot);
+            console.warn('[Live Refresh] Displaying static snapshot as fallback.');
+        } catch (fe) {
+            console.warn('[Live Refresh] Static fallback also failed:', fe);
+        }
     }
 }
 
@@ -524,10 +549,10 @@ function openPlanetOverlay(planetId) {
                     <strong style="text-align: center; font-size: 1.0em; padding-top: 0;">Hazards</strong>
                     <p>${planetHazards}</p>
                 </div>
-                <div class="player-graph-wrapper">
-                    <span class="player-graph-title">PLAYERS</span>
-                    <canvas id="player-graph-canvas" class="player-graph-canvas"></canvas>
-                </div>
+            </div>
+            <div class="player-graph-wrapper">
+                <span class="player-graph-title">PLAYERS</span>
+                <canvas id="player-graph-canvas" class="player-graph-canvas"></canvas>
             </div>
         </div>
         ${statusHtml}

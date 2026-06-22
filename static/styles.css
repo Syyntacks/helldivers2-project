@@ -444,6 +444,7 @@ img.icon-label {
     margin-top: 0;
     margin-left: -15px;
     margin-right: -15px;
+    width: auto;
     border-radius: 0;
     border-left: none;
     border-right: none;
@@ -1088,9 +1089,7 @@ img.icon-label {
     margin-top: 20px;
     margin-right: 6px;
     margin-bottom: 24px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    display: block;
     overflow-y: auto;
 }
 .info-box-stats {
@@ -1110,10 +1109,13 @@ img.icon-label {
 .player-graph-wrapper {
     display: flex;
     flex-direction: column;
+    flex: 0 0 220px;
     min-height: 0;
     gap: 4px;
     border-left: 1px solid rgba(255, 231, 16, 0.15);
     padding-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 24px;
 }
 .player-graph-title {
     font-family: 'Courier New', monospace;
@@ -1243,20 +1245,59 @@ img.icon-label {
         min-width: 100%;
         max-width: 100%;
     }
-
+    .top-row-container {
+        grid-template-columns: 1fr;
+    }
+    .galaxy-stats-page-layout {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+    }
     #planet-grid-container {
         grid-template-columns: 1fr;
         gap: 15px;
     }
+    .planet-modal-content {
+        width: 96%;
+        height: 90%;
+    }
+    .planet-modal-main-row {
+        flex-direction: column;
+        overflow-y: auto;
+        padding: 0 16px;
+        gap: 0;
+    }
+    .planet-modal-left {
+        max-width: 100%;
+    }
+    .planet-modal-info-box {
+        margin-right: 0;
+        margin-top: 12px;
+        margin-bottom: 8px;
+        min-height: 0;
+    }
+    .player-graph-wrapper {
+        flex: 0 0 180px;
+        border-left: none;
+        border-top: 1px solid rgba(255, 231, 16, 0.15);
+        padding-left: 0;
+        padding-top: 8px;
+        margin-top: 0;
+        margin-bottom: 12px;
+    }
+}
 
+@media (max-width: 480px) {
+    .galaxy-stats-page-layout {
+        grid-template-columns: 1fr;
+    }
 }
 
 
 @media (max-width: 480px) {
-    .app-text {
+    #app-text {
         display: none;
     }
-    .separator {
+    #separator {
         display: none;
     }
     .top-row-container{
