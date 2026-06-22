@@ -2,6 +2,24 @@
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2>[0.9.0.2] - 2026-06-22 HOTFIX</h2>
+<h3>Fixed</h3>
+<ul>
+<li>Resolved issue surrounding live application's inacurrate data streams.<ul>
+<li>Removed <code>[skip ci]</code> from data_scrape workflow. This bit was preventing the live fetched data from being pushed to the application.</li>
+</ul>
+</li>
+</ul>
+<h3>Known Issues</h3>
+<ul>
+<li><strong>Persisting formatting issues on pages:</strong> <em>All Planets, Major Order(s), Galaxy Stats, Galactic Map</em>.</li>
+<li>Mobile formatting inconsistencies.<ul>
+<li>I aim to lock this down so all users can have proper accessibility in the application.</li>
+</ul>
+</li>
+<li>Galactic Map can appear to visually lag.</li>
+<li>Some objectIDs have not been properly defined yet and may result in <code>Greatcloak of Rebar Resolve</code> in the output.</li>
+</ul>
 <h2>[0.9.0.1] - 2026-05-20 HOTFIX</h2>
 <h3>Added</h3>
 <ul>
