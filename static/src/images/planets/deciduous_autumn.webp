@@ -1,0 +1,75 @@
+<!-- src/app.html -->
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<link rel="manifest" href="./manifest.webmanifest" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <!-- Icon used when a user adds the site to the iOS home screen (and sometimes for Safari reading list/other surfaces). -->
+    <link rel="apple-touch-icon" sizes="196x196" href="./apple-touch-icon.png" />
+		<link rel="apple-touch-icon-precomposed" href="./apple-touch-icon-precomposed.png" />
+
+    <!-- This is for Safari pinned tabs (a monochrome SVG that Safari tints using the color attribute). -->
+    <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#FFE710" />
+
+    <!-- Microsoft tile, used for older Windows “pinned site” tiles / some legacy surfaces. -->
+    <meta name="msapplication-TileColor" content="#FFE710" />
+
+
+
+		<title>Helldivers 2 Companion App</title>
+		<meta name="description" content="A Helldivers 2 app, allowing you to view the war progress and track planet liberation statuses!" />
+
+    <!-- Open Graph (Facebook/Discord/Slack/etc.) -->
+		<meta property="og:title" content="HELLDIVERS COMPANION">
+		<meta property="og:type" content="website" />
+		<meta property="og:description" content="A Helldivers 2 app, allowing you to view the war progress and track planet liberation statuses!" />
+		<meta property="og:url" content="https://helldiverscompanion.com/">
+		<meta property="og:image" content="/twitter-card.png">
+    
+    <!-- Twitter embed -->
+		<meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HELLDIVERS COMPANION" />
+    <meta name="twitter:description" content="A Helldivers 2 app, allowing you to view the war progress and track planet liberation statuses!" />
+    <meta name="twitter:image" content="/twitter-card.png" />
+
+    <!-- Force UA UI (form controls, scrollbars, etc.) to dark -->
+    <meta name="theme-color" content="#FFE710" />
+    <meta name="color-scheme" content="dark">
+    <meta name="supported-color-schemes" content="dark">
+    <meta name="darkreader-lock">
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="HELLDIVERS COMPANION" />
+
+    <!-- Safari/iOS “why is this link blue?” annoyance -->
+    <meta name="format-detection" content="telephone=no" />
+
+
+		
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+			<script>
+				{
+					__sveltekit_hitilx = {
+						base: new URL(".", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.O_y8nZqJ.js"),
+						import("./_app/immutable/entry/app.IUTNlRH6.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

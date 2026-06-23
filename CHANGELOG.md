@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
+## [0.9.1.1] - 2026-06-23 HOTFIX
+
+I have updated the images minus the broken-up planets so the Galactic Map should display planet images correctly. One of my main focuses up next is to implement icon support for planet hazards, both on the homepage and in the planet modals.
+
+### Added
+
+- **Updated planet and biome images:** All current biomes and planet images have been accounted for but one and should display their respective images/information.
+  - Meridia Blackhole should now display its related images.
+  - Last biome/planet image to capture is for broken planets such as *Angel's Venture* and *Moradesh*.
+- **Readded the website favicon:** The favicon image is sourced from *castjack09* on `DeviantArt`. I loved the simplistic look.
+
+### Changed
+
+- **Dispatch now displays time:** In the Super Earth Dispatch on the homepage, you can now see both the date and the posted time in UTC.
+
+### Removed
+
+- **Removed player count graph:** In its current state, the graph is unfortunately a) unreliable, b) randomly timestamped, c) can be multiple days behind current accurate information. Due to this, I have removed it from the planet modal for now for refinement and to improve upon the idea. I have a couple of directions I would like to go in, so stay tuned for this.
+
+### Fixed
+
+- **Error images resulting in blank displays.**
+
+### Known Issues
+
+- Galactic Map can appear to visually lag.
+- Some objectIDs have not been properly defined yet and may result in `Greatcloak of Rebar Resolve` as the output.
+
 ## [0.9.1] - 2026-06-23
 
 I am going to add a short summary for each update moving forward for those who would rather an overview. The primary purpose of this patch is to finally include proper mobile formatting. Please note the Galactic Map may not be fully functional, as it is a work-in-progress.

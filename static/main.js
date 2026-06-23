@@ -550,13 +550,15 @@ function openPlanetOverlay(planetId) {
                     <p>${planetHazards}</p>
                 </div>
             </div>
-            <div class="player-graph-wrapper">
-                <span class="player-graph-title">PLAYERS</span>
-                <canvas id="player-graph-canvas" class="player-graph-canvas"></canvas>
-            </div>
+            
         </div>
         ${statusHtml}
     `;
+
+    //<div class="player-graph-wrapper">
+    //    <span class="player-graph-title">PLAYERS</span>
+    //    <canvas id="player-graph-canvas" class="player-graph-canvas"></canvas>
+    //</div>
 
     const modalContent = overlay.querySelector('.planet-modal-content');
     if (modalContent) {
@@ -569,7 +571,8 @@ function openPlanetOverlay(planetId) {
 
     overlay.classList.add('active');
 
-    fetchAndDrawPlayerGraph(planet.index, factionColor, planet.players || 0);
+    // This line of code adds in the player graph in the planet modal
+    // fetchAndDrawPlayerGraph(planet.index, factionColor, planet.players || 0); 
 }
 
 async function fetchAndDrawPlayerGraph(planetIndex, factionColor, currentPlayers) {
@@ -1038,6 +1041,8 @@ async function renderHomePage(contentArea) {
             }
 
             const playerPercent = ((planet.players / statsData.totalPlayers) * 100).toFixed(2);
+
+            planetHazards
 
             html += `
                 <div class="stat-card ${defenseClass}${isExtra ? ' extra-planet' : ''}"${isExtra ? ' style="display:none; cursor:pointer;"' : ' style="cursor:pointer;"'} data-biome="${planet.biomeName}" onclick="openPlanetOverlay(${planet.index})">
