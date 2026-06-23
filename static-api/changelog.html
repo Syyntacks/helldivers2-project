@@ -2,6 +2,53 @@
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2>[0.9.1.1] - 2026-06-23 HOTFIX</h2>
+<p>I have updated the images minus the broken-up planets so the Galactic Map should display planet images correctly. One of my main focuses up next is to implement icon support for planet hazards, both on the homepage and in the planet modals.</p>
+<h3>Added</h3>
+<ul>
+<li><strong>Updated planet and biome images:</strong> All current biomes and planet images have been accounted for but one and should display their respective images/information.<ul>
+<li>Meridia Blackhole should now display its related images.</li>
+<li>Last biome/planet image to capture is for broken planets such as <em>Angel's Venture</em> and <em>Moradesh</em>.</li>
+</ul>
+</li>
+<li><strong>Readded the website favicon:</strong> The favicon image is sourced from <em>castjack09</em> on <code>DeviantArt</code>. I loved the simplistic look.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li><strong>Dispatch now displays time:</strong> In the Super Earth Dispatch on the homepage, you can now see both the date and the posted time in UTC.</li>
+</ul>
+<h3>Removed</h3>
+<ul>
+<li><strong>Removed player count graph:</strong> In its current state, the graph is unfortunately a) unreliable, b) randomly timestamped, c) can be multiple days behind current accurate information. Due to this, I have removed it from the planet modal for now for refinement and to improve upon the idea. I have a couple of directions I would like to go in, so stay tuned for this.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li><strong>Error images resulting in blank displays.</strong></li>
+</ul>
+<h3>Known Issues</h3>
+<ul>
+<li>Galactic Map can appear to visually lag.</li>
+<li>Some objectIDs have not been properly defined yet and may result in <code>Greatcloak of Rebar Resolve</code> as the output.</li>
+</ul>
+<h2>[0.9.1] - 2026-06-23</h2>
+<p>I am going to add a short summary for each update moving forward for those who would rather an overview. The primary purpose of this patch is to finally include proper mobile formatting. Please note the Galactic Map may not be fully functional, as it is a work-in-progress.</p>
+<h3>Fixed</h3>
+<ul>
+<li><strong>Fixed mobile formatting inconsistencies across all main pages:</strong> Each page has been reformmated to support mobile devices, tested down to a 360 width format.<ul>
+<li>I am looking to add a bug reporting system soon to facilitate more effective bug fixing on my end.</li>
+</ul>
+</li>
+<li><strong>Updated Objectives layout:</strong> The progress bar for Liberation-focused Objectives had disappeared, leaving behind the percentage only. It should now display properly.</li>
+</ul>
+<h3>Known Issues</h3>
+<ul>
+<li>Galactic Map can appear to visually lag.</li>
+<li>Some objectIDs have not been properly defined yet and may result in <code>Greatcloak of Rebar Resolve</code> as the output.</li>
+<li>Currently missing planet &amp; biome images for:<ul>
+<li><em>Magma, Deciduous Forest, Deciduous Autumn Forest, Cyberstan Megafactory</em></li>
+</ul>
+</li>
+</ul>
 <h2>[0.9.0.2] - 2026-06-22 HOTFIX</h2>
 <h3>Fixed</h3>
 <ul>
