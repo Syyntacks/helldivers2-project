@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
+## [0.9.1] - 2026-06-23
+
+I am going to add a short summary for each update moving forward for those who would rather an overview. The primary purpose of this patch is to finally include proper mobile formatting. Please note the Galactic Map may not be fully functional, as it is a work-in-progress.
+
+### Fixed
+
+- **Fixed mobile formatting inconsistencies across all main pages:** Each page has been reformmated to support mobile devices, tested down to a 360 width format.
+  - I am looking to add a bug reporting system soon to facilitate more effective bug fixing on my end.
+- **Updated Objectives layout:** The progress bar for Liberation-focused Objectives had disappeared, leaving behind the percentage only. It should now display properly.
+
+### Known Issues
+
+- Galactic Map can appear to visually lag.
+- Some objectIDs have not been properly defined yet and may result in `Greatcloak of Rebar Resolve` as the output.
+- Currently missing planet & biome images for:
+  - *Magma, Deciduous Forest, Deciduous Autumn Forest, Cyberstan Megafactory*
+
 ## [0.9.0.2] - 2026-06-22 HOTFIX
 
 ### Fixed

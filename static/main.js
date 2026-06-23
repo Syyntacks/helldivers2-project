@@ -1094,7 +1094,7 @@ async function renderHomePage(contentArea) {
                         </div>
                     </div>
                     <div class="stat-card war-effort">
-                        <div style="text-align: left; font-size: 1rem; font-weight: bold; color: whitesmoke;">
+                        <div style="text-align: center; font-size: 1rem; font-weight: bold; color: whitesmoke;">
                             Bullets Fired: <span class="helldiver-color">${statsData.bulletsFired.toLocaleString()}</span><br>
                             Projectile Hits: <span class="helldiver-color">${statsData.bulletsHit.toLocaleString()}</span><br>
                             Helldiver Accuracy: <span class="helldiver-color">${statsData.accuracy.toLocaleString()}%</span><br>
@@ -1125,7 +1125,7 @@ async function renderHomePage(contentArea) {
                 dispatchDataHtml += `
                     <div class="homepage-dispatch-data">
                         <div class="homepage-dispatch-pub-date" title="${pubFull}">
-                            ${pubShort}
+                            ${pubFull}
                         </div>
                         <div class="homepage-dispatch-msg-text">
                             ${msg}
@@ -1556,6 +1556,27 @@ async function renderGalacticMap(contentArea) {
         </div>
     `;
 
+    // The map's square canvas is sized from its container's width, so when the
+    // viewport changes (most importantly: a phone rotating between portrait and
+    // landscape) it needs to re-fit. The whole scene is built from canvasSize,
+    // so the simplest reliable refit is to rebuild the map. We debounce it and
+    // bind the listener only once for the app's lifetime, and only act while
+    // the map page is actually showing.
+    if (!window.__mapResizeBound) {
+        window.__mapResizeBound = true;
+        let mapResizeTimer;
+        const refitMap = () => {
+            if (window.location.hash !== '#galactic_map') return;
+            clearTimeout(mapResizeTimer);
+            mapResizeTimer = setTimeout(() => {
+                const area = document.querySelector('.content-area');
+                if (area) renderGalacticMap(area);
+            }, 250);
+        };
+        window.addEventListener('resize', refitMap);
+        window.addEventListener('orientationchange', refitMap);
+    }
+
     const allPlanets = await fetchPlanetData();
     const sectorPos = 
     window.planetCache = allPlanets;
@@ -1579,7 +1600,16 @@ async function renderGalacticMap(contentArea) {
     })));
 
     const container = document.getElementById('map-container');
-    const canvasSize = container.offsetWidth;
+    // The galaxy is drawn on a SQUARE canvas. On desktop the wrapper has no
+    // height of its own, so we fall back to the container's width (a square that
+    // fits the column, exactly as before). On mobile the wrapper is a
+    // full-screen clip box with a real height, so we take the LARGER side: the
+    // square then fills the screen and the overflowing parts are reachable by
+    // panning / pinching, like a maps app.
+    const wrapper = container.closest('.galactic-map-wrapper');
+    const boxWidth = wrapper ? wrapper.clientWidth : container.offsetWidth;
+    const boxHeight = wrapper ? wrapper.clientHeight : 0;
+    const canvasSize = Math.max(boxWidth, boxHeight) || container.offsetWidth;
 
     const stage = new Konva.Stage({
         container: 'map-container',
@@ -1638,6 +1668,75 @@ async function renderGalacticMap(contentArea) {
 
     stage.on('dragend', function() {
         stage.container().style.cursor = 'grab';
+    });
+
+    // --- Pinch-to-zoom (touch) ---------------------------------------------
+    // Touch screens have no scroll wheel, so we add a two-finger pinch that
+    // mirrors the wheel-zoom math above. One-finger drag still pans via
+    // Konva's built-in draggable. lastPinchDist tracks the finger spread
+    // between touchmove events; the ratio of new/old spread = zoom factor.
+    let lastPinchDist = 0;
+
+    function getTouchDistance(t1, t2) {
+        return Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
+    }
+
+    stage.on('touchmove', function(e) {
+        const touch1 = e.evt.touches[0];
+        const touch2 = e.evt.touches[1];
+
+        // Only act on two-finger gestures; one finger is left to pan.
+        if (!touch1 || !touch2) return;
+
+        e.evt.preventDefault();
+        tooltip.style.display = 'none';
+
+        // Konva starts a drag from the first finger; stop it so the map
+        // doesn't pan and zoom at the same time (causes jitter).
+        if (stage.isDragging()) stage.stopDrag();
+
+        const dist = getTouchDistance(touch1, touch2);
+        if (!lastPinchDist) {
+            lastPinchDist = dist;
+            return;
+        }
+
+        // Midpoint between the two fingers, in container-local coordinates,
+        // so we zoom toward where the user is pinching.
+        const rect = stage.container().getBoundingClientRect();
+        const center = {
+            x: (touch1.clientX + touch2.clientX) / 2 - rect.left,
+            y: (touch1.clientY + touch2.clientY) / 2 - rect.top,
+        };
+
+        const oldScale = stage.scaleX();
+        const pointTo = {
+            x: (center.x - stage.x()) / oldScale,
+            y: (center.y - stage.y()) / oldScale,
+        };
+
+        let newScale = oldScale * (dist / lastPinchDist);
+        newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, newScale));
+
+        stage.scale({ x: newScale, y: newScale });
+
+        if (newScale === MIN_SCALE) {
+            // Re-center when fully zoomed out, matching the wheel handler.
+            const offset = (canvasSize * (1 - newScale)) / 2;
+            stage.position({ x: offset, y: offset });
+        } else {
+            stage.position({
+                x: center.x - pointTo.x * newScale,
+                y: center.y - pointTo.y * newScale,
+            });
+        }
+
+        lastPinchDist = dist;
+    });
+
+    stage.on('touchend', function() {
+        // Reset so the next pinch starts fresh.
+        lastPinchDist = 0;
     });
 
     const borderStrokeWidth = 2;
@@ -2377,7 +2476,7 @@ function checkTaskProgressHTML(taskInput, planetData, enemiesData = null) {
                         <span style="font-size: 1.7em; vertical-align: middle;">${icon}</span> ${statusText}
                     </div>
                 </div>
-                <div class="progress-bar-container-mo">
+                <div class="progress-bar-container">
                     <div class="task-progress-bar-text">${libProgress.toFixed(3)}%</div>
                     <div class="progress-bar liberation-bar" style="width: ${libProgress}%; background-color: ${factionClass} !important"></div>
                 </div>

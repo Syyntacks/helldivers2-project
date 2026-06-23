@@ -1097,7 +1097,9 @@ img.icon-label {
     flex-direction: column;
     gap: 0;
     min-width: 0;
-    overflow-y: auto;
+    /* No scroll here: this is nested inside .planet-modal-info-box, which
+       already provides the scroll on desktop. A second scroll container here
+       just traps scrolling and shows a redundant scrollbar. */
 }
 .info-box-stats p {
     margin: 0;
@@ -1224,10 +1226,36 @@ img.icon-label {
 
 
 
+/*
+    Breakpoints (this CSS is desktop-first, so these queries override the
+    base rules above when the screen gets narrower):
+      <= 1024px  tablet / small laptop   (relax max-width caps, 3-col -> 2-col)
+      <=  768px  tablet portrait / phone (multi-col -> 1 col, tighter padding)
+      <=  480px  phones                  (single column, hide chrome, scale fonts)
+    Design floor: a 360px-wide screen must have NO horizontal scroll.
+    The @media (hover: none) block at the very bottom stops :hover effects
+    from "sticking" on touch devices after a tap.
+*/
+
+/* --- TABLET / SMALL LAPTOP --- */
+@media (max-width: 1024px) {
+    /* 3-column planet list is too wide here; drop to 2 */
+    #planet-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    /* let the stats page use more of the screen */
+    .galaxy-stats-page-layout {
+        max-width: 100%;
+    }
+}
+
 /* --- TABLETS & LARGE PHONES --- */
 @media (max-width: 768px) {
     body {
         padding-top: 50px;
+    }
+    .content-area h2 {
+        font-size: 1.6em;
     }
     .main-display {
         padding: 10px;
@@ -1241,12 +1269,99 @@ img.icon-label {
     .stats-layout h3 {
         font-size: 1.2em;
     }
+    /* The base 320px min-width makes stat cards overflow a phone screen.
+       Drop the min-width so they can shrink, but KEEP the 320px flex-basis:
+       that makes the row fit exactly one card on a phone (single column) and
+       two on a tablet, instead of cramming several tiny, overlapping cards. */
     .stat-card {
-        min-width: 100%;
+        min-width: 0;
         max-width: 100%;
+    }
+    /* The card header overlaps its pieces by design on desktop: the planet
+       name is centered while the player count (left) and regen rate (right)
+       are absolutely positioned to the card edges. On a narrow card those
+       collide. On mobile we drop the absolute positioning and lay the header
+       out with flex-wrap instead:
+         row 1 -> name (left, grows)  +  regen rate (right)
+         row 2 -> player count + percent bar, wrapped underneath on the left */
+    .planet-card-header {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 2px 8px;
+        text-align: left;
+    }
+    .planet-card-header h3 {
+        order: 1;
+        flex: 1 1 auto;
+        text-align: left;
+    }
+    .planet-regen-stat {
+        order: 2;
+        position: static;
+        flex: 0 0 auto;
+    }
+    .planet-player-stat {
+        order: 3;
+        position: static;
+        flex: 1 1 100%;
+        text-align: left;
     }
     .top-row-container {
         grid-template-columns: 1fr;
+    }
+    /* bigger tap target for nav links (~44px tall) */
+    .sidebar-nav a {
+        padding: 14px 10px 14px 24px;
+    }
+    /* On desktop the wrapper bleeds outward with negative margins and the map is
+       a square as wide as the column, which only fills the top of a phone. Here
+       we turn the wrapper into a full-screen CLIP BOX: it fills the viewport
+       below the 60px top bar (dvh keeps it correct as mobile browser chrome
+       shows/hides), and the square map canvas — sized to the taller side in JS —
+       is centered inside and cropped. Result: the galaxy fills the screen and
+       pans/pinches like a maps app instead of hugging the top. */
+    .galactic-map-wrapper {
+        margin: 0;
+        height: calc(100vh - 80px);
+        height: calc(100dvh - 80px);
+        overflow: hidden;
+    }
+    /* Center the square canvas in the clip box. We size/center the CONTAINER
+       (not the canvas inside it) so it still exactly wraps the canvas — Konva
+       maps touch/tooltip coordinates against this element, so they stay aligned. */
+    #map-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    /* trim changelog padding and wrap long file/version strings */
+    #changelog-container {
+        padding: 16px;
+        overflow-wrap: break-word;
+    }
+    /* Major Order objectives: the desktop 3-column row (type | target | status)
+       can't shrink its big-font columns enough on a phone, so the checkbox /
+       numbers spill out past the card border. Give the objectives the full
+       width and stack each part vertically + centered so nothing clips. */
+    .mo-tasks {
+        max-width: 100%;
+    }
+    .progress-bar-container-binary .task-container {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .progress-bar-container-binary .type-name,
+    .progress-bar-container-binary .target-name,
+    .progress-bar-container-binary .status {
+        flex: none;
+        width: 100%;
+        text-align: center;
+    }
+    .progress-bar-container-binary .target-name {
+        font-size: 1.45rem;
     }
     .galaxy-stats-page-layout {
         grid-template-columns: repeat(2, 1fr);
@@ -1255,6 +1370,18 @@ img.icon-label {
     #planet-grid-container {
         grid-template-columns: 1fr;
         gap: 15px;
+    }
+    /* The All Planets filter bar is a no-wrap flex row, so its 4 controls
+       (especially the long sort-order option text) overflow the screen and
+       create a horizontal scrollbar that drags the whole page sideways.
+       Stack them vertically, full width, and allow them to shrink. */
+    .planet-controls {
+        flex-direction: column;
+    }
+    .filter-option-button {
+        min-width: 0;
+        width: 100%;
+        box-sizing: border-box;
     }
     .planet-modal-content {
         width: 96%;
@@ -1274,6 +1401,11 @@ img.icon-label {
         margin-top: 12px;
         margin-bottom: 8px;
         min-height: 0;
+        /* On mobile the whole modal scrolls as one column, so the info-box
+           must NOT be its own scroll area (that's the redundant second
+           scrollbar). Let it grow to fit its content instead. */
+        flex: none;
+        overflow-y: visible;
     }
     .player-graph-wrapper {
         flex: 0 0 180px;
