@@ -1042,8 +1042,6 @@ async function renderHomePage(contentArea) {
 
             const playerPercent = ((planet.players / statsData.totalPlayers) * 100).toFixed(2);
 
-            planetHazards
-
             html += `
                 <div class="stat-card ${defenseClass}${isExtra ? ' extra-planet' : ''}"${isExtra ? ' style="display:none; cursor:pointer;"' : ' style="cursor:pointer;"'} data-biome="${planet.biomeName}" onclick="openPlanetOverlay(${planet.index})">
                     <div class="planet-card-header">

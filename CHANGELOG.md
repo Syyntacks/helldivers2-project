@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
+## [0.9.1.2] - 2026-06-23 HOTFIX
+
+### Fixed
+
+- Removed accidental undefined variable, causing disruptions to the site's loading.
+
+### Known Issues
+
+- Galactic Map can appear to visually lag.
+- Some objectIDs have not been properly defined yet and may result in `Greatcloak of Rebar Resolve` as the output.
+
 ## [0.9.1.1] - 2026-06-23 HOTFIX
 
 I have updated the images minus the broken-up planets so the Galactic Map should display planet images correctly. One of my main focuses up next is to implement icon support for planet hazards, both on the homepage and in the planet modals.
