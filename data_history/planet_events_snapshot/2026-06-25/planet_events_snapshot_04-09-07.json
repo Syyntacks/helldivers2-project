@@ -1,0 +1,96 @@
+[
+    {
+        "index": 200,
+        "name": "MATAR BAY",
+        "sector": "Andromeda",
+        "biome": {
+            "name": "Plains",
+            "description": "Rocky outcroppings punctuate fields of tall grass in a planet dominated by misty highland terrain."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 2071495162,
+        "position": {
+            "x": -0.4909794,
+            "y": 0.4139719
+        },
+        "waypoints": [
+            159,
+            199,
+            201
+        ],
+        "maxHealth": 1600000,
+        "health": 1600000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5609,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 1073308,
+            "maxHealth": 2250000,
+            "startTime": "2026-06-23T13:03:27Z",
+            "endTime": "2026-06-25T13:03:27Z",
+            "campaignId": 51611,
+            "jointOperationIds": [
+                5609
+            ]
+        },
+        "statistics": {
+            "missionsWon": 7734244,
+            "missionsLost": 634331,
+            "missionTime": 28100992298,
+            "terminidKills": 2553,
+            "automatonKills": 2395740568,
+            "illuminateKills": 11,
+            "bulletsFired": 11712082849,
+            "bulletsHit": 12935603688,
+            "timePlayed": 28100992298,
+            "deaths": 60356723,
+            "revives": 0,
+            "friendlies": 6475132,
+            "missionSuccessRate": 92,
+            "accuracy": 100,
+            "playerCount": 14047
+        },
+        "attacking": [
+            198,
+            199,
+            159
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 1199071894,
+                "name": "PARRHESIA",
+                "description": "null",
+                "health": 365379,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.25218,
+                "isAvailable": true,
+                "players": 5351
+            },
+            {
+                "id": 1,
+                "hash": 2853318855,
+                "name": "ISEGORIA",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 88
+            }
+        ]
+    }
+]
