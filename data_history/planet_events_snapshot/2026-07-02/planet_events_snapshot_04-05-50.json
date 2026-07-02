@@ -1,0 +1,94 @@
+[
+    {
+        "index": 78,
+        "name": "CRIMSICA",
+        "sector": "Draco",
+        "biome": {
+            "name": "Ionic Crimson",
+            "description": "A crimson algae has propagated wildly across this entire planet, coating its rocky hills with a constant red that masks the spilt blood of the heroes who defend it from tyranny."
+        },
+        "hazards": [
+            {
+                "name": "Ion Storms",
+                "description": "Ion storms intermittently disable Stratagems."
+            }
+        ],
+        "hash": 1886266372,
+        "position": {
+            "x": 0.6113544,
+            "y": 0.22880854
+        },
+        "waypoints": [
+            129,
+            169,
+            170
+        ],
+        "maxHealth": 1500000,
+        "health": 1500000,
+        "disabled": false,
+        "initialOwner": "Terminids",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5617,
+            "eventType": 1,
+            "faction": "Terminids",
+            "health": 2002889,
+            "maxHealth": 2500000,
+            "startTime": "2026-07-01T14:01:21Z",
+            "endTime": "2026-07-03T14:01:21Z",
+            "campaignId": 51618,
+            "jointOperationIds": [
+                5617
+            ]
+        },
+        "statistics": {
+            "missionsWon": 32949863,
+            "missionsLost": 2579145,
+            "missionTime": 94790462470,
+            "terminidKills": 13440699491,
+            "automatonKills": 9059,
+            "illuminateKills": 3161,
+            "bulletsFired": 66619101460,
+            "bulletsHit": 76571265488,
+            "timePlayed": 94790462470,
+            "deaths": 199717539,
+            "revives": 0,
+            "friendlies": 32829264,
+            "missionSuccessRate": 92,
+            "accuracy": 100,
+            "playerCount": 37749
+        },
+        "attacking": [
+            129
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 1032709433,
+                "name": "LIL'OME",
+                "description": "null",
+                "health": 100000,
+                "maxHealth": 100000,
+                "size": "Settlement",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 0.6503761,
+                "isAvailable": false,
+                "players": 8
+            },
+            {
+                "id": 1,
+                "hash": 1161134727,
+                "name": "LLANFAIRPWLLGWYNGYLLGOGERYCHWYRNDROBWLLLLANTYSILIOGOGOGOCH II",
+                "description": "null",
+                "health": 100156,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 17580
+            }
+        ]
+    }
+]
