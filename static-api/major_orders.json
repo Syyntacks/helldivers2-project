@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "orderId": 488617609,
+    "orderExpires": "2026-07-09T11:09:08.341032+00:00",
+    "orderType": "4",
+    "orderTypeName": "CompleteObjs",
+    "orderTitle": "MAJOR ORDER",
+    "orderBriefing": "To enable ongoing TCS+ construction, liberate the designated planets in order to secure the necessary resources, and hold the key construction site for TCS+ arrays.",
+    "orderTaskDescr": "",
+    "orderProgress": [
+      0,
+      0,
+      1
+    ],
+    "tasks": [
+      {
+        "type": "11",
+        "typeName": "Liberate",
+        "factionId": null,
+        "enemyId": null,
+        "goal": 1,
+        "targetName": "MOX",
+        "targetPlanetId": 266,
+        "progress": 0
+      },
+      {
+        "type": "11",
+        "typeName": "Liberate",
+        "factionId": null,
+        "enemyId": null,
+        "goal": 1,
+        "targetName": "GENESIS PRIME",
+        "targetPlanetId": 95,
+        "progress": 0
+      },
+      {
+        "type": "13",
+        "typeName": "Hold",
+        "factionId": null,
+        "enemyId": null,
+        "goal": 1,
+        "targetName": "BRILLIANCE",
+        "targetPlanetId": 269,
+        "progress": 1
+      }
+    ],
+    "rewardType": "1",
+    "rewardsAmount": "40"
+  }
+]
