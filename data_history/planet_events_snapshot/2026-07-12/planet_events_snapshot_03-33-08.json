@@ -1,0 +1,128 @@
+[
+    {
+        "index": 70,
+        "name": "BLISTICA",
+        "sector": "Gellert",
+        "biome": {
+            "name": "Scorched Moor",
+            "description": "Scorching temperatures, high winds, and low precipitation cause a near-constant cycle of fires to sweep this planet, punctuated by short bursts of lush rebirth between infernos."
+        },
+        "hazards": [
+            {
+                "name": "Fire Tornadoes",
+                "description": "Planet is ravaged by deadly fire tornadoes."
+            }
+        ],
+        "hash": 4206815834,
+        "position": {
+            "x": -0.1716316,
+            "y": 0.8050751
+        },
+        "waypoints": [
+            207,
+            253
+        ],
+        "maxHealth": 1000000,
+        "health": 1000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5627,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 599926,
+            "maxHealth": 600000,
+            "startTime": "2026-07-12T03:15:47Z",
+            "endTime": "2026-07-13T03:15:47Z",
+            "campaignId": 51625,
+            "jointOperationIds": [
+                5627
+            ]
+        },
+        "statistics": {
+            "missionsWon": 1747481,
+            "missionsLost": 186808,
+            "missionTime": 6251797643,
+            "terminidKills": 4214,
+            "automatonKills": 441787899,
+            "illuminateKills": 19,
+            "bulletsFired": 2219100229,
+            "bulletsHit": 2422904276,
+            "timePlayed": 6251797643,
+            "deaths": 13793150,
+            "revives": 0,
+            "friendlies": 1275700,
+            "missionSuccessRate": 90,
+            "accuracy": 100,
+            "playerCount": 1830
+        },
+        "attacking": [
+            253
+        ],
+        "regions": []
+    },
+    {
+        "index": 186,
+        "name": "KEID",
+        "sector": "Akira",
+        "biome": {
+            "name": "Desert Dunes",
+            "description": "A blazing-hot desert planet, its rocky mesas are the sole interruptions to the endless sea of dunes."
+        },
+        "hazards": [
+            {
+                "name": "Sandstorms",
+                "description": "Dense sandstorms reduce mobility and greatly reduce visibility for both enemy and friendly units."
+            }
+        ],
+        "hash": 2563880739,
+        "position": {
+            "x": -0.2649589,
+            "y": -0.6723349
+        },
+        "waypoints": [
+            185,
+            230
+        ],
+        "maxHealth": 1000000,
+        "health": 1000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 2.7777777,
+        "event": {
+            "id": 5626,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 4928296,
+            "maxHealth": 5000000,
+            "startTime": "2026-07-11T21:12:37Z",
+            "endTime": "2026-07-18T21:12:37Z",
+            "campaignId": 51536,
+            "jointOperationIds": [
+                5626
+            ]
+        },
+        "statistics": {
+            "missionsWon": 1779352,
+            "missionsLost": 184555,
+            "missionTime": 7135961199,
+            "terminidKills": 2400,
+            "automatonKills": 29892,
+            "illuminateKills": 954480024,
+            "bulletsFired": 5147268046,
+            "bulletsHit": 5446114658,
+            "timePlayed": 7135961199,
+            "deaths": 13667138,
+            "revives": 0,
+            "friendlies": 2136542,
+            "missionSuccessRate": 90,
+            "accuracy": 100,
+            "playerCount": 10119
+        },
+        "attacking": [],
+        "regions": []
+    }
+]
