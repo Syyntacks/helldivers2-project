@@ -1,0 +1,155 @@
+[
+    {
+        "index": 186,
+        "name": "KEID",
+        "sector": "Akira",
+        "biome": {
+            "name": "Desert Dunes",
+            "description": "A blazing-hot desert planet, its rocky mesas are the sole interruptions to the endless sea of dunes."
+        },
+        "hazards": [
+            {
+                "name": "Sandstorms",
+                "description": "Dense sandstorms reduce mobility and greatly reduce visibility for both enemy and friendly units."
+            }
+        ],
+        "hash": 2563880739,
+        "position": {
+            "x": -0.2649589,
+            "y": -0.6723349
+        },
+        "waypoints": [
+            185,
+            230
+        ],
+        "maxHealth": 1000000,
+        "health": 1000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 2.7777777,
+        "event": {
+            "id": 5626,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 3829785,
+            "maxHealth": 5000000,
+            "startTime": "2026-07-11T21:13:38Z",
+            "endTime": "2026-07-18T21:13:38Z",
+            "campaignId": 51536,
+            "jointOperationIds": [
+                5626
+            ]
+        },
+        "statistics": {
+            "missionsWon": 2011322,
+            "missionsLost": 201546,
+            "missionTime": 8002280544,
+            "terminidKills": 6242,
+            "automatonKills": 32432,
+            "illuminateKills": 1028387455,
+            "bulletsFired": 5836553205,
+            "bulletsHit": 6290630732,
+            "timePlayed": 8002280544,
+            "deaths": 15205413,
+            "revives": 0,
+            "friendlies": 2400503,
+            "missionSuccessRate": 90,
+            "accuracy": 100,
+            "playerCount": 15436
+        },
+        "attacking": [],
+        "regions": []
+    },
+    {
+        "index": 207,
+        "name": "MINTORIA",
+        "sector": "Gellert",
+        "biome": {
+            "name": "Plains",
+            "description": "Rocky outcroppings punctuate fields of tall grass in a planet dominated by misty highland terrain."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 2174989502,
+        "position": {
+            "x": -0.06005267,
+            "y": 0.84179187
+        },
+        "waypoints": [
+            251
+        ],
+        "maxHealth": 1300000,
+        "health": 1300000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5630,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 1345457,
+            "maxHealth": 1400000,
+            "startTime": "2026-07-13T07:49:48Z",
+            "endTime": "2026-07-15T07:49:48Z",
+            "campaignId": 51629,
+            "jointOperationIds": [
+                5630
+            ]
+        },
+        "statistics": {
+            "missionsWon": 5259732,
+            "missionsLost": 446214,
+            "missionTime": 18573575057,
+            "terminidKills": 6448,
+            "automatonKills": 1718238555,
+            "illuminateKills": 2782,
+            "bulletsFired": 7721454853,
+            "bulletsHit": 8444605008,
+            "timePlayed": 18573575057,
+            "deaths": 39163131,
+            "revives": 0,
+            "friendlies": 4310373,
+            "missionSuccessRate": 92,
+            "accuracy": 100,
+            "playerCount": 12070
+        },
+        "attacking": [
+            253,
+            70
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 3513777986,
+                "name": "SEORAKSAN",
+                "description": "null",
+                "health": 100000,
+                "maxHealth": 100000,
+                "size": "Settlement",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 0.23376694,
+                "isAvailable": false,
+                "players": 2
+            },
+            {
+                "id": 1,
+                "hash": 3910908375,
+                "name": "GYEONGSEONG",
+                "description": "null",
+                "health": 196644,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 4605
+            }
+        ]
+    }
+]
