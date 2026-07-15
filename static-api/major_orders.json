@@ -1,7 +1,7 @@
 [
   {
     "orderId": 2698835687,
-    "orderExpires": "2026-07-18T08:31:06.625012+00:00",
+    "orderExpires": "2026-07-18T08:31:43.006727+00:00",
     "orderType": "4",
     "orderTypeName": "CompleteObjs",
     "orderTitle": "MAJOR ORDER",
@@ -9,7 +9,7 @@
     "orderTaskDescr": "",
     "orderProgress": [
       1,
-      148351
+      188511
     ],
     "tasks": [
       {
@@ -30,10 +30,35 @@
         "goal": 625000,
         "targetName": "MARFARK",
         "targetPlanetId": 198,
-        "progress": 148351
+        "progress": 188511
       }
     ],
     "rewardType": "1",
     "rewardsAmount": "40"
+  },
+  {
+    "orderId": 1068944380,
+    "orderExpires": "2026-07-17T09:59:41.006772+00:00",
+    "orderType": "4",
+    "orderTypeName": "CompleteObjs",
+    "orderTitle": "STRATEGIC OPPORTUNITY",
+    "orderBriefing": "Complete the designated number of missions on CHOOHE to gain intel on the Automaton\u2019s plans for the orbital superweapon.",
+    "orderTaskDescr": "",
+    "orderProgress": [
+      4
+    ],
+    "tasks": [
+      {
+        "type": "7",
+        "typeName": "Extract",
+        "factionId": 3,
+        "enemyId": null,
+        "goal": 1000000,
+        "targetName": "CHOOHE",
+        "targetPlanetId": 159,
+        "progress": 4
+      }
+    ],
+    "rewardsAmount": null
   }
 ]
