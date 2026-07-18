@@ -1,0 +1,125 @@
+[
+    {
+        "index": 186,
+        "name": "KEID",
+        "sector": "Akira",
+        "biome": {
+            "name": "Desert Dunes",
+            "description": "A blazing-hot desert planet, its rocky mesas are the sole interruptions to the endless sea of dunes."
+        },
+        "hazards": [
+            {
+                "name": "Sandstorms",
+                "description": "Dense sandstorms reduce mobility and greatly reduce visibility for both enemy and friendly units."
+            }
+        ],
+        "hash": 2563880739,
+        "position": {
+            "x": -0.2649589,
+            "y": -0.6723349
+        },
+        "waypoints": [
+            185,
+            230
+        ],
+        "maxHealth": 1000000,
+        "health": 1000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 2.7777777,
+        "event": {
+            "id": 5626,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 3327223,
+            "maxHealth": 5000000,
+            "startTime": "2026-07-11T21:16:07Z",
+            "endTime": "2026-07-18T21:16:07Z",
+            "campaignId": 51536,
+            "jointOperationIds": [
+                5626
+            ]
+        },
+        "statistics": {
+            "missionsWon": 2140855,
+            "missionsLost": 216961,
+            "missionTime": 8457154008,
+            "terminidKills": 10626,
+            "automatonKills": 32729,
+            "illuminateKills": 1064655305,
+            "bulletsFired": 6182773175,
+            "bulletsHit": 6711530106,
+            "timePlayed": 8457154008,
+            "deaths": 16091539,
+            "revives": 0,
+            "friendlies": 2538157,
+            "missionSuccessRate": 90,
+            "accuracy": 100,
+            "playerCount": 2882
+        },
+        "attacking": [],
+        "regions": []
+    },
+    {
+        "index": 269,
+        "name": "BRILLIANCE",
+        "sector": "Orion",
+        "biome": {
+            "name": "Deciduous Forest",
+            "description": "Broadleaf woodlands spread across rolling hills, broken by shallow waters that wind through mossy logs, flowers, and stone. (UNOFFICIAL)"
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 224163544,
+        "position": {
+            "x": 0.341,
+            "y": 0.323
+        },
+        "waypoints": [],
+        "maxHealth": 2000000,
+        "health": 2000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5632,
+            "eventType": 1,
+            "faction": "Terminids",
+            "health": 1254790,
+            "maxHealth": 2000000,
+            "startTime": "2026-07-17T12:07:07Z",
+            "endTime": "2026-07-19T12:07:07Z",
+            "campaignId": 51632,
+            "jointOperationIds": [
+                5632
+            ]
+        },
+        "statistics": {
+            "missionsWon": 4205293,
+            "missionsLost": 369612,
+            "missionTime": 16475059417,
+            "terminidKills": 1956761708,
+            "automatonKills": 5100,
+            "illuminateKills": 49209,
+            "bulletsFired": 10186492687,
+            "bulletsHit": 11941352910,
+            "timePlayed": 16475059417,
+            "deaths": 35834448,
+            "revives": 0,
+            "friendlies": 4963089,
+            "missionSuccessRate": 91,
+            "accuracy": 100,
+            "playerCount": 24114
+        },
+        "attacking": [
+            124
+        ],
+        "regions": []
+    }
+]
