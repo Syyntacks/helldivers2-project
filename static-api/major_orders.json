@@ -1,39 +1,53 @@
 [
   {
-    "orderId": 974573496,
-    "orderExpires": "2026-07-23T08:43:46.069332+00:00",
+    "orderId": 2795963797,
+    "orderExpires": "2026-07-27T08:58:37.293292+00:00",
     "orderType": "4",
     "orderTypeName": "CompleteObjs",
     "orderTitle": "MAJOR ORDER",
-    "orderBriefing": "Hold YED PRIOR against the Automaton ground forces and liberate the designated planet to secure intel on the enemy\u2019s next target.",
+    "orderBriefing": "Liberate the designated planet and secure the superweapon intel. \n",
     "orderTaskDescr": "",
     "orderProgress": [
-      1,
-      1
+      0
     ],
     "tasks": [
-      {
-        "type": "13",
-        "typeName": "Hold",
-        "factionId": null,
-        "enemyId": null,
-        "goal": 1,
-        "targetName": "YED PRIOR",
-        "targetPlanetId": 250,
-        "progress": 1
-      },
       {
         "type": "11",
         "typeName": "Liberate",
         "factionId": null,
         "enemyId": null,
         "goal": 1,
-        "targetName": "WEZEN",
-        "targetPlanetId": 247,
-        "progress": 1
+        "targetName": "X-45",
+        "targetPlanetId": 249,
+        "progress": 0
       }
     ],
     "rewardType": "1",
-    "rewardsAmount": "35"
+    "rewardsAmount": "40"
+  },
+  {
+    "orderId": 3641290855,
+    "orderExpires": "2026-07-24T09:59:50.293325+00:00",
+    "orderType": "4",
+    "orderTypeName": "CompleteObjs",
+    "orderTitle": "STRATEGIC OPPORTUNITY",
+    "orderBriefing": "Complete operations on the designated planet to disrupt Automaton resource extraction.\n",
+    "orderTaskDescr": "",
+    "orderProgress": [
+      491
+    ],
+    "tasks": [
+      {
+        "type": "9",
+        "typeName": "CompleteOps",
+        "factionId": 3,
+        "enemyId": null,
+        "goal": 200000,
+        "targetName": "CHOEPESSA IV",
+        "targetPlanetId": 158,
+        "progress": 491
+      }
+    ],
+    "rewardsAmount": null
   }
 ]
