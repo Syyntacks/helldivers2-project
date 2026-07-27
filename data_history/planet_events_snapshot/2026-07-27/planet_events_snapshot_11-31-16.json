@@ -1,0 +1,91 @@
+[
+    {
+        "index": 182,
+        "name": "HEZE BAY",
+        "sector": "Hanzo",
+        "biome": {
+            "name": "Desert Dunes",
+            "description": "A blazing-hot desert planet, its rocky mesas are the sole interruptions to the endless sea of dunes."
+        },
+        "hazards": [
+            {
+                "name": "Sandstorms",
+                "description": "Dense sandstorms reduce mobility and greatly reduce visibility for both enemy and friendly units."
+            }
+        ],
+        "hash": 4182360890,
+        "position": {
+            "x": 0.04742095,
+            "y": -0.64221954
+        },
+        "waypoints": [
+            138,
+            226
+        ],
+        "maxHealth": 1800000,
+        "health": 1800000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 6.9444447,
+        "event": {
+            "id": 5637,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 4224327,
+            "maxHealth": 5000000,
+            "startTime": "2026-07-21T18:22:21Z",
+            "endTime": "2026-07-28T18:22:21Z",
+            "campaignId": 51568,
+            "jointOperationIds": [
+                5637
+            ]
+        },
+        "statistics": {
+            "missionsWon": 2800963,
+            "missionsLost": 247956,
+            "missionTime": 9724984480,
+            "terminidKills": 3127,
+            "automatonKills": 47082,
+            "illuminateKills": 1220089740,
+            "bulletsFired": 7166963293,
+            "bulletsHit": 7468974016,
+            "timePlayed": 9724984480,
+            "deaths": 19385738,
+            "revives": 0,
+            "friendlies": 2791412,
+            "missionSuccessRate": 91,
+            "accuracy": 100,
+            "playerCount": 7557
+        },
+        "attacking": [],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 472831334,
+                "name": "UNANIMITY",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.8392,
+                "isAvailable": false,
+                "players": 2
+            },
+            {
+                "id": 1,
+                "hash": 874781515,
+                "name": "UNISON",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 3
+            }
+        ]
+    }
+]
