@@ -1,0 +1,185 @@
+[
+    {
+        "index": 126,
+        "name": "TURING",
+        "sector": "Umlaut",
+        "biome": {
+            "name": "Ethereal Jungle",
+            "description": "This world teems with ethereal, boundless, and peculiar plant life that spreads silent and uninterrupted across its entire surface."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 2706883571,
+        "position": {
+            "x": 0.5348745,
+            "y": 0.11823793
+        },
+        "waypoints": [
+            129,
+            270
+        ],
+        "maxHealth": 2000000,
+        "health": 2000000,
+        "disabled": false,
+        "initialOwner": "Terminids",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5647,
+            "eventType": 1,
+            "faction": "Terminids",
+            "health": 61745,
+            "maxHealth": 2500000,
+            "startTime": "2026-07-30T16:29:08Z",
+            "endTime": "2026-08-01T16:29:08Z",
+            "campaignId": 51647,
+            "jointOperationIds": [
+                5647
+            ]
+        },
+        "statistics": {
+            "missionsWon": 24404501,
+            "missionsLost": 1607833,
+            "missionTime": 55357225250,
+            "terminidKills": 7452794104,
+            "automatonKills": 129361,
+            "illuminateKills": 177368168,
+            "bulletsFired": 35199295556,
+            "bulletsHit": 38047141324,
+            "timePlayed": 55357225250,
+            "deaths": 131915503,
+            "revives": 0,
+            "friendlies": 21180961,
+            "missionSuccessRate": 93,
+            "accuracy": 100,
+            "playerCount": 25749
+        },
+        "attacking": [
+            129
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 3924472281,
+                "name": "CHATOYANT",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.82496,
+                "isAvailable": false,
+                "players": 304
+            },
+            {
+                "id": 1,
+                "hash": 3263074211,
+                "name": "CARBONDALE",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 199
+            },
+            {
+                "id": 2,
+                "hash": 3090254958,
+                "name": "PERIWINKLE MILLS",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.26901,
+                "isAvailable": false,
+                "players": 0
+            }
+        ]
+    },
+    {
+        "index": 185,
+        "name": "KARLIA",
+        "sector": "Omega",
+        "biome": {
+            "name": "Scorched Moor",
+            "description": "Scorching temperatures, high winds, and low precipitation cause a near-constant cycle of fires to sweep this planet, punctuated by short bursts of lush rebirth between infernos."
+        },
+        "hazards": [
+            {
+                "name": "Fire Tornadoes",
+                "description": "Planet is ravaged by deadly fire tornadoes."
+            }
+        ],
+        "hash": 101839064,
+        "position": {
+            "x": -0.1330078,
+            "y": -0.6602936
+        },
+        "waypoints": [
+            273
+        ],
+        "maxHealth": 1400000,
+        "health": 1400000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5646,
+            "eventType": 1,
+            "faction": "Illuminate",
+            "health": 840993,
+            "maxHealth": 1100000,
+            "startTime": "2026-07-30T08:23:08Z",
+            "endTime": "2026-08-01T08:23:08Z",
+            "campaignId": 51646,
+            "jointOperationIds": [
+                5646
+            ]
+        },
+        "statistics": {
+            "missionsWon": 1735802,
+            "missionsLost": 156549,
+            "missionTime": 6255276998,
+            "terminidKills": 11769,
+            "automatonKills": 8453,
+            "illuminateKills": 1011216194,
+            "bulletsFired": 5173828952,
+            "bulletsHit": 4998369270,
+            "timePlayed": 6255276998,
+            "deaths": 12967838,
+            "revives": 0,
+            "friendlies": 2206976,
+            "missionSuccessRate": 91,
+            "accuracy": 96,
+            "playerCount": 4734
+        },
+        "attacking": [
+            184,
+            273,
+            186
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 786867005,
+                "name": "ADNAN",
+                "description": "null",
+                "health": 252562,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 0,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 2194
+            }
+        ]
+    }
+]
