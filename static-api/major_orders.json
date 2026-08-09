@@ -1,7 +1,7 @@
 [
   {
     "orderId": 4265189769,
-    "orderExpires": "2026-08-11T07:45:03.641467+00:00",
+    "orderExpires": "2026-08-11T07:45:01.650785+00:00",
     "orderType": "4",
     "orderTypeName": "CompleteObjs",
     "orderTitle": "MAJOR ORDER",
@@ -11,7 +11,7 @@
       1,
       1,
       1,
-      1
+      0
     ],
     "tasks": [
       {
@@ -52,10 +52,35 @@
         "goal": 1,
         "targetName": "PHERKAD SECUNDUS",
         "targetPlanetId": 218,
-        "progress": 1
+        "progress": 0
       }
     ],
     "rewardType": "1",
     "rewardsAmount": "35"
+  },
+  {
+    "orderId": 2899149968,
+    "orderExpires": "2026-08-11T03:32:56.650841+00:00",
+    "orderType": "4",
+    "orderTypeName": "CompleteObjs",
+    "orderTitle": "STRATEGIC OPPORTUNITY",
+    "orderBriefing": "Conduct operations against the Cyborgs on the designated planet to liberate materials needed to construct a Warp Relay to penetrate the Void.",
+    "orderTaskDescr": "",
+    "orderProgress": [
+      28412
+    ],
+    "tasks": [
+      {
+        "type": "9",
+        "typeName": "CompleteOps",
+        "factionId": 3,
+        "enemyId": null,
+        "goal": 125000,
+        "targetName": "CHARBAL-VII",
+        "targetPlanetId": 156,
+        "progress": 28412
+      }
+    ],
+    "rewardsAmount": null
   }
 ]
