@@ -1,10 +1,13 @@
 {
   "scripts": {
-    "obfuscate": "javascript-obfuscator static/main.js --output static/main.js --compact true --identifier-names-generator hexadecimal --string-array true --string-array-encoding base64 --dead-code-injection false"
+    "obfuscate": "javascript-obfuscator static/main.js --output static/main.js --compact true --identifier-names-generator hexadecimal --string-array true --string-array-encoding base64 --dead-code-injection false",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   },
   "devDependencies": {
     "javascript-obfuscator": "^4.1.1",
-    "markdownlint": "^0.40.0"
+    "markdownlint": "^0.40.0",
+    "wrangler": "^4.114.0"
   },
   "dependencies": {
     "@coreui/coreui": "^5.5.0",
