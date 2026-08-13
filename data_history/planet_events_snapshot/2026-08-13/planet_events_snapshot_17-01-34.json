@@ -1,0 +1,107 @@
+[
+    {
+        "index": 226,
+        "name": "RIRGA BAY",
+        "sector": "Rigel",
+        "biome": {
+            "name": "Acidic Badlands",
+            "description": "Dense, toxic fumes from deep within the planet's crust seep out of cracks in the earth and coat the ground in a sickly haze."
+        },
+        "hazards": [
+            {
+                "name": "Acid Storms",
+                "description": "Corrosive acid storms temporarily reduce armor effectiveness for both enemy and friendly units."
+            }
+        ],
+        "hash": 1377257553,
+        "position": {
+            "x": 0.09694725,
+            "y": -0.7277918
+        },
+        "waypoints": [
+            183,
+            227
+        ],
+        "maxHealth": 2200000,
+        "health": 2200000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5662,
+            "eventType": 1,
+            "faction": "Illuminate",
+            "health": 872393,
+            "maxHealth": 3000000,
+            "startTime": "2026-08-13T08:38:41Z",
+            "endTime": "2026-08-15T08:38:41Z",
+            "campaignId": 51661,
+            "jointOperationIds": [
+                5662
+            ]
+        },
+        "statistics": {
+            "missionsWon": 6242845,
+            "missionsLost": 552787,
+            "missionTime": 23347384167,
+            "terminidKills": 15702,
+            "automatonKills": 6819,
+            "illuminateKills": 3709774682,
+            "bulletsFired": 16041047653,
+            "bulletsHit": 17973541736,
+            "timePlayed": 23347384167,
+            "deaths": 1048926210,
+            "revives": 0,
+            "friendlies": 7261825,
+            "missionSuccessRate": 91,
+            "accuracy": 100,
+            "playerCount": 79585
+        },
+        "attacking": [
+            182,
+            227
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 452138560,
+                "name": "BLIGHTSMURK",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 5.5555553,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 730
+            },
+            {
+                "id": 1,
+                "hash": 1762725992,
+                "name": "BASE CAMP 8",
+                "description": "null",
+                "health": 260890,
+                "maxHealth": 600000,
+                "size": "MegaCity",
+                "regenPerSecond": 8.333333,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 47748
+            },
+            {
+                "id": 2,
+                "hash": 3510978126,
+                "name": "ZONE 3",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 8.333333,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 13136
+            }
+        ]
+    }
+]
