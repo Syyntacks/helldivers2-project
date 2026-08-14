@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "orderId": 3979642198,
+    "orderExpires": "2026-08-18T11:59:53.089704+00:00",
+    "orderType": "4",
+    "orderTypeName": "CompleteObjs",
+    "orderTitle": "MAJOR ORDER",
+    "orderBriefing": "Complete all operations, eliminate enemies of Freedom, and harvest samples across the designated planets to help map a secure corridor deeper into the Void.",
+    "orderTaskDescr": "",
+    "orderProgress": [
+      117806,
+      32274702,
+      1079362
+    ],
+    "tasks": [
+      {
+        "type": "9",
+        "typeName": "CompleteOps",
+        "factionId": 4,
+        "enemyId": null,
+        "goal": 1000000,
+        "targetName": "",
+        "targetPlanetId": null,
+        "progress": 117806
+      },
+      {
+        "type": "3",
+        "typeName": "KillEnemies",
+        "factionId": 4,
+        "enemyId": 0,
+        "goal": 1250000000,
+        "targetName": "Rebar Resolve",
+        "targetPlanetId": null,
+        "progress": 32274702
+      },
+      {
+        "type": "2",
+        "typeName": "ExtractSamples",
+        "factionId": 4,
+        "enemyId": null,
+        "goal": 35000000,
+        "targetName": "Rebar Resolve",
+        "targetPlanetId": null,
+        "progress": 1079362
+      }
+    ],
+    "rewardType": "1",
+    "rewardsAmount": "40"
+  }
+]
