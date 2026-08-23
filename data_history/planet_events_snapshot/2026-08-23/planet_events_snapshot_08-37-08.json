@@ -1,0 +1,377 @@
+[
+    {
+        "index": 93,
+        "name": "NEW STOCKHOLM",
+        "sector": "Hanzo",
+        "biome": {
+            "name": "Icy Glaciers",
+            "description": "Submerged in eternal winter, this world's frosty peaks glimmer in the light of its too-distant star."
+        },
+        "hazards": [
+            {
+                "name": "Blizzards",
+                "description": "Intense blizzard reduce mobility and moderately reduce visibility for both enemy and friendly units."
+            }
+        ],
+        "hash": 3515684391,
+        "position": {
+            "x": 0.1470731,
+            "y": -0.5095566
+        },
+        "waypoints": [],
+        "maxHealth": 1000000,
+        "health": 1000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 2.7777777,
+        "event": {
+            "id": 5672,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 888825,
+            "maxHealth": 900000,
+            "startTime": "2026-08-22T16:41:57Z",
+            "endTime": "2026-08-23T16:41:57Z",
+            "campaignId": 51427,
+            "jointOperationIds": [
+                5672
+            ]
+        },
+        "statistics": {
+            "missionsWon": 2588684,
+            "missionsLost": 302702,
+            "missionTime": 9283546828,
+            "terminidKills": 50468,
+            "automatonKills": 5948,
+            "illuminateKills": 1461130987,
+            "bulletsFired": 10022609458,
+            "bulletsHit": 9519459226,
+            "timePlayed": 9283546828,
+            "deaths": 20281102,
+            "revives": 0,
+            "friendlies": 3032026,
+            "missionSuccessRate": 89,
+            "accuracy": 94,
+            "playerCount": 663
+        },
+        "attacking": [],
+        "regions": []
+    },
+    {
+        "index": 94,
+        "name": "OASIS",
+        "sector": "Rictus",
+        "biome": {
+            "name": "Volcanic Jungle",
+            "description": "Abundant with life, this wet planet is covered in deep oceans, thick forests, and tall grasses."
+        },
+        "hazards": [
+            {
+                "name": "Volcanic Activity",
+                "description": "Volcanoes throw burning rocks around this planet."
+            }
+        ],
+        "hash": 997855239,
+        "position": {
+            "x": 0.00063157,
+            "y": -0.4440751
+        },
+        "waypoints": [
+            92,
+            139,
+            140
+        ],
+        "maxHealth": 1400000,
+        "health": 1400000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 2.7777777,
+        "event": {
+            "id": 5670,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 884118,
+            "maxHealth": 900000,
+            "startTime": "2026-08-22T13:51:07Z",
+            "endTime": "2026-08-23T13:51:07Z",
+            "campaignId": 51676,
+            "jointOperationIds": [
+                5670
+            ]
+        },
+        "statistics": {
+            "missionsWon": 1595636,
+            "missionsLost": 271774,
+            "missionTime": 5285479591,
+            "terminidKills": 89797,
+            "automatonKills": 5909,
+            "illuminateKills": 757460211,
+            "bulletsFired": 3952325422,
+            "bulletsHit": 3876372624,
+            "timePlayed": 5285479591,
+            "deaths": 13985814,
+            "revives": 0,
+            "friendlies": 1747837,
+            "missionSuccessRate": 85,
+            "accuracy": 98,
+            "playerCount": 959
+        },
+        "attacking": [],
+        "regions": []
+    },
+    {
+        "index": 95,
+        "name": "GENESIS PRIME",
+        "sector": "Rictus",
+        "biome": {
+            "name": "Ionic Jungle",
+            "description": "The strange subversion of photosynthesis that sustains the oddly-hued flora that flourishes on this planet remains an intriguing mystery to Super Earth's greatest exo-biologists."
+        },
+        "hazards": [
+            {
+                "name": "Ion Storms",
+                "description": "Ion storms intermittently disable Stratagems."
+            }
+        ],
+        "hash": 910436923,
+        "position": {
+            "x": -0.07607324,
+            "y": -0.44355652
+        },
+        "waypoints": [
+            94,
+            96,
+            140
+        ],
+        "maxHealth": 1600000,
+        "health": 1600000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 2.7777777,
+        "event": {
+            "id": 5668,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 815409,
+            "maxHealth": 900000,
+            "startTime": "2026-08-22T10:08:47Z",
+            "endTime": "2026-08-23T10:08:47Z",
+            "campaignId": 51303,
+            "jointOperationIds": [
+                5668
+            ]
+        },
+        "statistics": {
+            "missionsWon": 1973685,
+            "missionsLost": 324095,
+            "missionTime": 6897915402,
+            "terminidKills": 63733,
+            "automatonKills": 3431,
+            "illuminateKills": 890002263,
+            "bulletsFired": 5072432822,
+            "bulletsHit": 5108991430,
+            "timePlayed": 6897915402,
+            "deaths": 16584038,
+            "revives": 0,
+            "friendlies": 2167253,
+            "missionSuccessRate": 85,
+            "accuracy": 100,
+            "playerCount": 4476
+        },
+        "attacking": [],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 2507971325,
+                "name": "MALLSTRIP NODES",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 1
+            },
+            {
+                "id": 1,
+                "hash": 2591044773,
+                "name": "BIRTH",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.23287,
+                "isAvailable": false,
+                "players": 3
+            }
+        ]
+    },
+    {
+        "index": 139,
+        "name": "ALAMAK VII",
+        "sector": "Hanzo",
+        "biome": {
+            "name": "Ethereal Jungle",
+            "description": "This world teems with ethereal, boundless, and peculiar plant life that spreads silent and uninterrupted across its entire surface."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 3213455987,
+        "position": {
+            "x": 0.06359941,
+            "y": -0.5271288
+        },
+        "waypoints": [
+            93
+        ],
+        "maxHealth": 2300000,
+        "health": 2300000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 1.3888888,
+        "event": {
+            "id": 5671,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 891812,
+            "maxHealth": 900000,
+            "startTime": "2026-08-22T13:52:17Z",
+            "endTime": "2026-08-23T13:52:17Z",
+            "campaignId": 51677,
+            "jointOperationIds": [
+                5671
+            ]
+        },
+        "statistics": {
+            "missionsWon": 4953936,
+            "missionsLost": 619148,
+            "missionTime": 18088901343,
+            "terminidKills": 792,
+            "automatonKills": 6372,
+            "illuminateKills": 2849799501,
+            "bulletsFired": 14586908783,
+            "bulletsHit": 14530731940,
+            "timePlayed": 18088901343,
+            "deaths": 43092884,
+            "revives": 0,
+            "friendlies": 5933877,
+            "missionSuccessRate": 88,
+            "accuracy": 99,
+            "playerCount": 437
+        },
+        "attacking": [],
+        "regions": []
+    },
+    {
+        "index": 180,
+        "name": "HERTHON SECUNDUS",
+        "sector": "Ferris",
+        "biome": {
+            "name": "Scorched Moor",
+            "description": "Scorching temperatures, high winds, and low precipitation cause a near-constant cycle of fires to sweep this planet, punctuated by short bursts of lush rebirth between infernos."
+        },
+        "hazards": [
+            {
+                "name": "Fire Tornadoes",
+                "description": "Planet is ravaged by deadly fire tornadoes."
+            }
+        ],
+        "hash": 2517847560,
+        "position": {
+            "x": 0.27001774,
+            "y": -0.5880387
+        },
+        "waypoints": [
+            7,
+            183
+        ],
+        "maxHealth": 1800000,
+        "health": 1800000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Illuminate",
+        "regenPerSecond": 13.888889,
+        "event": {
+            "id": 5669,
+            "eventType": 0,
+            "faction": "Humans",
+            "health": 873998,
+            "maxHealth": 900000,
+            "startTime": "2026-08-22T10:10:07Z",
+            "endTime": "2026-08-23T10:10:07Z",
+            "campaignId": 51403,
+            "jointOperationIds": [
+                5669
+            ]
+        },
+        "statistics": {
+            "missionsWon": 3539606,
+            "missionsLost": 408304,
+            "missionTime": 13069984322,
+            "terminidKills": 3575,
+            "automatonKills": 24923,
+            "illuminateKills": 1581509375,
+            "bulletsFired": 9078046240,
+            "bulletsHit": 9365738534,
+            "timePlayed": 13069984322,
+            "deaths": 29959695,
+            "revives": 0,
+            "friendlies": 3602098,
+            "missionSuccessRate": 89,
+            "accuracy": 100,
+            "playerCount": 923
+        },
+        "attacking": [],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 314025568,
+                "name": "PENSCEWT",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 0.56651,
+                "isAvailable": false,
+                "players": 0
+            },
+            {
+                "id": 1,
+                "hash": 2391484056,
+                "name": "EAGLE'S LIKENESS",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 0.40511,
+                "isAvailable": false,
+                "players": 0
+            },
+            {
+                "id": 2,
+                "hash": 3185820932,
+                "name": "CONSENSUS",
+                "description": "null",
+                "health": 400000,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 1
+            }
+        ]
+    }
+]
