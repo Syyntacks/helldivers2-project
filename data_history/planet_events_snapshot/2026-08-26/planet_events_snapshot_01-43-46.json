@@ -1,0 +1,95 @@
+[
+    {
+        "index": 129,
+        "name": "ACAMAR IV",
+        "sector": "Jin Xi",
+        "biome": {
+            "name": "Plains",
+            "description": "Rocky outcroppings punctuate fields of tall grass in a planet dominated by misty highland terrain."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 1231076923,
+        "position": {
+            "x": 0.6244252,
+            "y": 0.10954041
+        },
+        "waypoints": [
+            126,
+            171,
+            214
+        ],
+        "maxHealth": 1500000,
+        "health": 1500000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5674,
+            "eventType": 1,
+            "faction": "Terminids",
+            "health": 1356459,
+            "maxHealth": 1900000,
+            "startTime": "2026-08-25T11:33:33Z",
+            "endTime": "2026-08-27T11:33:33Z",
+            "campaignId": 51687,
+            "jointOperationIds": [
+                5674
+            ]
+        },
+        "statistics": {
+            "missionsWon": 16538292,
+            "missionsLost": 953715,
+            "missionTime": 57996123963,
+            "terminidKills": 7981806719,
+            "automatonKills": 57170,
+            "illuminateKills": 61239,
+            "bulletsFired": 32846431989,
+            "bulletsHit": 39568524950,
+            "timePlayed": 57996123963,
+            "deaths": 114310711,
+            "revives": 0,
+            "friendlies": 19533519,
+            "missionSuccessRate": 94,
+            "accuracy": 100,
+            "playerCount": 60159
+        },
+        "attacking": [
+            171,
+            214
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 324613052,
+                "name": "DEMOCRACY ALWAYS",
+                "description": "null",
+                "health": 100000,
+                "maxHealth": 100000,
+                "size": "Settlement",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 0.28242204,
+                "isAvailable": false,
+                "players": 6
+            },
+            {
+                "id": 1,
+                "hash": 855833074,
+                "name": "ERIDANI",
+                "description": "null",
+                "health": 143610,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 26641
+            }
+        ]
+    }
+]
