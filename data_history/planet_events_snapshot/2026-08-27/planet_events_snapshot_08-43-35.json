@@ -1,0 +1,107 @@
+[
+    {
+        "index": 130,
+        "name": "ACHERNAR SECUNDUS",
+        "sector": "Borgus",
+        "biome": {
+            "name": "Plains",
+            "description": "Rocky outcroppings punctuate fields of tall grass in a planet dominated by misty highland terrain."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 984145086,
+        "position": {
+            "x": 0.6394251,
+            "y": -0.11354046
+        },
+        "waypoints": [
+            82,
+            128,
+            133
+        ],
+        "maxHealth": 2000000,
+        "health": 2000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5675,
+            "eventType": 1,
+            "faction": "Terminids",
+            "health": 2009077,
+            "maxHealth": 2250000,
+            "startTime": "2026-08-26T12:04:20Z",
+            "endTime": "2026-08-28T12:04:20Z",
+            "campaignId": 51689,
+            "jointOperationIds": [
+                5675
+            ]
+        },
+        "statistics": {
+            "missionsWon": 5338858,
+            "missionsLost": 329682,
+            "missionTime": 19086689432,
+            "terminidKills": 2484501112,
+            "automatonKills": 2184,
+            "illuminateKills": 344923847,
+            "bulletsFired": 10932644286,
+            "bulletsHit": 12968182106,
+            "timePlayed": 19086689432,
+            "deaths": 37841991,
+            "revives": 0,
+            "friendlies": 6450176,
+            "missionSuccessRate": 94,
+            "accuracy": 100,
+            "playerCount": 8719
+        },
+        "attacking": [
+            172
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 559843220,
+                "name": "CURRENCY",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 0.32883,
+                "isAvailable": false,
+                "players": 2
+            },
+            {
+                "id": 1,
+                "hash": 1578230839,
+                "name": "NEW NEWTONVILLE",
+                "description": "null",
+                "health": 391027,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.68447,
+                "isAvailable": true,
+                "players": 2778
+            },
+            {
+                "id": 2,
+                "hash": 2762012044,
+                "name": "OL' OLDHAM",
+                "description": "null",
+                "health": 374044,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 1024
+            }
+        ]
+    }
+]
