@@ -1,0 +1,83 @@
+[
+    {
+        "index": 198,
+        "name": "MARFARK",
+        "sector": "Andromeda",
+        "biome": {
+            "name": "Icy Glaciers",
+            "description": "Submerged in eternal winter, this world's frosty peaks glimmer in the light of its too-distant star."
+        },
+        "hazards": [
+            {
+                "name": "Blizzards",
+                "description": "Intense blizzard reduce mobility and moderately reduce visibility for both enemy and friendly units."
+            }
+        ],
+        "hash": 2831860380,
+        "position": {
+            "x": -0.43697178,
+            "y": 0.3259796
+        },
+        "waypoints": [
+            110,
+            113,
+            199,
+            200
+        ],
+        "maxHealth": 2000000,
+        "health": 2000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5688,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 1856306,
+            "maxHealth": 2000000,
+            "startTime": "2026-09-08T21:57:00Z",
+            "endTime": "2026-09-09T21:57:00Z",
+            "campaignId": 51702,
+            "jointOperationIds": [
+                5688
+            ]
+        },
+        "statistics": {
+            "missionsWon": 16031923,
+            "missionsLost": 1720843,
+            "missionTime": 59333361244,
+            "terminidKills": 14132,
+            "automatonKills": 4499384231,
+            "illuminateKills": 2908,
+            "bulletsFired": 24877250567,
+            "bulletsHit": 26953623944,
+            "timePlayed": 59333361244,
+            "deaths": 136053626,
+            "revives": 0,
+            "friendlies": 13547670,
+            "missionSuccessRate": 90,
+            "accuracy": 100,
+            "playerCount": 7641
+        },
+        "attacking": [
+            199,
+            200
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 1878476075,
+                "name": "TECHNOLOCKIA ALLATEED",
+                "description": "null",
+                "health": 1000000,
+                "maxHealth": 1000000,
+                "size": "Settlement",
+                "regenPerSecond": 2.7777777,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 2579
+            }
+        ]
+    }
+]
