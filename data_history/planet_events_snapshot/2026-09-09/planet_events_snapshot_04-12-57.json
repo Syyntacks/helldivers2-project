@@ -1,0 +1,173 @@
+[
+    {
+        "index": 110,
+        "name": "BEKVAM III",
+        "sector": "Nanos",
+        "biome": {
+            "name": "Ethereal Jungle",
+            "description": "This world teems with ethereal, boundless, and peculiar plant life that spreads silent and uninterrupted across its entire surface."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 412801448,
+        "position": {
+            "x": -0.48401085,
+            "y": 0.21397132
+        },
+        "waypoints": [
+            72
+        ],
+        "maxHealth": 1600000,
+        "health": 1600000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5687,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 71520,
+            "maxHealth": 1600000,
+            "startTime": "2026-09-07T13:53:33Z",
+            "endTime": "2026-09-09T13:53:33Z",
+            "campaignId": 51701,
+            "jointOperationIds": [
+                5687
+            ]
+        },
+        "statistics": {
+            "missionsWon": 5499137,
+            "missionsLost": 365390,
+            "missionTime": 19555850488,
+            "terminidKills": 2904,
+            "automatonKills": 1833856721,
+            "illuminateKills": 0,
+            "bulletsFired": 8405191260,
+            "bulletsHit": 9245907036,
+            "timePlayed": 19555850488,
+            "deaths": 41473596,
+            "revives": 0,
+            "friendlies": 4607641,
+            "missionSuccessRate": 93,
+            "accuracy": 100,
+            "playerCount": 17015
+        },
+        "attacking": [
+            157
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 2143424881,
+                "name": "CONVENIENCE",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 170
+            },
+            {
+                "id": 1,
+                "hash": 2895050350,
+                "name": "FIREFLY MEADOWS",
+                "description": "null",
+                "health": 355007,
+                "maxHealth": 400000,
+                "size": "City",
+                "regenPerSecond": 1.1111112,
+                "availabilityFactor": 0.38875,
+                "isAvailable": true,
+                "players": 5861
+            }
+        ]
+    },
+    {
+        "index": 198,
+        "name": "MARFARK",
+        "sector": "Andromeda",
+        "biome": {
+            "name": "Icy Glaciers",
+            "description": "Submerged in eternal winter, this world's frosty peaks glimmer in the light of its too-distant star."
+        },
+        "hazards": [
+            {
+                "name": "Blizzards",
+                "description": "Intense blizzard reduce mobility and moderately reduce visibility for both enemy and friendly units."
+            }
+        ],
+        "hash": 2831860380,
+        "position": {
+            "x": -0.43697178,
+            "y": 0.3259796
+        },
+        "waypoints": [
+            110,
+            113,
+            199,
+            200
+        ],
+        "maxHealth": 2000000,
+        "health": 2000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5688,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 1974657,
+            "maxHealth": 2000000,
+            "startTime": "2026-09-08T21:56:33Z",
+            "endTime": "2026-09-09T21:56:33Z",
+            "campaignId": 51702,
+            "jointOperationIds": [
+                5688
+            ]
+        },
+        "statistics": {
+            "missionsWon": 15974507,
+            "missionsLost": 1712317,
+            "missionTime": 59120488260,
+            "terminidKills": 14130,
+            "automatonKills": 4484911937,
+            "illuminateKills": 2801,
+            "bulletsFired": 24811736509,
+            "bulletsHit": 26869489596,
+            "timePlayed": 59120488260,
+            "deaths": 135466623,
+            "revives": 0,
+            "friendlies": 13490990,
+            "missionSuccessRate": 90,
+            "accuracy": 100,
+            "playerCount": 5455
+        },
+        "attacking": [
+            199,
+            200
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 1878476075,
+                "name": "TECHNOLOCKIA ALLATEED",
+                "description": "null",
+                "health": 1000000,
+                "maxHealth": 1000000,
+                "size": "Settlement",
+                "regenPerSecond": 2.7777777,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 2455
+            }
+        ]
+    }
+]
