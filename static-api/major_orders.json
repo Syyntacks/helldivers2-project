@@ -1,39 +1,50 @@
 [
   {
-    "orderId": 1249406358,
-    "orderExpires": "2026-10-09T13:01:59.035666+00:00",
+    "orderId": 4152388944,
+    "orderExpires": "2026-10-13T13:41:12.800631+00:00",
     "orderType": "4",
     "orderTypeName": "CompleteObjs",
     "orderTitle": "MAJOR ORDER",
-    "orderBriefing": "Liberate the designated planet and eliminate the mandated number of Illuminate hostiles in order to televise broadcasts of the sector's pacification.",
+    "orderBriefing": "Hold the designated planet and eliminate the mandated number of bile-producing Terminids in order to prove the safety of our chemical airstrikes, and to aid vital and fully planned research into airborne toxicity.",
     "orderTaskDescr": "",
     "orderProgress": [
-      0,
-      400000000
+      1,
+      789122,
+      1635255
     ],
     "tasks": [
       {
-        "type": "11",
-        "typeName": "Liberate",
+        "type": "13",
+        "typeName": "Hold",
         "factionId": null,
         "enemyId": null,
         "goal": 1,
         "targetName": "SENGE 23",
         "targetPlanetId": 228,
-        "progress": 0
+        "progress": 1
       },
       {
         "type": "3",
         "typeName": "KillEnemies",
-        "factionId": 4,
-        "enemyId": 0,
-        "goal": 400000000,
-        "targetName": "Rebar Resolve",
-        "targetPlanetId": null,
-        "progress": 400000000
+        "factionId": 2,
+        "enemyId": 717622970,
+        "goal": 30000000,
+        "targetName": "Super Earth",
+        "targetPlanetId": 0,
+        "progress": 789122
+      },
+      {
+        "type": "3",
+        "typeName": "KillEnemies",
+        "factionId": 2,
+        "enemyId": 444529084,
+        "goal": 40000000,
+        "targetName": "Super Earth",
+        "targetPlanetId": 0,
+        "progress": 1635255
       }
     ],
     "rewardType": "1",
-    "rewardsAmount": "35"
+    "rewardsAmount": "45"
   }
 ]
