@@ -1,0 +1,148 @@
+[
+    {
+        "index": 198,
+        "name": "MARFARK",
+        "sector": "Andromeda",
+        "biome": {
+            "name": "Icy Glaciers",
+            "description": "Submerged in eternal winter, this world's frosty peaks glimmer in the light of its too-distant star."
+        },
+        "hazards": [
+            {
+                "name": "Blizzards",
+                "description": "Intense blizzard reduce mobility and moderately reduce visibility for both enemy and friendly units."
+            }
+        ],
+        "hash": 2831860380,
+        "position": {
+            "x": -0.43697178,
+            "y": 0.3259796
+        },
+        "waypoints": [
+            110,
+            113,
+            199,
+            200
+        ],
+        "maxHealth": 2000000,
+        "health": 2000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5713,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 950000,
+            "maxHealth": 950000,
+            "startTime": "2026-10-09T20:41:19Z",
+            "endTime": "2026-10-11T20:41:19Z",
+            "campaignId": 51736,
+            "jointOperationIds": [
+                5713
+            ]
+        },
+        "statistics": {
+            "missionsWon": 18585695,
+            "missionsLost": 1998627,
+            "missionTime": 68216399309,
+            "terminidKills": 14642,
+            "automatonKills": 5246172702,
+            "illuminateKills": 3279,
+            "bulletsFired": 30347017440,
+            "bulletsHit": 32587296600,
+            "timePlayed": 68216399309,
+            "deaths": 158421429,
+            "revives": 0,
+            "friendlies": 15698312,
+            "missionSuccessRate": 90,
+            "accuracy": 100,
+            "playerCount": 132
+        },
+        "attacking": [
+            199,
+            200
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 1878476075,
+                "name": "TECHNOLOCKIA ALLATEED",
+                "description": "null",
+                "health": 1000000,
+                "maxHealth": 1000000,
+                "size": "Settlement",
+                "regenPerSecond": 2.7777777,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 57
+            }
+        ]
+    },
+    {
+        "index": 203,
+        "name": "MENKENT",
+        "sector": "Hydra",
+        "biome": {
+            "name": "Scorched Moor",
+            "description": "Scorching temperatures, high winds, and low precipitation cause a near-constant cycle of fires to sweep this planet, punctuated by short bursts of lush rebirth between infernos."
+        },
+        "hazards": [
+            {
+                "name": "Fire Tornadoes",
+                "description": "Planet is ravaged by deadly fire tornadoes."
+            }
+        ],
+        "hash": 3161413384,
+        "position": {
+            "x": -0.31501773,
+            "y": 0.4560387
+        },
+        "waypoints": [
+            112,
+            160,
+            194
+        ],
+        "maxHealth": 1000000,
+        "health": 1000000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5712,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 2000000,
+            "maxHealth": 2000000,
+            "startTime": "2026-10-09T20:40:59Z",
+            "endTime": "2026-10-11T20:40:59Z",
+            "campaignId": 51735,
+            "jointOperationIds": [
+                5712
+            ]
+        },
+        "statistics": {
+            "missionsWon": 12696366,
+            "missionsLost": 1735485,
+            "missionTime": 44159951613,
+            "terminidKills": 2923,
+            "automatonKills": 3068020443,
+            "illuminateKills": 6494,
+            "bulletsFired": 18824738448,
+            "bulletsHit": 19472054208,
+            "timePlayed": 44159951613,
+            "deaths": 120251263,
+            "revives": 0,
+            "friendlies": 10767358,
+            "missionSuccessRate": 87,
+            "accuracy": 100,
+            "playerCount": 82
+        },
+        "attacking": [
+            159
+        ],
+        "regions": []
+    }
+]
