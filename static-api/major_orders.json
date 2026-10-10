@@ -1,7 +1,7 @@
 [
   {
     "orderId": 4152388944,
-    "orderExpires": "2026-10-13T13:41:39.936960+00:00",
+    "orderExpires": "2026-10-13T13:43:40.970110+00:00",
     "orderType": "4",
     "orderTypeName": "CompleteObjs",
     "orderTitle": "MAJOR ORDER",
@@ -9,8 +9,8 @@
     "orderTaskDescr": "",
     "orderProgress": [
       1,
-      15695189,
-      35002754
+      20233160,
+      40000000
     ],
     "tasks": [
       {
@@ -31,7 +31,7 @@
         "goal": 30000000,
         "targetName": "Super Earth",
         "targetPlanetId": 0,
-        "progress": 15695189
+        "progress": 20233160
       },
       {
         "type": "3",
@@ -41,10 +41,46 @@
         "goal": 40000000,
         "targetName": "Super Earth",
         "targetPlanetId": 0,
-        "progress": 35002754
+        "progress": 40000000
       }
     ],
     "rewardType": "1",
     "rewardsAmount": "45"
+  },
+  {
+    "orderId": 25744386,
+    "orderExpires": "2026-10-11T20:50:24.970177+00:00",
+    "orderType": "4",
+    "orderTypeName": "CompleteObjs",
+    "orderTitle": "STRATEGIC THREAT",
+    "orderBriefing": "Protect and hold the designated planets in order to destroy the propaganda arrays being established by the Incineration Corps and Jet Brigade, and protect citizens from the Automatons' craven lies.",
+    "orderTaskDescr": "",
+    "orderProgress": [
+      1,
+      1
+    ],
+    "tasks": [
+      {
+        "type": "13",
+        "typeName": "Hold",
+        "factionId": null,
+        "enemyId": null,
+        "goal": 1,
+        "targetName": "MARFARK",
+        "targetPlanetId": 198,
+        "progress": 1
+      },
+      {
+        "type": "13",
+        "typeName": "Hold",
+        "factionId": null,
+        "enemyId": null,
+        "goal": 1,
+        "targetName": "MENKENT",
+        "targetPlanetId": 203,
+        "progress": 1
+      }
+    ],
+    "rewardsAmount": null
   }
 ]
