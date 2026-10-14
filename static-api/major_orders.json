@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "orderId": 4184022284,
+    "orderExpires": "2026-10-19T15:46:33.713832+00:00",
+    "orderType": "4",
+    "orderTypeName": "CompleteObjs",
+    "orderTitle": "MAJOR ORDER",
+    "orderBriefing": "Hold the designated planet, complete the required number of operations, and terminate the mandated quantity of Illuminate hostiles in order to restore peace of mind and full respiratory capacity to our most honored retirees.",
+    "orderTaskDescr": "",
+    "orderProgress": [
+      1,
+      1172,
+      35180247
+    ],
+    "tasks": [
+      {
+        "type": "13",
+        "typeName": "Hold",
+        "factionId": null,
+        "enemyId": null,
+        "goal": 1,
+        "targetName": "SENGE 23",
+        "targetPlanetId": 228,
+        "progress": 1
+      },
+      {
+        "type": "9",
+        "typeName": "CompleteOps",
+        "factionId": 4,
+        "enemyId": null,
+        "goal": 1250000,
+        "targetName": "Super Earth",
+        "targetPlanetId": 0,
+        "progress": 1172
+      },
+      {
+        "type": "3",
+        "typeName": "KillEnemies",
+        "factionId": 4,
+        "enemyId": 0,
+        "goal": 1000000000,
+        "targetName": "Rebar Resolve",
+        "targetPlanetId": null,
+        "progress": 35180247
+      }
+    ],
+    "rewardType": "1",
+    "rewardsAmount": "45"
+  }
+]
