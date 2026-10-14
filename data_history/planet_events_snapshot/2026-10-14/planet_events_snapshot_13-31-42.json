@@ -1,0 +1,171 @@
+[
+    {
+        "index": 170,
+        "name": "FORI PRIME",
+        "sector": "Draco",
+        "biome": {
+            "name": "Rocky Canyons",
+            "description": "This arid, rocky biome covering this world has driven the evolution of exceptionally efficient water usage in its various organisms."
+        },
+        "hazards": [
+            {
+                "name": "Tremors",
+                "description": "Frequent earthquakes stun players and enemies alike."
+            }
+        ],
+        "hash": 3087050848,
+        "position": {
+            "x": 0.6880386,
+            "y": 0.30101782
+        },
+        "waypoints": [
+            171,
+            212
+        ],
+        "maxHealth": 1000000,
+        "health": 1000000,
+        "disabled": false,
+        "initialOwner": "Terminids",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5720,
+            "eventType": 1,
+            "faction": "Terminids",
+            "health": 832006,
+            "maxHealth": 900000,
+            "startTime": "2026-10-14T09:44:41Z",
+            "endTime": "2026-10-15T09:44:41Z",
+            "campaignId": 51742,
+            "jointOperationIds": [
+                5720
+            ]
+        },
+        "statistics": {
+            "missionsWon": 28440695,
+            "missionsLost": 2755900,
+            "missionTime": 87511100081,
+            "terminidKills": 12068890813,
+            "automatonKills": 25042,
+            "illuminateKills": 2245,
+            "bulletsFired": 57221530655,
+            "bulletsHit": 66590470760,
+            "timePlayed": 87511100081,
+            "deaths": 199140451,
+            "revives": 0,
+            "friendlies": 31444253,
+            "missionSuccessRate": 91,
+            "accuracy": 100,
+            "playerCount": 16910
+        },
+        "attacking": [
+            171
+        ],
+        "regions": []
+    },
+    {
+        "index": 246,
+        "name": "VEGA BAY",
+        "sector": "Ymir",
+        "biome": {
+            "name": "Icy Glaciers",
+            "description": "Submerged in eternal winter, this world's frosty peaks glimmer in the light of its too-distant star."
+        },
+        "hazards": [
+            {
+                "name": "Blizzards",
+                "description": "Intense blizzard reduce mobility and moderately reduce visibility for both enemy and friendly units."
+            }
+        ],
+        "hash": 229350423,
+        "position": {
+            "x": -0.7952854,
+            "y": 0.4969178
+        },
+        "waypoints": [
+            245,
+            247,
+            249
+        ],
+        "maxHealth": 1500000,
+        "health": 1500000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5717,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 209830,
+            "maxHealth": 1700000,
+            "startTime": "2026-10-12T17:53:01Z",
+            "endTime": "2026-10-14T17:53:01Z",
+            "campaignId": 51741,
+            "jointOperationIds": [
+                5717
+            ]
+        },
+        "statistics": {
+            "missionsWon": 3265949,
+            "missionsLost": 240658,
+            "missionTime": 11812951961,
+            "terminidKills": 9297,
+            "automatonKills": 935363014,
+            "illuminateKills": 3536,
+            "bulletsFired": 4718952233,
+            "bulletsHit": 5183387672,
+            "timePlayed": 11812951961,
+            "deaths": 24382126,
+            "revives": 0,
+            "friendlies": 2668456,
+            "missionSuccessRate": 93,
+            "accuracy": 100,
+            "playerCount": 20297
+        },
+        "attacking": [
+            249
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 4253491601,
+                "name": "ONSEN",
+                "description": "null",
+                "health": 20259,
+                "maxHealth": 100000,
+                "size": "Settlement",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 0.19100846,
+                "isAvailable": true,
+                "players": 9243
+            },
+            {
+                "id": 1,
+                "hash": 1061744043,
+                "name": "GIRI",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 17
+            },
+            {
+                "id": 2,
+                "hash": 3878380748,
+                "name": "SAPPORO",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 0.6419633,
+                "isAvailable": false,
+                "players": 256
+            }
+        ]
+    }
+]
