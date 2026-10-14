@@ -1,0 +1,107 @@
+[
+    {
+        "index": 246,
+        "name": "VEGA BAY",
+        "sector": "Ymir",
+        "biome": {
+            "name": "Icy Glaciers",
+            "description": "Submerged in eternal winter, this world's frosty peaks glimmer in the light of its too-distant star."
+        },
+        "hazards": [
+            {
+                "name": "Blizzards",
+                "description": "Intense blizzard reduce mobility and moderately reduce visibility for both enemy and friendly units."
+            }
+        ],
+        "hash": 229350423,
+        "position": {
+            "x": -0.7952854,
+            "y": 0.4969178
+        },
+        "waypoints": [
+            245,
+            247,
+            249
+        ],
+        "maxHealth": 1500000,
+        "health": 1500000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5717,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 746039,
+            "maxHealth": 1700000,
+            "startTime": "2026-10-12T17:52:48Z",
+            "endTime": "2026-10-14T17:52:48Z",
+            "campaignId": 51741,
+            "jointOperationIds": [
+                5717
+            ]
+        },
+        "statistics": {
+            "missionsWon": 3193394,
+            "missionsLost": 235743,
+            "missionTime": 11549209745,
+            "terminidKills": 8946,
+            "automatonKills": 909338048,
+            "illuminateKills": 3451,
+            "bulletsFired": 4585708191,
+            "bulletsHit": 5035245786,
+            "timePlayed": 11549209745,
+            "deaths": 23835960,
+            "revives": 0,
+            "friendlies": 2609486,
+            "missionSuccessRate": 93,
+            "accuracy": 100,
+            "playerCount": 13178
+        },
+        "attacking": [
+            249
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 4253491601,
+                "name": "ONSEN",
+                "description": "null",
+                "health": 100000,
+                "maxHealth": 100000,
+                "size": "Settlement",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 0.19100846,
+                "isAvailable": false,
+                "players": 6
+            },
+            {
+                "id": 1,
+                "hash": 1061744043,
+                "name": "GIRI",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 91
+            },
+            {
+                "id": 2,
+                "hash": 3878380748,
+                "name": "SAPPORO",
+                "description": "null",
+                "health": 10089,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 0.6419633,
+                "isAvailable": true,
+                "players": 6525
+            }
+        ]
+    }
+]
