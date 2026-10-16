@@ -1,0 +1,93 @@
+[
+    {
+        "index": 228,
+        "name": "SENGE 23",
+        "sector": "Omega",
+        "biome": {
+            "name": "Rocky Canyons",
+            "description": "This arid, rocky biome covering this world has driven the evolution of exceptionally efficient water usage in its various organisms."
+        },
+        "hazards": [
+            {
+                "name": "Tremors",
+                "description": "Frequent earthquakes stun players and enemies alike."
+            }
+        ],
+        "hash": 3709894755,
+        "position": {
+            "x": -0.037947383,
+            "y": -0.8437918
+        },
+        "waypoints": [
+            184,
+            229
+        ],
+        "maxHealth": 1300000,
+        "health": 1300000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5721,
+            "eventType": 1,
+            "faction": "Illuminate",
+            "health": 970175,
+            "maxHealth": 1750000,
+            "startTime": "2026-10-15T14:07:43Z",
+            "endTime": "2026-10-17T14:07:43Z",
+            "campaignId": 51744,
+            "jointOperationIds": [
+                5721
+            ]
+        },
+        "statistics": {
+            "missionsWon": 2491334,
+            "missionsLost": 268466,
+            "missionTime": 9355675838,
+            "terminidKills": 12064,
+            "automatonKills": 18072,
+            "illuminateKills": 1259187008,
+            "bulletsFired": 7982761336,
+            "bulletsHit": 8136553540,
+            "timePlayed": 9355675838,
+            "deaths": 19085492,
+            "revives": 0,
+            "friendlies": 2929073,
+            "missionSuccessRate": 90,
+            "accuracy": 100,
+            "playerCount": 29375
+        },
+        "attacking": [
+            229
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 1273177678,
+                "name": "EXALT",
+                "description": "null",
+                "health": 200000,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": false,
+                "players": 403
+            },
+            {
+                "id": 1,
+                "hash": 3320001654,
+                "name": "EAGLESTAR ETERNAL",
+                "description": "null",
+                "health": 100000,
+                "maxHealth": 100000,
+                "size": "Settlement",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 0.67173797,
+                "isAvailable": false,
+                "players": 2
+            }
+        ]
+    }
+]
