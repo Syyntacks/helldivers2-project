@@ -1,1 +1,39 @@
-[]
+[
+  {
+    "orderId": 3291378705,
+    "orderExpires": "2026-11-02T16:12:41.158479+00:00",
+    "orderType": "4",
+    "orderTypeName": "CompleteObjs",
+    "orderTitle": "MAJOR ORDER",
+    "orderBriefing": "Acquire Automaton samples and kill Cyborgs to aid the development of enhanced digital interrogation techniques.",
+    "orderTaskDescr": "",
+    "orderProgress": [
+      1808950,
+      210750
+    ],
+    "tasks": [
+      {
+        "type": "2",
+        "typeName": "ExtractSamples",
+        "factionId": 3,
+        "enemyId": null,
+        "goal": 35000000,
+        "targetName": "Super Earth",
+        "targetPlanetId": 0,
+        "progress": 1808950
+      },
+      {
+        "type": "3",
+        "typeName": "KillEnemies",
+        "factionId": 3,
+        "enemyId": 23741406,
+        "goal": 60000000,
+        "targetName": "Greatcloak of Rebar Resolve",
+        "targetPlanetId": null,
+        "progress": 210750
+      }
+    ],
+    "rewardType": "1",
+    "rewardsAmount": "35"
+  }
+]
