@@ -1,0 +1,93 @@
+[
+    {
+        "index": 207,
+        "name": "MINTORIA",
+        "sector": "Gellert",
+        "biome": {
+            "name": "Plains",
+            "description": "Rocky outcroppings punctuate fields of tall grass in a planet dominated by misty highland terrain."
+        },
+        "hazards": [
+            {
+                "name": "None",
+                "description": "This planet's environment is not yet known, or has no environmental modifiers."
+            }
+        ],
+        "hash": 2174989502,
+        "position": {
+            "x": -0.06005267,
+            "y": 0.84179187
+        },
+        "waypoints": [
+            251
+        ],
+        "maxHealth": 1300000,
+        "health": 1300000,
+        "disabled": false,
+        "initialOwner": "Humans",
+        "currentOwner": "Humans",
+        "regenPerSecond": 0,
+        "event": {
+            "id": 5730,
+            "eventType": 1,
+            "faction": "Automaton",
+            "health": 2213777,
+            "maxHealth": 2250000,
+            "startTime": "2026-11-01T13:56:12Z",
+            "endTime": "2026-11-03T13:56:12Z",
+            "campaignId": 51752,
+            "jointOperationIds": [
+                5730
+            ]
+        },
+        "statistics": {
+            "missionsWon": 6944290,
+            "missionsLost": 616867,
+            "missionTime": 24502632679,
+            "terminidKills": 8702,
+            "automatonKills": 2162757300,
+            "illuminateKills": 5386,
+            "bulletsFired": 9860964489,
+            "bulletsHit": 10888383468,
+            "timePlayed": 24502632679,
+            "deaths": 51881633,
+            "revives": 0,
+            "friendlies": 5551676,
+            "missionSuccessRate": 91,
+            "accuracy": 100,
+            "playerCount": 1487
+        },
+        "attacking": [
+            70,
+            253
+        ],
+        "regions": [
+            {
+                "id": 0,
+                "hash": 3513777986,
+                "name": "SEORAKSAN",
+                "description": "null",
+                "health": 100000,
+                "maxHealth": 100000,
+                "size": "Settlement",
+                "regenPerSecond": 0.2777778,
+                "availabilityFactor": 0.25418445,
+                "isAvailable": false,
+                "players": 0
+            },
+            {
+                "id": 1,
+                "hash": 3910908375,
+                "name": "GYEONGSEONG",
+                "description": "null",
+                "health": 199996,
+                "maxHealth": 200000,
+                "size": "Town",
+                "regenPerSecond": 0.5555556,
+                "availabilityFactor": 1,
+                "isAvailable": true,
+                "players": 532
+            }
+        ]
+    }
+]
